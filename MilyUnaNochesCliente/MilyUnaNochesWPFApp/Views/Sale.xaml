@@ -76,7 +76,7 @@
                 <ImageBrush ImageSource="/Images/Background/BackgorundTextField.png"/>
             </TextBox.Background>
         </TextBox>
-        <TextBox Name="numeroProductos"
+        <TextBox Name="txtNumeroProductos"
                  HorizontalAlignment="Left" 
                  Height="40" 
                  Margin="234,424,0,0" 
@@ -157,6 +157,103 @@
                 <ImageBrush ImageSource="/Images/Background/BackgroundButton.png"/>
             </Button.Background>
         </Button>
+        <!-- Sección de productos en el carrito -->
+        <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="518,265,31,68">
+            <WrapPanel Name="ProductsPanel" Orientation="Horizontal" ItemWidth="200" ItemHeight="300">
+                <!-- Cada producto se agregará dinámicamente aquí -->
+                <Border 
+                        CornerRadius="10" 
+                        Padding="10"
+                        Width="180" 
+                        Height="234" Background="White">
+                    <StackPanel>
+                        <Image Source="/Images/Products/Product1.png" 
+                               Width="146" 
+                               Height="145" 
+                               Stretch="UniformToFill"/>
+                        <TextBlock Text="Nombre del Producto" 
+                                   FontWeight="Bold"
+                                   FontSize="16" 
+                                   TextAlignment="Center" 
+                                   Foreground="#FFC18D5C"
+                                   FontFamily="Bodoni MT Condensed"/>
+                        <TextBlock Text="$0.00" 
+                                   FontSize="16" 
+                                   TextAlignment="Center" 
+                                   FontFamily="Bodoni MT Condensed" 
+                                   Foreground="#FFC18D5C"/>
+                        <Button Content="Quitar del carrito" 
+                                Background="#FFC18D5C" 
+                                Foreground="White"
+                                Margin="5" 
+                                BorderBrush="{x:Null}" FontWeight="Bold"/>
+                    </StackPanel>
+                </Border>
+            </WrapPanel>
+        </ScrollViewer>
+        <Grid Margin="211,226,128,233" 
+              Visibility="Collapsed" 
+              Name="gridSearchProduct">
+            <Image HorizontalAlignment="Center" 
+                   Height="232" 
+                   Margin="0,24,0,0" 
+                   VerticalAlignment="Top" 
+                   Width="740" 
+                   Source="/Images/Background/BackgroundEnterProduct.png"/>
+            <TextBox HorizontalAlignment="Center"
+                     Height="76" 
+                     Margin="0,130,0,0" 
+                     TextWrapping="Wrap" 
+                     VerticalAlignment="Top"
+                     Width="416" 
+                     BorderBrush="{x:Null}"
+                     SelectionBrush="{x:Null}" 
+                     VerticalContentAlignment="Center" 
+                     HorizontalContentAlignment="Center" 
+                     FontSize="20">
+                <TextBox.Background>
+                    <ImageBrush ImageSource="/Images/Background/BackgroundTextBlock.png"/>
+                </TextBox.Background>
+            </TextBox>
+
+        </Grid>
+        <Grid Name="gridFormPay" Visibility="Collapsed">
+            <Image HorizontalAlignment="Center" 
+                   Height="246" 
+                   Margin="0,303,0,0" 
+                   VerticalAlignment="Top" 
+                   Width="598" 
+                   Source="/Images/Background/BackgroundGrid.png"/>
+            <Label Content="Forma de pago" 
+                   HorizontalAlignment="Center"
+                   Height="58" 
+                   Margin="0,327,0,0" 
+                   VerticalAlignment="Top"
+                   Width="234" FontFamily="Bernard MT Condensed" FontWeight="Bold" FontSize="36" Foreground="White"/>
+            <Button Content="EFECTIVO" 
+                    HorizontalAlignment="Left" 
+                    Height="46" 
+                    Margin="438,401,0,0" 
+                    VerticalAlignment="Top" 
+                    Width="144" 
+                    BorderBrush="{x:Null}" FontSize="20">
+                <Button.Background>
+                    <ImageBrush ImageSource="/Images/Background/BackgroundTextBlock.png"/>
+                </Button.Background>
+            </Button>
+            <Button Content="TARJETA" 
+                    HorizontalAlignment="Left"
+                    Height="46" 
+                    Margin="666,401,0,0"
+                    VerticalAlignment="Top"
+                    Width="144" 
+                    BorderBrush="{x:Null}" FontSize="20">
+                <Button.Background>
+                    <ImageBrush ImageSource="/Images/Background/BackgroundTextBlock.png"/>
+                </Button.Background>
+            </Button>
+
+        </Grid>
     </Grid>
 
 

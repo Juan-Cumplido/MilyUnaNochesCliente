@@ -162,5 +162,17 @@
   <ItemGroup>
     <Resource Include="Images\Background\BackgroundButton.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Products\Product1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Background\BackgroundEnterProduct.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Background\BackgroundTextBlock.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Background\BackgroundGrid.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
