@@ -1,0 +1,107 @@
+﻿<Page x:Class="MilyUnaNochesWPFApp.Views.MenuSale"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:MilyUnaNochesWPFApp.Views"
+      mc:Ignorable="d" 
+      d:DesignHeight="720" d:DesignWidth="1280"
+      Background="#fdf8ef"
+      Title="MenuSale">
+
+    <Page.Resources>
+        <Style x:Key="CenteredCellStyle" TargetType="DataGridCell">
+            <Setter Property="TextBlock.TextAlignment" Value="Center"/>
+            <Setter Property="TextBlock.VerticalAlignment" Value="Center"/>
+        </Style>
+    </Page.Resources>
+
+    <Grid>
+        <!-- Imagen superior -->
+        <Image HorizontalAlignment="Center"
+               Height="144" 
+               Margin="0,73,0,0" 
+               VerticalAlignment="Top" 
+               Width="1280" 
+               Source="/Images/Background/FrameSale.png"/>
+
+        <!-- Barra de búsqueda -->
+
+        <TextBox HorizontalAlignment="Left" 
+                 Height="44" 
+                 Margin="68,274,0,0" 
+                 TextWrapping="Wrap" 
+                 Text="Busque una venta" 
+                 VerticalAlignment="Top" 
+                 Width="241" 
+                 BorderBrush="{x:Null}" 
+                 BorderThickness="3,3,3,3" 
+                 TextChanged="TextBox_TextChanged"
+                 VerticalContentAlignment="Center"
+                 FontSize="20"
+                 FontFamily="Bodoni MT Condensed" 
+                 Foreground="#FFAE7D5C" HorizontalContentAlignment="Center">
+            <TextBox.Background>
+                <ImageBrush ImageSource="/Images/Background/Search.png"/>
+            </TextBox.Background>
+        </TextBox>
+
+        <!-- Botón realizar venta -->
+        <TextBox HorizontalAlignment="Left" 
+                Height="35" 
+                Margin="1114,279,0,0" 
+                TextWrapping="Wrap" 
+                Text="Realizar venta" 
+                VerticalAlignment="Top" 
+                Width="97" 
+                Background="{x:Null}" 
+                BorderBrush="{x:Null}" 
+                BorderThickness="3,3,3,3" 
+                VerticalContentAlignment="Center"
+                FontSize="20"
+                FontFamily="Bodoni MT Condensed" 
+                Foreground="#FFAE7D5C"/>
+
+        <!-- DataGrid para mostrar las ventas -->
+        <DataGrid x:Name="SalesDataGrid" 
+                  AutoGenerateColumns="False"
+                  HeadersVisibility="Column"
+                  GridLinesVisibility="None"
+                  CanUserAddRows="False"
+                  IsReadOnly="True"
+                  HorizontalAlignment="Center"
+                  VerticalAlignment="Top"
+                  Margin="50,350,50,0"
+                  Width="1180"
+                  Height="250"
+                  Background="#fdf8ef"
+                  BorderThickness="0"
+                  FontSize="18"
+                  FontFamily="Bodoni MT Condensed" SelectionChanged="SalesDataGrid_SelectionChanged">
+
+            <DataGrid.Columns>
+                <!-- Columna de No. Cliente -->
+                <DataGridTextColumn Header="No. Cliente" 
+                                    Binding="{Binding Cliente}" 
+                                    Width="*" 
+                                    CellStyle="{StaticResource CenteredCellStyle}"/>
+
+                <!-- Columna de Monto Vendido -->
+                <DataGridTextColumn Header="Monto Vendido" 
+                                    Binding="{Binding Monto}" 
+                                    Width="*" 
+                                    CellStyle="{StaticResource CenteredCellStyle}"/>
+
+                <!-- Columna de Artículos -->
+                <DataGridTextColumn Header="Artículos" 
+                                    Binding="{Binding Articulos}" 
+                                    Width="2*" 
+                                    CellStyle="{StaticResource CenteredCellStyle}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+
+
+
+
+</Page>
