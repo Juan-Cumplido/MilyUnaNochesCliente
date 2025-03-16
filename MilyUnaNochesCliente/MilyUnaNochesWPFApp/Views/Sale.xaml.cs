@@ -50,6 +50,7 @@ namespace MilyUnaNochesWPFApp.Views {
 
             SalesDataGrid.ItemsSource = ventas;
         }
+
     }
 }
 
