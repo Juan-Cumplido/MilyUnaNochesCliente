@@ -74,6 +74,17 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Logic\Hasher.cs" />
+    <Compile Include="Logic\Sale.cs" />
+    <Compile Include="Views\LoginView.xaml.cs">
+      <DependentUpon>LoginView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Sale.xaml.cs">
+      <DependentUpon>Sale.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MenuSale.xaml.cs">
+      <DependentUpon>MenuSale.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -87,6 +98,18 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\LoginView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Sale.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\MenuSale.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -119,10 +142,37 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Images\Background\" />
-    <Folder Include="Images\Icons\" />
-    <Folder Include="Logic\" />
-    <Folder Include="Views\" />
+    <Resource Include="Images\Icons\Logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Icons\Mil_y_una_Noches.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Background\Mil_y_una_Noches.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Background\FrameSale.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Background\Search.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Background\BackgorundTextField.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Background\BackgroundButton.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Products\Product1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Background\BackgroundEnterProduct.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Background\BackgroundTextBlock.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Background\BackgroundGrid.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
