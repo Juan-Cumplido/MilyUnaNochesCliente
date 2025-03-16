@@ -75,8 +75,15 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Logic\Hasher.cs" />
+    <Compile Include="Logic\Sale.cs" />
     <Compile Include="Views\LoginView.xaml.cs">
       <DependentUpon>LoginView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Sale.xaml.cs">
+      <DependentUpon>Sale.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MenuSale.xaml.cs">
+      <DependentUpon>MenuSale.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -92,6 +99,14 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Views\LoginView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Sale.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\MenuSale.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -126,12 +141,26 @@
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Images\Icons\Logo.png" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\Icons\Mil_y_una_Noches.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\Background\Mil_y_una_Noches.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Background\FrameSale.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Background\Search.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Background\BackgorundTextField.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Background\BackgroundButton.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
