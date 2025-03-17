@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace MilyUnaNochesWPFApp.Views {
+namespace MilyUnaNochesWPFApp   .Views {
     /// <summary>
     /// Lógica de interacción para MenuProvider.xaml
     /// </summary>
@@ -21,15 +21,6 @@ namespace MilyUnaNochesWPFApp.Views {
         public MenuProvider() {
             InitializeComponent();
         }
-
-        private void SearchBar_TextChanged(object sender, TextChangedEventArgs e) {
-            PlaceholderText.Visibility = string.IsNullOrWhiteSpace(SearchBar.Text) ? Visibility.Visible : Visibility.Collapsed;
-        }
-
-        private void ProviderDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e) {
-
-        }
-
         private void Button_Click(object sender, RoutedEventArgs e) {
 
         }
@@ -51,18 +42,6 @@ namespace MilyUnaNochesWPFApp.Views {
         }
 
         private void Reportes_Click(object sender, RoutedEventArgs e) {
-
-        }
-
-        private void Eliminar_Click(object sender, RoutedEventArgs e) {
-
-        }
-
-        private void Archivar_Click(object sender, RoutedEventArgs e) {
-
-        }
-
-        private void Editar_Click(object sender, RoutedEventArgs e) {
 
         }
 

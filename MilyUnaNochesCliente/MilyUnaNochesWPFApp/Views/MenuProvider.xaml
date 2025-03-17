@@ -38,15 +38,6 @@
         </StackPanel>
 
         <StackPanel 
-            Margin="0,650,23,10"
-            Orientation="Horizontal"
-            HorizontalAlignment="Right">
-            <Button Content="Eliminar" Click="Eliminar_Click" Margin="10" Background="Transparent" Foreground="#AE7D5C" FontSize="15" FontFamily="Bodoni MT Condensed" BorderThickness="1" Height="25" Width="80"/>
-            <Button Content="Archivar" Click="Archivar_Click" Margin="10" Background="Transparent" Foreground="#AE7D5C" FontSize="15" FontFamily="Bodoni MT Condensed" BorderThickness="1" Height="25" Width="80"/>
-            <Button Content="Editar" Click="Editar_Click" Margin="10" Background="Transparent" Foreground="#AE7D5C" FontSize="15" FontFamily="Bodoni MT Condensed" BorderThickness="1" Height="25" Width="80"/>
-        </StackPanel>
-
-        <StackPanel 
             Margin="476,257,0,413"
             Orientation="Horizontal"
             HorizontalAlignment="Left" 
@@ -55,62 +46,13 @@
             <Button Content="Registrar Proveedor" Click="RegistrarProveedor_Click" Margin="0,0,30,0" Background="Transparent" Foreground="#AE7D5C" FontSize="20" FontFamily="Bodoni MT Condensed" BorderThickness="0" Height="38" Width="147"/>
         </StackPanel>
 
-        <TextBox x:Name="SearchBar"
-                HorizontalAlignment="Left" 
-                Height="44" 
-                Margin="70,306,0,0" 
-                TextWrapping="Wrap" 
-                VerticalAlignment="Top" 
-                Width="241" 
-                BorderBrush="{x:Null}" 
-                TextChanged="SearchBar_TextChanged"
-                VerticalContentAlignment="Center"
-                FontSize="20"
-                FontFamily="Bodoni MT Condensed" 
-                Foreground="#FFAE7D5C" HorizontalContentAlignment="Center">
-            <TextBox.Background>
-                <ImageBrush ImageSource="/Images/Background/Search.png"/>
-            </TextBox.Background>
-        </TextBox>
-
-        <TextBlock x:Name="PlaceholderText" HorizontalAlignment="Left" Margin="113,317,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="22" Width="198" FontSize="18" FontFamily="Bodoni MT Condensed" Foreground="#FF6A6565"><Run Language="es-mx" Text="Nombre o contacto (ej. Lala)"/></TextBlock>
-
-        <!-- DataGrid para mostrar los proveedores -->
-        <DataGrid x:Name="ProviderDataGrid" 
-                 AutoGenerateColumns="False"
-                 HeadersVisibility="Column"
-                 GridLinesVisibility="None"
-                 CanUserAddRows="False"
-                 IsReadOnly="True"
-                 HorizontalAlignment="Left"
-                 VerticalAlignment="Top"
-                 Margin="52,382,0,0"
-                 Width="1180"
-                 Height="263"
-                 Background="#fdf8ef"
-                 BorderThickness="0"
-                 FontSize="18"
-                 FontFamily="Bodoni MT Condensed" SelectionChanged="ProviderDataGrid_SelectionChanged">
-
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="Proveedor" 
-                                   Width="*" 
-                                   CellStyle="{StaticResource CenteredCellStyle}"/>
-                <DataGridTextColumn Header="Contacto" 
-                                   Width="*" 
-                                   CellStyle="{StaticResource CenteredCellStyle}"/>
-                <DataGridTextColumn Header="Telefono" 
-                                   Width=".7*" 
-                                   CellStyle="{StaticResource CenteredCellStyle}"/>
-                <DataGridTextColumn Header="Correo" 
-                                   Width="*" 
-                                   CellStyle="{StaticResource CenteredCellStyle}"/>
-                <DataGridTextColumn Header="Direccion" 
-                                   Width="1.5*" 
-                                   CellStyle="{StaticResource CenteredCellStyle}"/>
-            </DataGrid.Columns>
-        </DataGrid>
         <Image x:Name="imgLogo" HorizontalAlignment="Left" Height="150" Margin="2,0,0,0" VerticalAlignment="Top" Width="250" Source="/Images/Icons/Logo.png"/>
+
+        <Frame 
+            Content="Frame" Margin="0,307,0,-1"
+            NavigationUIVisibility="Hidden"
+            Source="FindProvider.xaml">
+        </Frame>
 
     </Grid>
 
