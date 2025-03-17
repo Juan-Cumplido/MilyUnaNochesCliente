@@ -81,6 +81,7 @@
     </Compile>
     <Compile Include="Logic\Hasher.cs" />
     <Compile Include="Logic\Sale.cs" />
+    <Compile Include="Logic\Validator.cs" />
     <Compile Include="Views\LoginView.xaml.cs">
       <DependentUpon>LoginView.xaml</DependentUpon>
     </Compile>
