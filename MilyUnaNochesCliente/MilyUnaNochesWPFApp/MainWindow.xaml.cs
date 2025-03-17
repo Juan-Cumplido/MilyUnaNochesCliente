@@ -14,14 +14,18 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace MilyUnaNochesWPFApp {
+namespace MilyUnaNochesWPFApp
+{
 
-    public partial class MainWindow : Window {
-        public MainWindow() {
+    public partial class MainWindow : Window
+    {
+        public MainWindow()
+        {
             InitializeComponent();
-            fra_NavigationFrame.Navigate(new Views.MenuProvider());
+            fra_NavigationFrame.Navigate(new Views.LoginView());
         }
-        private void NavigationFrame_Navigating(object sender, NavigatingCancelEventArgs e) {
+        private void NavigationFrame_Navigating(object sender, NavigatingCancelEventArgs e)
+        {
             var storyb_FadeOutAnimation = new DoubleAnimation(1, 0, TimeSpan.FromSeconds(1.5));
             fra_NavigationFrame.BeginAnimation(Frame.OpacityProperty, storyb_FadeOutAnimation);
         }
