@@ -158,7 +158,6 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\Icons\Logo.png" />
     <WCFMetadataStorage Include="Connected Services\MilyUnaNochesProxy\" />
   </ItemGroup>
   <ItemGroup>
@@ -200,6 +199,22 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Icons\Logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Icons\User.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Icons\Logo1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Background\LoginBackground.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Icons\LockIcon.png" />
+    <Resource Include="Images\Icons\UserIcon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -24,5 +24,41 @@ namespace MilyUnaNochesWPFApp.Views
         {
             InitializeComponent();
         }
+        private void UserIdTextBox_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (UserIdTextBox.Text == "Usuario")
+            {
+                UserIdTextBox.Text = "";
+                UserIdTextBox.Foreground = Brushes.Black;
+            }
+        }
+
+        private void UserIdTextBox_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(UserIdTextBox.Text))
+            {
+                UserIdTextBox.Text = "Usuario";
+                UserIdTextBox.Foreground = Brushes.Gray;
+            }
+        }
+
+        private void PasswordBox_GotFocus(object sender, RoutedEventArgs e)
+        {
+            PasswordPlaceholder.Visibility = Visibility.Collapsed;
+        }
+
+        private void PasswordBox_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(PasswordBox.Password))
+            {
+                PasswordPlaceholder.Visibility = Visibility.Visible;
+            }
+        }
+
+        private void PasswordBox_PasswordChanged(object sender, RoutedEventArgs e)
+        {
+            PasswordPlaceholder.Visibility = string.IsNullOrEmpty(PasswordBox.Password) ? Visibility.Visible : Visibility.Collapsed;
+        }
+
     }
 }

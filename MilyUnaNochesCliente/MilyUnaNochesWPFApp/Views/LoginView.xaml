@@ -6,5 +6,83 @@
       xmlns:local="clr-namespace:MilyUnaNochesWPFApp.Views"
       mc:Ignorable="d" 
       d:DesignHeight="720" d:DesignWidth="1280">
-      
+
+    <DockPanel>
+        <Grid>
+            <Border>
+                <Border.Background>
+                    <ImageBrush ImageSource="/Images/Background/loginBackground.png" Stretch="UniformToFill" />
+                </Border.Background>
+            </Border>
+
+            <Border Width="450" Background="White" CornerRadius="15" Padding="25"
+                    VerticalAlignment="Top" HorizontalAlignment="Left" Margin="750,230,0,0" Height="380">
+
+                <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Height="320" Width="380">
+
+                    <Border BorderThickness="1" Background="#dcd9d7" CornerRadius="15" Margin="10" Height="65">
+                        <DockPanel>
+                            <Image Source="/Images/Icons/UserIcon.png" Width="35" Height="35" Margin="10" DockPanel.Dock="Right"/>
+                            <TextBox x:Name="UserIdTextBox" Width="280" Height="40" FontSize="22" Background="Transparent" 
+                                     BorderThickness="0" Text="Usuario" Foreground="Gray"
+                                     GotFocus="UserIdTextBox_GotFocus" LostFocus="UserIdTextBox_LostFocus"/>
+                        </DockPanel>
+                    </Border>
+
+                    <Border BorderThickness="1" Background="#dcd9d7" CornerRadius="15" Margin="10" Height="65">
+                        <DockPanel>
+                            <Image Source="/Images/Icons/LockIcon.png" Width="35" Height="35" Margin="10" DockPanel.Dock="Right"/>
+
+                            <Grid Width="280">
+
+                                <TextBlock x:Name="PasswordPlaceholder" Text="Contraseña" Foreground="Gray"
+                       FontSize="22" VerticalAlignment="Top" Margin="0,11,10,0"/>
+
+
+                                <PasswordBox x:Name="PasswordBox" Width="280" Height="40" FontSize="22" Background="Transparent" 
+                         BorderThickness="0" PasswordChanged="PasswordBox_PasswordChanged"
+                         GotFocus="PasswordBox_GotFocus" LostFocus="PasswordBox_LostFocus"/>
+                            </Grid>
+                        </DockPanel>
+                    </Border>
+
+
+                    <Border Background="#ae7d5c" CornerRadius="15" Margin="10">
+                        <Button Content="INICIAR SESIÓN" Width="350" Height="60" FontSize="22"
+                            Background="Transparent" Foreground="White" FontWeight="Bold"
+                            BorderThickness="0" Cursor="Hand"
+                            OverridesDefaultStyle="True">
+                            <Button.Style>
+                                <Style TargetType="Button">
+                                    <Setter Property="Background" Value="Transparent"/>
+                                    <Setter Property="Foreground" Value="White"/>
+                                    <Setter Property="FontSize" Value="22"/>
+                                    <Setter Property="FontWeight" Value="Bold"/>
+                                    <Setter Property="BorderThickness" Value="0"/>
+                                    <Setter Property="Cursor" Value="Hand"/>
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate TargetType="Button">
+                                                <Border Background="Transparent"
+                                    CornerRadius="15"
+                                    Padding="10"
+                                    Width="350"
+                                    Height="60">
+                                                    <ContentPresenter HorizontalAlignment="Center"
+                                                  VerticalAlignment="Center"/>
+                                                </Border>
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Style>
+                            </Button.Style>
+                        </Button>
+                    </Border>
+
+
+                </StackPanel>
+
+            </Border>
+        </Grid>
+    </DockPanel>
 </Page>
