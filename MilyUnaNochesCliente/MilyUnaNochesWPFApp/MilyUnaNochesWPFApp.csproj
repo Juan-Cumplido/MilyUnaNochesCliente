@@ -82,11 +82,17 @@
     <Compile Include="Logic\Hasher.cs" />
     <Compile Include="Logic\Sale.cs" />
     <Compile Include="Logic\Validator.cs" />
+    <Compile Include="Views\FindProvider.xaml.cs">
+      <DependentUpon>FindProvider.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\CashierMenu.xaml.cs">
       <DependentUpon>CashierMenu.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\LoginView.xaml.cs">
       <DependentUpon>LoginView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MenuProvider.xaml.cs">
+      <DependentUpon>MenuProvider.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Sale.xaml.cs">
       <DependentUpon>Sale.xaml</DependentUpon>
@@ -107,11 +113,19 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\FindProvider.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\CashierMenu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\LoginView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MenuProvider.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -222,6 +236,7 @@
   <ItemGroup>
     <Resource Include="Images\Icons\LockIcon.png" />
     <Resource Include="Images\Icons\UserIcon.png" />
+    <Resource Include="Images\Background\FrameProviders.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\Background\ClientBackground.png" />
