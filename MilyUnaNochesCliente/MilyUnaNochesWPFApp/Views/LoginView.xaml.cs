@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MilyUnaNochesWPFApp.MilyUnaNochesProxy;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,6 +8,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
+using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -23,6 +25,17 @@ namespace MilyUnaNochesWPFApp.Views
         public LoginView()
         {
             InitializeComponent();
+        }
+
+        private void BtnLogin_Click(object sender, RoutedEventArgs e)
+        {
+            DisplayMainMenuView();
+        }
+
+        private void DisplayMainMenuView()
+        {
+            CashierMenu cashierMenu = new CashierMenu();
+            this.NavigationService.Navigate(cashierMenu);
         }
         private void UserIdTextBox_GotFocus(object sender, RoutedEventArgs e)
         {

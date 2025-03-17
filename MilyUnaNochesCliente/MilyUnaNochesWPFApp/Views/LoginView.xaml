@@ -51,7 +51,7 @@
                         <Button Content="INICIAR SESIÓN" Width="350" Height="60" FontSize="22"
                             Background="Transparent" Foreground="White" FontWeight="Bold"
                             BorderThickness="0" Cursor="Hand"
-                            OverridesDefaultStyle="True">
+                            OverridesDefaultStyle="True" Click="BtnLogin_Click">
                             <Button.Style>
                                 <Style TargetType="Button">
                                     <Setter Property="Background" Value="Transparent"/>
@@ -64,10 +64,10 @@
                                         <Setter.Value>
                                             <ControlTemplate TargetType="Button">
                                                 <Border Background="Transparent"
-                                    CornerRadius="15"
-                                    Padding="10"
-                                    Width="350"
-                                    Height="60">
+                                                    CornerRadius="15"
+                                                    Padding="10"
+                                                    Width="350"
+                                                    Height="60">
                                                     <ContentPresenter HorizontalAlignment="Center"
                                                   VerticalAlignment="Center"/>
                                                 </Border>

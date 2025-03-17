@@ -85,6 +85,9 @@
     <Compile Include="Views\FindProvider.xaml.cs">
       <DependentUpon>FindProvider.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\CashierMenu.xaml.cs">
+      <DependentUpon>CashierMenu.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\LoginView.xaml.cs">
       <DependentUpon>LoginView.xaml</DependentUpon>
     </Compile>
@@ -111,6 +114,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Views\FindProvider.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\CashierMenu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -230,6 +237,9 @@
     <Resource Include="Images\Icons\LockIcon.png" />
     <Resource Include="Images\Icons\UserIcon.png" />
     <Resource Include="Images\Background\FrameProviders.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Background\ClientBackground.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
