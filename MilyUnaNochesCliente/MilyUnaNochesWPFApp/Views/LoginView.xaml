@@ -6,9 +6,5 @@
       xmlns:local="clr-namespace:MilyUnaNochesWPFApp.Views"
       mc:Ignorable="d" 
       d:DesignHeight="720" d:DesignWidth="1280">
-      Title="LoginView">
-
-    <Grid>
-        
-    </Grid>
+      
 </Page>

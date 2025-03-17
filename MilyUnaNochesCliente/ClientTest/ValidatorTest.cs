@@ -1,4 +1,4 @@
-﻿using HiveGameWPFApp.Logic;
+﻿using MilyUnaNochesWPFApp.Logic;
 using System.Diagnostics.Contracts;
 using Xunit;
 
