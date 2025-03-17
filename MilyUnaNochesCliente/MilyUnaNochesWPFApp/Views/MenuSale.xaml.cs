@@ -21,34 +21,25 @@ namespace MilyUnaNochesWPFApp.Views {
     /// </summary>
     public partial class MenuSale : Page {
         public MenuSale() {
-            InitializeComponent();
-            CargarVentas();
+           
         }
-
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e) {
-
-        }
-
-        private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e) {
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
 
         }
 
-        private void SalesDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e) {
+        private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
 
         }
-        
 
-        
+        private void SalesDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
 
-        private void CargarVentas() {
-            var ventas = new List<Sale>
-            {
-            new Sale { Cliente = "xxxx xxxx 1234", Monto = "$720.00", Articulos = "Collar antiguo, Gato de calavera" },
-            new Sale { Cliente = "xxxx xxxx 1234", Monto = "$100,000.00", Articulos = "Juego de joyería de barro" },
-            new Sale { Cliente = "xxxx xxxx 1234", Monto = "$80,000.00", Articulos = "Dije de perlas" }
-        };
+        }
 
-            SalesDataGrid.ItemsSource = ventas;
+        private void TextBox_TextChanged_1(object sender, TextChangedEventArgs e) {
+
         }
     }
 }

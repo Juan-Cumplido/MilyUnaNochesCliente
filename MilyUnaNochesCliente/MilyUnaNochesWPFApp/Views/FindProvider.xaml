@@ -1,0 +1,95 @@
+﻿<Page x:Class="MilyUnaNochesWPFApp.Views.FindProvider"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:MilyUnaNochesWPFApp.Views"
+      mc:Ignorable="d" 
+      d:DesignHeight="413" d:DesignWidth="1280"
+      Background="#fdf8ef"
+      Title="FindProvider">
+
+
+
+    <Page.Resources>
+        <Style x:Key="CenteredCellStyle" TargetType="DataGridCell">
+            <Setter Property="TextBlock.TextAlignment" Value="Center"/>
+            <Setter Property="TextBlock.VerticalAlignment" Value="Center"/>
+        </Style>
+    </Page.Resources>
+
+    <Grid>
+
+        <TextBlock x:Name="PlaceholderText" HorizontalAlignment="Left" 
+                   Margin="113,317,0,0" 
+                   TextWrapping="Wrap" VerticalAlignment="Top" 
+                   Height="22" Width="198" 
+                   FontSize="18" 
+                   FontFamily="Bodoni MT Condensed" 
+                   Foreground="#FF6A6565"><Run 
+                   Language="es-mx" 
+                   Text="Nombre o contacto (ej. Lala)"/>
+        </TextBlock>
+        
+        <TextBox x:Name="SearchBar"
+                HorizontalAlignment="Left" 
+                Height="44" 
+                Margin="70,10,0,0" 
+                TextWrapping="Wrap" 
+                VerticalAlignment="Top" 
+                Width="241" 
+                BorderBrush="{x:Null}" 
+                TextChanged="SearchBar_TextChanged"
+                VerticalContentAlignment="Center"
+                FontSize="20"
+                FontFamily="Bodoni MT Condensed" 
+                Foreground="#FFAE7D5C" HorizontalContentAlignment="Center">
+            <TextBox.Background>
+                <ImageBrush ImageSource="/Images/Background/Search.png"/>
+            </TextBox.Background>
+        </TextBox>
+
+        <DataGrid x:Name="ProviderDataGrid" 
+            AutoGenerateColumns="False"
+            HeadersVisibility="Column"
+            GridLinesVisibility="None"
+            CanUserAddRows="False"
+            IsReadOnly="True"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Margin="70,0,0,0"
+            Width="874"
+            Height="279"
+            Background="#fdf8ef"
+            BorderThickness="0"
+            FontSize="18"
+            FontFamily="Bodoni MT Condensed" SelectionChanged="ProviderDataGrid_SelectionChanged">
+
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Proveedor" 
+                                   Width="*" 
+                                   CellStyle="{StaticResource CenteredCellStyle}"/>
+                <DataGridTextColumn Header="Contacto" 
+                                   Width="*" 
+                                   CellStyle="{StaticResource CenteredCellStyle}"/>
+                <DataGridTextColumn Header="Telefono" 
+                                   Width=".7*" 
+                                   CellStyle="{StaticResource CenteredCellStyle}"/>
+                <DataGridTextColumn Header="Correo" 
+                                   Width="*" 
+                                   CellStyle="{StaticResource CenteredCellStyle}"/>
+                <DataGridTextColumn Header="Direccion" 
+                                   Width="1.5*" 
+                                   CellStyle="{StaticResource CenteredCellStyle}"/>
+            </DataGrid.Columns>
+
+        </DataGrid>
+        <StackPanel Margin="682,358,0,0"
+                Orientation="Horizontal"
+                HorizontalAlignment="Right">
+            <Button Content="Eliminar" Click="Eliminar_Click" Margin="10" Background="Transparent" Foreground="#AE7D5C" FontSize="15" FontFamily="Bodoni MT Condensed" BorderThickness="1" Height="25" Width="80"/>
+            <Button Content="Archivar" Click="Archivar_Click" Margin="10" Background="Transparent" Foreground="#AE7D5C" FontSize="15" FontFamily="Bodoni MT Condensed" BorderThickness="1" Height="25" Width="80"/>
+            <Button Content="Editar" Click="Editar_Click" Margin="10" Background="Transparent" Foreground="#AE7D5C" FontSize="15" FontFamily="Bodoni MT Condensed" BorderThickness="1" Height="25" Width="80"/>
+        </StackPanel>
+    </Grid>
+</Page>
