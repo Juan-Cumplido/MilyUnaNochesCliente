@@ -24,19 +24,19 @@ namespace MilyUnaNochesWPFApp.Views
 
         private void SearchForClient_GotFocus(object sender, RoutedEventArgs e)
         {
-            if (searchForClient.Text == "Nombre o contacto (ej. Juan)")
+            if (txtb_searchForClient.Text == "Nombre o contacto (ej. Juan)")
             {
-                searchForClient.Text = "";
-                searchForClient.Foreground = Brushes.Black;
+                txtb_searchForClient.Text = "";
+                txtb_searchForClient.Foreground = Brushes.Black;
             }
         }
 
         private void SearchForClient_LostFocus(object sender, RoutedEventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(searchForClient.Text))
+            if (string.IsNullOrWhiteSpace(txtb_searchForClient.Text))
             {
-                searchForClient.Text = "Nombre o contacto (ej. Juan)";
-                searchForClient.Foreground = Brushes.Gray;
+                txtb_searchForClient.Text = "Nombre o contacto (ej. Juan)";
+                txtb_searchForClient.Foreground = Brushes.Gray;
             }
         }
 

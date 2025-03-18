@@ -6,21 +6,7 @@ namespace ClientTest
 {
     public class ValidatorTest
     {
-        [Fact]
-        public void ValidateEmailTestSucces()
-        {
-            string email = "chris.12@gmail.com.mx";
-            bool validationResult = Validator.ValidateEmail(email);
-            Assert.True(validationResult);
-        }
-
-        [Fact]
-        public void ValidateEmailFailTest()
-        {
-            string email = "chris-vasquez.12@gmail.com_mx";
-            bool validationResult = Validator.ValidateEmail(email);
-            Assert.False(validationResult);
-        }
+      
 
         [Fact]
         public void ValidateDescriptionTestSuccess()

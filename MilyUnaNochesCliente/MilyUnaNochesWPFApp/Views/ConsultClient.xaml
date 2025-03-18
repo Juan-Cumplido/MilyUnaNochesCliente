@@ -42,7 +42,7 @@
         Background="#fdf8ef"
         BorderThickness="0"
         FontSize="22"
-        FontFamily="Bodoni MT Condensed" SelectionChanged="ProviderDataGrid_SelectionChanged">
+        FontFamily="Bodoni MT Condensed" SelectionChanged="grd_ProviderDataGrid_SelectionChanged">
 
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Nombre" Binding="{Binding Nombre}" Width=".7*" CellStyle="{StaticResource CenteredCellStyle}"/>
