@@ -33,8 +33,8 @@ namespace MilyUnaNochesWPFApp.Views
 
         private void DisplayMainMenuView()
         {
-            CashierMenu cashierMenu = new CashierMenu();
-            this.NavigationService.Navigate(cashierMenu);
+            MenuEmployees menuEmployees = new MenuEmployees();
+            this.NavigationService.Navigate(menuEmployees);
         }
         private void UserIdTextBox_GotFocus(object sender, RoutedEventArgs e)
         {

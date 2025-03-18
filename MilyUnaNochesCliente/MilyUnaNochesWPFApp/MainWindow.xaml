@@ -7,11 +7,11 @@
         mc:Ignorable="d">
     <Window.Resources>
         <Storyboard x:Key="storyb_FadeOutAnimation">
-            <DoubleAnimation Storyboard.TargetProperty="Opacity" From="1" To="0" Duration="0:0:1.5" />
+            <DoubleAnimation Storyboard.TargetProperty="Opacity" From="1" To="0" Duration="0:0:0.5" />
         </Storyboard>
 
         <Storyboard x:Key="storyb_FadeInAnimation">
-            <DoubleAnimation Storyboard.TargetProperty="Opacity" From="0" To="1" Duration="0:0:1.5" />
+            <DoubleAnimation Storyboard.TargetProperty="Opacity" From="0" To="1" Duration="0:0:0.5" />
         </Storyboard>
     </Window.Resources>
     <Viewbox Stretch="Fill">

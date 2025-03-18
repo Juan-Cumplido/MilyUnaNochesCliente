@@ -6,101 +6,55 @@
       xmlns:local="clr-namespace:MilyUnaNochesWPFApp.Views"
       mc:Ignorable="d" 
       d:DesignHeight="720" d:DesignWidth="1280"
-      Background="#fdf8ef"
       Title="MenuSale">
 
-    <Page.Resources>
-        <Style x:Key="CenteredCellStyle" TargetType="DataGridCell">
-            <Setter Property="TextBlock.TextAlignment" Value="Center"/>
-            <Setter Property="TextBlock.VerticalAlignment" Value="Center"/>
-        </Style>
-    </Page.Resources>
+    <DockPanel>
+        
 
     <Grid>
-        <!-- Imagen superior -->
-        <Image HorizontalAlignment="Center"
-               Height="144" 
-               Margin="0,73,0,0" 
-               VerticalAlignment="Top" 
-               Width="1280" 
-               Source="/Images/Background/FrameSale.png"/>
+        <Border>
+            <Border.Background>
+                <ImageBrush ImageSource="/Images/Background/SaleBackground.png" Stretch="UniformToFill" />
+            </Border.Background>
+            
+        </Border>
+        
+        
+        <Image Name="img_GoOut" Source="/Images/Icons/User.png" 
+                   Cursor="Hand" Margin="1176,43,57,611" RenderTransformOrigin="0.5,0.506"/>
 
-        <!-- Barra de búsqueda -->
+        <Label x:Name="lbl_Client" Content="C L I E N T E S"
+               Foreground="#ae7d5c"  FontSize="20"  MouseDown="Lbl_Client_Click"
+               HorizontalAlignment="Left" Margin="590,55,0,0" 
+                Cursor="Hand" 
+               VerticalAlignment="Top" Height="44" Width="144"/>
 
-        <TextBox HorizontalAlignment="Left" 
-                 Height="44" 
-                 Margin="68,274,0,0" 
-                 TextWrapping="Wrap" 
-                 Text="Busque una venta" 
-                 VerticalAlignment="Top" 
-                 Width="241" 
-                 BorderBrush="{x:Null}" 
-                 BorderThickness="3,3,3,3" 
-                 TextChanged="TextBox_TextChanged"
-                 VerticalContentAlignment="Center"
-                 FontSize="20"
-                 FontFamily="Bodoni MT Condensed" 
-                 Foreground="#FFAE7D5C" HorizontalContentAlignment="Center">
-            <TextBox.Background>
-                <ImageBrush ImageSource="/Images/Background/Search.png"/>
-            </TextBox.Background>
-        </TextBox>
+        <Label x:Name="lbl_Sale" Content="V E N T A S"
+                   Foreground="#ae7d5c"  FontSize="20" FontWeight="Bold"
+                   HorizontalAlignment="Left" Margin="849,53,0,0" 
+                    Cursor="Hand" 
+                   VerticalAlignment="Top" Height="44" Width="123"/>
+
+
 
         <!-- Botón realizar venta -->
-        <TextBox HorizontalAlignment="Left" 
-                Height="35" 
-                Margin="1114,279,0,0" 
-                TextWrapping="Wrap" 
-                Text="Realizar venta" 
-                VerticalAlignment="Top" 
-                Width="97" 
-                Background="{x:Null}" 
-                BorderBrush="{x:Null}" 
-                BorderThickness="3,3,3,3" 
-                VerticalContentAlignment="Center"
-                FontSize="20"
-                FontFamily="Bodoni MT Condensed" 
-                Foreground="#FFAE7D5C"/>
+        <Label x:Name="lbl_RegisterSale" Content="Realizar venta" FontFamily="Bodoni MT Condensed"
+           Foreground="#ae7d5c"  FontSize="30" MouseDown="lbl_RegisterSale_Click"
+           HorizontalAlignment="Left" Margin="716,241,0,0" 
+            Cursor="Hand" 
+           VerticalAlignment="Top" Height="44" Width="160"/>
+        <Label x:Name="lbl_consultClient" Content="Consultar Ventas" FontFamily="Bodoni MT Condensed"
+           Foreground="#ae7d5c"  FontSize="30" MouseDown="lbl_ConsultSale_Click"
+           HorizontalAlignment="Left" Margin="417,241,0,0" 
+            Cursor="Hand" 
+           VerticalAlignment="Top" Height="44" Width="160"/>
 
-        <!-- DataGrid para mostrar las ventas -->
-        <DataGrid x:Name="SalesDataGrid" 
-                  AutoGenerateColumns="False"
-                  HeadersVisibility="Column"
-                  GridLinesVisibility="None"
-                  CanUserAddRows="False"
-                  IsReadOnly="True"
-                  HorizontalAlignment="Center"
-                  VerticalAlignment="Top"
-                  Margin="50,350,50,0"
-                  Width="1180"
-                  Height="250"
-                  Background="#fdf8ef"
-                  BorderThickness="0"
-                  FontSize="18"
-                  FontFamily="Bodoni MT Condensed" SelectionChanged="SalesDataGrid_SelectionChanged">
 
-            <DataGrid.Columns>
-                <!-- Columna de No. Cliente -->
-                <DataGridTextColumn Header="No. Cliente" 
-                                    Binding="{Binding Cliente}" 
-                                    Width="*" 
-                                    CellStyle="{StaticResource CenteredCellStyle}"/>
 
-                <!-- Columna de Monto Vendido -->
-                <DataGridTextColumn Header="Monto Vendido" 
-                                    Binding="{Binding Monto}" 
-                                    Width="*" 
-                                    CellStyle="{StaticResource CenteredCellStyle}"/>
+            <Frame x:Name="Frame" NavigationUIVisibility="Hidden" Margin="0,293,0,0" />
 
-                <!-- Columna de Artículos -->
-                <DataGridTextColumn Header="Artículos" 
-                                    Binding="{Binding Articulos}" 
-                                    Width="2*" 
-                                    CellStyle="{StaticResource CenteredCellStyle}"/>
-            </DataGrid.Columns>
-        </DataGrid>
     </Grid>
-
+    </DockPanel>
 
 
 

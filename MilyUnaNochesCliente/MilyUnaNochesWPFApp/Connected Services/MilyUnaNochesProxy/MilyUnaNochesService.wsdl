@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns="http://tempuri.org/" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" name="MilyUnaNochesService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsp:Policy wsu:Id="NetTcpBinding_IUserManager_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <wsrm:RMAssertion xmlns:wsrm="http://schemas.xmlsoap.org/ws/2005/02/rm/policy">
+          <wsrm:InactivityTimeout Milliseconds="600000" />
+          <wsrm:AcknowledgementInterval Milliseconds="200" />
+        </wsrm:RMAssertion>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="NetTcpBinding_IAdressManager_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <wsrm:RMAssertion xmlns:wsrm="http://schemas.xmlsoap.org/ws/2005/02/rm/policy">
+          <wsrm:InactivityTimeout Milliseconds="600000" />
+          <wsrm:AcknowledgementInterval Milliseconds="200" />
+        </wsrm:RMAssertion>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="NetTcpBinding_IProviderManager_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <wsrm:RMAssertion xmlns:wsrm="http://schemas.xmlsoap.org/ws/2005/02/rm/policy">
+          <wsrm:InactivityTimeout Milliseconds="600000" />
+          <wsrm:AcknowledgementInterval Milliseconds="200" />
+        </wsrm:RMAssertion>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:1442/?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:1442/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:1442/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/MilyUnaNochesService.Contracts" />
+      <xsd:import schemaLocation="http://localhost:1442/?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/MilyUnaNochesService.Logic" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IUserManager_AddClient_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddClient" />
+  </wsdl:message>
+  <wsdl:message name="IUserManager_AddClient_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddClientResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUserManager_GetUserProfileByNamePhone_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserProfileByNamePhone" />
+  </wsdl:message>
+  <wsdl:message name="IUserManager_GetUserProfileByNamePhone_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserProfileByNamePhoneResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUserManager_VerifyAccess_InputMessage">
+    <wsdl:part name="parameters" element="tns:VerifyAccess" />
+  </wsdl:message>
+  <wsdl:message name="IUserManager_VerifyAccess_OutputMessage">
+    <wsdl:part name="parameters" element="tns:VerifyAccessResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUserManager_VerifyExistinClient_InputMessage">
+    <wsdl:part name="parameters" element="tns:VerifyExistinClient" />
+  </wsdl:message>
+  <wsdl:message name="IUserManager_VerifyExistinClient_OutputMessage">
+    <wsdl:part name="parameters" element="tns:VerifyExistinClientResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdressManager_createAddress_InputMessage">
+    <wsdl:part name="parameters" element="tns:createAddress" />
+  </wsdl:message>
+  <wsdl:message name="IAdressManager_createAddress_OutputMessage">
+    <wsdl:part name="parameters" element="tns:createAddressResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProviderManager_CreateProvider_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateProvider" />
+  </wsdl:message>
+  <wsdl:message name="IProviderManager_CreateProvider_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateProviderResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProviderManager_GetProviders_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetProviders" />
+  </wsdl:message>
+  <wsdl:message name="IProviderManager_GetProviders_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetProvidersResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProviderManager_ArchiveProvider_InputMessage">
+    <wsdl:part name="parameters" element="tns:ArchiveProvider" />
+  </wsdl:message>
+  <wsdl:message name="IProviderManager_ArchiveProvider_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ArchiveProviderResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProviderManager_DeleteProvider_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteProvider" />
+  </wsdl:message>
+  <wsdl:message name="IProviderManager_DeleteProvider_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteProviderResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IUserManager">
+    <wsdl:operation name="AddClient">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserManager/AddClient" message="tns:IUserManager_AddClient_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserManager/AddClientResponse" message="tns:IUserManager_AddClient_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserProfileByNamePhone">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserManager/GetUserProfileByNamePhone" message="tns:IUserManager_GetUserProfileByNamePhone_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserManager/GetUserProfileByNamePhoneResponse" message="tns:IUserManager_GetUserProfileByNamePhone_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="VerifyAccess">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserManager/VerifyAccess" message="tns:IUserManager_VerifyAccess_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserManager/VerifyAccessResponse" message="tns:IUserManager_VerifyAccess_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="VerifyExistinClient">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserManager/VerifyExistinClient" message="tns:IUserManager_VerifyExistinClient_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserManager/VerifyExistinClientResponse" message="tns:IUserManager_VerifyExistinClient_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="IAdressManager">
+    <wsdl:operation name="createAddress">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAdressManager/createAddress" message="tns:IAdressManager_createAddress_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAdressManager/createAddressResponse" message="tns:IAdressManager_createAddress_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="IProviderManager">
+    <wsdl:operation name="CreateProvider">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProviderManager/CreateProvider" message="tns:IProviderManager_CreateProvider_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProviderManager/CreateProviderResponse" message="tns:IProviderManager_CreateProvider_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProviders">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProviderManager/GetProviders" message="tns:IProviderManager_GetProviders_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProviderManager/GetProvidersResponse" message="tns:IProviderManager_GetProviders_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ArchiveProvider">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProviderManager/ArchiveProvider" message="tns:IProviderManager_ArchiveProvider_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProviderManager/ArchiveProviderResponse" message="tns:IProviderManager_ArchiveProvider_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteProvider">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProviderManager/DeleteProvider" message="tns:IProviderManager_DeleteProvider_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProviderManager/DeleteProviderResponse" message="tns:IProviderManager_DeleteProvider_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="NetTcpBinding_IUserManager" type="tns:IUserManager">
+    <wsp:PolicyReference URI="#NetTcpBinding_IUserManager_policy" />
+    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="AddClient">
+      <soap12:operation soapAction="http://tempuri.org/IUserManager/AddClient" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserProfileByNamePhone">
+      <soap12:operation soapAction="http://tempuri.org/IUserManager/GetUserProfileByNamePhone" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="VerifyAccess">
+      <soap12:operation soapAction="http://tempuri.org/IUserManager/VerifyAccess" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="VerifyExistinClient">
+      <soap12:operation soapAction="http://tempuri.org/IUserManager/VerifyExistinClient" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="NetTcpBinding_IAdressManager" type="tns:IAdressManager">
+    <wsp:PolicyReference URI="#NetTcpBinding_IAdressManager_policy" />
+    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="createAddress">
+      <soap12:operation soapAction="http://tempuri.org/IAdressManager/createAddress" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="NetTcpBinding_IProviderManager" type="tns:IProviderManager">
+    <wsp:PolicyReference URI="#NetTcpBinding_IProviderManager_policy" />
+    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="CreateProvider">
+      <soap12:operation soapAction="http://tempuri.org/IProviderManager/CreateProvider" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProviders">
+      <soap12:operation soapAction="http://tempuri.org/IProviderManager/GetProviders" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ArchiveProvider">
+      <soap12:operation soapAction="http://tempuri.org/IProviderManager/ArchiveProvider" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteProvider">
+      <soap12:operation soapAction="http://tempuri.org/IProviderManager/DeleteProvider" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="MilyUnaNochesService">
+    <wsdl:port name="NetTcpBinding_IUserManager" binding="tns:NetTcpBinding_IUserManager">
+      <soap12:address location="net.tcp://localhost:1441/UserService" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>net.tcp://localhost:1441/UserService</wsa10:Address>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+    <wsdl:port name="NetTcpBinding_IAdressManager" binding="tns:NetTcpBinding_IAdressManager">
+      <soap12:address location="net.tcp://localhost:1441/AddressManager" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>net.tcp://localhost:1441/AddressManager</wsa10:Address>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+    <wsdl:port name="NetTcpBinding_IProviderManager" binding="tns:NetTcpBinding_IProviderManager">
+      <soap12:address location="net.tcp://localhost:1441/ProviderManager" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>net.tcp://localhost:1441/ProviderManager</wsa10:Address>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
