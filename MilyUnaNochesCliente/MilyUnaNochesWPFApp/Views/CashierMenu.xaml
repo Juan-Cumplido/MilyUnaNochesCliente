@@ -21,28 +21,29 @@
                Foreground="#ae7d5c" FontWeight="Bold" FontSize="20" 
                HorizontalAlignment="Left" Margin="590,55,0,0" 
                 Cursor="Hand" 
-               VerticalAlignment="Top" Height="44" Width="185"/>
+               VerticalAlignment="Top" Height="44" Width="156"/>
 
             <Label x:Name="lbl_Sale" Content="V E N T A S"
-                   Foreground="#ae7d5c"  FontSize="20"
+                   Foreground="#ae7d5c"  FontSize="20" MouseDown="Lbl_Sale_Click"
                    HorizontalAlignment="Left" Margin="849,53,0,0" 
-                    Cursor="Hand" 
-                   VerticalAlignment="Top" Height="44" Width="185"/>
+                   Cursor="Hand" 
+                   VerticalAlignment="Top" Height="44" Width="129"/>
 
             <Label x:Name="lbl_RegisterClien" Content="Registrar Cliente" FontFamily="Bodoni MT Condensed"
-               Foreground="#ae7d5c"  FontSize="30"  
+               Foreground="#ae7d5c"  FontSize="30"   MouseDown="Lbl_RegisterClient_Click"
                HorizontalAlignment="Left" Margin="721,233,0,0" 
                 Cursor="Hand" 
                VerticalAlignment="Top" Height="44" Width="191"/>
 
             <Label x:Name="lbl_consultClient" Content="Consultar Clientes" FontFamily="Bodoni MT Condensed"
-               Foreground="#ae7d5c"  FontSize="30" 
+               Foreground="#ae7d5c"  FontSize="30" MouseDown="Lbl_ConsultClient_Click"
                HorizontalAlignment="Left" Margin="402,233,0,0" 
                 Cursor="Hand" 
                VerticalAlignment="Top" Height="44" Width="160"/>
-            
-            <Frame Content="Frame" Margin="0,282,0,0"/>
 
+            
+            <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden"
+             Margin="0,282,0,0"/>
 
 
         </Grid>

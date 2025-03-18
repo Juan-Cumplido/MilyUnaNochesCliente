@@ -22,10 +22,11 @@
     <MetadataSource Address="http://localhost:1442/?wsdl" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="item.xsd" MetadataType="Schema" ID="09699c0f-4c6d-4803-b471-e70409ff2e49" SourceId="1" SourceUrl="http://localhost:1442/?xsd=xsd0" />
     <MetadataFile FileName="item1.xsd" MetadataType="Schema" ID="1feeb6c1-fc63-42b2-9f1e-e2c27db7d136" SourceId="1" SourceUrl="http://localhost:1442/?xsd=xsd1" />
     <MetadataFile FileName="item2.xsd" MetadataType="Schema" ID="ef7db607-0513-42b9-94af-f4270a4ba8a7" SourceId="1" SourceUrl="http://localhost:1442/?xsd=xsd2" />
+    <MetadataFile FileName="item3.xsd" MetadataType="Schema" ID="5f4522d6-8a11-4a1a-8d4e-cfae1ede3baf" SourceId="1" SourceUrl="http://localhost:1442/?xsd=xsd3" />
     <MetadataFile FileName="MilyUnaNochesService.wsdl" MetadataType="Wsdl" ID="41a56edf-1d30-4860-8139-2562372e8ddb" SourceId="1" SourceUrl="http://localhost:1442/?wsdl" />
+    <MetadataFile FileName="item.xsd" MetadataType="Schema" ID="09699c0f-4c6d-4803-b471-e70409ff2e49" SourceId="1" SourceUrl="http://localhost:1442/?xsd=xsd0" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

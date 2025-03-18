@@ -58,7 +58,7 @@ namespace ClientTest
         public void ValidateUsernameTestSuccess()
         {
             string username = "Chris2500";
-            bool validationResult = Validator.ValidateUsername(username);
+            bool validationResult = Validator.ValidateName(username);
             Assert.True(validationResult);
         }
 
@@ -66,7 +66,7 @@ namespace ClientTest
         public void ValidateUsernameFailTestSuccess()
         {
             string username = "Chris2500*";
-            bool validationResult = Validator.ValidateUsername(username);
+            bool validationResult = Validator.ValidateName(username);
             Assert.False(validationResult);
         }
 

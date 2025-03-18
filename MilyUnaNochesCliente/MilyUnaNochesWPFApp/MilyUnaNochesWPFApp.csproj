@@ -79,11 +79,19 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Logic\DialogManager.cs" />
     <Compile Include="Logic\Hasher.cs" />
+    <Compile Include="Logic\LoggerManager.cs" />
     <Compile Include="Logic\Sale.cs" />
     <Compile Include="Logic\Validator.cs" />
+    <Compile Include="Views\ConsultEmployee.xaml.cs">
+      <DependentUpon>ConsultEmployee.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\ConsultClient.xaml.cs">
       <DependentUpon>ConsultClient.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ConsultSale.xaml.cs">
+      <DependentUpon>ConsultSale.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\FindProvider.xaml.cs">
       <DependentUpon>FindProvider.xaml</DependentUpon>
@@ -94,8 +102,17 @@
     <Compile Include="Views\LoginView.xaml.cs">
       <DependentUpon>LoginView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\MenuEmployees.xaml.cs">
+      <DependentUpon>MenuEmployees.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\MenuProvider.xaml.cs">
       <DependentUpon>MenuProvider.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\RegisterEmployee.xaml.cs">
+      <DependentUpon>RegisterEmployee.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\RegisterClient.xaml.cs">
+      <DependentUpon>RegisterClient.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Sale.xaml.cs">
       <DependentUpon>Sale.xaml</DependentUpon>
@@ -116,7 +133,15 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\ConsultEmployee.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Views\ConsultClient.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ConsultSale.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -132,7 +157,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\MenuEmployees.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\MenuProvider.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\RegisterEmployee.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\RegisterClient.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -172,7 +209,16 @@
     <None Include="Connected Services\MilyUnaNochesProxy\item2.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Connected Services\MilyUnaNochesProxy\item3.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Connected Services\MilyUnaNochesProxy\MilyUnaNochesService.wsdl" />
+    <None Include="Connected Services\MilyUnaNochesProxy\MilyUnaNochesWPFApp.MilyUnaNochesProxy.Provider.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\MilyUnaNochesProxy\MilyUnaNochesWPFApp.MilyUnaNochesProxy.Usuario.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -247,6 +293,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\Background\ClientBackground.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Background\SaleBackground.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Background\EmployeesBackground.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
