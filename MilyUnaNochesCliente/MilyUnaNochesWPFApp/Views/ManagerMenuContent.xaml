@@ -1,0 +1,60 @@
+﻿<Page x:Class="MilyUnaNochesWPFApp.Views.ManagerMenuContent"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:MilyUnaNochesWPFApp.Views"
+      mc:Ignorable="d" 
+      d:DesignHeight="592" d:DesignWidth="1280"
+      Background="#fdf8ef"
+      Title="ManagerMenuContent">
+
+    <Page.Resources>
+        <Style x:Key="ImageButtonStyle" TargetType="Button">
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="Height" Value="144"/>
+            <Setter Property="Width" Value="1280"/>
+            <Setter Property="VerticalAlignment" Value="Top"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Padding" Value="0"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <ContentPresenter/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Page.Resources>
+
+    <Grid>
+        <Label Content="Bienvenido al sistema Mil y Una Noches&#xD;&#xA;" 
+               HorizontalAlignment="Center" 
+               Margin="0,10,0,0" 
+               VerticalAlignment="Top" 
+               RenderTransformOrigin="0.3,-1.217" 
+               FontSize="48" 
+               Height="80" 
+               FontFamily="Bodoni MT Condensed" 
+               Foreground="#FFAE7D5C"/>
+
+        <Button Style="{StaticResource ImageButtonStyle}"
+                Margin="0,95,0,0" 
+                Click="FrameSale_Click">
+            <Image Source="/Images/Background/FrameSale.png"/>
+        </Button>
+
+        <Button Style="{StaticResource ImageButtonStyle}"
+                Margin="0,266,0,0" 
+                Click="FrameProviders_Click">
+            <Image Source="/Images/Background/FrameProviders.png" Margin="0,-5,0,5"/>
+        </Button>
+
+        <Button Style="{StaticResource ImageButtonStyle}"
+                Margin="0,429,0,0" 
+                Click="FrameProducts_Click">
+            <Image Source="/Images/Background/FrameProducts.png" Margin="0,-6,0,6"/>
+        </Button>
+    </Grid>
+</Page>

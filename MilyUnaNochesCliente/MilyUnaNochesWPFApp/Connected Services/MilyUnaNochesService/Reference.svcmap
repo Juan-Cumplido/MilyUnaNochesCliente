@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ID="cc6d1cba-c0ba-4474-b603-5cc0e48bae7b" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ID="34af3c1e-f2d6-4fc5-bd1d-62aeeadf46bb" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
@@ -19,9 +19,15 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://localhost:1442/?wsdl" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://localhost:1442" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
+    <MetadataFile FileName="item.xsd" MetadataType="Schema" ID="f840f84d-d733-41df-bd4b-43c9f31a08f3" SourceId="1" SourceUrl="http://localhost:1442/?xsd=xsd3" />
+    <MetadataFile FileName="item1.xsd" MetadataType="Schema" ID="c3d00b00-1c4e-4119-82d9-f438556cf520" SourceId="1" SourceUrl="http://localhost:1442/?xsd=xsd2" />
+    <MetadataFile FileName="item.disco" MetadataType="Disco" ID="e03e5333-d431-4009-a63a-7e6211a32dda" SourceId="1" SourceUrl="http://localhost:1442/?disco" />
+    <MetadataFile FileName="item2.xsd" MetadataType="Schema" ID="57b34e4b-88ad-4543-8e48-ab7e7fb2cf15" SourceId="1" SourceUrl="http://localhost:1442/?xsd=xsd1" />
+    <MetadataFile FileName="MilyUnaNochesService.wsdl" MetadataType="Wsdl" ID="3a04e487-1795-418b-bfee-9beb7a70b1ce" SourceId="1" SourceUrl="http://localhost:1442/?wsdl" />
+    <MetadataFile FileName="item3.xsd" MetadataType="Schema" ID="27e71d5e-d5dc-4f93-87ed-69378817a8f4" SourceId="1" SourceUrl="http://localhost:1442/?xsd=xsd0" />
     <MetadataFile FileName="item1.xsd" MetadataType="Schema" ID="1feeb6c1-fc63-42b2-9f1e-e2c27db7d136" SourceId="1" SourceUrl="http://localhost:1442/?xsd=xsd1" />
     <MetadataFile FileName="item2.xsd" MetadataType="Schema" ID="ef7db607-0513-42b9-94af-f4270a4ba8a7" SourceId="1" SourceUrl="http://localhost:1442/?xsd=xsd2" />
     <MetadataFile FileName="item3.xsd" MetadataType="Schema" ID="5f4522d6-8a11-4a1a-8d4e-cfae1ede3baf" SourceId="1" SourceUrl="http://localhost:1442/?xsd=xsd3" />
