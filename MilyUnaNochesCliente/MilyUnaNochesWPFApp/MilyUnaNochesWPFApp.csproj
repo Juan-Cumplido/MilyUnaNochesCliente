@@ -94,8 +94,17 @@
     <Compile Include="Views\LoginView.xaml.cs">
       <DependentUpon>LoginView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\ManagerMenu.xaml.cs">
+      <DependentUpon>ManagerMenu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ManagerMenuContent.xaml.cs">
+      <DependentUpon>ManagerMenuContent.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\MenuProvider.xaml.cs">
       <DependentUpon>MenuProvider.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\RegisterProvider.xaml.cs">
+      <DependentUpon>RegisterProvider.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Sale.xaml.cs">
       <DependentUpon>Sale.xaml</DependentUpon>
@@ -132,7 +141,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\ManagerMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ManagerMenuContent.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\MenuProvider.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\RegisterProvider.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -247,6 +268,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\Background\ClientBackground.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Icons\Logo_Manager_View.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Background\FrameProducts.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
