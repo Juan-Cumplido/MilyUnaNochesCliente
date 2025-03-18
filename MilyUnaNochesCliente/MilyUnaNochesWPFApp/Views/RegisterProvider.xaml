@@ -34,7 +34,7 @@
             <Setter Property="BorderThickness" Value="0"/>
             <Setter Property="Margin" Value="10"/>
             <Setter Property="Height" Value="40"/>
-            <Setter Property="Width" Value="80"/>
+            <Setter Property="MinWidth" Value="80"/>
             <Setter Property="Background">
                 <Setter.Value>
                     <ImageBrush ImageSource="/Images/Background/BackgroundTextBlock.png"/>
@@ -53,38 +53,38 @@
         <StackPanel Grid.Column="0" Orientation="Vertical" Margin="70,60,0,0">
             <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
                 <Label Content="Proveedor" Width="130" FontSize="20" FontFamily="Bodoni MT Condensed" Foreground="#FFAE7D5C"/>
-                <TextBox Style="{StaticResource TextFieldStyle}"/>
+                <TextBox x:Name="txtProviderName" Style="{StaticResource TextFieldStyle}"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
                 <Label Content="Contacto" Width="130" FontSize="20" FontFamily="Bodoni MT Condensed" Foreground="#FFAE7D5C"/>
-                <TextBox Style="{StaticResource TextFieldStyle}"/>
+                <TextBox x:Name="txtContact" Style="{StaticResource TextFieldStyle}"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
                 <Label Content="Telefono" Width="130" FontSize="20" FontFamily="Bodoni MT Condensed" Foreground="#FFAE7D5C"/>
-                <TextBox Style="{StaticResource TextFieldStyle}"/>
+                <TextBox x:Name="txtPhone" Style="{StaticResource TextFieldStyle}"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
                 <Label Content="Correo electrónico" Width="130" FontSize="20" FontFamily="Bodoni MT Condensed" Foreground="#FFAE7D5C"/>
-                <TextBox Style="{StaticResource TextFieldStyle}"/>
+                <TextBox x:Name="txtEmail" Style="{StaticResource TextFieldStyle}"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
                 <Label Content="Calle" Width="130" FontSize="20" FontFamily="Bodoni MT Condensed" Foreground="#FFAE7D5C"/>
-                <TextBox Style="{StaticResource TextFieldStyle}"/>
+                <TextBox x:Name="txtStreet" Style="{StaticResource TextFieldStyle}"/>
             </StackPanel>
         </StackPanel>
 
         <StackPanel Grid.Column="1" Orientation="Vertical" Margin="0,60,0,0">
             <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
                 <Label Content="Numero" Width="130" FontSize="20" FontFamily="Bodoni MT Condensed" Foreground="#FFAE7D5C"/>
-                <TextBox Style="{StaticResource TextFieldStyle}"/>
+                <TextBox x:Name="txtNumber" Style="{StaticResource TextFieldStyle}"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
                 <Label Content="Codigo postal" Width="130" FontSize="20" FontFamily="Bodoni MT Condensed" Foreground="#FFAE7D5C"/>
-                <TextBox Style="{StaticResource TextFieldStyle}"/>
+                <TextBox x:Name="txtPostalCode" Style="{StaticResource TextFieldStyle}"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
                 <Label Content="Ciudad" Width="130" FontSize="20" FontFamily="Bodoni MT Condensed" Foreground="#FFAE7D5C"/>
-                <TextBox Style="{StaticResource TextFieldStyle}"/>
+                <TextBox x:Name="txtCity" Style="{StaticResource TextFieldStyle}"/>
             </StackPanel>
         </StackPanel>
 

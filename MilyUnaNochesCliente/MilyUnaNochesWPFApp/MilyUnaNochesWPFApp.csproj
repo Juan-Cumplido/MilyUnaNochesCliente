@@ -74,7 +74,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Connected Services\MilyUnaNochesProxy\Reference.cs">
+    <Compile Include="Connected Services\MilyUnaNochesService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -184,16 +184,22 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="Connected Services\MilyUnaNochesProxy\item.xsd">
+    <None Include="Connected Services\MilyUnaNochesService\item.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\MilyUnaNochesProxy\item1.xsd">
+    <None Include="Connected Services\MilyUnaNochesService\item1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\MilyUnaNochesProxy\item2.xsd">
+    <None Include="Connected Services\MilyUnaNochesService\item2.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\MilyUnaNochesProxy\MilyUnaNochesService.wsdl" />
+    <None Include="Connected Services\MilyUnaNochesService\item3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\MilyUnaNochesService\MilyUnaNochesService.wsdl" />
+    <None Include="Connected Services\MilyUnaNochesService\MilyUnaNochesWPFApp.MilyUnaNochesService.Provider.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -205,9 +211,6 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadataStorage Include="Connected Services\MilyUnaNochesProxy\" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\Icons\Mil_y_una_Noches.png" />
@@ -238,16 +241,6 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\Background\BackgroundGrid.png" />
-    <None Include="Connected Services\MilyUnaNochesProxy\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\MilyUnaNochesProxy\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\MilyUnaNochesProxy\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\Icons\Logo.png" />
@@ -274,6 +267,24 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\Background\FrameProducts.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\MilyUnaNochesService\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\MilyUnaNochesService\item.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\MilyUnaNochesService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\MilyUnaNochesService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\MilyUnaNochesService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
