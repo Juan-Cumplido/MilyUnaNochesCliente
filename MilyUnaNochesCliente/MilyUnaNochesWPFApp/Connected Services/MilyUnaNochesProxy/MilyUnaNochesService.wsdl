@@ -50,6 +50,12 @@
   <wsdl:message name="IUserManager_AddClient_OutputMessage">
     <wsdl:part name="parameters" element="tns:AddClientResponse" />
   </wsdl:message>
+  <wsdl:message name="IUserManager_ArchiveClient_InputMessage">
+    <wsdl:part name="parameters" element="tns:ArchiveClient" />
+  </wsdl:message>
+  <wsdl:message name="IUserManager_ArchiveClient_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ArchiveClientResponse" />
+  </wsdl:message>
   <wsdl:message name="IUserManager_GetUserProfileByNamePhone_InputMessage">
     <wsdl:part name="parameters" element="tns:GetUserProfileByNamePhone" />
   </wsdl:message>
@@ -103,6 +109,10 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IUserManager/AddClient" message="tns:IUserManager_AddClient_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IUserManager/AddClientResponse" message="tns:IUserManager_AddClient_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="ArchiveClient">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserManager/ArchiveClient" message="tns:IUserManager_ArchiveClient_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserManager/ArchiveClientResponse" message="tns:IUserManager_ArchiveClient_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="GetUserProfileByNamePhone">
       <wsdl:input wsaw:Action="http://tempuri.org/IUserManager/GetUserProfileByNamePhone" message="tns:IUserManager_GetUserProfileByNamePhone_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IUserManager/GetUserProfileByNamePhoneResponse" message="tns:IUserManager_GetUserProfileByNamePhone_OutputMessage" />
@@ -145,6 +155,15 @@
     <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
     <wsdl:operation name="AddClient">
       <soap12:operation soapAction="http://tempuri.org/IUserManager/AddClient" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ArchiveClient">
+      <soap12:operation soapAction="http://tempuri.org/IUserManager/ArchiveClient" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

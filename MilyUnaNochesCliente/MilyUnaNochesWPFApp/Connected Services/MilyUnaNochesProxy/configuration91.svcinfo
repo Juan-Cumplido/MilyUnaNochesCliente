@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<SavedWcfConfigurationInformation xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="9.1" CheckSum="E4Ga/TcxsTPjauy9CNt/y7ByzfiQut+qKDDO6Xat6sA=">
+<SavedWcfConfigurationInformation xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="9.1" CheckSum="izF8dUe7uTdupL/rO9MKQbRe8vuSx7p9B++Y7dJU04U=">
   <bindingConfigurations>
-    <bindingConfiguration bindingType="netTcpBinding" name="NetTcpBinding_IUserManager">
+    <bindingConfiguration bindingType="netTcpBinding" name="NetTcpBinding_IUserManager1">
       <properties>
         <property path="/name" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>NetTcpBinding_IUserManager</serializedValue>
+          <serializedValue>NetTcpBinding_IUserManager1</serializedValue>
         </property>
         <property path="/closeTimeout" isComplexType="false" isExplicitlyDefined="true" clrType="System.TimeSpan, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -119,10 +119,10 @@
         </property>
       </properties>
     </bindingConfiguration>
-    <bindingConfiguration bindingType="netTcpBinding" name="NetTcpBinding_IAdressManager">
+    <bindingConfiguration bindingType="netTcpBinding" name="NetTcpBinding_IAdressManager1">
       <properties>
         <property path="/name" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>NetTcpBinding_IAdressManager</serializedValue>
+          <serializedValue>NetTcpBinding_IAdressManager1</serializedValue>
         </property>
         <property path="/closeTimeout" isComplexType="false" isExplicitlyDefined="true" clrType="System.TimeSpan, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -237,10 +237,10 @@
         </property>
       </properties>
     </bindingConfiguration>
-    <bindingConfiguration bindingType="netTcpBinding" name="NetTcpBinding_IProviderManager">
+    <bindingConfiguration bindingType="netTcpBinding" name="NetTcpBinding_IProviderManager1">
       <properties>
         <property path="/name" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>NetTcpBinding_IProviderManager</serializedValue>
+          <serializedValue>NetTcpBinding_IProviderManager1</serializedValue>
         </property>
         <property path="/closeTimeout" isComplexType="false" isExplicitlyDefined="true" clrType="System.TimeSpan, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -357,7 +357,7 @@
     </bindingConfiguration>
   </bindingConfigurations>
   <endpoints>
-    <endpoint name="NetTcpBinding_IUserManager" contract="MilyUnaNochesProxy.IUserManager" bindingType="netTcpBinding" address="net.tcp://localhost:1441/UserService" bindingConfiguration="NetTcpBinding_IUserManager">
+    <endpoint name="NetTcpBinding_IUserManager1" contract="MilyUnaNochesProxy.IUserManager" bindingType="netTcpBinding" address="net.tcp://localhost:1441/UserService" bindingConfiguration="NetTcpBinding_IUserManager1">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>net.tcp://localhost:1441/UserService</serializedValue>
@@ -369,7 +369,7 @@
           <serializedValue>netTcpBinding</serializedValue>
         </property>
         <property path="/bindingConfiguration" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>NetTcpBinding_IUserManager</serializedValue>
+          <serializedValue>NetTcpBinding_IUserManager1</serializedValue>
         </property>
         <property path="/contract" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>MilyUnaNochesProxy.IUserManager</serializedValue>
@@ -432,7 +432,7 @@
           <serializedValue>False</serializedValue>
         </property>
         <property path="/name" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>NetTcpBinding_IUserManager</serializedValue>
+          <serializedValue>NetTcpBinding_IUserManager1</serializedValue>
         </property>
         <property path="/kind" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -442,7 +442,7 @@
         </property>
       </properties>
     </endpoint>
-    <endpoint name="NetTcpBinding_IAdressManager" contract="MilyUnaNochesProxy.IAdressManager" bindingType="netTcpBinding" address="net.tcp://localhost:1441/AddressManager" bindingConfiguration="NetTcpBinding_IAdressManager">
+    <endpoint name="NetTcpBinding_IAdressManager1" contract="MilyUnaNochesProxy.IAdressManager" bindingType="netTcpBinding" address="net.tcp://localhost:1441/AddressManager" bindingConfiguration="NetTcpBinding_IAdressManager1">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>net.tcp://localhost:1441/AddressManager</serializedValue>
@@ -454,7 +454,7 @@
           <serializedValue>netTcpBinding</serializedValue>
         </property>
         <property path="/bindingConfiguration" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>NetTcpBinding_IAdressManager</serializedValue>
+          <serializedValue>NetTcpBinding_IAdressManager1</serializedValue>
         </property>
         <property path="/contract" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>MilyUnaNochesProxy.IAdressManager</serializedValue>
@@ -517,7 +517,7 @@
           <serializedValue>False</serializedValue>
         </property>
         <property path="/name" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>NetTcpBinding_IAdressManager</serializedValue>
+          <serializedValue>NetTcpBinding_IAdressManager1</serializedValue>
         </property>
         <property path="/kind" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -527,7 +527,7 @@
         </property>
       </properties>
     </endpoint>
-    <endpoint name="NetTcpBinding_IProviderManager" contract="MilyUnaNochesProxy.IProviderManager" bindingType="netTcpBinding" address="net.tcp://localhost:1441/ProviderManager" bindingConfiguration="NetTcpBinding_IProviderManager">
+    <endpoint name="NetTcpBinding_IProviderManager1" contract="MilyUnaNochesProxy.IProviderManager" bindingType="netTcpBinding" address="net.tcp://localhost:1441/ProviderManager" bindingConfiguration="NetTcpBinding_IProviderManager1">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>net.tcp://localhost:1441/ProviderManager</serializedValue>
@@ -539,7 +539,7 @@
           <serializedValue>netTcpBinding</serializedValue>
         </property>
         <property path="/bindingConfiguration" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>NetTcpBinding_IProviderManager</serializedValue>
+          <serializedValue>NetTcpBinding_IProviderManager1</serializedValue>
         </property>
         <property path="/contract" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>MilyUnaNochesProxy.IProviderManager</serializedValue>
@@ -602,7 +602,7 @@
           <serializedValue>False</serializedValue>
         </property>
         <property path="/name" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>NetTcpBinding_IProviderManager</serializedValue>
+          <serializedValue>NetTcpBinding_IProviderManager1</serializedValue>
         </property>
         <property path="/kind" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />

@@ -414,6 +414,12 @@ namespace MilyUnaNochesWPFApp.MilyUnaNochesProxy {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManager/AddClient", ReplyAction="http://tempuri.org/IUserManager/AddClientResponse")]
         System.Threading.Tasks.Task<int> AddClientAsync(MilyUnaNochesWPFApp.MilyUnaNochesProxy.Usuario usuario);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManager/ArchiveClient", ReplyAction="http://tempuri.org/IUserManager/ArchiveClientResponse")]
+        int ArchiveClient(string idUsuario);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManager/ArchiveClient", ReplyAction="http://tempuri.org/IUserManager/ArchiveClientResponse")]
+        System.Threading.Tasks.Task<int> ArchiveClientAsync(string idUsuario);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManager/GetUserProfileByNamePhone", ReplyAction="http://tempuri.org/IUserManager/GetUserProfileByNamePhoneResponse")]
         MilyUnaNochesWPFApp.MilyUnaNochesProxy.Usuario[] GetUserProfileByNamePhone(string searchTerm);
         
@@ -466,6 +472,14 @@ namespace MilyUnaNochesWPFApp.MilyUnaNochesProxy {
         
         public System.Threading.Tasks.Task<int> AddClientAsync(MilyUnaNochesWPFApp.MilyUnaNochesProxy.Usuario usuario) {
             return base.Channel.AddClientAsync(usuario);
+        }
+        
+        public int ArchiveClient(string idUsuario) {
+            return base.Channel.ArchiveClient(idUsuario);
+        }
+        
+        public System.Threading.Tasks.Task<int> ArchiveClientAsync(string idUsuario) {
+            return base.Channel.ArchiveClientAsync(idUsuario);
         }
         
         public MilyUnaNochesWPFApp.MilyUnaNochesProxy.Usuario[] GetUserProfileByNamePhone(string searchTerm) {
