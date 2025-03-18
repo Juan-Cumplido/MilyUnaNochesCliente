@@ -1,59 +1,35 @@
-﻿<Page x:Class="MilyUnaNochesWPFApp.Views.MenuProvider"
+﻿<Page x:Class="MilyUnaNochesWPFApp.Views.MenuProvider2"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:MilyUnaNochesWPFApp.Views"
       mc:Ignorable="d" 
-      d:DesignHeight="720" d:DesignWidth="1280"
+      d:DesignHeight="592" d:DesignWidth="1280"
       Background="#fdf8ef"
-      Title="MenuProvider">
-
-    <Page.Resources>
-        <Style x:Key="CenteredCellStyle" TargetType="DataGridCell">
-            <Setter Property="TextBlock.TextAlignment" Value="Center"/>
-            <Setter Property="TextBlock.VerticalAlignment" Value="Center"/>
-        </Style>
-    </Page.Resources>
+      Title="MenuProvider2">
 
     <Grid>
         <Image HorizontalAlignment="Center"
-              Height="144" 
-              Margin="0,123,0,0" 
-              VerticalAlignment="Top" 
-              Width="1280" 
-              Source="/Images/Background/FrameProviders.png"/>
+               Height="144" 
+               VerticalAlignment="Top" 
+               Width="1280" 
+               Source="/Images/Background/FrameProviders.png"/>
 
         <StackPanel 
-            Margin="411,10,0,607" 
+            Margin="0,144,0,410"
             Orientation="Horizontal"
-            HorizontalAlignment="Left"
-            Width="700" 
-            Grid.ColumnSpan="2">
-            <Button Content="Ventas" Click="Button_Click" Margin="30" Background="Transparent" Foreground="#AE7D5C" FontSize="27" FontFamily="Bodoni MT Condensed" BorderThickness="0"/>
-            <Button Content="Usuarios" Click="Usuarios_Click" Margin="30" Background="Transparent" Foreground="#AE7D5C" FontSize="27" FontFamily="Bodoni MT Condensed" BorderThickness="0"/>
-            <Button Content="Productos" Click="Productos_Click" Margin="30" Background="Transparent" Foreground="#AE7D5C" FontSize="27" FontFamily="Bodoni MT Condensed" BorderThickness="0"/>
-            <Button Content="Proveedores" Click="Proveedores_Click" Margin="30" Background="Transparent" Foreground="#AE7D5C" FontSize="27" FontFamily="Bodoni MT Condensed" BorderThickness="0"/>
-            <Button Content="Reportes" Click="Reportes_Click" Margin="30" Background="Transparent" Foreground="#AE7D5C" FontSize="27" FontFamily="Bodoni MT Condensed" BorderThickness="0"/>
-        </StackPanel>
-
-        <StackPanel 
-            Margin="476,257,0,413"
-            Orientation="Horizontal"
-            HorizontalAlignment="Left" 
+            HorizontalAlignment="Center" 
             Width="374">
-            <Button Content="Consultar Proveedores" Click="ConsultarProveedores_Click" Margin="0,0,30,0" Background="Transparent" Foreground="#AE7D5C" FontSize="20" FontFamily="Bodoni MT Condensed" BorderThickness="0" Height="38" Width="128"/>
-            <Button Content="Registrar Proveedor" Click="RegistrarProveedor_Click" Margin="0,0,30,0" Background="Transparent" Foreground="#AE7D5C" FontSize="20" FontFamily="Bodoni MT Condensed" BorderThickness="0" Height="38" Width="147"/>
+            <Button Content="Consultar Proveedores" Click="ConsultarProveedores_Click" Margin="0,0,30,0" Background="Transparent" Foreground="#AE7D5C" FontSize="22" FontFamily="Bodoni MT Condensed" BorderThickness="0" Height="38" Width="128"/>
+            <Button Content="Registrar Proveedor" Click="RegistrarProveedor_Click" Margin="0,0,30,0" Background="Transparent" Foreground="#AE7D5C" FontSize="22" FontFamily="Bodoni MT Condensed" BorderThickness="0" Height="38" Width="147"/>
         </StackPanel>
-
-        <Image x:Name="imgLogo" HorizontalAlignment="Left" Height="150" Margin="2,0,0,0" VerticalAlignment="Top" Width="250" Source="/Images/Icons/Logo.png"/>
-
-        <Frame 
-            Content="Frame" Margin="0,307,0,-1"
-            NavigationUIVisibility="Hidden"
-            Source="FindProvider.xaml">
+        
+        <Frame x:Name="mainFrame"
+               Content="Frame" 
+               Margin="0,182,0,0"
+               NavigationUIVisibility="Hidden"
+               Source="FindProvider.xaml">
         </Frame>
-
     </Grid>
-
 </Page>
