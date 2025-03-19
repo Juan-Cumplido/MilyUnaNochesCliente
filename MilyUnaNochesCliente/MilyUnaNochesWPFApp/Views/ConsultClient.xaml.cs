@@ -14,7 +14,7 @@ namespace MilyUnaNochesWPFApp.Views
     {
         private readonly UserManagerClient _serviceClient;
         private readonly LoggerManager _logger;
-
+        private string selectedUserId;
         public ConsultClient()
         {
             InitializeComponent();
@@ -33,7 +33,7 @@ namespace MilyUnaNochesWPFApp.Views
 
         private async void SearchForClient_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (!this.IsLoaded || _serviceClient == null) return; // Evita llamadas si la UI no ha terminado de cargar
+            if (!this.IsLoaded || _serviceClient == null) return; 
 
             string searchTerm = txtb_searchForClient?.Text?.Trim();
             if (string.IsNullOrWhiteSpace(searchTerm) || searchTerm == "Nombre o teléfono (ej. Juan)")
@@ -54,6 +54,7 @@ namespace MilyUnaNochesWPFApp.Views
 
                 grd_ProviderDataGrid.ItemsSource = clients.Select(c => new
                 {
+                    IdUsuario = c.idUsuario,
                     Nombre = c.nombre ?? "N/A",
                     PrimerApellido = c.primerApellido ?? "N/A",
                     SegundoApellido = c.segundoApellido ?? "N/A",
@@ -94,12 +95,72 @@ namespace MilyUnaNochesWPFApp.Views
 
         private void grd_ProviderDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            
+            if (grd_ProviderDataGrid.SelectedItem != null)
+            {
+                var selectedRow = grd_ProviderDataGrid.SelectedItem;
+
+                var idUsuarioProperty = selectedRow.GetType().GetProperty("IdUsuario");
+                if (idUsuarioProperty != null)
+                {
+                    selectedUserId = idUsuarioProperty.GetValue(selectedRow)?.ToString();
+                }
+                else
+                {
+                    selectedUserId = null;
+                }
+            }
         }
 
-        private void Eliminar_Click(object sender, RoutedEventArgs e)
+
+        private async void Eliminar_Click(object sender, RoutedEventArgs e)
         {
-            // Implementación del botón Eliminar
+            if (string.IsNullOrEmpty(selectedUserId))
+            {
+                DialogManager.ShowErrorMessageAlert("Por favor, seleccione un cliente antes de eliminar.");
+                return;
+            }
+
+            MessageBoxResult result = MessageBox.Show("¿Está seguro de archivar este cliente?", "Confirmación", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if (result != MessageBoxResult.Yes)
+            {
+                return; 
+            }
+
+            try
+            {
+                int.TryParse(selectedUserId, out int userId);
+                int response = await Task.Run(() => _serviceClient.ArchiveClient(userId));
+
+                if (response == 1) 
+                {
+                    DialogManager.ShowSuccessMessageAlert("Cliente archivado exitosamente.");
+                    SearchForClient_TextChanged(null, null);
+                }
+                else
+                {
+                    DialogManager.ShowErrorMessageAlert("No se pudo archivar el cliente. Verifique e intente nuevamente.");
+                }
+            }
+            catch (EndpointNotFoundException endPointException)
+            {
+                _logger.LogFatal(endPointException);
+                DialogManager.ShowErrorMessageAlert("No se pudo conectar con el servidor. Verifique su red.");
+            }
+            catch (TimeoutException timeOutException)
+            {
+                _logger.LogWarn(timeOutException);
+                DialogManager.ShowErrorMessageAlert("Tiempo de espera agotado. Revise su conexión.");
+            }
+            catch (CommunicationException communicationException)
+            {
+                _logger.LogFatal(communicationException);
+                DialogManager.ShowErrorMessageAlert("Error en la conexión con el servidor.");
+            }
+            catch (Exception ex)
+            {
+                _logger.LogFatal(ex);
+                DialogManager.ShowErrorMessageAlert("Ocurrió un error inesperado.");
+            }
         }
 
         private void Editar_Click(object sender, RoutedEventArgs e)

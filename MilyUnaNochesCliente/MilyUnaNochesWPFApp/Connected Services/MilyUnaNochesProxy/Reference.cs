@@ -156,6 +156,413 @@ namespace MilyUnaNochesWPFApp.MilyUnaNochesProxy {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Direccion", Namespace="http://schemas.datacontract.org/2004/07/MilyUnaNochesService.Contracts")]
+    [System.SerializableAttribute()]
+    public partial class Direccion : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string calleField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ciudadField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string codigoPostalField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int idDireccionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string numeroField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string calle {
+            get {
+                return this.calleField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.calleField, value) != true)) {
+                    this.calleField = value;
+                    this.RaisePropertyChanged("calle");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ciudad {
+            get {
+                return this.ciudadField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ciudadField, value) != true)) {
+                    this.ciudadField = value;
+                    this.RaisePropertyChanged("ciudad");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string codigoPostal {
+            get {
+                return this.codigoPostalField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.codigoPostalField, value) != true)) {
+                    this.codigoPostalField = value;
+                    this.RaisePropertyChanged("codigoPostal");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int idDireccion {
+            get {
+                return this.idDireccionField;
+            }
+            set {
+                if ((this.idDireccionField.Equals(value) != true)) {
+                    this.idDireccionField = value;
+                    this.RaisePropertyChanged("idDireccion");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string numero {
+            get {
+                return this.numeroField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.numeroField, value) != true)) {
+                    this.numeroField = value;
+                    this.RaisePropertyChanged("numero");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Empleado", Namespace="http://schemas.datacontract.org/2004/07/MilyUnaNochesService.Contracts")]
+    [System.SerializableAttribute()]
+    public partial class Empleado : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string calleField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ciudadField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string codigoPostalField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string correoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int idUsuarioField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string nombreField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string numeroField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string primerApellidoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string segundoApellidoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string telefonoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string tipoEmpleadoField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string calle {
+            get {
+                return this.calleField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.calleField, value) != true)) {
+                    this.calleField = value;
+                    this.RaisePropertyChanged("calle");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ciudad {
+            get {
+                return this.ciudadField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ciudadField, value) != true)) {
+                    this.ciudadField = value;
+                    this.RaisePropertyChanged("ciudad");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string codigoPostal {
+            get {
+                return this.codigoPostalField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.codigoPostalField, value) != true)) {
+                    this.codigoPostalField = value;
+                    this.RaisePropertyChanged("codigoPostal");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string correo {
+            get {
+                return this.correoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.correoField, value) != true)) {
+                    this.correoField = value;
+                    this.RaisePropertyChanged("correo");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int idUsuario {
+            get {
+                return this.idUsuarioField;
+            }
+            set {
+                if ((this.idUsuarioField.Equals(value) != true)) {
+                    this.idUsuarioField = value;
+                    this.RaisePropertyChanged("idUsuario");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string nombre {
+            get {
+                return this.nombreField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.nombreField, value) != true)) {
+                    this.nombreField = value;
+                    this.RaisePropertyChanged("nombre");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string numero {
+            get {
+                return this.numeroField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.numeroField, value) != true)) {
+                    this.numeroField = value;
+                    this.RaisePropertyChanged("numero");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string primerApellido {
+            get {
+                return this.primerApellidoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.primerApellidoField, value) != true)) {
+                    this.primerApellidoField = value;
+                    this.RaisePropertyChanged("primerApellido");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string segundoApellido {
+            get {
+                return this.segundoApellidoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.segundoApellidoField, value) != true)) {
+                    this.segundoApellidoField = value;
+                    this.RaisePropertyChanged("segundoApellido");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string telefono {
+            get {
+                return this.telefonoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.telefonoField, value) != true)) {
+                    this.telefonoField = value;
+                    this.RaisePropertyChanged("telefono");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string tipoEmpleado {
+            get {
+                return this.tipoEmpleadoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.tipoEmpleadoField, value) != true)) {
+                    this.tipoEmpleadoField = value;
+                    this.RaisePropertyChanged("tipoEmpleado");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Acceso", Namespace="http://schemas.datacontract.org/2004/07/MilyUnaNochesService.Contracts")]
+    [System.SerializableAttribute()]
+    public partial class Acceso : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string contraseñaField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int idAccesoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int idEmpleadoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string usuarioField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string contraseña {
+            get {
+                return this.contraseñaField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.contraseñaField, value) != true)) {
+                    this.contraseñaField = value;
+                    this.RaisePropertyChanged("contraseña");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int idAcceso {
+            get {
+                return this.idAccesoField;
+            }
+            set {
+                if ((this.idAccesoField.Equals(value) != true)) {
+                    this.idAccesoField = value;
+                    this.RaisePropertyChanged("idAcceso");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int idEmpleado {
+            get {
+                return this.idEmpleadoField;
+            }
+            set {
+                if ((this.idEmpleadoField.Equals(value) != true)) {
+                    this.idEmpleadoField = value;
+                    this.RaisePropertyChanged("idEmpleado");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string usuario {
+            get {
+                return this.usuarioField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.usuarioField, value) != true)) {
+                    this.usuarioField = value;
+                    this.RaisePropertyChanged("usuario");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="Address", Namespace="http://schemas.datacontract.org/2004/07/MilyUnaNochesService.Logic")]
     [System.SerializableAttribute()]
     public partial class Address : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -587,17 +994,35 @@ namespace MilyUnaNochesWPFApp.MilyUnaNochesProxy {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManager/AddClient", ReplyAction="http://tempuri.org/IUserManager/AddClientResponse")]
         System.Threading.Tasks.Task<int> AddClientAsync(MilyUnaNochesWPFApp.MilyUnaNochesProxy.Usuario usuario);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManager/ArchiveClient", ReplyAction="http://tempuri.org/IUserManager/ArchiveClientResponse")]
-        int ArchiveClient(string idUsuario);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManager/AddEmployee", ReplyAction="http://tempuri.org/IUserManager/AddEmployeeResponse")]
+        int AddEmployee(MilyUnaNochesWPFApp.MilyUnaNochesProxy.Usuario user, MilyUnaNochesWPFApp.MilyUnaNochesProxy.Direccion address, MilyUnaNochesWPFApp.MilyUnaNochesProxy.Empleado employee, MilyUnaNochesWPFApp.MilyUnaNochesProxy.Acceso acces);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManager/AddEmployee", ReplyAction="http://tempuri.org/IUserManager/AddEmployeeResponse")]
+        System.Threading.Tasks.Task<int> AddEmployeeAsync(MilyUnaNochesWPFApp.MilyUnaNochesProxy.Usuario user, MilyUnaNochesWPFApp.MilyUnaNochesProxy.Direccion address, MilyUnaNochesWPFApp.MilyUnaNochesProxy.Empleado employee, MilyUnaNochesWPFApp.MilyUnaNochesProxy.Acceso acces);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManager/ArchiveClient", ReplyAction="http://tempuri.org/IUserManager/ArchiveClientResponse")]
-        System.Threading.Tasks.Task<int> ArchiveClientAsync(string idUsuario);
+        int ArchiveClient(int idUsuario);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManager/ArchiveClient", ReplyAction="http://tempuri.org/IUserManager/ArchiveClientResponse")]
+        System.Threading.Tasks.Task<int> ArchiveClientAsync(int idUsuario);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManager/ArchiveEmployee", ReplyAction="http://tempuri.org/IUserManager/ArchiveEmployeeResponse")]
+        int ArchiveEmployee(int idUsuario);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManager/ArchiveEmployee", ReplyAction="http://tempuri.org/IUserManager/ArchiveEmployeeResponse")]
+        System.Threading.Tasks.Task<int> ArchiveEmployeeAsync(int idUsuario);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManager/GetUserProfileByNamePhone", ReplyAction="http://tempuri.org/IUserManager/GetUserProfileByNamePhoneResponse")]
         MilyUnaNochesWPFApp.MilyUnaNochesProxy.Usuario[] GetUserProfileByNamePhone(string searchTerm);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManager/GetUserProfileByNamePhone", ReplyAction="http://tempuri.org/IUserManager/GetUserProfileByNamePhoneResponse")]
         System.Threading.Tasks.Task<MilyUnaNochesWPFApp.MilyUnaNochesProxy.Usuario[]> GetUserProfileByNamePhoneAsync(string searchTerm);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManager/GetActiveEmployeesBySearchTerm", ReplyAction="http://tempuri.org/IUserManager/GetActiveEmployeesBySearchTermResponse")]
+        MilyUnaNochesWPFApp.MilyUnaNochesProxy.Empleado[] GetActiveEmployeesBySearchTerm(string searchTerm);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManager/GetActiveEmployeesBySearchTerm", ReplyAction="http://tempuri.org/IUserManager/GetActiveEmployeesBySearchTermResponse")]
+        System.Threading.Tasks.Task<MilyUnaNochesWPFApp.MilyUnaNochesProxy.Empleado[]> GetActiveEmployeesBySearchTermAsync(string searchTerm);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManager/VerifyAccess", ReplyAction="http://tempuri.org/IUserManager/VerifyAccessResponse")]
         bool VerifyAccess(string username, string password);
@@ -616,6 +1041,12 @@ namespace MilyUnaNochesWPFApp.MilyUnaNochesProxy {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManager/VerifyExistinClient", ReplyAction="http://tempuri.org/IUserManager/VerifyExistinClientResponse")]
         System.Threading.Tasks.Task<int> VerifyExistinClientAsync(string name, string firstLastName, string secondLastName);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManager/VerifyExistinEmployee", ReplyAction="http://tempuri.org/IUserManager/VerifyExistinEmployeeResponse")]
+        int VerifyExistinEmployee(string email, string phone);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManager/VerifyExistinEmployee", ReplyAction="http://tempuri.org/IUserManager/VerifyExistinEmployeeResponse")]
+        System.Threading.Tasks.Task<int> VerifyExistinEmployeeAsync(string email, string phone);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -653,12 +1084,28 @@ namespace MilyUnaNochesWPFApp.MilyUnaNochesProxy {
             return base.Channel.AddClientAsync(usuario);
         }
         
-        public int ArchiveClient(string idUsuario) {
+        public int AddEmployee(MilyUnaNochesWPFApp.MilyUnaNochesProxy.Usuario user, MilyUnaNochesWPFApp.MilyUnaNochesProxy.Direccion address, MilyUnaNochesWPFApp.MilyUnaNochesProxy.Empleado employee, MilyUnaNochesWPFApp.MilyUnaNochesProxy.Acceso acces) {
+            return base.Channel.AddEmployee(user, address, employee, acces);
+        }
+        
+        public System.Threading.Tasks.Task<int> AddEmployeeAsync(MilyUnaNochesWPFApp.MilyUnaNochesProxy.Usuario user, MilyUnaNochesWPFApp.MilyUnaNochesProxy.Direccion address, MilyUnaNochesWPFApp.MilyUnaNochesProxy.Empleado employee, MilyUnaNochesWPFApp.MilyUnaNochesProxy.Acceso acces) {
+            return base.Channel.AddEmployeeAsync(user, address, employee, acces);
+        }
+        
+        public int ArchiveClient(int idUsuario) {
             return base.Channel.ArchiveClient(idUsuario);
         }
         
-        public System.Threading.Tasks.Task<int> ArchiveClientAsync(string idUsuario) {
+        public System.Threading.Tasks.Task<int> ArchiveClientAsync(int idUsuario) {
             return base.Channel.ArchiveClientAsync(idUsuario);
+        }
+        
+        public int ArchiveEmployee(int idUsuario) {
+            return base.Channel.ArchiveEmployee(idUsuario);
+        }
+        
+        public System.Threading.Tasks.Task<int> ArchiveEmployeeAsync(int idUsuario) {
+            return base.Channel.ArchiveEmployeeAsync(idUsuario);
         }
         
         public MilyUnaNochesWPFApp.MilyUnaNochesProxy.Usuario[] GetUserProfileByNamePhone(string searchTerm) {
@@ -669,6 +1116,12 @@ namespace MilyUnaNochesWPFApp.MilyUnaNochesProxy {
             return base.Channel.GetUserProfileByNamePhoneAsync(searchTerm);
         }
         
+        public MilyUnaNochesWPFApp.MilyUnaNochesProxy.Empleado[] GetActiveEmployeesBySearchTerm(string searchTerm) {
+            return base.Channel.GetActiveEmployeesBySearchTerm(searchTerm);
+        }
+        
+        public System.Threading.Tasks.Task<MilyUnaNochesWPFApp.MilyUnaNochesProxy.Empleado[]> GetActiveEmployeesBySearchTermAsync(string searchTerm) {
+            return base.Channel.GetActiveEmployeesBySearchTermAsync(searchTerm);
         public System.Threading.Tasks.Task<int> AddClientAsync(MilyUnaNochesWPFApp.MilyUnaNochesService.Usuario usuario) {
             return base.Channel.AddClientAsync(usuario);
         public bool VerifyAccess(string username, string password) {
@@ -689,6 +1142,14 @@ namespace MilyUnaNochesWPFApp.MilyUnaNochesProxy {
         
         public System.Threading.Tasks.Task<int> VerifyExistinClientAsync(string name, string firstLastName, string secondLastName) {
             return base.Channel.VerifyExistinClientAsync(name, firstLastName, secondLastName);
+        }
+        
+        public int VerifyExistinEmployee(string email, string phone) {
+            return base.Channel.VerifyExistinEmployee(email, phone);
+        }
+        
+        public System.Threading.Tasks.Task<int> VerifyExistinEmployeeAsync(string email, string phone) {
+            return base.Channel.VerifyExistinEmployeeAsync(email, phone);
         }
     }
     
