@@ -18,6 +18,13 @@ namespace MilyUnaNochesWPFApp.Logic
         private static Regex _stateRegex = new Regex(@"^[A-Z][a-zA-Z]{4,15}$", RegexOptions.None, TimeSpan.FromMilliseconds(1000));
         private static Regex _textRegex = new Regex(@"^[A-Za-zñÑ'0-9\s\W]*$", RegexOptions.None, TimeSpan.FromMilliseconds(1000));
         private static Regex _emailRegex = new Regex(@"^[a-zA-Z0-9](?!.*[.-]{2})[a-zA-Z0-9.-]*[a-zA-Z0-9]@[a-zA-Z0-9](?!.*[.-]{2})[a-zA-Z0-9.-]*\.[a-zA-Z]{2,}$", RegexOptions.None, TimeSpan.FromMilliseconds(1000));
+        private static Regex _providerNameRegex = new Regex(@"^[A-Za-zñÑ0-9\s'\-]{1,100}$", RegexOptions.None, TimeSpan.FromMilliseconds(1000));
+        private static Regex _contactRegex = new Regex(@"^[A-Za-zñÑ0-9\s'\-.,]{1,100}$", RegexOptions.None, TimeSpan.FromMilliseconds(1000));
+        private static Regex _phoneRegex = new Regex(@"^\d{10}$", RegexOptions.None, TimeSpan.FromMilliseconds(1000));
+        private static Regex _streetRegex = new Regex(@"^[A-Za-zñÑ0-9\s'\-.,]{1,100}$", RegexOptions.None, TimeSpan.FromMilliseconds(1000));
+        private static Regex _numberRegex = new Regex(@"^[A-Za-z0-9\-]{1,10}$", RegexOptions.None, TimeSpan.FromMilliseconds(1000));
+        private static Regex _postalCodeRegex = new Regex(@"^\d{5,10}$", RegexOptions.None, TimeSpan.FromMilliseconds(1000));
+        private static Regex _cityRegex = new Regex(@"^[A-Za-zñÑ\s'\-]{1,50}$", RegexOptions.None, TimeSpan.FromMilliseconds(1000));
 
         public static bool ValidateRegexPattern(string data, Regex regex)
         {
@@ -123,6 +130,33 @@ namespace MilyUnaNochesWPFApp.Logic
                 isValid = true;
             }
             return isValid;
+        }
+
+
+        public static bool ValidateProviderName(string providerName) {
+            return ValidateRegexPattern(providerName, _providerNameRegex);
+        }
+
+        public static bool ValidateContact(string contact) {
+            return ValidateRegexPattern(contact, _contactRegex);
+        }
+
+        public static bool ValidatePhone(string phone) {
+            return ValidateRegexPattern(phone, _phoneRegex);
+        }
+
+        public static bool ValidateStreet(string street) {
+            return ValidateRegexPattern(street, _streetRegex);
+        }
+
+        public static bool ValidateNumber(string number) {
+            return ValidateRegexPattern(number, _numberRegex);
+        }
+        public static bool ValidatePostalCode(string postalCode) {
+            return ValidateRegexPattern(postalCode, _postalCodeRegex);
+        }
+        public static bool ValidateCity(string city) {
+            return ValidateRegexPattern(city, _cityRegex);
         }
     }
 }

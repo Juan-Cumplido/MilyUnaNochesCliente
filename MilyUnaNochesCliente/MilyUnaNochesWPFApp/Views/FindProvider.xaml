@@ -71,39 +71,44 @@
                    Foreground="#FF6A6565">
             <Run Language="es-mx" Text="Nombre o contacto (ej. Lala)"/>
         </TextBlock>
+        <DataGrid x:Name="ProviderDataGrid"
+          Grid.Row="1"
+          AutoGenerateColumns="False"
+          HeadersVisibility="Column"
+          GridLinesVisibility="None"
+          CanUserAddRows="False"
+          IsReadOnly="True"
+          HorizontalAlignment="Left"
+          VerticalAlignment="Top"
+          Margin="70,10,70,10"
+          Width="1150"
+          Background="#fdf8ef"
+          BorderThickness="0"
+          FontSize="18"
+          FontFamily="Bodoni MT Condensed"
+          ItemsSource="{Binding Providers}">
 
-        <DataGrid x:Name="ProviderDataGrid" 
-                  Grid.Row="1"
-                  AutoGenerateColumns="False"
-                  HeadersVisibility="Column"
-                  GridLinesVisibility="None"
-                  CanUserAddRows="False"
-                  IsReadOnly="True"
-                  HorizontalAlignment="Left"
-                  VerticalAlignment="Top"
-                  Margin="70,10,70,10"
-                  Width="1150"
-                  Background="#fdf8ef"
-                  BorderThickness="0"
-                  FontSize="18"
-                  FontFamily="Bodoni MT Condensed" 
-                  SelectionChanged="ProviderDataGrid_SelectionChanged">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Proveedor" 
-                                   Width="*" 
-                                   CellStyle="{StaticResource CenteredCellStyle}"/>
+                            Width="*" 
+                            CellStyle="{StaticResource CenteredCellStyle}"
+                            Binding="{Binding providerName}"/>
                 <DataGridTextColumn Header="Contacto" 
-                                   Width="*" 
-                                   CellStyle="{StaticResource CenteredCellStyle}"/>
+                            Width="*" 
+                            CellStyle="{StaticResource CenteredCellStyle}"
+                            Binding="{Binding providerContact}"/>
                 <DataGridTextColumn Header="Telefono" 
-                                   Width=".7*" 
-                                   CellStyle="{StaticResource CenteredCellStyle}"/>
+                            Width=".7*" 
+                            CellStyle="{StaticResource CenteredCellStyle}"
+                            Binding="{Binding phoneNumber}"/>
                 <DataGridTextColumn Header="Correo" 
-                                   Width="*" 
-                                   CellStyle="{StaticResource CenteredCellStyle}"/>
-                <DataGridTextColumn Header="Direccion" 
-                                   Width="1.5*" 
-                                   CellStyle="{StaticResource CenteredCellStyle}"/>
+                            Width="*" 
+                            CellStyle="{StaticResource CenteredCellStyle}"
+                            Binding="{Binding email}"/>
+                <DataGridTextColumn Header="Dirección" 
+                            Width="1.5*" 
+                            CellStyle="{StaticResource CenteredCellStyle}"
+                            Binding="{Binding providerAddress}"/>
             </DataGrid.Columns>
         </DataGrid>
 
