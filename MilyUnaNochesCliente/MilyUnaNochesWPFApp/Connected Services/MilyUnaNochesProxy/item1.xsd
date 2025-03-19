@@ -12,7 +12,7 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Usuario" nillable="true" type="tns:Usuario" />
-  <xs:complexType name="Direccion">
+  <xs:complexType name="UserDireccion">
     <xs:sequence>
       <xs:element minOccurs="0" name="calle" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="ciudad" nillable="true" type="xs:string" />
@@ -21,7 +21,7 @@
       <xs:element minOccurs="0" name="numero" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="Direccion" nillable="true" type="tns:Direccion" />
+  <xs:element name="UserDireccion" nillable="true" type="tns:UserDireccion" />
   <xs:complexType name="Empleado">
     <xs:sequence>
       <xs:element minOccurs="0" name="calle" nillable="true" type="xs:string" />

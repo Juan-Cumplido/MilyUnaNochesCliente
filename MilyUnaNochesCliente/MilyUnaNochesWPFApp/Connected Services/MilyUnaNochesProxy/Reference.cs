@@ -156,9 +156,9 @@ namespace MilyUnaNochesWPFApp.MilyUnaNochesProxy {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Direccion", Namespace="http://schemas.datacontract.org/2004/07/MilyUnaNochesService.Contracts")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="UserDireccion", Namespace="http://schemas.datacontract.org/2004/07/MilyUnaNochesService.Contracts")]
     [System.SerializableAttribute()]
-    public partial class Direccion : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+    public partial class UserDireccion : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
@@ -695,6 +695,9 @@ namespace MilyUnaNochesWPFApp.MilyUnaNochesProxy {
         private string phoneNumberField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string providerAddressField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string providerContactField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -771,6 +774,19 @@ namespace MilyUnaNochesWPFApp.MilyUnaNochesProxy {
                 if ((object.ReferenceEquals(this.phoneNumberField, value) != true)) {
                     this.phoneNumberField = value;
                     this.RaisePropertyChanged("phoneNumber");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string providerAddress {
+            get {
+                return this.providerAddressField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.providerAddressField, value) != true)) {
+                    this.providerAddressField = value;
+                    this.RaisePropertyChanged("providerAddress");
                 }
             }
         }
@@ -995,10 +1011,10 @@ namespace MilyUnaNochesWPFApp.MilyUnaNochesProxy {
         System.Threading.Tasks.Task<int> AddClientAsync(MilyUnaNochesWPFApp.MilyUnaNochesProxy.Usuario usuario);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManager/AddEmployee", ReplyAction="http://tempuri.org/IUserManager/AddEmployeeResponse")]
-        int AddEmployee(MilyUnaNochesWPFApp.MilyUnaNochesProxy.Usuario user, MilyUnaNochesWPFApp.MilyUnaNochesProxy.Direccion address, MilyUnaNochesWPFApp.MilyUnaNochesProxy.Empleado employee, MilyUnaNochesWPFApp.MilyUnaNochesProxy.Acceso acces);
+        int AddEmployee(MilyUnaNochesWPFApp.MilyUnaNochesProxy.Usuario user, MilyUnaNochesWPFApp.MilyUnaNochesProxy.UserDireccion address, MilyUnaNochesWPFApp.MilyUnaNochesProxy.Empleado employee, MilyUnaNochesWPFApp.MilyUnaNochesProxy.Acceso acces);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManager/AddEmployee", ReplyAction="http://tempuri.org/IUserManager/AddEmployeeResponse")]
-        System.Threading.Tasks.Task<int> AddEmployeeAsync(MilyUnaNochesWPFApp.MilyUnaNochesProxy.Usuario user, MilyUnaNochesWPFApp.MilyUnaNochesProxy.Direccion address, MilyUnaNochesWPFApp.MilyUnaNochesProxy.Empleado employee, MilyUnaNochesWPFApp.MilyUnaNochesProxy.Acceso acces);
+        System.Threading.Tasks.Task<int> AddEmployeeAsync(MilyUnaNochesWPFApp.MilyUnaNochesProxy.Usuario user, MilyUnaNochesWPFApp.MilyUnaNochesProxy.UserDireccion address, MilyUnaNochesWPFApp.MilyUnaNochesProxy.Empleado employee, MilyUnaNochesWPFApp.MilyUnaNochesProxy.Acceso acces);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManager/ArchiveClient", ReplyAction="http://tempuri.org/IUserManager/ArchiveClientResponse")]
         int ArchiveClient(int idUsuario);
@@ -1026,12 +1042,6 @@ namespace MilyUnaNochesWPFApp.MilyUnaNochesProxy {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManager/VerifyAccess", ReplyAction="http://tempuri.org/IUserManager/VerifyAccessResponse")]
         bool VerifyAccess(string username, string password);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManager/VerifyAccess", ReplyAction="http://tempuri.org/IUserManager/VerifyAccessResponse")]
-        System.Threading.Tasks.Task<bool> VerifyAccessAsync(string username, string password);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManager/VerifyExistinClient", ReplyAction="http://tempuri.org/IUserManager/VerifyExistinClientResponse")]
-        int VerifyExistinClient(string name, string firstLastName, string secondLastName);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManager/VerifyAccess", ReplyAction="http://tempuri.org/IUserManager/VerifyAccessResponse")]
         System.Threading.Tasks.Task<bool> VerifyAccessAsync(string username, string password);
@@ -1084,11 +1094,11 @@ namespace MilyUnaNochesWPFApp.MilyUnaNochesProxy {
             return base.Channel.AddClientAsync(usuario);
         }
         
-        public int AddEmployee(MilyUnaNochesWPFApp.MilyUnaNochesProxy.Usuario user, MilyUnaNochesWPFApp.MilyUnaNochesProxy.Direccion address, MilyUnaNochesWPFApp.MilyUnaNochesProxy.Empleado employee, MilyUnaNochesWPFApp.MilyUnaNochesProxy.Acceso acces) {
+        public int AddEmployee(MilyUnaNochesWPFApp.MilyUnaNochesProxy.Usuario user, MilyUnaNochesWPFApp.MilyUnaNochesProxy.UserDireccion address, MilyUnaNochesWPFApp.MilyUnaNochesProxy.Empleado employee, MilyUnaNochesWPFApp.MilyUnaNochesProxy.Acceso acces) {
             return base.Channel.AddEmployee(user, address, employee, acces);
         }
         
-        public System.Threading.Tasks.Task<int> AddEmployeeAsync(MilyUnaNochesWPFApp.MilyUnaNochesProxy.Usuario user, MilyUnaNochesWPFApp.MilyUnaNochesProxy.Direccion address, MilyUnaNochesWPFApp.MilyUnaNochesProxy.Empleado employee, MilyUnaNochesWPFApp.MilyUnaNochesProxy.Acceso acces) {
+        public System.Threading.Tasks.Task<int> AddEmployeeAsync(MilyUnaNochesWPFApp.MilyUnaNochesProxy.Usuario user, MilyUnaNochesWPFApp.MilyUnaNochesProxy.UserDireccion address, MilyUnaNochesWPFApp.MilyUnaNochesProxy.Empleado employee, MilyUnaNochesWPFApp.MilyUnaNochesProxy.Acceso acces) {
             return base.Channel.AddEmployeeAsync(user, address, employee, acces);
         }
         
@@ -1122,10 +1132,6 @@ namespace MilyUnaNochesWPFApp.MilyUnaNochesProxy {
         
         public System.Threading.Tasks.Task<MilyUnaNochesWPFApp.MilyUnaNochesProxy.Empleado[]> GetActiveEmployeesBySearchTermAsync(string searchTerm) {
             return base.Channel.GetActiveEmployeesBySearchTermAsync(searchTerm);
-        public System.Threading.Tasks.Task<int> AddClientAsync(MilyUnaNochesWPFApp.MilyUnaNochesService.Usuario usuario) {
-            return base.Channel.AddClientAsync(usuario);
-        public bool VerifyAccess(string username, string password) {
-            return base.Channel.VerifyAccess(username, password);
         }
         
         public bool VerifyAccess(string username, string password) {
@@ -1162,6 +1168,12 @@ namespace MilyUnaNochesWPFApp.MilyUnaNochesProxy {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAdressManager/createAddress", ReplyAction="http://tempuri.org/IAdressManager/createAddressResponse")]
         System.Threading.Tasks.Task<int> createAddressAsync(MilyUnaNochesWPFApp.MilyUnaNochesProxy.Address address);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAdressManager/GetAddress", ReplyAction="http://tempuri.org/IAdressManager/GetAddressResponse")]
+        MilyUnaNochesWPFApp.MilyUnaNochesProxy.Address GetAddress(int idDireccion);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAdressManager/GetAddress", ReplyAction="http://tempuri.org/IAdressManager/GetAddressResponse")]
+        System.Threading.Tasks.Task<MilyUnaNochesWPFApp.MilyUnaNochesProxy.Address> GetAddressAsync(int idDireccion);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1197,6 +1209,14 @@ namespace MilyUnaNochesWPFApp.MilyUnaNochesProxy {
         
         public System.Threading.Tasks.Task<int> createAddressAsync(MilyUnaNochesWPFApp.MilyUnaNochesProxy.Address address) {
             return base.Channel.createAddressAsync(address);
+        }
+        
+        public MilyUnaNochesWPFApp.MilyUnaNochesProxy.Address GetAddress(int idDireccion) {
+            return base.Channel.GetAddress(idDireccion);
+        }
+        
+        public System.Threading.Tasks.Task<MilyUnaNochesWPFApp.MilyUnaNochesProxy.Address> GetAddressAsync(int idDireccion) {
+            return base.Channel.GetAddressAsync(idDireccion);
         }
     }
     
@@ -1290,29 +1310,29 @@ namespace MilyUnaNochesWPFApp.MilyUnaNochesProxy {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="MilyUnaNochesService.IProductsManager")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="MilyUnaNochesProxy.IProductsManager")]
     public interface IProductsManager {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductsManager/SaveProduct", ReplyAction="http://tempuri.org/IProductsManager/SaveProductResponse")]
-        bool SaveProduct(MilyUnaNochesWPFApp.MilyUnaNochesService.Product product);
+        bool SaveProduct(MilyUnaNochesWPFApp.MilyUnaNochesProxy.Product product);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductsManager/SaveProduct", ReplyAction="http://tempuri.org/IProductsManager/SaveProductResponse")]
-        System.Threading.Tasks.Task<bool> SaveProductAsync(MilyUnaNochesWPFApp.MilyUnaNochesService.Product product);
+        System.Threading.Tasks.Task<bool> SaveProductAsync(MilyUnaNochesWPFApp.MilyUnaNochesProxy.Product product);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductsManager/GetProducts", ReplyAction="http://tempuri.org/IProductsManager/GetProductsResponse")]
-        MilyUnaNochesWPFApp.MilyUnaNochesService.Product[] GetProducts();
+        MilyUnaNochesWPFApp.MilyUnaNochesProxy.Product[] GetProducts();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductsManager/GetProducts", ReplyAction="http://tempuri.org/IProductsManager/GetProductsResponse")]
-        System.Threading.Tasks.Task<MilyUnaNochesWPFApp.MilyUnaNochesService.Product[]> GetProductsAsync();
+        System.Threading.Tasks.Task<MilyUnaNochesWPFApp.MilyUnaNochesProxy.Product[]> GetProductsAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IProductsManagerChannel : MilyUnaNochesWPFApp.MilyUnaNochesService.IProductsManager, System.ServiceModel.IClientChannel {
+    public interface IProductsManagerChannel : MilyUnaNochesWPFApp.MilyUnaNochesProxy.IProductsManager, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class ProductsManagerClient : System.ServiceModel.ClientBase<MilyUnaNochesWPFApp.MilyUnaNochesService.IProductsManager>, MilyUnaNochesWPFApp.MilyUnaNochesService.IProductsManager {
+    public partial class ProductsManagerClient : System.ServiceModel.ClientBase<MilyUnaNochesWPFApp.MilyUnaNochesProxy.IProductsManager>, MilyUnaNochesWPFApp.MilyUnaNochesProxy.IProductsManager {
         
         public ProductsManagerClient() {
         }
@@ -1333,19 +1353,19 @@ namespace MilyUnaNochesWPFApp.MilyUnaNochesProxy {
                 base(binding, remoteAddress) {
         }
         
-        public bool SaveProduct(MilyUnaNochesWPFApp.MilyUnaNochesService.Product product) {
+        public bool SaveProduct(MilyUnaNochesWPFApp.MilyUnaNochesProxy.Product product) {
             return base.Channel.SaveProduct(product);
         }
         
-        public System.Threading.Tasks.Task<bool> SaveProductAsync(MilyUnaNochesWPFApp.MilyUnaNochesService.Product product) {
+        public System.Threading.Tasks.Task<bool> SaveProductAsync(MilyUnaNochesWPFApp.MilyUnaNochesProxy.Product product) {
             return base.Channel.SaveProductAsync(product);
         }
         
-        public MilyUnaNochesWPFApp.MilyUnaNochesService.Product[] GetProducts() {
+        public MilyUnaNochesWPFApp.MilyUnaNochesProxy.Product[] GetProducts() {
             return base.Channel.GetProducts();
         }
         
-        public System.Threading.Tasks.Task<MilyUnaNochesWPFApp.MilyUnaNochesService.Product[]> GetProductsAsync() {
+        public System.Threading.Tasks.Task<MilyUnaNochesWPFApp.MilyUnaNochesProxy.Product[]> GetProductsAsync() {
             return base.Channel.GetProductsAsync();
         }
     }
