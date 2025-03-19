@@ -84,7 +84,17 @@ namespace MilyUnaNochesWPFApp.Views {
         }
 
         private void Editar_Click(object sender, RoutedEventArgs e) {
+            if (ProviderDataGrid.SelectedItem is Provider selectedProvider) {
+                var editWindow = new EditProvider(selectedProvider);
+                bool? result = editWindow.ShowDialog();
 
+                if (result == true) {
+                    MessageBox.Show("Proveedor actualizado.", "Editar Proveedor", MessageBoxButton.OK, MessageBoxImage.Information);
+                    ProviderDataGrid.Items.Refresh();
+                }
+            } else {
+                MessageBox.Show("Seleccione un proveedor primero", "Editar Proveedor", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
         }
     }
-}
+ }

@@ -85,6 +85,9 @@
     <Compile Include="Views\ConsultClient.xaml.cs">
       <DependentUpon>ConsultClient.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\EditProvider.xaml.cs">
+      <DependentUpon>EditProvider.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\FindProvider.xaml.cs">
       <DependentUpon>FindProvider.xaml</DependentUpon>
     </Compile>
@@ -126,6 +129,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Views\ConsultClient.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\EditProvider.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
