@@ -82,6 +82,7 @@
     <Compile Include="Logic\DialogManager.cs" />
     <Compile Include="Logic\Hasher.cs" />
     <Compile Include="Logic\LoggerManager.cs" />
+    <Compile Include="Logic\Product.cs" />
     <Compile Include="Logic\Sale.cs" />
     <Compile Include="Logic\Validator.cs" />
     <Compile Include="Views\ConsultEmployee.xaml.cs">
@@ -89,6 +90,9 @@
     </Compile>
     <Compile Include="Views\ConsultClient.xaml.cs">
       <DependentUpon>ConsultClient.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ConsultProductsView.xaml.cs">
+      <DependentUpon>ConsultProductsView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ConsultSale.xaml.cs">
       <DependentUpon>ConsultSale.xaml</DependentUpon>
@@ -113,6 +117,12 @@
     </Compile>
     <Compile Include="Views\MenuProvider.xaml.cs">
       <DependentUpon>MenuProvider.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ProductDetailView.xaml.cs">
+      <DependentUpon>ProductDetailView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\RegisterProductView.xaml.cs">
+      <DependentUpon>RegisterProductView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\RegisterEmployee.xaml.cs">
       <DependentUpon>RegisterEmployee.xaml</DependentUpon>
@@ -150,6 +160,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\ConsultProductsView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Views\ConsultSale.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -181,6 +195,14 @@
     <Page Include="Views\MenuProvider.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ProductDetailView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\RegisterProductView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\RegisterEmployee.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -238,6 +260,11 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\MilyUnaNochesProxy\MilyUnaNochesWPFApp.MilyUnaNochesProxy.Usuario.datasource">
+    <None Include="Connected Services\MilyUnaNochesService\MilyUnaNochesService.wsdl" />
+    <None Include="Connected Services\MilyUnaNochesService\MilyUnaNochesWPFApp.MilyUnaNochesService.Product.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\MilyUnaNochesService\MilyUnaNochesWPFApp.MilyUnaNochesService.Provider.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="packages.config" />

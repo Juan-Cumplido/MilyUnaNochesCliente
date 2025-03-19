@@ -16,34 +16,6 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="ArchiveClient">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="idUsuario" nillable="true" type="xs:string" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="ArchiveClientResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="ArchiveClientResult" type="xs:int" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetUserProfileByNamePhone">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="searchTerm" nillable="true" type="xs:string" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetUserProfileByNamePhoneResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/MilyUnaNochesService.Contracts" minOccurs="0" name="GetUserProfileByNamePhoneResult" nillable="true" type="q2:ArrayOfUsuario" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
   <xs:element name="VerifyAccess">
     <xs:complexType>
       <xs:sequence>
@@ -140,6 +112,32 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="DeleteProviderResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SaveProduct">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/MilyUnaNochesService.Logic" minOccurs="0" name="product" nillable="true" type="q5:Product" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SaveProductResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SaveProductResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetProducts">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetProductsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/MilyUnaNochesService.Logic" minOccurs="0" name="GetProductsResult" nillable="true" type="q6:ArrayOfProduct" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

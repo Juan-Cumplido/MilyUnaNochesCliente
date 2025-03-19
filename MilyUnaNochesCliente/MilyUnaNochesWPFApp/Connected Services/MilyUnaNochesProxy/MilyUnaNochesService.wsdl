@@ -36,6 +36,18 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
+  <wsp:Policy wsu:Id="NetTcpBinding_IProductsManager_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <wsrm:RMAssertion xmlns:wsrm="http://schemas.xmlsoap.org/ws/2005/02/rm/policy">
+          <wsrm:InactivityTimeout Milliseconds="600000" />
+          <wsrm:AcknowledgementInterval Milliseconds="200" />
+        </wsrm:RMAssertion>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
   <wsdl:types>
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
       <xsd:import schemaLocation="http://localhost:1442/?xsd=xsd0" namespace="http://tempuri.org/" />
@@ -49,6 +61,18 @@
   </wsdl:message>
   <wsdl:message name="IUserManager_AddClient_OutputMessage">
     <wsdl:part name="parameters" element="tns:AddClientResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUserManager_VerifyAccess_InputMessage">
+    <wsdl:part name="parameters" element="tns:VerifyAccess" />
+  </wsdl:message>
+  <wsdl:message name="IUserManager_VerifyAccess_OutputMessage">
+    <wsdl:part name="parameters" element="tns:VerifyAccessResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUserManager_VerifyExistinClient_InputMessage">
+    <wsdl:part name="parameters" element="tns:VerifyExistinClient" />
+  </wsdl:message>
+  <wsdl:message name="IUserManager_VerifyExistinClient_OutputMessage">
+    <wsdl:part name="parameters" element="tns:VerifyExistinClientResponse" />
   </wsdl:message>
   <wsdl:message name="IUserManager_ArchiveClient_InputMessage">
     <wsdl:part name="parameters" element="tns:ArchiveClient" />
@@ -104,7 +128,30 @@
   <wsdl:message name="IProviderManager_DeleteProvider_OutputMessage">
     <wsdl:part name="parameters" element="tns:DeleteProviderResponse" />
   </wsdl:message>
+  <wsdl:message name="IProductsManager_SaveProduct_InputMessage">
+    <wsdl:part name="parameters" element="tns:SaveProduct" />
+  </wsdl:message>
+  <wsdl:message name="IProductsManager_SaveProduct_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaveProductResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProductsManager_GetProducts_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetProducts" />
+  </wsdl:message>
+  <wsdl:message name="IProductsManager_GetProducts_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetProductsResponse" />
+  </wsdl:message>
   <wsdl:portType name="IUserManager">
+    <wsdl:operation name="AddClient">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserManager/AddClient" message="tns:IUserManager_AddClient_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserManager/AddClientResponse" message="tns:IUserManager_AddClient_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="VerifyAccess">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserManager/VerifyAccess" message="tns:IUserManager_VerifyAccess_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserManager/VerifyAccessResponse" message="tns:IUserManager_VerifyAccess_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="VerifyExistinClient">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserManager/VerifyExistinClient" message="tns:IUserManager_VerifyExistinClient_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserManager/VerifyExistinClientResponse" message="tns:IUserManager_VerifyExistinClient_OutputMessage" />
     <wsdl:operation name="AddClient">
       <wsdl:input wsaw:Action="http://tempuri.org/IUserManager/AddClient" message="tns:IUserManager_AddClient_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IUserManager/AddClientResponse" message="tns:IUserManager_AddClient_OutputMessage" />
@@ -148,6 +195,16 @@
     <wsdl:operation name="DeleteProvider">
       <wsdl:input wsaw:Action="http://tempuri.org/IProviderManager/DeleteProvider" message="tns:IProviderManager_DeleteProvider_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IProviderManager/DeleteProviderResponse" message="tns:IProviderManager_DeleteProvider_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="IProductsManager">
+    <wsdl:operation name="SaveProduct">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProductsManager/SaveProduct" message="tns:IProductsManager_SaveProduct_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProductsManager/SaveProductResponse" message="tns:IProductsManager_SaveProduct_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProducts">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProductsManager/GetProducts" message="tns:IProductsManager_GetProducts_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProductsManager/GetProductsResponse" message="tns:IProductsManager_GetProducts_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="NetTcpBinding_IUserManager" type="tns:IUserManager">
@@ -252,6 +309,28 @@
       </wsdl:output>
     </wsdl:operation>
   </wsdl:binding>
+  <wsdl:binding name="NetTcpBinding_IProductsManager" type="tns:IProductsManager">
+    <wsp:PolicyReference URI="#NetTcpBinding_IProductsManager_policy" />
+    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="SaveProduct">
+      <soap12:operation soapAction="http://tempuri.org/IProductsManager/SaveProduct" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProducts">
+      <soap12:operation soapAction="http://tempuri.org/IProductsManager/GetProducts" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
   <wsdl:service name="MilyUnaNochesService">
     <wsdl:port name="NetTcpBinding_IUserManager" binding="tns:NetTcpBinding_IUserManager">
       <soap12:address location="net.tcp://localhost:1441/UserService" />
@@ -269,6 +348,12 @@
       <soap12:address location="net.tcp://localhost:1441/ProviderManager" />
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:1441/ProviderManager</wsa10:Address>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+    <wsdl:port name="NetTcpBinding_IProductsManager" binding="tns:NetTcpBinding_IProductsManager">
+      <soap12:address location="net.tcp://localhost:1441/ProductManager" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>net.tcp://localhost:1441/ProductManager</wsa10:Address>
       </wsa10:EndpointReference>
     </wsdl:port>
   </wsdl:service>
