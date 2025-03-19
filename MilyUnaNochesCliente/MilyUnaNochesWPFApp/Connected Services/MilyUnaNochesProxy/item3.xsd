@@ -20,7 +20,7 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/MilyUnaNochesService.Contracts" minOccurs="0" name="user" nillable="true" type="q2:Usuario" />
-        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/MilyUnaNochesService.Contracts" minOccurs="0" name="address" nillable="true" type="q3:Direccion" />
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/MilyUnaNochesService.Contracts" minOccurs="0" name="address" nillable="true" type="q3:UserDireccion" />
         <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/MilyUnaNochesService.Contracts" minOccurs="0" name="employee" nillable="true" type="q4:Empleado" />
         <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/MilyUnaNochesService.Contracts" minOccurs="0" name="acces" nillable="true" type="q5:Acceso" />
       </xs:sequence>
@@ -149,10 +149,24 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="GetAddress">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="idDireccion" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAddressResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/MilyUnaNochesService.Logic" minOccurs="0" name="GetAddressResult" nillable="true" type="q9:Address" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="CreateProvider">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/MilyUnaNochesService.Logic" minOccurs="0" name="newProvider" nillable="true" type="q9:Provider" />
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/MilyUnaNochesService.Logic" minOccurs="0" name="newProvider" nillable="true" type="q10:Provider" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -171,7 +185,7 @@
   <xs:element name="GetProvidersResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/MilyUnaNochesService.Logic" minOccurs="0" name="GetProvidersResult" nillable="true" type="q10:ArrayOfProvider" />
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/MilyUnaNochesService.Logic" minOccurs="0" name="GetProvidersResult" nillable="true" type="q11:ArrayOfProvider" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -206,7 +220,7 @@
   <xs:element name="SaveProduct">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/MilyUnaNochesService.Logic" minOccurs="0" name="product" nillable="true" type="q5:Product" />
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/MilyUnaNochesService.Logic" minOccurs="0" name="product" nillable="true" type="q12:Product" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -225,7 +239,7 @@
   <xs:element name="GetProductsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/MilyUnaNochesService.Logic" minOccurs="0" name="GetProductsResult" nillable="true" type="q6:ArrayOfProduct" />
+        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/MilyUnaNochesService.Logic" minOccurs="0" name="GetProductsResult" nillable="true" type="q13:ArrayOfProduct" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

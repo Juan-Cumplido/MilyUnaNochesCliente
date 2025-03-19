@@ -41,7 +41,7 @@ namespace MilyUnaNochesWPFApp.Views
                 telefono = txtb_telephone.Text
             };
 
-            Direccion newAddress = new Direccion
+            UserDireccion newAddress = new UserDireccion
             {
                 calle = txtb_street.Text,
                 numero = txtb_number.Text,
@@ -76,7 +76,7 @@ namespace MilyUnaNochesWPFApp.Views
             }
         }
 
-        public int AddEmployee(Usuario user, Direccion address, Empleado employee, Acceso access)
+        public int AddEmployee(Usuario user, UserDireccion address, Empleado employee, Acceso access)
         {
             Logic.LoggerManager logger = new Logic.LoggerManager(this.GetType());
             int insertionResult = -1;
