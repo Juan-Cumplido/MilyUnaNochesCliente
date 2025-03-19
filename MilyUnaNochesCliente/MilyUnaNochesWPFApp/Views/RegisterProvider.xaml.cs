@@ -83,35 +83,49 @@ namespace MilyUnaNochesWPFApp.Views {
         }
 
         private bool ValidateForm() {
-            if (!Validator.ValidateDescription(txtProviderName.Text)) {
+            // Verificar si algún campo está vacío
+            if (string.IsNullOrWhiteSpace(txtProviderName.Text) ||
+                string.IsNullOrWhiteSpace(txtContact.Text) ||
+                string.IsNullOrWhiteSpace(txtPhone.Text) ||
+                string.IsNullOrWhiteSpace(txtEmail.Text) ||
+                string.IsNullOrWhiteSpace(txtStreet.Text) ||
+                string.IsNullOrWhiteSpace(txtNumber.Text) ||
+                string.IsNullOrWhiteSpace(txtPostalCode.Text) ||
+                string.IsNullOrWhiteSpace(txtCity.Text)) {
+                MessageBox.Show("Los campos no deben estar vacíos.", "Validación", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return false;
+            }
+
+            // Validaciones de formato usando Regex
+            if (!Validator.ValidateProviderName(txtProviderName.Text)) {
                 MessageBox.Show("El nombre del proveedor no es válido.", "Validación", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return false;
             }
-            if (!Validator.ValidateDescription(txtContact.Text)) {
+            if (!Validator.ValidateContact(txtContact.Text)) {
                 MessageBox.Show("El contacto no es válido.", "Validación", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return false;
             }
-            if (string.IsNullOrWhiteSpace(txtPhone.Text)) {
-                MessageBox.Show("El teléfono no puede estar vacío.", "Validación", MessageBoxButton.OK, MessageBoxImage.Warning);
+            if (!Validator.ValidatePhone(txtPhone.Text)) {
+                MessageBox.Show("El teléfono no es válido.", "Validación", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return false;
             }
             if (!Validator.ValidateEmail(txtEmail.Text)) {
                 MessageBox.Show("El correo electrónico no es válido.", "Validación", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return false;
             }
-            if (!Validator.ValidateDescription(txtStreet.Text)) {
+            if (!Validator.ValidateStreet(txtStreet.Text)) {
                 MessageBox.Show("La calle no es válida.", "Validación", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return false;
             }
-            if (!Validator.ValidateDescription(txtNumber.Text)) {
+            if (!Validator.ValidateNumber(txtNumber.Text)) {
                 MessageBox.Show("El número no es válido.", "Validación", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return false;
             }
-            if (!Validator.ValidateDescription(txtPostalCode.Text)) {
+            if (!Validator.ValidatePostalCode(txtPostalCode.Text)) {
                 MessageBox.Show("El código postal no es válido.", "Validación", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return false;
             }
-            if (!Validator.ValidateDescription(txtCity.Text)) {
+            if (!Validator.ValidateCity(txtCity.Text)) {
                 MessageBox.Show("La ciudad no es válida.", "Validación", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return false;
             }
