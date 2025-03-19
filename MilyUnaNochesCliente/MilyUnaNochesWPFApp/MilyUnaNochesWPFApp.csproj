@@ -91,6 +91,8 @@
     <Compile Include="Views\ConsultClient.xaml.cs">
       <DependentUpon>ConsultClient.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\EditProvider.xaml.cs">
+      <DependentUpon>EditProvider.xaml</DependentUpon>
     <Compile Include="Views\ConsultProductsView.xaml.cs">
       <DependentUpon>ConsultProductsView.xaml</DependentUpon>
     </Compile>
@@ -160,6 +162,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\EditProvider.xaml">
     <Page Include="Views\ConsultProductsView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -264,6 +267,7 @@
     </None>
     <None Include="Connected Services\MilyUnaNochesProxy\MilyUnaNochesWPFApp.MilyUnaNochesProxy.Usuario.datasource">
     <None Include="Connected Services\MilyUnaNochesService\MilyUnaNochesService.wsdl" />
+    <None Include="Connected Services\MilyUnaNochesService\MilyUnaNochesWPFApp.MilyUnaNochesService.Address.datasource">
     <None Include="Connected Services\MilyUnaNochesService\MilyUnaNochesWPFApp.MilyUnaNochesService.Product.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
