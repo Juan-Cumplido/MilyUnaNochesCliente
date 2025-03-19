@@ -37,11 +37,12 @@
 
         <Label Content="Telefono" HorizontalAlignment="Left" Height="40"  Margin="40,97,0,0" VerticalAlignment="Top" Width="70" FontFamily="Bodoni MT Condensed" FontSize="25"  Background="{x:Null}" Foreground="#FFAE7D5C"/>
 
-        <Border BorderThickness="1" Background="#ae7d5c" CornerRadius="15" Margin="112,97,902,301">
+        <Border BorderThickness="1" Background="#ae7d5c" CornerRadius="15" Margin="115,97,899,301">
             <DockPanel>
-                <TextBox x:Name="txtb_telephone" Width="247" Height="26" FontSize="25" Background="Transparent" BorderThickness="0" Foreground="Black" FontFamily="Bodoni MT Condensed" />
+                <TextBox x:Name="txtb_telephone" Width="247" Height="26" FontSize="25" Background="Transparent" BorderThickness="0" Foreground="Black" FontFamily="Bodoni MT Condensed" PreviewTextInput="Telephone_PreviewTextInput" PreviewKeyDown="Telephone_PreviewKeyDown" MaxLength="10"/>
             </DockPanel>
         </Border>
+
 
         <Label Content="Correo" HorizontalAlignment="Left" Height="40"  Margin="467,97,0,0" VerticalAlignment="Top" Width="54" FontFamily="Bodoni MT Condensed" FontSize="25"  Background="{x:Null}" Foreground="#FFAE7D5C"/>
 
@@ -63,7 +64,7 @@
 
         <Border BorderThickness="1" Background="#ae7d5c" CornerRadius="15" Margin="112,179,902,219">
             <DockPanel>
-                <TextBox x:Name="txtb_number" Width="247" Height="26" FontSize="25" Background="Transparent" BorderThickness="0" Foreground="Black" FontFamily="Bodoni MT Condensed" />
+                <TextBox x:Name="txtb_number" Width="247" Height="26" FontSize="25" Background="Transparent" BorderThickness="0" Foreground="Black" FontFamily="Bodoni MT Condensed" PreviewTextInput="Telephone_PreviewTextInput" PreviewKeyDown="Telephone_PreviewKeyDown" MaxLength="15"/>
             </DockPanel>
         </Border>
 
@@ -71,7 +72,7 @@
 
         <Border BorderThickness="1" Background="#ae7d5c" CornerRadius="15" Margin="535,179,479,219">
             <DockPanel>
-                <TextBox x:Name="txtb_postalCode" Width="247" Height="26" FontSize="25" Background="Transparent" BorderThickness="0" Foreground="Black" FontFamily="Bodoni MT Condensed" />
+                <TextBox x:Name="txtb_postalCode" Width="247" Height="26" FontSize="25" Background="Transparent" BorderThickness="0" Foreground="Black" FontFamily="Bodoni MT Condensed" PreviewTextInput="Telephone_PreviewTextInput" PreviewKeyDown="Telephone_PreviewKeyDown" MaxLength="15"/>
             </DockPanel>
         </Border>
 
