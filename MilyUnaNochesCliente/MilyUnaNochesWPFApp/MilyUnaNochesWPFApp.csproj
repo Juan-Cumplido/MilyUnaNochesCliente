@@ -91,8 +91,8 @@
     <Compile Include="Views\ConsultClient.xaml.cs">
       <DependentUpon>ConsultClient.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\EditProvider.xaml.cs">
-      <DependentUpon>EditProvider.xaml</DependentUpon>
+    <Compile Include="Views\EditSupplier.xaml.cs">
+      <DependentUpon>EditSupplier.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ConsultProductsView.xaml.cs">
       <DependentUpon>ConsultProductsView.xaml</DependentUpon>
@@ -118,8 +118,8 @@
     <Compile Include="Views\ManagerMenuContent.xaml.cs">
       <DependentUpon>ManagerMenuContent.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\MenuProvider.xaml.cs">
-      <DependentUpon>MenuProvider.xaml</DependentUpon>
+    <Compile Include="Views\MenuSupplier.xaml.cs">
+      <DependentUpon>MenuSupplier.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ProductDetailView.xaml.cs">
       <DependentUpon>ProductDetailView.xaml</DependentUpon>
@@ -163,7 +163,9 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\EditProvider.xaml" />
+    <Page Include="Views\EditSupplier.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Views\ConsultProductsView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -196,7 +198,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\MenuProvider.xaml">
+    <Page Include="Views\MenuSupplier.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -361,6 +363,21 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Icons\Logo2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Icons\ProvidersIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Icons\Designer.jpeg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Icons\ProductsIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Icons\SalesIcon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -10,51 +10,137 @@
       Title="ManagerMenuContent">
 
     <Page.Resources>
-        <Style x:Key="ImageButtonStyle" TargetType="Button">
-            <Setter Property="HorizontalAlignment" Value="Center"/>
-            <Setter Property="Height" Value="144"/>
-            <Setter Property="Width" Value="1280"/>
-            <Setter Property="VerticalAlignment" Value="Top"/>
-            <Setter Property="Background" Value="Transparent"/>
+        <Style x:Key="CardButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="Foreground" Value="#AE7D5C"/>
+            <Setter Property="FontSize" Value="24"/>
+            <Setter Property="FontFamily" Value="Bodoni MT Condensed"/>
             <Setter Property="BorderThickness" Value="0"/>
-            <Setter Property="Padding" Value="0"/>
+            <Setter Property="Padding" Value="20"/>
+            <Setter Property="Margin" Value="10"/>
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
-                        <ContentPresenter/>
+                        <Border x:Name="Border"
+                                Background="{TemplateBinding Background}"
+                                CornerRadius="10"
+                                Padding="{TemplateBinding Padding}">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Image Source="{Binding Tag, RelativeSource={RelativeSource TemplatedParent}}"
+                                       Width="70" Height="70"
+                                       Margin="0,0,20,0"/>
+                                <TextBlock Text="{TemplateBinding Content}"
+                                           Grid.Column="1"
+                                           VerticalAlignment="Center"/>
+                            </Grid>
+                        </Border>
+                        <ControlTemplate.Triggers>
+
+                            <EventTrigger RoutedEvent="MouseEnter">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ColorAnimation To="#FFD4C1B5" 
+                                                        Duration="0:0:0.2" 
+                                                        Storyboard.TargetName="Border"
+                                                        Storyboard.TargetProperty="(Background).(SolidColorBrush.Color)"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                            <EventTrigger RoutedEvent="MouseLeave">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ColorAnimation To="White" 
+                                                        Duration="0:0:0.2" 
+                                                        Storyboard.TargetName="Border"
+                                                        Storyboard.TargetProperty="(Background).(SolidColorBrush.Color)"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                        </ControlTemplate.Triggers>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
         </Style>
+
+        <Style x:Key="CardButtonStyleBigIcon" TargetType="Button">
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="Foreground" Value="#AE7D5C"/>
+            <Setter Property="FontSize" Value="24"/>
+            <Setter Property="FontFamily" Value="Bodoni MT Condensed"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Padding" Value="20"/>
+            <Setter Property="Margin" Value="10"/>
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="Border"
+                                Background="{TemplateBinding Background}"
+                                CornerRadius="10"
+                                Padding="{TemplateBinding Padding}">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Image Source="{Binding Tag, RelativeSource={RelativeSource TemplatedParent}}"
+                                       Width="55" Height="55"
+                                       Margin="5,0,25,0"/>
+                                <TextBlock Text="{TemplateBinding Content}"
+                                           Grid.Column="1"
+                                           VerticalAlignment="Center"/>
+                            </Grid>
+                        </Border>
+                        <ControlTemplate.Triggers>
+
+                            <EventTrigger RoutedEvent="MouseEnter">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ColorAnimation To="#FFD4C1B5" 
+                                                        Duration="0:0:0.2" 
+                                                        Storyboard.TargetName="Border"
+                                                        Storyboard.TargetProperty="(Background).(SolidColorBrush.Color)"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                            <EventTrigger RoutedEvent="MouseLeave">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ColorAnimation To="White" 
+                                                        Duration="0:0:0.2" 
+                                                        Storyboard.TargetName="Border"
+                                                        Storyboard.TargetProperty="(Background).(SolidColorBrush.Color)"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
     </Page.Resources>
 
     <Grid>
-        <Label Content="Bienvenido al sistema Mil y Una Noches&#xD;&#xA;" 
+        <Label Content="Bienvenido al sistema Mil y Una Noches" 
                HorizontalAlignment="Center" 
-               Margin="0,10,0,0" 
+               Margin="0,20,0,0" 
                VerticalAlignment="Top" 
-               RenderTransformOrigin="0.3,-1.217" 
                FontSize="48" 
-               Height="80" 
                FontFamily="Bodoni MT Condensed" 
                Foreground="#FFAE7D5C"/>
 
-        <Button Style="{StaticResource ImageButtonStyle}"
-                Margin="0,95,0,0" 
-                Click="FrameSale_Click">
-            <Image Source="/Images/Background/FrameSale.png"/>
-        </Button>
-
-        <Button Style="{StaticResource ImageButtonStyle}"
-                Margin="0,266,0,0" 
-                Click="FrameProviders_Click">
-            <Image Source="/Images/Background/FrameProviders.png" Margin="0,-5,0,5"/>
-        </Button>
-
-        <Button Style="{StaticResource ImageButtonStyle}"
-                Margin="0,429,0,0" 
-                Click="FrameProducts_Click">
-            <Image Source="/Images/Background/FrameProducts.png" Margin="0,-6,0,6"/>
-        </Button>
+        <StackPanel Margin="20,100,20,20" VerticalAlignment="Top">
+            <Button Content="Ventas" Style="{StaticResource CardButtonStyle}" Tag="/Images/Icons/SalesIcon.png" Click="FrameSale_Click"/>
+            <Button Content="Proveedores" Style="{StaticResource CardButtonStyleBigIcon}" Tag="/Images/Icons/ProvidersIcon.png" Click="FrameSuppliers_Click"/>
+            <Button Content="Productos" Style="{StaticResource CardButtonStyle}" Tag="/Images/Icons/ProductsIcon.png" Click="FrameProducts_Click"/>
+        </StackPanel>
     </Grid>
 </Page>

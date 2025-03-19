@@ -46,7 +46,7 @@ namespace MilyUnaNochesWPFApp.Views {
             ProviderDataGrid.ItemsSource = filteredProviders;
         }
 
-        private void Eliminar_Click(object sender, RoutedEventArgs e) {
+        private void Delete_Click(object sender, RoutedEventArgs e) {
 
             if (ProviderDataGrid.SelectedItem is Provider selectedProvider) {
                 MessageBoxResult result = MessageBox.Show(
@@ -71,7 +71,7 @@ namespace MilyUnaNochesWPFApp.Views {
             }
         }
 
-        private void Archivar_Click(object sender, RoutedEventArgs e) {
+        private void Archive_Click(object sender, RoutedEventArgs e) {
             if (ProviderDataGrid.SelectedItem is Provider selectedProvider) {
                 var result = _providerManager.ArchiveProvider(selectedProvider.IdProvider);
                 if (result == 1) {
@@ -83,7 +83,7 @@ namespace MilyUnaNochesWPFApp.Views {
             }
         }
 
-        private void Editar_Click(object sender, RoutedEventArgs e) {
+        private void Edit_Click(object sender, RoutedEventArgs e) {
             if (ProviderDataGrid.SelectedItem is Provider selectedProvider) {
                 var editWindow = new EditProvider(selectedProvider);
                 bool? result = editWindow.ShowDialog();

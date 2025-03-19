@@ -117,9 +117,9 @@
                     HorizontalAlignment="Right"
                     VerticalAlignment="Bottom"
                     Margin="0,0,10,10">
-            <Button Content="Eliminar" Style="{StaticResource ButtonStyle}" Click="Eliminar_Click"/>
-            <Button Content="Archivar" Style="{StaticResource ButtonStyle}" Click="Archivar_Click"/>
-            <Button Content="Editar" Style="{StaticResource ButtonStyle}" Click="Editar_Click"/>
+            <Button Content="Eliminar" Style="{StaticResource ButtonStyle}" Click="Delete_Click"/>
+            <Button Content="Archivar" Style="{StaticResource ButtonStyle}" Click="Archive_Click"/>
+            <Button Content="Editar" Style="{StaticResource ButtonStyle}" Click="Edit_Click"/>
         </StackPanel>
     </Grid>
 </Page>
