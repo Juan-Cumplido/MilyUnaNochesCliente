@@ -1,0 +1,214 @@
+﻿<Page x:Class="MilyUnaNochesWPFApp.Views.RegisterProductView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:MilyUnaNochesWPFApp.Views"
+      mc:Ignorable="d" 
+      d:DesignHeight="720" d:DesignWidth="1280"
+      Background="#fdf8ef"
+      Title="RegisterProductView">
+
+    <Page.Resources>
+        <Style x:Key="CenteredCellStyle" TargetType="DataGridCell">
+            <Setter Property="TextBlock.TextAlignment" Value="Center"/>
+            <Setter Property="TextBlock.VerticalAlignment" Value="Center"/>
+        </Style>
+    </Page.Resources>
+
+    <Grid>
+        <!-- Imagen superior -->
+        <Image HorizontalAlignment="Center"
+               Height="144" 
+               Margin="0,73,0,0" 
+               VerticalAlignment="Top" 
+               Width="1280" 
+               Source="/Images/Background/FrameProducts.png"/>
+
+        <!-- Barra de búsqueda -->
+
+        <!-- Botones de CU -->
+        <Button Content="REGISTRAR" HorizontalAlignment="Left" Margin="451,232,0,0" VerticalAlignment="Top" FontFamily="Bodoni MT" Height="55" Width="130" FontSize="19" Background="{x:Null}" Foreground="#FFAE7D5C" BorderBrush="{x:Null}" RenderTransformOrigin="0.52,0.144" Click="Register"/>
+        <Button Content="CONSULTAR" HorizontalAlignment="Left" Margin="714,232,0,0" VerticalAlignment="Top" FontFamily="Bodoni MT" Height="55" Width="130" FontSize="19" Background="{x:Null}" Foreground="#FFAE7D5C" BorderBrush="{x:Null}" RenderTransformOrigin="0.52,0.144" Click="Consult"/>
+        <Button Content="VALIDAR" HorizontalAlignment="Left" Margin="979,232,0,0" VerticalAlignment="Top" FontFamily="Bodoni MT" Height="55" Width="130" FontSize="19" Background="{x:Null}" Foreground="#FFAE7D5C" BorderBrush="{x:Null}" RenderTransformOrigin="0.52,0.144" Click="Validate"/>
+
+        <!-- Interfaz para registrar -->
+        <Label Content="Nombre del producto" 
+            HorizontalAlignment="Left" 
+            Height="40" 
+            Margin="109,316,0,0" 
+            VerticalAlignment="Top" 
+            Width="159" FontFamily="Bodoni MT Condensed" 
+            FontSize="25" 
+            Background="{x:Null}"
+            Foreground="#FFAE7D5C" HorizontalContentAlignment="Right"/>
+
+        <Border HorizontalAlignment="Left"
+        Height="48"
+        Width="273"
+        Margin="287,312,0,360"
+        CornerRadius="25"
+        Background="#FFCFB68B">
+            <TextBox FontFamily="Bodoni MT Condensed"
+             FontSize="20"
+             BorderThickness="0"
+             Background="Transparent"
+             Name="txtb_NombreProducto"
+             Padding="10"/>
+        </Border>
+
+        <Label Content="Código del producto" 
+            HorizontalAlignment="Left" 
+            Height="40" 
+            Margin="109,388,0,0" 
+            VerticalAlignment="Top" 
+            Width="159" FontFamily="Bodoni MT Condensed" 
+            FontSize="25" 
+            Background="{x:Null}"
+            Foreground="#FFAE7D5C" RenderTransformOrigin="0.514,2.49" HorizontalContentAlignment="Right"/>
+        <Border HorizontalAlignment="Left"
+        Height="48"
+        Width="273"
+        Margin="287,386,0,286"
+        CornerRadius="25"
+        Background="#FFCFB68B">
+            <TextBox FontFamily="Bodoni MT Condensed"
+             FontSize="20"
+             BorderThickness="0"
+             Background="Transparent"
+             Name="txtb_CodigoProducto"
+             Padding="10"/>
+        </Border>
+
+        <Label Content="Descripción" 
+            HorizontalAlignment="Left" 
+            Height="40" 
+            Margin="109,468,0,0" 
+            VerticalAlignment="Top" 
+            Width="159" FontFamily="Bodoni MT Condensed" 
+            FontSize="25" 
+            Background="{x:Null}"
+            Foreground="#FFAE7D5C" RenderTransformOrigin="0.514,2.49" HorizontalContentAlignment="Right"/>
+        <Border HorizontalAlignment="Left"
+        Height="48"
+        Width="273"
+        CornerRadius="25"
+        Background="#FFCFB68B" Margin="287,460,0,212">
+            <TextBox FontFamily="Bodoni MT Condensed"
+             FontSize="20"
+             BorderThickness="0"
+             Background="Transparent"
+             Name="txtb_Descripcion"
+             Padding="10" />
+        </Border>
+
+        <Label Content="Precio de compra" 
+            HorizontalAlignment="Left" 
+            Height="40" 
+            Margin="109,542,0,0" 
+            VerticalAlignment="Top" 
+            Width="159" FontFamily="Bodoni MT Condensed" 
+            FontSize="25" 
+            Background="{x:Null}"
+            Foreground="#FFAE7D5C" RenderTransformOrigin="0.514,2.49" HorizontalContentAlignment="Right"/>
+        <Border HorizontalAlignment="Left"
+            Height="48"
+            Width="273"
+            CornerRadius="25"
+            Background="#FFCFB68B" Margin="287,538,0,134">
+            <TextBox FontFamily="Bodoni MT Condensed"
+                FontSize="20"
+                BorderThickness="0"
+                Background="Transparent"
+                x:Name="txtb_PrecioCompra"
+                Padding="10" />
+        </Border>
+
+        <Label Content="Fotos del producto:" 
+            HorizontalAlignment="Left" 
+            Height="40" 
+            Margin="109,621,0,0" 
+            VerticalAlignment="Top" 
+            Width="159" FontFamily="Bodoni MT Condensed" 
+            FontSize="25" 
+            Background="{x:Null}"
+            Foreground="#FFAE7D5C" RenderTransformOrigin="0.514,2.49" HorizontalContentAlignment="Right"/>
+        <Label Content="Precio de venta" 
+            HorizontalAlignment="Left" 
+            Height="40" 
+            Margin="710,312,0,0" 
+            VerticalAlignment="Top" 
+            Width="158" FontFamily="Bodoni MT Condensed" 
+            FontSize="25" 
+            Background="{x:Null}"
+            Foreground="#FFAE7D5C" HorizontalContentAlignment="Right"/>
+        <Border HorizontalAlignment="Left"
+            Height="48"
+            Width="272"
+            Margin="888,308,0,364"
+            CornerRadius="25"
+            Background="#FFCFB68B">
+            <TextBox FontFamily="Bodoni MT Condensed"
+                FontSize="20"
+                BorderThickness="0"
+                Background="Transparent"
+                x:Name="txtb_PrecioVenta"
+                Padding="10"/>
+        </Border>
+        <Label Content="Categoría" 
+            HorizontalAlignment="Left" 
+            Height="40" 
+            Margin="710,384,0,0" 
+            VerticalAlignment="Top" 
+            Width="158" FontFamily="Bodoni MT Condensed" 
+            FontSize="25" 
+            Background="{x:Null}"
+            Foreground="#FFAE7D5C" RenderTransformOrigin="0.514,2.49" HorizontalContentAlignment="Right"/>
+        <Border HorizontalAlignment="Left"
+            Height="48"
+            Width="272"
+            Margin="888,382,0,290"
+            CornerRadius="25"
+            Background="#FFCFB68B">
+            <TextBox FontFamily="Bodoni MT Condensed"
+                FontSize="20"
+                BorderThickness="0"
+                Background="Transparent"
+                x:Name="txtb_Categoria"
+                Padding="10"/>
+        </Border>
+
+        <Label Content="Cantidad" 
+            HorizontalAlignment="Left" 
+            Height="40" 
+            Margin="710,461,0,0" 
+            VerticalAlignment="Top" 
+            Width="158" FontFamily="Bodoni MT Condensed" 
+            FontSize="25" 
+            Background="{x:Null}"
+            Foreground="#FFAE7D5C" RenderTransformOrigin="0.514,2.49" HorizontalContentAlignment="Right"/>
+        <Border HorizontalAlignment="Left"
+            Height="48"
+            Width="272"
+            CornerRadius="25"
+            Background="#FFCFB68B" Margin="888,457,0,215">
+            <TextBox FontFamily="Bodoni MT Condensed"
+                FontSize="20"
+                BorderThickness="0"
+                Background="Transparent"
+                x:Name="txtb_Cantidad"
+                Padding="10" />
+        </Border>
+
+        <Border Name="btn_PhotoBorder" CornerRadius="15" Background="#FF683317" Height="50" Margin="287,617,720,53">
+            <Button Name="btn_Photo" Content="ADJUNTE ARCHIVOS" Height="50" Background="Transparent"
+            BorderThickness="0" FontSize="16" Foreground="White" FontFamily="Bahnschrift SemiLight" Click="UploadPhoto"/>
+        </Border>
+
+        <Border CornerRadius="15" Background="#FFB45E2D" Height="50" Margin="967,614,125,56">
+            <Button Content="GUARDAR" Height="50" Background="Transparent"
+            BorderThickness="0" FontSize="16" Foreground="White" FontFamily="Bahnschrift SemiLight" Click="SaveProduct" />
+        </Border>
+        <Image Name="img_Photo" HorizontalAlignment="Left" Height="82" Margin="376,612,0,0" VerticalAlignment="Top" Width="91"/>
+    </Grid>
+</Page>
