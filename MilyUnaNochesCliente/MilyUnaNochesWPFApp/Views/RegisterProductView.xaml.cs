@@ -1,4 +1,4 @@
-﻿using MilyUnaNochesWPFApp.MilyUnaNochesService;
+﻿using MilyUnaNochesWPFApp.MilyUnaNochesProxy;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -84,7 +84,7 @@ namespace MilyUnaNochesWPFApp.Views
                 
                 try
                 {
-                    MilyUnaNochesService.Product producto = new MilyUnaNochesService.Product
+                    MilyUnaNochesProxy.Product producto = new MilyUnaNochesProxy.Product
                     {
                         NombreProducto = txtb_NombreProducto.Text,
                         CodigoProducto = txtb_CodigoProducto.Text,
