@@ -17,8 +17,8 @@ namespace MilyUnaNochesWPFApp.Views {
     /// <summary>
     /// Lógica de interacción para MenuProvider2.xaml
     /// </summary>
-    public partial class MenuProvider2 : Page {
-        public MenuProvider2() {
+    public partial class MenuProvider : Page {
+        public MenuProvider() {
             InitializeComponent();
         }
 

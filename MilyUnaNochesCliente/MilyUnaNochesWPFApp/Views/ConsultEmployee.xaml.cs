@@ -1,21 +1,30 @@
-﻿using System;
+﻿using MilyUnaNochesWPFApp.MilyUnaNochesProxy;
+using MilyUnaNochesWPFApp.Logic;
+using System;
+using System.Collections.Generic;
 using System.Linq;
-using System.ServiceModel;
+using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
 using System.Windows.Media;
-using MilyUnaNochesWPFApp.Logic;
-using MilyUnaNochesWPFApp.MilyUnaNochesProxy;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+using System.ServiceModel;
 
 namespace MilyUnaNochesWPFApp.Views
 {
-    public partial class ConsultClient : Page
+   
+    public partial class ConsultEmployee : Page
     {
         private readonly UserManagerClient _serviceClient;
         private readonly LoggerManager _logger;
         private string selectedUserId;
-        public ConsultClient()
+        public ConsultEmployee()
         {
             InitializeComponent();
             _serviceClient = new UserManagerClient();
@@ -24,18 +33,27 @@ namespace MilyUnaNochesWPFApp.Views
 
         private void SearchForClient_GotFocus(object sender, RoutedEventArgs e)
         {
-            if (txtb_searchForClient.Text == "Nombre o teléfono (ej. Juan)")
+            if (txtb_searchForEmployee.Text == "Nombre o teléfono (ej. Juan)")
             {
-                txtb_searchForClient.Text = "";
-                txtb_searchForClient.Foreground = Brushes.Black;
+                txtb_searchForEmployee.Text = "";
+                txtb_searchForEmployee.Foreground = Brushes.Black;
+            }
+        }
+
+        private void SearchForClient_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtb_searchForEmployee.Text))
+            {
+                txtb_searchForEmployee.Text = "Nombre o teléfono (ej. Juan)";
+                txtb_searchForEmployee.Foreground = Brushes.Gray;
             }
         }
 
         private async void SearchForClient_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (!this.IsLoaded || _serviceClient == null) return; 
+            if (!this.IsLoaded || _serviceClient == null) return;
 
-            string searchTerm = txtb_searchForClient?.Text?.Trim();
+            string searchTerm = txtb_searchForEmployee?.Text?.Trim();
             if (string.IsNullOrWhiteSpace(searchTerm) || searchTerm == "Nombre o teléfono (ej. Juan)")
             {
                 grd_ProviderDataGrid.ItemsSource = null;
@@ -44,22 +62,24 @@ namespace MilyUnaNochesWPFApp.Views
 
             try
             {
-                var clients = await _serviceClient.GetUserProfileByNamePhoneAsync(searchTerm);
+                var employee = await _serviceClient.GetActiveEmployeesBySearchTermAsync(searchTerm);
 
-                if (clients == null || !clients.Any())
+                if (employee == null || !employee.Any())
                 {
                     grd_ProviderDataGrid.ItemsSource = null;
                     return;
                 }
 
-                grd_ProviderDataGrid.ItemsSource = clients.Select(c => new
+                grd_ProviderDataGrid.ItemsSource = employee.Select(c => new
                 {
                     IdUsuario = c.idUsuario,
                     Nombre = c.nombre ?? "N/A",
                     PrimerApellido = c.primerApellido ?? "N/A",
                     SegundoApellido = c.segundoApellido ?? "N/A",
                     Telefono = c.telefono ?? "N/A",
-                    Correo = c.correo ?? "N/A"
+                    Correo = c.correo ?? "N/A",
+                    TipoEmpleado = c.tipoEmpleado ?? "N/A",
+                    Direccion = $"{c.calle ?? "N/A"}, {c.numero ?? "N/A"}, {c.codigoPostal ?? "N/A"}, {c.ciudad ?? "N/A"}"
                 }).ToList();
             }
             catch (EndpointNotFoundException endPointException)
@@ -84,15 +104,6 @@ namespace MilyUnaNochesWPFApp.Views
             }
         }
 
-        private void SearchForClient_LostFocus(object sender, RoutedEventArgs e)
-        {
-            if (string.IsNullOrWhiteSpace(txtb_searchForClient.Text))
-            {
-                txtb_searchForClient.Text = "Nombre o teléfono (ej. Juan)";
-                txtb_searchForClient.Foreground = Brushes.Gray;
-            }
-        }
-
         private void grd_ProviderDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (grd_ProviderDataGrid.SelectedItem != null)
@@ -111,7 +122,6 @@ namespace MilyUnaNochesWPFApp.Views
             }
         }
 
-
         private async void Eliminar_Click(object sender, RoutedEventArgs e)
         {
             if (string.IsNullOrEmpty(selectedUserId))
@@ -123,7 +133,7 @@ namespace MilyUnaNochesWPFApp.Views
             MessageBoxResult result = MessageBox.Show("¿Está seguro de archivar este cliente?", "Confirmación", MessageBoxButton.YesNo, MessageBoxImage.Question);
             if (result != MessageBoxResult.Yes)
             {
-                return; 
+                return;
             }
 
             try
@@ -131,7 +141,7 @@ namespace MilyUnaNochesWPFApp.Views
                 int.TryParse(selectedUserId, out int userId);
                 int response = await Task.Run(() => _serviceClient.ArchiveClient(userId));
 
-                if (response == 1) 
+                if (response == 1)
                 {
                     DialogManager.ShowSuccessMessageAlert("Cliente archivado exitosamente.");
                     SearchForClient_TextChanged(null, null);
@@ -165,7 +175,12 @@ namespace MilyUnaNochesWPFApp.Views
 
         private void Editar_Click(object sender, RoutedEventArgs e)
         {
-            // Implementación del botón Editar
+
         }
     }
+
+    
+
+
+   
 }

@@ -1,0 +1,56 @@
+﻿<Page x:Class="MilyUnaNochesWPFApp.Views.RegisterClient"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:MilyUnaNochesWPFApp.Views"
+      mc:Ignorable="d" 
+      d:DesignHeight="438" d:DesignWidth="1280"
+      Background="#fdf8ef"
+      Title="RegisterClient">
+
+    <Grid>
+
+        <Label Content="Nombre" HorizontalAlignment="Left" Height="40" Margin="161,51,0,0" VerticalAlignment="Top" Width="64" FontFamily="Bodoni MT Condensed" FontSize="25" Background="{x:Null}" Foreground="#FFAE7D5C"/>
+
+        <Border BorderThickness="1" Background="#ae7d5c" CornerRadius="15" Margin="267,51,747,347">
+            <DockPanel>
+                <TextBox x:Name="txtb_Name" Width="247" Height="26" FontSize="25" Background="Transparent" BorderThickness="0" Foreground="Black" FontFamily="Bodoni MT Condensed"/>
+            </DockPanel>
+        </Border>
+
+        <Label Content="Primer apellido" HorizontalAlignment="Left" Height="40" Margin="107,167,0,0" VerticalAlignment="Top" Width="118" FontFamily="Bodoni MT Condensed" FontSize="25" Background="{x:Null}" Foreground="#FFAE7D5C"/>
+
+        <Border BorderThickness="1" Background="#ae7d5c" CornerRadius="15" Margin="267,167,747,231">
+            <DockPanel>
+                <TextBox x:Name="txtb_firstSurname" Width="247" Height="26" FontSize="25" Background="Transparent" BorderThickness="0" Foreground="Black" FontFamily="Bodoni MT Condensed"/>
+            </DockPanel>
+        </Border>
+
+        <Label Content="Segundo apellido" HorizontalAlignment="Left" Height="40" Margin="90,281,0,0" VerticalAlignment="Top" Width="135" FontFamily="Bodoni MT Condensed" FontSize="25" Background="{x:Null}" Foreground="#FFAE7D5C"/>
+
+        <Border BorderThickness="1" Background="#ae7d5c" CornerRadius="15" Margin="267,281,747,117">
+            <DockPanel>
+                <TextBox x:Name="txtb_secondSurname" Width="247" Height="26" FontSize="25" Background="Transparent" BorderThickness="0" Foreground="Black" FontFamily="Bodoni MT Condensed"/>
+            </DockPanel>
+        </Border>
+
+        <Label Content="Telefono" HorizontalAlignment="Left" Height="40" Margin="742,167,0,0" VerticalAlignment="Top" Width="70" FontFamily="Bodoni MT Condensed" FontSize="25" Background="{x:Null}" Foreground="#FFAE7D5C"/>
+
+        <Border BorderThickness="1" Background="#ae7d5c" CornerRadius="15" Margin="850,164,164,234">
+            <DockPanel>
+                <TextBox x:Name="txtb_telephone" Width="247" Height="26" FontSize="25" Background="Transparent" BorderThickness="0" Foreground="Black" FontFamily="Bodoni MT Condensed" PreviewTextInput="Telephone_PreviewTextInput" PreviewKeyDown="Telephone_PreviewKeyDown" MaxLength="10"/>
+            </DockPanel>
+        </Border>
+
+        <Label Content="Correo" HorizontalAlignment="Left" Height="40" Margin="750,51,0,0" VerticalAlignment="Top" Width="54" FontFamily="Bodoni MT Condensed" FontSize="25" Background="{x:Null}" Foreground="#FFAE7D5C"/>
+
+        <Border BorderThickness="1" Background="#ae7d5c" CornerRadius="15" Margin="850,51,164,347">
+            <DockPanel>
+                <TextBox x:Name="txtb_email" Width="247" Height="26" FontSize="25" Background="Transparent" BorderThickness="0" Foreground="Black" FontFamily="Bodoni MT Condensed"/>
+            </DockPanel>
+        </Border>
+
+        <Button Content="Registrar" Cursor="Hand" Click="Registrar_Click" Margin="595,373,581,32" Background="Transparent" Foreground="#AE7D5C" FontSize="25" FontFamily="Bodoni MT Condensed" BorderThickness="1"/>
+    </Grid>
+</Page>

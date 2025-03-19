@@ -1,0 +1,103 @@
+﻿<Page x:Class="MilyUnaNochesWPFApp.Views.ConsultProductsView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:MilyUnaNochesWPFApp.Views"
+      mc:Ignorable="d" 
+      d:DesignHeight="720" d:DesignWidth="1280"
+      Background="#fdf8ef"
+      Title="ConsultProductsView">
+
+    <Page.Resources>
+        <Style x:Key="CenteredCellStyle" TargetType="DataGridCell">
+            <Setter Property="TextBlock.TextAlignment" Value="Center"/>
+            <Setter Property="TextBlock.VerticalAlignment" Value="Center"/>
+        </Style>
+        <Style x:Key="HeaderStyle" TargetType="DataGridColumnHeader">
+            <Setter Property="Background" Value="#FFAE7D5C"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="FontFamily" Value="Bodoni MT"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        </Style>
+    </Page.Resources>
+
+    <Grid>
+        <!-- Imagen superior -->
+        <Image HorizontalAlignment="Center"
+               Height="144" 
+               Margin="0,73,0,0" 
+               VerticalAlignment="Top" 
+               Width="1280" 
+               Source="/Images/Background/FrameProducts.png"/>
+
+        <!-- Barra de búsqueda -->
+        <TextBox HorizontalAlignment="Left" 
+                 Height="44" 
+                 Margin="68,232,0,0" 
+                 TextWrapping="Wrap" 
+                 Text="Busque un producto" 
+                 VerticalAlignment="Top" 
+                 Width="241" 
+                 BorderBrush="{x:Null}" 
+                 BorderThickness="3,3,3,3" 
+                 TextChanged="TextBox_TextChanged"
+                 VerticalContentAlignment="Center"
+                 FontSize="20"
+                 FontFamily="Bodoni MT Condensed" 
+                 Foreground="#FFAE7D5C" HorizontalContentAlignment="Center">
+            <TextBox.Background>
+                <ImageBrush ImageSource="/Images/Background/Search.png"/>
+            </TextBox.Background>
+        </TextBox>
+
+        <!-- Botones de CU -->
+        <Button Content="REGISTRAR" HorizontalAlignment="Left" Margin="451,232,0,0" VerticalAlignment="Top" FontFamily="Bodoni MT" Height="55" Width="130" FontSize="19" Background="{x:Null}" Foreground="#FFAE7D5C" BorderBrush="{x:Null}" RenderTransformOrigin="0.52,0.144" Click="Register"/>
+        <Button Content="CONSULTAR" HorizontalAlignment="Left" Margin="714,232,0,0" VerticalAlignment="Top" FontFamily="Bodoni MT" Height="55" Width="130" FontSize="19" Background="{x:Null}" Foreground="#FFAE7D5C" BorderBrush="{x:Null}" RenderTransformOrigin="0.52,0.144" Click="Consult"/>
+        <Button Content="VALIDAR" HorizontalAlignment="Left" Margin="979,232,0,0" VerticalAlignment="Top" FontFamily="Bodoni MT" Height="55" Width="130" FontSize="19" Background="{x:Null}" Foreground="#FFAE7D5C" BorderBrush="{x:Null}" RenderTransformOrigin="0.52,0.144" Click="Validate"/>
+
+        <!-- Tabla de productos -->
+        <DataGrid x:Name="ProductsDataGrid"
+          SelectionMode="Single"
+          AutoGenerateColumns="False" 
+          Height="300" 
+          Margin="68,300,347,0" 
+          VerticalAlignment="Top" 
+          SelectionChanged="ProductsDataGrid_SelectionChanged"
+          HeadersVisibility="Column"
+          BorderThickness="0"
+          RowHeaderWidth="0"
+          ColumnHeaderHeight="40"
+          RowHeight="40"
+          HorizontalContentAlignment="Stretch">
+            <DataGrid.Columns>
+                <DataGridTemplateColumn Header="Foto" HeaderStyle="{StaticResource HeaderStyle}" Width="*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Image Source="{Binding Imagen}" Height="50" Width="50"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn Header="Nombre" Binding="{Binding NombreProducto}" HeaderStyle="{StaticResource HeaderStyle}" CellStyle="{StaticResource CenteredCellStyle}" Width="*"/>
+                <DataGridTextColumn Header="Cantidad" Binding="{Binding Cantidad}" HeaderStyle="{StaticResource HeaderStyle}" CellStyle="{StaticResource CenteredCellStyle}" Width="*"/>
+                <DataGridTextColumn Header="Categoría" Binding="{Binding Categoria}" HeaderStyle="{StaticResource HeaderStyle}" CellStyle="{StaticResource CenteredCellStyle}" Width="*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+
+        <!-- Botones de operación -->
+        <Border CornerRadius="15" Background="#bb6d04" Height="50" Margin="1015,324,77,346">
+            <Button Content="EDITAR" Height="50" Background="Transparent"
+            BorderThickness="0" FontSize="16" Foreground="White" FontFamily="Bahnschrift SemiLight" Click="Edit"/>
+        </Border>
+        <Border CornerRadius="15" Background="#bb6d04" Height="50" Margin="1015,390,77,280">
+            <Button Content="ELIMINAR" Height="50" Background="Transparent"
+            BorderThickness="0" FontSize="16" Foreground="White" FontFamily="Bahnschrift SemiLight" Click="Delete"/>
+        </Border>
+        <Border CornerRadius="15" Background="#bb6d04" Height="50" Margin="1015,456,77,214">
+            <Button Content="CONSULTAR" Height="50" Background="Transparent"
+            BorderThickness="0" FontSize="16" Foreground="White" FontFamily="Bahnschrift SemiLight" Click="Consult"/>
+        </Border>
+    </Grid>
+</Page>

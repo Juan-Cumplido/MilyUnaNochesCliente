@@ -1,5 +1,5 @@
 ﻿using MilyUnaNochesWPFApp.Logic;
-using MilyUnaNochesWPFApp.MilyUnaNochesService;
+using MilyUnaNochesWPFApp.MilyUnaNochesProxy;
 using System;
 using System.Collections.Generic;
 using System.Linq;

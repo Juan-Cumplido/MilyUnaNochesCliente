@@ -62,16 +62,21 @@ namespace MilyUnaNochesWPFApp.Logic
             return isValid;
         }
 
-        public static bool ValidateUsername(string username)
+        public static bool ValidateName(string name)
         {
             bool isValid = false;
-            string cleanedUsername = Regex.Replace(username.Trim(), @"\s+", " ", RegexOptions.None, TimeSpan.FromMilliseconds(500));
-            if (!string.IsNullOrWhiteSpace(cleanedUsername) && ValidateRegexPattern(cleanedUsername, _usernameRegex))
+            string nameRegex = @"^[A-Za-zÁÉÍÓÚáéíóúÑñ'’]+\s?[A-Za-zÁÉÍÓÚáéíóúÑñ'’\s]*$";
+
+            string cleanedName = Regex.Replace(name.Trim(), @"\s+", " ", RegexOptions.None, TimeSpan.FromMilliseconds(500));
+
+            if (!string.IsNullOrWhiteSpace(cleanedName) && Regex.IsMatch(cleanedName, nameRegex))
             {
                 isValid = true;
             }
+
             return isValid;
         }
+
 
         public static bool ValidateEmail(string email)
         {

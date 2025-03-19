@@ -23,8 +23,8 @@
                     <Border BorderThickness="1" Background="#dcd9d7" CornerRadius="15" Margin="10" Height="65">
                         <DockPanel>
                             <Image Source="/Images/Icons/UserIcon.png" Width="35" Height="35" Margin="10" DockPanel.Dock="Right"/>
-                            <TextBox x:Name="UserIdTextBox" Width="280" Height="40" FontSize="22" Background="Transparent" 
-                                     BorderThickness="0" Text="Usuario" Foreground="Gray"
+                            <TextBox x:Name="UserIdTextBox" Width="280" Height="40" FontSize="27" Background="Transparent" 
+                                     BorderThickness="0" Text="Usuario" Foreground="Gray" FontFamily="Bodoni MT Condensed" 
                                      GotFocus="UserIdTextBox_GotFocus" LostFocus="UserIdTextBox_LostFocus"/>
                         </DockPanel>
                     </Border>
@@ -35,11 +35,11 @@
 
                             <Grid Width="280">
 
-                                <TextBlock x:Name="PasswordPlaceholder" Text="Contraseña" Foreground="Gray"
-                       FontSize="22" VerticalAlignment="Top" Margin="0,11,10,0"/>
+                                <TextBlock x:Name="PasswordPlaceholder" Text="Contraseña" Foreground="Gray" FontFamily="Bodoni MT Condensed" 
+                       FontSize="27" VerticalAlignment="Top" Margin="0,11,10,0"/>
 
 
-                                <PasswordBox x:Name="PasswordBox" Width="280" Height="40" FontSize="22" Background="Transparent" 
+                                <PasswordBox x:Name="PasswordBox" Width="280" Height="40" FontSize="27" Background="Transparent" 
                          BorderThickness="0" PasswordChanged="PasswordBox_PasswordChanged"
                          GotFocus="PasswordBox_GotFocus" LostFocus="PasswordBox_LostFocus"/>
                             </Grid>
@@ -48,7 +48,7 @@
 
 
                     <Border Background="#ae7d5c" CornerRadius="15" Margin="10">
-                        <Button Content="INICIAR SESIÓN" Width="350" Height="60" FontSize="22"
+                        <Button Content="INICIAR SESIÓN" Width="350" Height="60" FontSize="27" FontFamily="Bodoni MT Condensed" 
                             Background="Transparent" Foreground="White" FontWeight="Bold"
                             BorderThickness="0" Cursor="Hand"
                             OverridesDefaultStyle="True" Click="BtnLogin_Click">

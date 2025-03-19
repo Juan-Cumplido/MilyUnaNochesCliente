@@ -74,19 +74,30 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Connected Services\MilyUnaNochesService\Reference.cs">
+    <Compile Include="Connected Services\MilyUnaNochesProxy\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Logic\DialogManager.cs" />
     <Compile Include="Logic\Hasher.cs" />
+    <Compile Include="Logic\LoggerManager.cs" />
+    <Compile Include="Logic\Product.cs" />
     <Compile Include="Logic\Sale.cs" />
     <Compile Include="Logic\Validator.cs" />
+    <Compile Include="Views\ConsultEmployee.xaml.cs">
+      <DependentUpon>ConsultEmployee.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\ConsultClient.xaml.cs">
       <DependentUpon>ConsultClient.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\EditProvider.xaml.cs">
       <DependentUpon>EditProvider.xaml</DependentUpon>
+    <Compile Include="Views\ConsultProductsView.xaml.cs">
+      <DependentUpon>ConsultProductsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ConsultSale.xaml.cs">
+      <DependentUpon>ConsultSale.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\FindProvider.xaml.cs">
       <DependentUpon>FindProvider.xaml</DependentUpon>
@@ -97,6 +108,9 @@
     <Compile Include="Views\LoginView.xaml.cs">
       <DependentUpon>LoginView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\MenuEmployees.xaml.cs">
+      <DependentUpon>MenuEmployees.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\ManagerMenu.xaml.cs">
       <DependentUpon>ManagerMenu.xaml</DependentUpon>
     </Compile>
@@ -105,6 +119,18 @@
     </Compile>
     <Compile Include="Views\MenuProvider.xaml.cs">
       <DependentUpon>MenuProvider.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ProductDetailView.xaml.cs">
+      <DependentUpon>ProductDetailView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\RegisterProductView.xaml.cs">
+      <DependentUpon>RegisterProductView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\RegisterEmployee.xaml.cs">
+      <DependentUpon>RegisterEmployee.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\RegisterClient.xaml.cs">
+      <DependentUpon>RegisterClient.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\RegisterProvider.xaml.cs">
       <DependentUpon>RegisterProvider.xaml</DependentUpon>
@@ -128,11 +154,20 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\ConsultEmployee.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Views\ConsultClient.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\EditProvider.xaml">
+    <Page Include="Views\ConsultProductsView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\ConsultSale.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -148,6 +183,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\MenuEmployees.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\ManagerMenu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -157,6 +196,22 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\MenuProvider.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ProductDetailView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\RegisterProductView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\RegisterEmployee.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\RegisterClient.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -191,20 +246,29 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="Connected Services\MilyUnaNochesService\item.xsd">
+    <None Include="Connected Services\MilyUnaNochesProxy\item.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\MilyUnaNochesService\item1.xsd">
+    <None Include="Connected Services\MilyUnaNochesProxy\item1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\MilyUnaNochesService\item2.xsd">
+    <None Include="Connected Services\MilyUnaNochesProxy\item2.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\MilyUnaNochesService\item3.xsd">
+    <None Include="Connected Services\MilyUnaNochesProxy\item3.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Connected Services\MilyUnaNochesProxy\MilyUnaNochesService.wsdl" />
+    <None Include="Connected Services\MilyUnaNochesProxy\MilyUnaNochesWPFApp.MilyUnaNochesProxy.Empleado.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\MilyUnaNochesProxy\MilyUnaNochesWPFApp.MilyUnaNochesProxy.Provider.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\MilyUnaNochesProxy\MilyUnaNochesWPFApp.MilyUnaNochesProxy.Usuario.datasource">
     <None Include="Connected Services\MilyUnaNochesService\MilyUnaNochesService.wsdl" />
     <None Include="Connected Services\MilyUnaNochesService\MilyUnaNochesWPFApp.MilyUnaNochesService.Address.datasource">
+    <None Include="Connected Services\MilyUnaNochesService\MilyUnaNochesWPFApp.MilyUnaNochesService.Product.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\MilyUnaNochesService\MilyUnaNochesWPFApp.MilyUnaNochesService.Provider.datasource">
@@ -273,25 +337,28 @@
     <Resource Include="Images\Background\ClientBackground.png" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Images\Background\SaleBackground.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Background\EmployeesBackground.png" />
+  </ItemGroup>
+  <ItemGroup>
     <Resource Include="Images\Icons\Logo_Manager_View.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\Background\FrameProducts.png" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadataStorage Include="Connected Services\MilyUnaNochesService\" />
+    <WCFMetadataStorage Include="Connected Services\MilyUnaNochesProxy\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\MilyUnaNochesService\item.disco" />
+    <None Include="Connected Services\MilyUnaNochesProxy\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\MilyUnaNochesService\configuration91.svcinfo" />
+    <None Include="Connected Services\MilyUnaNochesProxy\configuration.svcinfo" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\MilyUnaNochesService\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\MilyUnaNochesService\Reference.svcmap">
+    <None Include="Connected Services\MilyUnaNochesProxy\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
