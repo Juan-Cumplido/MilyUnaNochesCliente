@@ -197,6 +197,9 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Connected Services\MilyUnaNochesService\MilyUnaNochesService.wsdl" />
+    <None Include="Connected Services\MilyUnaNochesService\MilyUnaNochesWPFApp.MilyUnaNochesService.Address.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Connected Services\MilyUnaNochesService\MilyUnaNochesWPFApp.MilyUnaNochesService.Provider.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>

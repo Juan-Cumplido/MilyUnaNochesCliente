@@ -15,16 +15,33 @@ namespace MilyUnaNochesWPFApp.MilyUnaNochesService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="AccessAccount", Namespace="http://schemas.datacontract.org/2004/07/MilyUnaNochesService.Contracts")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Usuario", Namespace="http://schemas.datacontract.org/2004/07/MilyUnaNochesService.Contracts")]
     [System.SerializableAttribute()]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(MilyUnaNochesWPFApp.MilyUnaNochesService.Profile))]
-    public partial class AccessAccount : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+    public partial class Usuario : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int idAccesoField;
+        private string correoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string estadoUsuarioField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int idUsuarioField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string nombreField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string primerApellidoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string segundoApellidoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string telefonoField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -37,14 +54,92 @@ namespace MilyUnaNochesWPFApp.MilyUnaNochesService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int idAcceso {
+        public string correo {
             get {
-                return this.idAccesoField;
+                return this.correoField;
             }
             set {
-                if ((this.idAccesoField.Equals(value) != true)) {
-                    this.idAccesoField = value;
-                    this.RaisePropertyChanged("idAcceso");
+                if ((object.ReferenceEquals(this.correoField, value) != true)) {
+                    this.correoField = value;
+                    this.RaisePropertyChanged("correo");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string estadoUsuario {
+            get {
+                return this.estadoUsuarioField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.estadoUsuarioField, value) != true)) {
+                    this.estadoUsuarioField = value;
+                    this.RaisePropertyChanged("estadoUsuario");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int idUsuario {
+            get {
+                return this.idUsuarioField;
+            }
+            set {
+                if ((this.idUsuarioField.Equals(value) != true)) {
+                    this.idUsuarioField = value;
+                    this.RaisePropertyChanged("idUsuario");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string nombre {
+            get {
+                return this.nombreField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.nombreField, value) != true)) {
+                    this.nombreField = value;
+                    this.RaisePropertyChanged("nombre");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string primerApellido {
+            get {
+                return this.primerApellidoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.primerApellidoField, value) != true)) {
+                    this.primerApellidoField = value;
+                    this.RaisePropertyChanged("primerApellido");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string segundoApellido {
+            get {
+                return this.segundoApellidoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.segundoApellidoField, value) != true)) {
+                    this.segundoApellidoField = value;
+                    this.RaisePropertyChanged("segundoApellido");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string telefono {
+            get {
+                return this.telefonoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.telefonoField, value) != true)) {
+                    this.telefonoField = value;
+                    this.RaisePropertyChanged("telefono");
                 }
             }
         }
@@ -57,13 +152,6 @@ namespace MilyUnaNochesWPFApp.MilyUnaNochesService {
                 propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
             }
         }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Profile", Namespace="http://schemas.datacontract.org/2004/07/MilyUnaNochesService.Contracts")]
-    [System.SerializableAttribute()]
-    public partial class Profile : MilyUnaNochesWPFApp.MilyUnaNochesService.AccessAccount {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -200,6 +288,9 @@ namespace MilyUnaNochesWPFApp.MilyUnaNochesService {
         private string phoneNumberField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string providerAddressField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string providerContactField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -281,6 +372,19 @@ namespace MilyUnaNochesWPFApp.MilyUnaNochesService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public string providerAddress {
+            get {
+                return this.providerAddressField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.providerAddressField, value) != true)) {
+                    this.providerAddressField = value;
+                    this.RaisePropertyChanged("providerAddress");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public string providerContact {
             get {
                 return this.providerContactField;
@@ -320,11 +424,23 @@ namespace MilyUnaNochesWPFApp.MilyUnaNochesService {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="MilyUnaNochesService.IUserManager")]
     public interface IUserManager {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManager/AddUser", ReplyAction="http://tempuri.org/IUserManager/AddUserResponse")]
-        int AddUser(MilyUnaNochesWPFApp.MilyUnaNochesService.Profile profile);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManager/AddClient", ReplyAction="http://tempuri.org/IUserManager/AddClientResponse")]
+        int AddClient(MilyUnaNochesWPFApp.MilyUnaNochesService.Usuario usuario);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManager/AddUser", ReplyAction="http://tempuri.org/IUserManager/AddUserResponse")]
-        System.Threading.Tasks.Task<int> AddUserAsync(MilyUnaNochesWPFApp.MilyUnaNochesService.Profile profile);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManager/AddClient", ReplyAction="http://tempuri.org/IUserManager/AddClientResponse")]
+        System.Threading.Tasks.Task<int> AddClientAsync(MilyUnaNochesWPFApp.MilyUnaNochesService.Usuario usuario);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManager/VerifyAccess", ReplyAction="http://tempuri.org/IUserManager/VerifyAccessResponse")]
+        bool VerifyAccess(string username, string password);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManager/VerifyAccess", ReplyAction="http://tempuri.org/IUserManager/VerifyAccessResponse")]
+        System.Threading.Tasks.Task<bool> VerifyAccessAsync(string username, string password);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManager/VerifyExistinClient", ReplyAction="http://tempuri.org/IUserManager/VerifyExistinClientResponse")]
+        int VerifyExistinClient(string name, string firstLastName, string secondLastName);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManager/VerifyExistinClient", ReplyAction="http://tempuri.org/IUserManager/VerifyExistinClientResponse")]
+        System.Threading.Tasks.Task<int> VerifyExistinClientAsync(string name, string firstLastName, string secondLastName);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -354,12 +470,28 @@ namespace MilyUnaNochesWPFApp.MilyUnaNochesService {
                 base(binding, remoteAddress) {
         }
         
-        public int AddUser(MilyUnaNochesWPFApp.MilyUnaNochesService.Profile profile) {
-            return base.Channel.AddUser(profile);
+        public int AddClient(MilyUnaNochesWPFApp.MilyUnaNochesService.Usuario usuario) {
+            return base.Channel.AddClient(usuario);
         }
         
-        public System.Threading.Tasks.Task<int> AddUserAsync(MilyUnaNochesWPFApp.MilyUnaNochesService.Profile profile) {
-            return base.Channel.AddUserAsync(profile);
+        public System.Threading.Tasks.Task<int> AddClientAsync(MilyUnaNochesWPFApp.MilyUnaNochesService.Usuario usuario) {
+            return base.Channel.AddClientAsync(usuario);
+        }
+        
+        public bool VerifyAccess(string username, string password) {
+            return base.Channel.VerifyAccess(username, password);
+        }
+        
+        public System.Threading.Tasks.Task<bool> VerifyAccessAsync(string username, string password) {
+            return base.Channel.VerifyAccessAsync(username, password);
+        }
+        
+        public int VerifyExistinClient(string name, string firstLastName, string secondLastName) {
+            return base.Channel.VerifyExistinClient(name, firstLastName, secondLastName);
+        }
+        
+        public System.Threading.Tasks.Task<int> VerifyExistinClientAsync(string name, string firstLastName, string secondLastName) {
+            return base.Channel.VerifyExistinClientAsync(name, firstLastName, secondLastName);
         }
     }
     
@@ -372,6 +504,12 @@ namespace MilyUnaNochesWPFApp.MilyUnaNochesService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAdressManager/createAddress", ReplyAction="http://tempuri.org/IAdressManager/createAddressResponse")]
         System.Threading.Tasks.Task<int> createAddressAsync(MilyUnaNochesWPFApp.MilyUnaNochesService.Address address);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAdressManager/GetAddress", ReplyAction="http://tempuri.org/IAdressManager/GetAddressResponse")]
+        MilyUnaNochesWPFApp.MilyUnaNochesService.Address GetAddress(int idDireccion);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAdressManager/GetAddress", ReplyAction="http://tempuri.org/IAdressManager/GetAddressResponse")]
+        System.Threading.Tasks.Task<MilyUnaNochesWPFApp.MilyUnaNochesService.Address> GetAddressAsync(int idDireccion);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -407,6 +545,14 @@ namespace MilyUnaNochesWPFApp.MilyUnaNochesService {
         
         public System.Threading.Tasks.Task<int> createAddressAsync(MilyUnaNochesWPFApp.MilyUnaNochesService.Address address) {
             return base.Channel.createAddressAsync(address);
+        }
+        
+        public MilyUnaNochesWPFApp.MilyUnaNochesService.Address GetAddress(int idDireccion) {
+            return base.Channel.GetAddress(idDireccion);
+        }
+        
+        public System.Threading.Tasks.Task<MilyUnaNochesWPFApp.MilyUnaNochesService.Address> GetAddressAsync(int idDireccion) {
+            return base.Channel.GetAddressAsync(idDireccion);
         }
     }
     

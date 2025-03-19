@@ -44,17 +44,35 @@
       <xsd:import schemaLocation="http://localhost:1442/?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/MilyUnaNochesService.Logic" />
     </xsd:schema>
   </wsdl:types>
-  <wsdl:message name="IUserManager_AddUser_InputMessage">
-    <wsdl:part name="parameters" element="tns:AddUser" />
+  <wsdl:message name="IUserManager_AddClient_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddClient" />
   </wsdl:message>
-  <wsdl:message name="IUserManager_AddUser_OutputMessage">
-    <wsdl:part name="parameters" element="tns:AddUserResponse" />
+  <wsdl:message name="IUserManager_AddClient_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddClientResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUserManager_VerifyAccess_InputMessage">
+    <wsdl:part name="parameters" element="tns:VerifyAccess" />
+  </wsdl:message>
+  <wsdl:message name="IUserManager_VerifyAccess_OutputMessage">
+    <wsdl:part name="parameters" element="tns:VerifyAccessResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUserManager_VerifyExistinClient_InputMessage">
+    <wsdl:part name="parameters" element="tns:VerifyExistinClient" />
+  </wsdl:message>
+  <wsdl:message name="IUserManager_VerifyExistinClient_OutputMessage">
+    <wsdl:part name="parameters" element="tns:VerifyExistinClientResponse" />
   </wsdl:message>
   <wsdl:message name="IAdressManager_createAddress_InputMessage">
     <wsdl:part name="parameters" element="tns:createAddress" />
   </wsdl:message>
   <wsdl:message name="IAdressManager_createAddress_OutputMessage">
     <wsdl:part name="parameters" element="tns:createAddressResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdressManager_GetAddress_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAddress" />
+  </wsdl:message>
+  <wsdl:message name="IAdressManager_GetAddress_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAddressResponse" />
   </wsdl:message>
   <wsdl:message name="IProviderManager_CreateProvider_InputMessage">
     <wsdl:part name="parameters" element="tns:CreateProvider" />
@@ -81,15 +99,27 @@
     <wsdl:part name="parameters" element="tns:DeleteProviderResponse" />
   </wsdl:message>
   <wsdl:portType name="IUserManager">
-    <wsdl:operation name="AddUser">
-      <wsdl:input wsaw:Action="http://tempuri.org/IUserManager/AddUser" message="tns:IUserManager_AddUser_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IUserManager/AddUserResponse" message="tns:IUserManager_AddUser_OutputMessage" />
+    <wsdl:operation name="AddClient">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserManager/AddClient" message="tns:IUserManager_AddClient_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserManager/AddClientResponse" message="tns:IUserManager_AddClient_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="VerifyAccess">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserManager/VerifyAccess" message="tns:IUserManager_VerifyAccess_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserManager/VerifyAccessResponse" message="tns:IUserManager_VerifyAccess_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="VerifyExistinClient">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserManager/VerifyExistinClient" message="tns:IUserManager_VerifyExistinClient_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserManager/VerifyExistinClientResponse" message="tns:IUserManager_VerifyExistinClient_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="IAdressManager">
     <wsdl:operation name="createAddress">
       <wsdl:input wsaw:Action="http://tempuri.org/IAdressManager/createAddress" message="tns:IAdressManager_createAddress_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IAdressManager/createAddressResponse" message="tns:IAdressManager_createAddress_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAddress">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAdressManager/GetAddress" message="tns:IAdressManager_GetAddress_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAdressManager/GetAddressResponse" message="tns:IAdressManager_GetAddress_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="IProviderManager">
@@ -113,8 +143,26 @@
   <wsdl:binding name="NetTcpBinding_IUserManager" type="tns:IUserManager">
     <wsp:PolicyReference URI="#NetTcpBinding_IUserManager_policy" />
     <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
-    <wsdl:operation name="AddUser">
-      <soap12:operation soapAction="http://tempuri.org/IUserManager/AddUser" style="document" />
+    <wsdl:operation name="AddClient">
+      <soap12:operation soapAction="http://tempuri.org/IUserManager/AddClient" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="VerifyAccess">
+      <soap12:operation soapAction="http://tempuri.org/IUserManager/VerifyAccess" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="VerifyExistinClient">
+      <soap12:operation soapAction="http://tempuri.org/IUserManager/VerifyExistinClient" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -128,6 +176,15 @@
     <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
     <wsdl:operation name="createAddress">
       <soap12:operation soapAction="http://tempuri.org/IAdressManager/createAddress" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAddress">
+      <soap12:operation soapAction="http://tempuri.org/IAdressManager/GetAddress" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
