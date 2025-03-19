@@ -35,11 +35,6 @@ namespace MilyUnaNochesWPFApp.Views {
             }
         }
 
-        private void Cancelar_Click(object sender, RoutedEventArgs e) {
-            this.DialogResult = false;
-            this.Close();
-        }
-
         private void Save_Click(object sender, RoutedEventArgs e) {
             //Validacion de campos
 
@@ -51,11 +46,11 @@ namespace MilyUnaNochesWPFApp.Views {
 
             //_providerManager.EditProvider(ProviderToEdit);
 
-            this.DialogResult = true;
             this.Close();
         }
 
         private void Cancel_Click(object sender, RoutedEventArgs e) {
+            this.Close();
         }
     }
 }

@@ -23,15 +23,15 @@ namespace MilyUnaNochesWPFApp.Views {
         }
 
         private void FrameSale_Click(object sender, RoutedEventArgs e) {
-
+            this.NavigationService.Navigate(new Uri("/Views/MenuSupplier.xaml", UriKind.Relative));
         }
 
-        private void FrameProviders_Click(object sender, RoutedEventArgs e) {
-
+        private void FrameSuppliers_Click(object sender, RoutedEventArgs e) {
+            this.NavigationService.Navigate(new Uri("Views/MenuSupplier.xaml", UriKind.Relative));
         }
 
         private void FrameProducts_Click(object sender, RoutedEventArgs e) {
-
+            this.NavigationService.Navigate(new Uri("Views/MenuSupplier.xaml", UriKind.Relative));
         }
     }
 }

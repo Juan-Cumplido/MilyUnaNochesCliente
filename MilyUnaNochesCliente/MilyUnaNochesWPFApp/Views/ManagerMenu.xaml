@@ -9,22 +9,34 @@
       Background="#fdf8ef"
       Title="ManagerMenu">
 
+    <Page.Resources>
+        <Style x:Key="ButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Foreground" Value="#AE7D5C"/>
+            <Setter Property="FontSize" Value="35"/>
+            <Setter Property="FontFamily" Value="Bodoni MT Condensed"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Margin" Value="30"/>
+        </Style>
+    </Page.Resources>
+
     <Grid>
-        <Image x:Name="imgLogo" HorizontalAlignment="Left" Height="123" Margin="2,0,0,0" VerticalAlignment="Top" Width="250" Source="/Images/Icons/Logo_Manager_View.png"/>
+        <Image x:Name="img_Logo" HorizontalAlignment="Left" Height="123" VerticalAlignment="Top" Width="253" Source="/Images/Icons/Logo.png"/>
+        <Image x:Name="img_Logo2" HorizontalAlignment="Left" Height="94" Margin="28,29,0,0" VerticalAlignment="Top" Width="184" Source="/Images/Icons/Mil_y_una_Noches.png"/>
 
         <StackPanel 
             Margin="411,10,0,607" 
             Orientation="Horizontal"
             HorizontalAlignment="Left"
             Width="750">
-            <Button Content="Ventas" Click="Sales_Click" Margin="30" Background="Transparent" Foreground="#AE7D5C" FontSize="35" FontFamily="Bodoni MT Condensed" BorderThickness="0"/>
-            <Button Content="Usuarios" Click="Users_Click" Margin="30" Background="Transparent" Foreground="#AE7D5C" FontSize="35" FontFamily="Bodoni MT Condensed" BorderThickness="0"/>
-            <Button Content="Productos" Click="Products_Click" Margin="30" Background="Transparent" Foreground="#AE7D5C" FontSize="35" FontFamily="Bodoni MT Condensed" BorderThickness="0"/>
-            <Button Content="Proveedores" Click="Providers_Click" Margin="30" Background="Transparent" Foreground="#AE7D5C" FontSize="35" FontFamily="Bodoni MT Condensed" BorderThickness="0"/>
-            <Button Content="Reportes" Click="Reports_Click" Margin="30" Background="Transparent" Foreground="#AE7D5C" FontSize="35" FontFamily="Bodoni MT Condensed" BorderThickness="0"/>
+            <Button Content="Ventas" Click="Sales_Click" Style="{StaticResource ButtonStyle}"/>
+            <Button Content="Usuarios" Click="Users_Click" Style="{StaticResource ButtonStyle}"/>
+            <Button Content="Productos" Click="Products_Click" Style="{StaticResource ButtonStyle}"/>
+            <Button Content="Proveedores" Click="Suppliers_Click" Margin="30" Style="{StaticResource ButtonStyle}"/>
+            <Button Content="Reportes" Click="Reports_Click" Margin="30" Style="{StaticResource ButtonStyle}"/>
         </StackPanel>
 
-        <Frame x:Name="mainFrame"
+        <Frame x:Name="fra_mainFrame"
                Content="Frame" 
                Margin="0,128,0,0"
                Source="ManagerMenuContent.xaml">
