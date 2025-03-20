@@ -7,7 +7,7 @@ using System.Windows.Navigation;
 using System.Windows.Media.Imaging;
 using System.Windows.Media;
 using MilyUnaNochesWPFApp.Logic;
-using MilyUnaNochesWPFApp.MilyUnaNochesService;
+using MilyUnaNochesWPFApp.MilyUnaNochesProxy;
 
 namespace MilyUnaNochesWPFApp.Views
 {

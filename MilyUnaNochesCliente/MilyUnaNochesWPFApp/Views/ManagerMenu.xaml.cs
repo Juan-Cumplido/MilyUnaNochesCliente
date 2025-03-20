@@ -38,8 +38,8 @@ namespace MilyUnaNochesWPFApp.Views {
 
         }
 
-        private void Providers_Click(object sender, RoutedEventArgs e) {
-            mainFrame.Source = new System.Uri("MenuProvider.xaml", System.UriKind.Relative);
+        private void Suppliers_Click(object sender, RoutedEventArgs e) {
+            fra_mainFrame.Source = new System.Uri("MenuSupplier.xaml", System.UriKind.Relative);
         }
 
         private void Reports_Click(object sender, RoutedEventArgs e) {

@@ -17,8 +17,8 @@ namespace MilyUnaNochesWPFApp.Views {
     /// <summary>
     /// Lógica de interacción para MenuProvider2.xaml
     /// </summary>
-    public partial class MenuProvider2 : Page {
-        public MenuProvider2() {
+    public partial class MenuProvider : Page {
+        public MenuProvider() {
             InitializeComponent();
         }
 
@@ -27,7 +27,7 @@ namespace MilyUnaNochesWPFApp.Views {
         }
 
         private void RegistrarProveedor_Click(object sender, RoutedEventArgs e) {
-            mainFrame.Source = new System.Uri("RegisterProvider.xaml", System.UriKind.Relative);
+            mainFrame.Source = new System.Uri("RegisterSupplier.xaml", System.UriKind.Relative);
         }
     }
 }

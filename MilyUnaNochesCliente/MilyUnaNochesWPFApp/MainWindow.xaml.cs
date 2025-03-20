@@ -26,12 +26,12 @@ namespace MilyUnaNochesWPFApp
         }
         private void NavigationFrame_Navigating(object sender, NavigatingCancelEventArgs e)
         {
-            var storyb_FadeOutAnimation = new DoubleAnimation(1, 0, TimeSpan.FromSeconds(1.5));
+            var storyb_FadeOutAnimation = new DoubleAnimation(1, 0, TimeSpan.FromSeconds(0.5));
             fra_NavigationFrame.BeginAnimation(Frame.OpacityProperty, storyb_FadeOutAnimation);
         }
 
         private void NavigationFrame_Navigated(object sender, NavigationEventArgs e) {
-            var storyb_FadeInAnimation = new DoubleAnimation(0, 1, TimeSpan.FromSeconds(2.5));
+            var storyb_FadeInAnimation = new DoubleAnimation(0, 1, TimeSpan.FromSeconds(0.5));
             fra_NavigationFrame.BeginAnimation(Frame.OpacityProperty, storyb_FadeInAnimation);
         }
     }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<SavedWcfConfigurationInformation xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="9.1" CheckSum="3fnoj7ZBf1myEtASAxrVxzG/h1X0U38r7OgJpRBctXw=">
+<SavedWcfConfigurationInformation xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="9.1" CheckSum="coVwwyYBSLi0Ssll7i7kqokxYB2sHxIlPrUX1NYwDGU=">
   <bindingConfigurations>
     <bindingConfiguration bindingType="netTcpBinding" name="NetTcpBinding_IUserManager">
       <properties>
@@ -475,7 +475,7 @@
     </bindingConfiguration>
   </bindingConfigurations>
   <endpoints>
-    <endpoint name="NetTcpBinding_IUserManager" contract="MilyUnaNochesService.IUserManager" bindingType="netTcpBinding" address="net.tcp://localhost:1441/UserService" bindingConfiguration="NetTcpBinding_IUserManager">
+    <endpoint name="NetTcpBinding_IUserManager" contract="MilyUnaNochesProxy.IUserManager" bindingType="netTcpBinding" address="net.tcp://localhost:1441/UserService" bindingConfiguration="NetTcpBinding_IUserManager">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>net.tcp://localhost:1441/UserService</serializedValue>
@@ -490,7 +490,7 @@
           <serializedValue>NetTcpBinding_IUserManager</serializedValue>
         </property>
         <property path="/contract" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>MilyUnaNochesService.IUserManager</serializedValue>
+          <serializedValue>MilyUnaNochesProxy.IUserManager</serializedValue>
         </property>
         <property path="/headers" isComplexType="true" isExplicitlyDefined="false" clrType="System.ServiceModel.Configuration.AddressHeaderCollectionElement, System.ServiceModel, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>System.ServiceModel.Configuration.AddressHeaderCollectionElement</serializedValue>
@@ -560,7 +560,7 @@
         </property>
       </properties>
     </endpoint>
-    <endpoint name="NetTcpBinding_IAdressManager" contract="MilyUnaNochesService.IAdressManager" bindingType="netTcpBinding" address="net.tcp://localhost:1441/AddressManager" bindingConfiguration="NetTcpBinding_IAdressManager">
+    <endpoint name="NetTcpBinding_IAdressManager" contract="MilyUnaNochesProxy.IAdressManager" bindingType="netTcpBinding" address="net.tcp://localhost:1441/AddressManager" bindingConfiguration="NetTcpBinding_IAdressManager">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>net.tcp://localhost:1441/AddressManager</serializedValue>
@@ -575,7 +575,7 @@
           <serializedValue>NetTcpBinding_IAdressManager</serializedValue>
         </property>
         <property path="/contract" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>MilyUnaNochesService.IAdressManager</serializedValue>
+          <serializedValue>MilyUnaNochesProxy.IAdressManager</serializedValue>
         </property>
         <property path="/headers" isComplexType="true" isExplicitlyDefined="false" clrType="System.ServiceModel.Configuration.AddressHeaderCollectionElement, System.ServiceModel, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>System.ServiceModel.Configuration.AddressHeaderCollectionElement</serializedValue>
@@ -645,7 +645,7 @@
         </property>
       </properties>
     </endpoint>
-    <endpoint name="NetTcpBinding_IProviderManager" contract="MilyUnaNochesService.IProviderManager" bindingType="netTcpBinding" address="net.tcp://localhost:1441/ProviderManager" bindingConfiguration="NetTcpBinding_IProviderManager">
+    <endpoint name="NetTcpBinding_IProviderManager" contract="MilyUnaNochesProxy.IProviderManager" bindingType="netTcpBinding" address="net.tcp://localhost:1441/ProviderManager" bindingConfiguration="NetTcpBinding_IProviderManager">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>net.tcp://localhost:1441/ProviderManager</serializedValue>
@@ -660,7 +660,7 @@
           <serializedValue>NetTcpBinding_IProviderManager</serializedValue>
         </property>
         <property path="/contract" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>MilyUnaNochesService.IProviderManager</serializedValue>
+          <serializedValue>MilyUnaNochesProxy.IProviderManager</serializedValue>
         </property>
         <property path="/headers" isComplexType="true" isExplicitlyDefined="false" clrType="System.ServiceModel.Configuration.AddressHeaderCollectionElement, System.ServiceModel, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>System.ServiceModel.Configuration.AddressHeaderCollectionElement</serializedValue>
@@ -730,10 +730,10 @@
         </property>
       </properties>
     </endpoint>
-    <endpoint name="NetTcpBinding_IProductsManager" contract="MilyUnaNochesService.IProductsManager" bindingType="netTcpBinding" address="net.tcp://localhost:1441/ProductManager" bindingConfiguration="NetTcpBinding_IProductsManager">
+    <endpoint name="NetTcpBinding_IProductsManager" contract="MilyUnaNochesProxy.IProductsManager" bindingType="netTcpBinding" address="net.tcp://localhost:1441/ProductsManager" bindingConfiguration="NetTcpBinding_IProductsManager">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>net.tcp://localhost:1441/ProductManager</serializedValue>
+          <serializedValue>net.tcp://localhost:1441/ProductsManager</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -745,7 +745,7 @@
           <serializedValue>NetTcpBinding_IProductsManager</serializedValue>
         </property>
         <property path="/contract" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>MilyUnaNochesService.IProductsManager</serializedValue>
+          <serializedValue>MilyUnaNochesProxy.IProductsManager</serializedValue>
         </property>
         <property path="/headers" isComplexType="true" isExplicitlyDefined="false" clrType="System.ServiceModel.Configuration.AddressHeaderCollectionElement, System.ServiceModel, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>System.ServiceModel.Configuration.AddressHeaderCollectionElement</serializedValue>
