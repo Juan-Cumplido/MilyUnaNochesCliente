@@ -85,6 +85,10 @@
     <Compile Include="Logic\Product.cs" />
     <Compile Include="Logic\Sale.cs" />
     <Compile Include="Logic\Validator.cs" />
+    <Compile Include="Utilities\Constants.cs" />
+    <Compile Include="Views\ArchivedSuppliersWindow.xaml.cs">
+      <DependentUpon>ArchivedSuppliersWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\ConsultEmployee.xaml.cs">
       <DependentUpon>ConsultEmployee.xaml</DependentUpon>
     </Compile>
@@ -133,8 +137,8 @@
     <Compile Include="Views\RegisterClient.xaml.cs">
       <DependentUpon>RegisterClient.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\RegisterProvider.xaml.cs">
-      <DependentUpon>RegisterProvider.xaml</DependentUpon>
+    <Compile Include="Views\RegisterSupplier.xaml.cs">
+      <DependentUpon>RegisterSupplier.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Sale.xaml.cs">
       <DependentUpon>Sale.xaml</DependentUpon>
@@ -155,6 +159,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\ArchivedSuppliersWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\ConsultEmployee.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -218,7 +226,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\RegisterProvider.xaml">
+    <Page Include="Views\RegisterSupplier.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

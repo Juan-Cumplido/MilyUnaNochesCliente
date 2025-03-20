@@ -23,7 +23,7 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
-                        <Border x:Name="Border"
+                        <Border x:Name="brd_Border1"
                                 Background="{TemplateBinding Background}"
                                 CornerRadius="10"
                                 Padding="{TemplateBinding Padding}">
@@ -47,7 +47,7 @@
                                     <Storyboard>
                                         <ColorAnimation To="#FFD4C1B5" 
                                                         Duration="0:0:0.2" 
-                                                        Storyboard.TargetName="Border"
+                                                        Storyboard.TargetName="brd_Border1"
                                                         Storyboard.TargetProperty="(Background).(SolidColorBrush.Color)"/>
                                     </Storyboard>
                                 </BeginStoryboard>
@@ -57,7 +57,7 @@
                                     <Storyboard>
                                         <ColorAnimation To="White" 
                                                         Duration="0:0:0.2" 
-                                                        Storyboard.TargetName="Border"
+                                                        Storyboard.TargetName="brd_Border1"
                                                         Storyboard.TargetProperty="(Background).(SolidColorBrush.Color)"/>
                                     </Storyboard>
                                 </BeginStoryboard>
@@ -81,7 +81,7 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
-                        <Border x:Name="Border"
+                        <Border x:Name="brd_Border2"
                                 Background="{TemplateBinding Background}"
                                 CornerRadius="10"
                                 Padding="{TemplateBinding Padding}">
@@ -105,7 +105,7 @@
                                     <Storyboard>
                                         <ColorAnimation To="#FFD4C1B5" 
                                                         Duration="0:0:0.2" 
-                                                        Storyboard.TargetName="Border"
+                                                        Storyboard.TargetName="brd_Border2"
                                                         Storyboard.TargetProperty="(Background).(SolidColorBrush.Color)"/>
                                     </Storyboard>
                                 </BeginStoryboard>
@@ -115,7 +115,7 @@
                                     <Storyboard>
                                         <ColorAnimation To="White" 
                                                         Duration="0:0:0.2" 
-                                                        Storyboard.TargetName="Border"
+                                                        Storyboard.TargetName="brd_Border2"
                                                         Storyboard.TargetProperty="(Background).(SolidColorBrush.Color)"/>
                                     </Storyboard>
                                 </BeginStoryboard>

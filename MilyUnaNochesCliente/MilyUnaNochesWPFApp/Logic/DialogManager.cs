@@ -19,6 +19,10 @@ namespace MilyUnaNochesWPFApp.Logic
             MessageBox.Show(warningMessage, "Advertencia", MessageBoxButton.OK, MessageBoxImage.Warning);
         }
 
+        public static void ShowWarningMessageAlert(string warningMessage, string title) {
+            MessageBox.Show(warningMessage, title, MessageBoxButton.OK, MessageBoxImage.Warning); 
+        }
+
         public static void ShowSuccessMessageAlert(string successMessage)
         {
             MessageBox.Show(successMessage, "Éxito", MessageBoxButton.OK, MessageBoxImage.Information);
