@@ -35,8 +35,6 @@ namespace MilyUnaNochesWPFApp.Views {
         private void SalesDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e) {
 
         }
-       
-
     }
 }
 

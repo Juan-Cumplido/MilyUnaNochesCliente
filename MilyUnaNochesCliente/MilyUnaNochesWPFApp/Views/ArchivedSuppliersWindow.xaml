@@ -1,0 +1,133 @@
+﻿<Window x:Class="MilyUnaNochesWPFApp.Views.ArchivedSuppliersWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MilyUnaNochesWPFApp.Views"
+        mc:Ignorable="d"
+        Height="450" 
+        Width="1000"
+        Title="Proveedores Archivados"
+        Background="#fdf8ef">
+
+    <Window.Resources>
+        <Style x:Key="CenteredCellStyle" TargetType="DataGridCell">
+            <Setter Property="TextBlock.TextAlignment" Value="Center"/>
+            <Setter Property="TextBlock.VerticalAlignment" Value="Center"/>
+        </Style>
+
+        <Style x:Key="ButtonStyle" TargetType="Button">
+            <Setter Property="FontFamily" Value="Bodoni MT Condensed"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="FontSize" Value="25"/>
+            <Setter Property="Margin" Value="10"/>
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="Width" Value="80"/>
+            <Setter Property="Background">
+                <Setter.Value>
+                    <ImageBrush ImageSource="/Images/Background/BackgroundTextBlock.png"/>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <!-- Fila para la barra de búsqueda -->
+            <RowDefinition Height="*"/>
+            <!-- Fila para el DataGrid -->
+            <RowDefinition Height="Auto"/>
+            <!-- Fila para los botones -->
+        </Grid.RowDefinitions>
+
+        <!-- Barra de búsqueda -->
+        <TextBox x:Name="txtb_SearchBar"
+                 Grid.Row="0"
+                 HorizontalAlignment="Left" 
+                 Height="44" 
+                 Margin="70,10,0,10" 
+                 TextWrapping="Wrap" 
+                 VerticalAlignment="Top" 
+                 Width="241" 
+                 BorderBrush="{x:Null}" 
+                 TextChanged="txtb_SearchBar_TextChanged"
+                 BorderThickness="0" 
+                 VerticalContentAlignment="Center"
+                 FontSize="20"
+                 FontFamily="Bodoni MT Condensed" 
+                 Foreground="#FFAE7D5C" 
+                 HorizontalContentAlignment="Center">
+            <TextBox.Background>
+                <ImageBrush ImageSource="/Images/Background/Search.png"/>
+            </TextBox.Background>
+        </TextBox>
+
+        <TextBlock x:Name="txtb_PlaceholderText" 
+                   Grid.Row="0"
+                   HorizontalAlignment="Left" 
+                   Margin="113,21,0,0" 
+                   IsHitTestVisible="False" 
+                   TextWrapping="Wrap" 
+                   VerticalAlignment="Top" 
+                   Height="22" 
+                   Width="146" 
+                   FontSize="18" 
+                   FontFamily="Bodoni MT Condensed" 
+                   Foreground="#FF6A6565">
+            <Run Text="Nombre o contacto"/>
+        </TextBlock>
+
+        <!-- DataGrid con ScrollViewer -->
+        <ScrollViewer Grid.Row="1"
+                      VerticalScrollBarVisibility="Auto"
+                      HorizontalScrollBarVisibility="Auto"
+                      Margin="70,10,70,10">
+            <DataGrid x:Name="ProviderDataGrid"
+                      AutoGenerateColumns="False"
+                      HeadersVisibility="Column"
+                      GridLinesVisibility="None"
+                      CanUserAddRows="False"
+                      IsReadOnly="True"
+                      Width="1000"
+                      Background="#fdf8ef"
+                      BorderThickness="0"
+                      FontSize="14"
+                      FontFamily="Bodoni MT Condensed"
+                      ItemsSource="{Binding Providers}">
+
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Proveedor" 
+                                Width="*" 
+                                CellStyle="{StaticResource CenteredCellStyle}"
+                                Binding="{Binding providerName}"/>
+                    <DataGridTextColumn Header="Contacto" 
+                                Width="*" 
+                                CellStyle="{StaticResource CenteredCellStyle}"
+                                Binding="{Binding providerContact}"/>
+                    <DataGridTextColumn Header="Telefono" 
+                                Width=".7*" 
+                                CellStyle="{StaticResource CenteredCellStyle}"
+                                Binding="{Binding phoneNumber}"/>
+                    <DataGridTextColumn Header="Correo" 
+                                Width="*" 
+                                CellStyle="{StaticResource CenteredCellStyle}"
+                                Binding="{Binding email}"/>
+                    <DataGridTextColumn Header="Dirección" 
+                                Width="1.5*" 
+                                CellStyle="{StaticResource CenteredCellStyle}"
+                                Binding="{Binding providerAddress}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </ScrollViewer>
+
+        <StackPanel Grid.Row="2"
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Bottom"
+                    Margin="0,0,10,20">
+            <Button Content="Desarchivar" Style="{StaticResource ButtonStyle}" Click="Unarchive_Click" Width="100"/>
+            <Button Content="Volver" Style="{StaticResource ButtonStyle}" Click="Back_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>

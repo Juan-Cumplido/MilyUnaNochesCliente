@@ -16,28 +16,27 @@ using System.Windows.Shapes;
 using MilyUnaNochesWPFApp.Logic;
 
 namespace MilyUnaNochesWPFApp.Views {
-    /// <summary>
-    /// Lógica de interacción para MenuSale.xaml
-    /// </summary>
     public partial class MenuSale : Page {
         public MenuSale() {
-           
+            InitializeComponent();
+            Frame.Source = new Uri("ConsultSale.xaml", UriKind.Relative);
         }
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+
+        private void lbl_RegisterSale_Click(object sender, MouseButtonEventArgs e)
         {
-
+            Frame.Source = new System.Uri("Sale.xaml", System.UriKind.Relative);
         }
 
-        private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void lbl_ConsultSale_Click(object sender, MouseButtonEventArgs e)
         {
-
+            Frame.Source = new System.Uri("ConsultSale.xaml", System.UriKind.Relative);
         }
 
-        private void SalesDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void Lbl_Client_Click(object sender, MouseButtonEventArgs e)
         {
-
+            CashierMenu cashierMenu = new CashierMenu();
+            this.NavigationService.Navigate(cashierMenu);
         }
-
 
     }
 }
