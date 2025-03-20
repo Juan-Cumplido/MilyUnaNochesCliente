@@ -5,7 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MilyUnaNochesWPFApp.Views"
         mc:Ignorable="d"
-        Title="EditProvider" Height="450" Width="1000">
+        Height="450" 
+        Width="1000"
+        Title="EditProvider">
 
     <Window.Resources>
         <Style x:Key="TextFieldStyle" TargetType="TextBox">

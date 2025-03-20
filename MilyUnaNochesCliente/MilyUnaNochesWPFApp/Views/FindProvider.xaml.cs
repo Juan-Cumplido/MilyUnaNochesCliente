@@ -1,4 +1,5 @@
 ﻿using MilyUnaNochesWPFApp.MilyUnaNochesProxy;
+using MilyUnaNochesWPFApp.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -22,12 +23,13 @@ namespace MilyUnaNochesWPFApp.Views {
     public partial class FindProvider : Page {
         public ObservableCollection<Provider> Providers { get; set; }
         IProviderManager _providerManager = new ProviderManagerClient();
+
         public FindProvider() {
             InitializeComponent();
             LoadProviders();
         }
 
-        private async void LoadProviders() {
+        public async void LoadProviders() {
             try {
                 var providersList = _providerManager.GetProviders();
                 Providers = new ObservableCollection<Provider>(providersList);
@@ -36,12 +38,12 @@ namespace MilyUnaNochesWPFApp.Views {
                 MessageBox.Show($"Error al cargar proveedores: {ex.Message}");
             }
         }
-        private void SearchBar_TextChanged(object sender, TextChangedEventArgs e) {
-            PlaceholderText.Visibility = string.IsNullOrWhiteSpace(SearchBar.Text) ? Visibility.Visible : Visibility.Collapsed;
+        private void txtb_SearchBar_TextChanged(object sender, TextChangedEventArgs e) {
+            txtb_PlaceholderText.Visibility = string.IsNullOrWhiteSpace(txtb_SearchBar.Text) ? Visibility.Visible : Visibility.Collapsed;
 
             var filteredProviders = Providers.Where(p =>
-            p.providerName.ToLower().Contains(SearchBar.Text.ToLower()) ||
-            p.providerContact.ToLower().Contains(SearchBar.Text.ToLower())).ToList();
+            p.providerName.ToLower().Contains(txtb_SearchBar.Text.ToLower()) ||
+            p.providerContact.ToLower().Contains(txtb_SearchBar.Text.ToLower())).ToList();
 
             ProviderDataGrid.ItemsSource = filteredProviders;
         }
@@ -58,8 +60,7 @@ namespace MilyUnaNochesWPFApp.Views {
 
                 if (result == MessageBoxResult.Yes) {
                     var deleteResult = _providerManager.DeleteProvider(selectedProvider.IdProvider);
-                    //Constants.SuccessOperation
-                    if (deleteResult == 1) {
+                    if (deleteResult == Constants.SuccessOperation) {
                         MessageBox.Show("Proveedor eliminado con éxito.");
                         Providers.Remove(selectedProvider); 
                     } else {
@@ -73,13 +74,22 @@ namespace MilyUnaNochesWPFApp.Views {
 
         private void Archive_Click(object sender, RoutedEventArgs e) {
             if (ProviderDataGrid.SelectedItem is Provider selectedProvider) {
-                var result = _providerManager.ArchiveProvider(selectedProvider.IdProvider);
-                if (result == 1) {
-                    MessageBox.Show("Proveedor archivado con éxito.");
-                    Providers.Remove(selectedProvider);
-                } else {
-                    MessageBox.Show("No se pudo archivar el proveedor.");
+                    MessageBoxResult result = MessageBox.Show(
+                    $"Estás seguro de que deseas archivar el proveedor: {selectedProvider.providerName}?", 
+                    "Confirmar archivar", 
+                    MessageBoxButton.YesNo, 
+                    MessageBoxImage.Question 
+                );
+                if (result == MessageBoxResult.Yes) {
+                    var resultQuery = _providerManager.ArchiveProvider(selectedProvider.IdProvider);
+                    if (resultQuery == Constants.SuccessOperation) {
+                        MessageBox.Show("Proveedor archivado con éxito.");
+                        Providers.Remove(selectedProvider);
+                    } else {
+                        MessageBox.Show("No se pudo archivar el proveedor.");
+                    }
                 }
+
             }
         }
 
@@ -95,6 +105,14 @@ namespace MilyUnaNochesWPFApp.Views {
             } else {
                 MessageBox.Show("Seleccione un proveedor primero", "Editar Proveedor", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
+        }
+
+        private void ShowArchived_Click(object sender, RoutedEventArgs e) {
+            var mainWindow = Window.GetWindow(this);
+            var archivedSuppliersWindow = new ArchivedSuppliersWindow(this);
+            archivedSuppliersWindow.Owner = mainWindow;
+            archivedSuppliersWindow.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+            archivedSuppliersWindow.ShowDialog();
         }
     }
  }

@@ -27,7 +27,7 @@ namespace MilyUnaNochesWPFApp.Views {
         }
 
         private void RegistrarProveedor_Click(object sender, RoutedEventArgs e) {
-            mainFrame.Source = new System.Uri("RegisterProvider.xaml", System.UriKind.Relative);
+            mainFrame.Source = new System.Uri("RegisterSupplier.xaml", System.UriKind.Relative);
         }
     }
 }
