@@ -1,4 +1,4 @@
-﻿<Window x:Class="MilyUnaNochesWPFApp.Views.EditProvider"
+﻿<Window x:Class="MilyUnaNochesWPFApp.Views.EditSupplierWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Height="450" 
         Width="1000"
-        Title="EditProvider">
+        Title="EditSupplerWindow">
 
     <Window.Resources>
         <Style x:Key="TextFieldStyle" TargetType="TextBox">
@@ -44,7 +44,7 @@
         </Style>
 
     </Window.Resources>
-    
+
     <Grid Margin="10">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -54,38 +54,38 @@
         <StackPanel Grid.Column="0" Orientation="Vertical" Margin="70,60,0,0">
             <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
                 <Label Content="Proveedor" Width="130" FontSize="20" FontFamily="Bodoni MT Condensed" Foreground="#FFAE7D5C"/>
-                <TextBox x:Name="txtProviderName" Style="{StaticResource TextFieldStyle}"/>
+                <TextBox x:Name="txt_ProviderName" Style="{StaticResource TextFieldStyle}"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
                 <Label Content="Contacto" Width="130" FontSize="20" FontFamily="Bodoni MT Condensed" Foreground="#FFAE7D5C"/>
-                <TextBox x:Name="txtContact" Style="{StaticResource TextFieldStyle}"/>
+                <TextBox x:Name="txt_Contact" Style="{StaticResource TextFieldStyle}"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
                 <Label Content="Telefono" Width="130" FontSize="20" FontFamily="Bodoni MT Condensed" Foreground="#FFAE7D5C"/>
-                <TextBox x:Name="txtPhone" Style="{StaticResource TextFieldStyle}"/>
+                <TextBox x:Name="txt_Phone" Style="{StaticResource TextFieldStyle}"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
                 <Label Content="Correo electrónico" Width="130" FontSize="20" FontFamily="Bodoni MT Condensed" Foreground="#FFAE7D5C"/>
-                <TextBox x:Name="txtEmail" Style="{StaticResource TextFieldStyle}"/>
+                <TextBox x:Name="txt_Email" Style="{StaticResource TextFieldStyle}"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
                 <Label Content="Calle" Width="130" FontSize="20" FontFamily="Bodoni MT Condensed" Foreground="#FFAE7D5C"/>
-                <TextBox x:Name="txtStreet" Style="{StaticResource TextFieldStyle}"/>
+                <TextBox x:Name="txt_Street" Style="{StaticResource TextFieldStyle}"/>
             </StackPanel>
         </StackPanel>
 
         <StackPanel Grid.Column="1" Orientation="Vertical" Margin="0,60,0,0">
             <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
                 <Label Content="Numero" Width="130" FontSize="20" FontFamily="Bodoni MT Condensed" Foreground="#FFAE7D5C"/>
-                <TextBox x:Name="txtNumber" Style="{StaticResource TextFieldStyle}"/>
+                <TextBox x:Name="txt_Number" Style="{StaticResource TextFieldStyle}"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
                 <Label Content="Codigo postal" Width="130" FontSize="20" FontFamily="Bodoni MT Condensed" Foreground="#FFAE7D5C"/>
-                <TextBox x:Name="txtPostalCode" Style="{StaticResource TextFieldStyle}"/>
+                <TextBox x:Name="txt_PostalCode" Style="{StaticResource TextFieldStyle}"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
                 <Label Content="Ciudad" Width="130" FontSize="20" FontFamily="Bodoni MT Condensed" Foreground="#FFAE7D5C"/>
-                <TextBox x:Name="txtCity" Style="{StaticResource TextFieldStyle}"/>
+                <TextBox x:Name="txt_City" Style="{StaticResource TextFieldStyle}"/>
             </StackPanel>
         </StackPanel>
 

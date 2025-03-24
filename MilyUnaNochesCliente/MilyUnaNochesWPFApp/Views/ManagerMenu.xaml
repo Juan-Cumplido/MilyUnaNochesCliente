@@ -11,12 +11,34 @@
 
     <Page.Resources>
         <Style x:Key="ButtonStyle" TargetType="Button">
+            <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
             <Setter Property="Background" Value="Transparent"/>
             <Setter Property="Foreground" Value="#AE7D5C"/>
             <Setter Property="FontSize" Value="35"/>
             <Setter Property="FontFamily" Value="Bodoni MT Condensed"/>
             <Setter Property="BorderThickness" Value="0"/>
             <Setter Property="Margin" Value="30"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border 
+                        FocusVisualStyle="{x:Null}"
+                        CornerRadius="2">
+                            <ContentPresenter 
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Foreground" Value="#8B4513"/>
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter Property="Foreground" Value="#8B4513"/>
+                </Trigger>
+            </Style.Triggers>
         </Style>
     </Page.Resources>
 
