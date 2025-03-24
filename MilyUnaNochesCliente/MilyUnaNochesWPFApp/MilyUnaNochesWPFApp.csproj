@@ -95,14 +95,14 @@
     <Compile Include="Views\ConsultClient.xaml.cs">
       <DependentUpon>ConsultClient.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\EditSupplier.xaml.cs">
-      <DependentUpon>EditSupplier.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\ConsultProductsView.xaml.cs">
       <DependentUpon>ConsultProductsView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ConsultSale.xaml.cs">
       <DependentUpon>ConsultSale.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EditSupplierWindow.xaml.cs">
+      <DependentUpon>EditSupplierWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\FindProvider.xaml.cs">
       <DependentUpon>FindProvider.xaml</DependentUpon>
@@ -171,14 +171,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\EditSupplier.xaml">
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="Views\ConsultProductsView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\ConsultSale.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\EditSupplierWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
