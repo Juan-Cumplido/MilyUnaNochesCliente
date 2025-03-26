@@ -164,6 +164,18 @@
   <wsdl:message name="IProviderManager_UnArchiveProvider_OutputMessage">
     <wsdl:part name="parameters" element="tns:UnArchiveProviderResponse" />
   </wsdl:message>
+  <wsdl:message name="IProviderManager_GetSupplier_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSupplier" />
+  </wsdl:message>
+  <wsdl:message name="IProviderManager_GetSupplier_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSupplierResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProviderManager_EditSupplier_InputMessage">
+    <wsdl:part name="parameters" element="tns:EditSupplier" />
+  </wsdl:message>
+  <wsdl:message name="IProviderManager_EditSupplier_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EditSupplierResponse" />
+  </wsdl:message>
   <wsdl:message name="IProductsManager_SaveProduct_InputMessage">
     <wsdl:part name="parameters" element="tns:SaveProduct" />
   </wsdl:message>
@@ -252,6 +264,14 @@
     <wsdl:operation name="UnArchiveProvider">
       <wsdl:input wsaw:Action="http://tempuri.org/IProviderManager/UnArchiveProvider" message="tns:IProviderManager_UnArchiveProvider_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IProviderManager/UnArchiveProviderResponse" message="tns:IProviderManager_UnArchiveProvider_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSupplier">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProviderManager/GetSupplier" message="tns:IProviderManager_GetSupplier_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProviderManager/GetSupplierResponse" message="tns:IProviderManager_GetSupplier_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EditSupplier">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProviderManager/EditSupplier" message="tns:IProviderManager_EditSupplier_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProviderManager/EditSupplierResponse" message="tns:IProviderManager_EditSupplier_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="IProductsManager">
@@ -430,6 +450,24 @@
     </wsdl:operation>
     <wsdl:operation name="UnArchiveProvider">
       <soap12:operation soapAction="http://tempuri.org/IProviderManager/UnArchiveProvider" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSupplier">
+      <soap12:operation soapAction="http://tempuri.org/IProviderManager/GetSupplier" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EditSupplier">
+      <soap12:operation soapAction="http://tempuri.org/IProviderManager/EditSupplier" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

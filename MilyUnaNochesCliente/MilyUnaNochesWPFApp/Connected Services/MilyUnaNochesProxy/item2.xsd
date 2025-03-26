@@ -15,7 +15,6 @@
       <xs:element minOccurs="0" name="IdProvider" type="xs:int" />
       <xs:element minOccurs="0" name="email" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="idAddress" type="xs:int" />
-      <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="phoneNumber" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="providerAddress" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="providerContact" nillable="true" type="xs:string" />
