@@ -1,0 +1,481 @@
+﻿<Page x:Class="MilyUnaNochesWPFApp.Views.GenerateReport"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:MilyUnaNochesWPFApp.Views"
+      mc:Ignorable="d" 
+     d:DesignHeight="720" d:DesignWidth="1280"
+     Background="#fdf8ef"
+      Title="GenerateReport">
+
+    <Page.Resources>
+        <Style x:Key="CenteredCellStyle" TargetType="DataGridCell">
+            <Setter Property="TextBlock.TextAlignment" Value="Center"/>
+            <Setter Property="TextBlock.VerticalAlignment" Value="Center"/>
+        </Style>
+        <Style x:Key="HeaderStyle" TargetType="DataGridColumnHeader">
+            <Setter Property="Background" Value="#FFAE7D5C"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="FontFamily" Value="Bodoni MT"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        </Style>
+    </Page.Resources>
+
+    <Grid>
+        <!-- Imagen superior -->
+        <Image HorizontalAlignment="Center"
+               Height="144" 
+               Margin="0,73,0,0" 
+               VerticalAlignment="Top" 
+               Width="1280" 
+               Source="/Images/Background/FrameReports.png"/>
+
+
+        <!-- Botones de CU -->
+        <Label x:Name="lbl_Producto" Content="PRODUCTO"
+       FontFamily="Bodoni MT" Foreground="#AE7D5C" FontSize="19"
+       HorizontalAlignment="Left" Margin="127,232,0,0"
+       VerticalAlignment="Top" Height="55" Width="130"
+       Cursor="Hand" MouseDown="BtnClick_Producto"/>
+
+        <Label x:Name="lbl_Categoria" Content="CATEGORIA"
+       FontFamily="Bodoni MT" Foreground="#AE7D5C" FontSize="19"
+       HorizontalAlignment="Left" Margin="401,232,0,0"
+       VerticalAlignment="Top" Height="55" Width="130"
+       Cursor="Hand" MouseDown="BtnClick_Categoria"/>
+
+        <Label x:Name="lbl_Inventario" Content="INVENTARIO ACTUAL"
+       FontFamily="Bodoni MT" Foreground="#AE7D5C" FontSize="19"
+       HorizontalAlignment="Left" Margin="678,232,0,0"
+       VerticalAlignment="Top" Height="55" Width="219"
+       Cursor="Hand" MouseDown="btnClick_Inventario"/>
+
+        <Label x:Name="lbl_Ganancias" Content="GANANCIAS"
+       FontFamily="Bodoni MT" Foreground="#AE7D5C" FontSize="19"
+       HorizontalAlignment="Left" Margin="979,232,0,0"
+       VerticalAlignment="Top" Height="55" Width="130"
+       Cursor="Hand" MouseDown="btnClick_Ganancias"/>
+
+        <Label Content="DESCARGAR" 
+                HorizontalAlignment="Left" 
+                Height="59" 
+                Margin="1015,325,0,0" 
+                VerticalAlignment="Top" 
+                Width="188" 
+                BorderBrush="{x:Null}" 
+                FontFamily="Bodoni MT" 
+                FontSize="18"
+                MouseDown="btnClick_Descargar" 
+               HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
+            <Label.Background>
+                <ImageBrush ImageSource="/Images/Background/BackgroundTextBlock.png"/>
+            </Label.Background>
+        </Label>
+
+        <!-- Tabla de productos -->
+        <DataGrid x:Name="ReportsDataGrid"
+          SelectionMode="Single"
+          AutoGenerateColumns="False" 
+          Height="300" 
+          Margin="68,300,347,0" 
+          VerticalAlignment="Top" 
+          SelectionChanged="ReportsDataGrid_SelectionChanged"
+          HeadersVisibility="Column"
+          BorderThickness="0"
+          RowHeaderWidth="0"
+          ColumnHeaderHeight="40"
+          RowHeight="40"
+          HorizontalContentAlignment="Stretch">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="No. Reporte" Binding="{Binding NombreProducto}" HeaderStyle="{StaticResource HeaderStyle}" CellStyle="{StaticResource CenteredCellStyle}" Width="*"/>
+                <DataGridTextColumn Header="Fechas" Binding="{Binding Cantidad}" HeaderStyle="{StaticResource HeaderStyle}" CellStyle="{StaticResource CenteredCellStyle}" Width="*"/>
+                <DataGridTextColumn Header="Tipo de reporte" Binding="{Binding Categoria}" HeaderStyle="{StaticResource HeaderStyle}" CellStyle="{StaticResource CenteredCellStyle}" Width="*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Grid Name="gridProducto" Visibility="Collapsed">
+            <Grid HorizontalAlignment="Center" 
+                  Height="452" 
+                  VerticalAlignment="Center" 
+                  Width="1046">
+                <Grid.Background>
+                    <ImageBrush ImageSource="/Images/Background/BackgroundGrid.png"/>
+                </Grid.Background>
+                <Label Content="Seleccione el tipo de periodo" 
+                       HorizontalAlignment="Left" 
+                       Margin="523,47,0,0" 
+                       VerticalAlignment="Top" 
+                       Height="68" 
+                       Width="494"
+                       Foreground="White"
+                       FontSize="36" 
+                       FontStyle="Italic" 
+                       FontFamily="Bodoni MT" 
+                       FontWeight="Bold" 
+                       RenderTransformOrigin="0.564,0.512"/>
+                <Label Content="Diario" 
+                        Name="btnDiarioProducto"
+                        HorizontalAlignment="Left" 
+                        Margin="638,115,0,0" 
+                        VerticalAlignment="Top" 
+                        Height="51" 
+                        Width="264" 
+                        BorderBrush="{x:Null}"
+                        FontFamily="Bodoni MT" 
+                        FontSize="22" VerticalContentAlignment="Center" HorizontalContentAlignment="Center">
+                    <Label.Background>
+                        <ImageBrush ImageSource="/Images/Background/BackGraundRadioButton1.png"/>
+                    </Label.Background>
+                </Label>
+                <Label Content="Semanal" 
+                        Name="btnSemanalProducto"
+                        HorizontalAlignment="Left" 
+                        Margin="638,166,0,0" 
+                        VerticalAlignment="Top" 
+                        Height="52" 
+                        Width="264" 
+                        BorderBrush="{x:Null}"
+                        FontFamily="Bodoni MT" 
+                        FontSize="22" VerticalContentAlignment="Center" HorizontalContentAlignment="Center">
+                    <Label.Background>
+                        <ImageBrush ImageSource="/Images/Background/BackGraundRadioButton2.png"/>
+                    </Label.Background>
+                </Label>
+                <Label Content="Mensual" 
+                        Name="btnMensualProducto"
+                        HorizontalAlignment="Left" 
+                        Margin="638,218,0,0" 
+                        VerticalAlignment="Top"
+                        Height="51" 
+                        Width="264" 
+                        BorderBrush="{x:Null}" 
+                        FontFamily="Bodoni MT" 
+                        FontSize="22" VerticalContentAlignment="Center" HorizontalContentAlignment="Center">
+                    <Label.Background>
+                        <ImageBrush ImageSource="/Images/Background/BackGraundRadioButton3.png"/>
+                    </Label.Background>
+                </Label>
+                <Label Content="Anual" 
+                        Name="btnAnualProducto"
+                        HorizontalAlignment="Left"
+                        Margin="638,269,0,0" 
+                        VerticalAlignment="Top" 
+                        Height="52" 
+                        Width="264" 
+                        BorderBrush="{x:Null}" 
+                        FontFamily="Bodoni MT" 
+                        FontSize="22" VerticalContentAlignment="Center" HorizontalContentAlignment="Center">
+                    <Label.Background>
+                        <ImageBrush ImageSource="/Images/Background/BackGraundRadioButton4.png"/>
+                    </Label.Background>
+                </Label>
+                <Label Content="Cancelar"
+                        Name="btnCancelarProducto"
+                        HorizontalAlignment="Left"
+                        Margin="268,345,0,0" 
+                        VerticalAlignment="Top" 
+                        Height="52"
+                        Width="204" 
+                        BorderBrush="{x:Null}" 
+                        FontFamily="Bodoni MT" 
+                        FontSize="22"
+                        MouseDown="btnClickCancelarProducto" VerticalContentAlignment="Center" HorizontalContentAlignment="Center">
+                    <Label.Background>
+                        <ImageBrush ImageSource="/Images/Background/BackgroundTextBlock.png"/>
+                    </Label.Background>
+                </Label>
+                <Label Content="Generar"
+                        Name="btnGenerarProducto"
+                        HorizontalAlignment="Left" 
+                        Margin="593,345,0,0" 
+                        VerticalAlignment="Top" 
+                        Height="52" 
+                        Width="204" 
+                        BorderBrush="{x:Null}" 
+                        FontFamily="Bodoni MT" 
+                        FontSize="22"
+                        MouseDown="btnClickGenerarProducto" VerticalContentAlignment="Center" HorizontalContentAlignment="Center">
+                    <Label.Background>
+                        <ImageBrush ImageSource="/Images/Background/BackgroundTextBlock.png"/>
+                    </Label.Background>
+                </Label>
+                <Label Content="Ingrese codigo &#xD;&#xA;del producto" 
+                       HorizontalAlignment="Left" 
+                       Margin="115,47,0,0" 
+                       VerticalAlignment="Top" 
+                       Height="94" 
+                       Width="335"
+                       Foreground="White" 
+                       FontSize="36" 
+                       FontStyle="Italic"
+                       FontFamily="Bodoni MT" 
+                       FontWeight="Bold"
+                       RenderTransformOrigin="0.564,0.512" 
+                       VerticalContentAlignment="Center" 
+                       HorizontalContentAlignment="Center"/>
+                <TextBox x:Name="txtCodigoProducto" 
+                         HorizontalAlignment="Left" 
+                         Margin="115,0,0,0" 
+                         TextWrapping="Wrap"  
+                         VerticalAlignment="Center"
+                         Width="306" 
+                         Height="68" 
+                         VerticalContentAlignment="Center" 
+                         HorizontalContentAlignment="Center" 
+                         FontSize="18" 
+                         FontFamily="Bodoni MT" SelectionBrush="{x:Null}" BorderBrush="{x:Null}">
+                    <TextBox.Background>
+                        <ImageBrush ImageSource="/Images/Background/BackgroundTextBlock.png"/>
+                    </TextBox.Background>
+                </TextBox>
+            </Grid>
+        </Grid>
+
+        <Grid Name="gridCategoria" Visibility="Collapsed">
+            <Grid HorizontalAlignment="Center"
+                  Height="452" 
+                  VerticalAlignment="Center" Width="1046">
+                <Grid.Background>
+                    <ImageBrush ImageSource="/Images/Background/BackgroundGrid.png"/>
+                </Grid.Background>
+                <Label Content="Seleccione el tipo de periodo" 
+                       HorizontalAlignment="Left" 
+                       Margin="523,47,0,0" 
+                       VerticalAlignment="Top" 
+                       Height="68" 
+                       Width="494" 
+                       Foreground="White" 
+                       FontSize="36" 
+                       FontStyle="Italic" 
+                       FontFamily="Bodoni MT" 
+                       FontWeight="Bold" 
+                       RenderTransformOrigin="0.564,0.512"/>
+                <Label Content="Diario" 
+                        Name="btnDiarioCategoria"
+                        HorizontalAlignment="Left" 
+                        Margin="638,115,0,0" 
+                        VerticalAlignment="Top" 
+                        Height="51" 
+                        Width="264" 
+                        BorderBrush="{x:Null}" 
+                        FontFamily="Bodoni MT" 
+                        FontSize="22" VerticalContentAlignment="Center" HorizontalContentAlignment="Center">
+                    <Label.Background>
+                        <ImageBrush ImageSource="/Images/Background/BackGraundRadioButton1.png"/>
+                    </Label.Background>
+                </Label>
+                <Label Content="Semanal" 
+                        Name="btnSemanalCategoria"
+                        HorizontalAlignment="Left" 
+                        Margin="638,166,0,0" 
+                        VerticalAlignment="Top" 
+                        Height="52" 
+                        Width="264" 
+                        BorderBrush="{x:Null}" 
+                        FontFamily="Bodoni MT" 
+                        FontSize="22" VerticalContentAlignment="Center" HorizontalContentAlignment="Center">
+                    <Label.Background>
+                        <ImageBrush ImageSource="/Images/Background/BackGraundRadioButton2.png"/>
+                    </Label.Background>
+                </Label>
+                <Label Content="Mensual" 
+                        Name="btnMensualCategoria"
+                        HorizontalAlignment="Left" 
+                        Margin="638,218,0,0" 
+                        VerticalAlignment="Top" 
+                        Height="51" 
+                        Width="264" 
+                        BorderBrush="{x:Null}" 
+                        FontFamily="Bodoni MT" 
+                        FontSize="22" VerticalContentAlignment="Center" HorizontalContentAlignment="Center">
+                    <Label.Background>
+                        <ImageBrush ImageSource="/Images/Background/BackGraundRadioButton3.png"/>
+                    </Label.Background>
+                </Label>
+                <Label Content="Anual" 
+                        Name="btnAnualCategoria"
+                        HorizontalAlignment="Left" 
+                        Margin="638,269,0,0" 
+                        VerticalAlignment="Top" 
+                        Height="52" 
+                        Width="264" 
+                        BorderBrush="{x:Null}" 
+                        FontFamily="Bodoni MT" 
+                        FontSize="22" VerticalContentAlignment="Center" HorizontalContentAlignment="Center">
+                    <Label.Background>
+                        <ImageBrush ImageSource="/Images/Background/BackGraundRadioButton4.png"/>
+                    </Label.Background>
+                </Label>
+                <Label Content="Cancelar" 
+                        Name="btnCancelarCategoria"
+                        MouseDown="btnClickCancelarCategoria"
+                        HorizontalAlignment="Left" 
+                        Margin="268,345,0,0" 
+                        VerticalAlignment="Top" 
+                        Height="52" 
+                        Width="204" 
+                        BorderBrush="{x:Null}" 
+                        FontFamily="Bodoni MT" 
+                        FontSize="22" VerticalContentAlignment="Center" HorizontalContentAlignment="Center">
+                    <Label.Background>
+                        <ImageBrush ImageSource="/Images/Background/BackgroundTextBlock.png"/>
+                    </Label.Background>
+                </Label>
+                <Label Content="Generar" 
+                        Name="btnGenerarCategoria"
+                        MouseDown="btnClickGenerarCategoria"
+                        HorizontalAlignment="Left" 
+                        Margin="593,345,0,0" 
+                        VerticalAlignment="Top" 
+                        Height="52" 
+                        Width="204" 
+                        BorderBrush="{x:Null}" 
+                        FontFamily="Bodoni MT" 
+                        FontSize="22" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
+                    <Label.Background>
+                        <ImageBrush ImageSource="/Images/Background/BackgroundTextBlock.png"/>
+                    </Label.Background>
+                </Label>
+                <Label Content="Ingrese la categoria &#xD;&#xA;del producto" 
+                       HorizontalAlignment="Left" 
+                       Margin="115,47,0,0" 
+                       VerticalAlignment="Top"
+                       Height="94" 
+                       Width="335" 
+                       Foreground="White" 
+                       FontSize="36" 
+                       FontStyle="Italic" 
+                       FontFamily="Bodoni MT" 
+                       FontWeight="Bold" 
+                       RenderTransformOrigin="0.564,0.512" 
+                       VerticalContentAlignment="Center" 
+                       HorizontalContentAlignment="Center"/>
+                <TextBox Name="txtCategoriaDeProducto" 
+                         HorizontalAlignment="Left" 
+                         Margin="115,0,0,0" 
+                         TextWrapping="Wrap" 
+                         VerticalAlignment="Center" 
+                         Width="306" 
+                         Height="68" 
+                         VerticalContentAlignment="Center" 
+                         HorizontalContentAlignment="Center"
+                         FontSize="18" FontFamily="Bodoni MT" SelectionBrush="{x:Null}" BorderBrush="{x:Null}">
+                    <TextBox.Background>
+                        <ImageBrush ImageSource="/Images/Background/BackgroundTextBlock.png"/>
+                    </TextBox.Background>
+                </TextBox>
+            </Grid>
+        </Grid>
+        
+        <Grid Name="gridInventarioGanancias" Visibility="Collapsed">
+            <Grid HorizontalAlignment="Center" 
+                  Height="452" 
+                  VerticalAlignment="Center" 
+                  Width="710">
+                <Grid.Background>
+                    <ImageBrush ImageSource="/Images/Background/BackgroundGrid.png"/>
+                </Grid.Background>
+                <Label Content="Seleccione el tipo de periodo" 
+                       HorizontalAlignment="Center" 
+                       Margin="0,42,0,0" 
+                       VerticalAlignment="Top" 
+                       Height="68" 
+                       Width="494" 
+                       Foreground="White" 
+                       FontSize="36" 
+                       FontStyle="Italic" 
+                       FontFamily="Bodoni MT" 
+                       FontWeight="Bold" 
+                       RenderTransformOrigin="0.564,0.512"/>
+                <Label Content="Diario"
+                        Name="btnDiarioInventarioGanancias"
+                        HorizontalAlignment="Center" 
+                        Margin="0,115,0,0" 
+                        VerticalAlignment="Top" 
+                        Height="51" 
+                        Width="264" 
+                        FontFamily="Bodoni MT" 
+                        FontSize="22" BorderBrush="{x:Null}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
+                    <Label.Background>
+                        <ImageBrush ImageSource="/Images/Background/BackGraundRadioButton1.png"/>
+                    </Label.Background>
+                </Label>
+                <Label Content="Semanal" 
+                        Name="btnSemanalInventarioGanancias"
+                        HorizontalAlignment="Center" 
+                        Margin="0,166,0,0" 
+                        VerticalAlignment="Top" 
+                        Height="52" 
+                        Width="264" 
+                        BorderBrush="{x:Null}" 
+                        FontFamily="Bodoni MT" 
+                        FontSize="22" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
+                    <Label.Background>
+                        <ImageBrush ImageSource="/Images/Background/BackGraundRadioButton2.png"/>
+                    </Label.Background>
+                </Label>
+                <Label Content="Mensual" 
+                        Name="btnMensualInventarioGanancias"
+                        HorizontalAlignment="Center" 
+                        Margin="0,218,0,0" 
+                        VerticalAlignment="Top" 
+                        Height="51" Width="264" 
+                        BorderBrush="{x:Null}" 
+                        FontFamily="Bodoni MT" 
+                        FontSize="22" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
+                    <Label.Background>
+                        <ImageBrush ImageSource="/Images/Background/BackGraundRadioButton3.png"/>
+                    </Label.Background>
+                </Label>
+                <Label Content="Anual" 
+                        Name="btnAnualInventarioGanancias"
+                        HorizontalAlignment="Center" 
+                        Margin="0,269,0,0" 
+                        VerticalAlignment="Top" 
+                        Height="52" 
+                        Width="264" 
+                        BorderBrush="{x:Null}" 
+                        FontFamily="Bodoni MT" 
+                        FontSize="22" VerticalContentAlignment="Center" HorizontalContentAlignment="Center">
+                    <Label.Background>
+                        <ImageBrush ImageSource="/Images/Background/BackGraundRadioButton4.png"/>
+                    </Label.Background>
+                </Label>
+                <Label Content="Cancelar"
+                        Name="btnCancelarInventarioGanancias"
+                        HorizontalAlignment="Left" 
+                        Margin="132,345,0,0" 
+                        VerticalAlignment="Top" 
+                        Height="52" 
+                        Width="204" 
+                        BorderBrush="{x:Null}"
+                        FontFamily="Bodoni MT"
+                        FontSize="22"
+                        MouseDown="btnClickCancelarInventarioGanancias" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
+                    <Label.Background>
+                        <ImageBrush ImageSource="/Images/Background/BackgroundTextBlock.png"/>
+                    </Label.Background>
+                </Label>
+                <Label Content="Generar" 
+                        Name="btnGenerarInventarioGanancias"
+                       MouseDown="btnClickGenerarInventarioGanancias"
+                        HorizontalAlignment="Left" 
+                        Margin="398,345,0,0" 
+                        VerticalAlignment="Top" 
+                        Height="52" 
+                        Width="204" 
+                        BorderBrush="{x:Null}" 
+                        FontFamily="Bodoni MT"
+                        FontSize="22" HorizontalContentAlignment="Center" 
+                        VerticalContentAlignment="Center">
+                    <Label.Background>
+                        <ImageBrush ImageSource="/Images/Background/BackgroundTextBlock.png"/>
+                    </Label.Background>
+                </Label>
+            </Grid>
+        </Grid>
+
+    </Grid>
+</Page>

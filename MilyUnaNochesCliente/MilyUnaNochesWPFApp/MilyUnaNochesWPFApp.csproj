@@ -110,6 +110,9 @@
     <Compile Include="Views\CashierMenu.xaml.cs">
       <DependentUpon>CashierMenu.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\GenerateReport.xaml.cs">
+      <DependentUpon>GenerateReport.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\LoginView.xaml.cs">
       <DependentUpon>LoginView.xaml</DependentUpon>
     </Compile>
@@ -187,6 +190,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\CashierMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\GenerateReport.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -386,6 +393,15 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\Icons\SalesIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Background\FrameReports.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Background\BackGraundRadioButton1.png" />
+    <Resource Include="Images\Background\BackGraundRadioButton2.png" />
+    <Resource Include="Images\Background\BackGraundRadioButton3.png" />
+    <Resource Include="Images\Background\BackGraundRadioButton4.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
