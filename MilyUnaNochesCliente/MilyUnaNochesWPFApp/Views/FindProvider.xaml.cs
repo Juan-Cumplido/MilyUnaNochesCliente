@@ -1,4 +1,6 @@
-﻿using MilyUnaNochesWPFApp.MilyUnaNochesProxy;
+﻿using MilyUnaNochesWPFApp.Logic;
+using MilyUnaNochesWPFApp.MilyUnaNochesProxy;
+using MilyUnaNochesWPFApp.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -22,79 +24,92 @@ namespace MilyUnaNochesWPFApp.Views {
     public partial class FindProvider : Page {
         public ObservableCollection<Provider> Providers { get; set; }
         IProviderManager _providerManager = new ProviderManagerClient();
+
         public FindProvider() {
             InitializeComponent();
             LoadProviders();
         }
 
-        private async void LoadProviders() {
+        public async void LoadProviders() {
             try {
-                var providersList = _providerManager.GetProviders();
+                var providersList = await _providerManager.GetProvidersAsync();
                 Providers = new ObservableCollection<Provider>(providersList);
                 ProviderDataGrid.ItemsSource = Providers;
             } catch (Exception ex) {
                 MessageBox.Show($"Error al cargar proveedores: {ex.Message}");
             }
         }
-        private void SearchBar_TextChanged(object sender, TextChangedEventArgs e) {
-            PlaceholderText.Visibility = string.IsNullOrWhiteSpace(SearchBar.Text) ? Visibility.Visible : Visibility.Collapsed;
+        private void txtb_SearchBar_TextChanged(object sender, TextChangedEventArgs e) {
+            txtb_PlaceholderText.Visibility = string.IsNullOrWhiteSpace(txtb_SearchBar.Text) ? Visibility.Visible : Visibility.Collapsed;
 
             var filteredProviders = Providers.Where(p =>
-            p.providerName.ToLower().Contains(SearchBar.Text.ToLower()) ||
-            p.providerContact.ToLower().Contains(SearchBar.Text.ToLower())).ToList();
+            p.providerName.ToLower().Contains(txtb_SearchBar.Text.ToLower()) ||
+            p.providerContact.ToLower().Contains(txtb_SearchBar.Text.ToLower())).ToList();
 
             ProviderDataGrid.ItemsSource = filteredProviders;
         }
 
-        private void Eliminar_Click(object sender, RoutedEventArgs e) {
+        private void Delete_Click(object sender, RoutedEventArgs e) {
 
             if (ProviderDataGrid.SelectedItem is Provider selectedProvider) {
-                MessageBoxResult result = MessageBox.Show(
-                    $"Estás seguro de que deseas eliminar este proveedor: {selectedProvider.providerName}?", 
-                    "Confirmar eliminación", 
-                    MessageBoxButton.YesNo, 
-                    MessageBoxImage.Question 
-                );
 
-                if (result == MessageBoxResult.Yes) {
+                bool messageResult =
+                DialogManager.ShowConfirmationMessageAlert($"Estás seguro de que deseas eliminar este proveedor: {selectedProvider.providerName}", 
+                "Archivar proveedor");
+
+                if (messageResult) {
                     var deleteResult = _providerManager.DeleteProvider(selectedProvider.IdProvider);
-                    //Constants.SuccessOperation
-                    if (deleteResult == 1) {
-                        MessageBox.Show("Proveedor eliminado con éxito.");
-                        Providers.Remove(selectedProvider); 
+                    if (deleteResult == Constants.SuccessOperation) {
+                        DialogManager.ShowConfirmationMessageAlert("Proveedor eliminado con exito", "Eliminacion exitosa");
+                        LoadProviders();
                     } else {
-                        MessageBox.Show("No se pudo eliminar el proveedor.");
+                        DialogManager.ShowErrorMessageAlert("No se pudo eliminar el proveedor", "Eliminacion fallida");
                     }
                 }
             } else {
-                MessageBox.Show("Seleccione un proveedor primero");
+                DialogManager.ShowWarningMessageAlert("Debe seleccionar un proveedor primero", "Seleccione un proveedor");
             }
         }
 
-        private void Archivar_Click(object sender, RoutedEventArgs e) {
+        private void Archive_Click(object sender, RoutedEventArgs e) {
             if (ProviderDataGrid.SelectedItem is Provider selectedProvider) {
-                var result = _providerManager.ArchiveProvider(selectedProvider.IdProvider);
-                if (result == 1) {
-                    MessageBox.Show("Proveedor archivado con éxito.");
-                    Providers.Remove(selectedProvider);
-                } else {
-                    MessageBox.Show("No se pudo archivar el proveedor.");
+                bool result = DialogManager.ShowConfirmationMessageAlert($"¿Desea archivar el proveedor: {selectedProvider.providerName}", "Archivar proveedor");
+                if (result) {
+                    var resultQuery = _providerManager.ArchiveProvider(selectedProvider.IdProvider);
+                    if (resultQuery == Constants.SuccessOperation) {
+                        DialogManager.ShowSuccessMessageAlert("Se ha archivado el proveedor", "Proveedor archivado");
+                        LoadProviders();
+                    } else {
+                        DialogManager.ShowErrorMessageAlert("No se pudo archivar el proveedor", "Error al archivar el proveedor");
+                    }
                 }
+
             }
         }
 
-        private void Editar_Click(object sender, RoutedEventArgs e) {
+        private void Edit_Click(object sender, RoutedEventArgs e) {
             if (ProviderDataGrid.SelectedItem is Provider selectedProvider) {
-                var editWindow = new EditProvider(selectedProvider);
-                bool? result = editWindow.ShowDialog();
+                int idSupplier = selectedProvider.IdProvider;
+                int idAddress = selectedProvider.idAddress;
+                
+                var mainWindow = Window.GetWindow(this);
+                var editWindow = new EditSupplierWindow(idSupplier, idAddress, this);
+                makeThisOwnerWindow(editWindow);
 
-                if (result == true) {
-                    MessageBox.Show("Proveedor actualizado.", "Editar Proveedor", MessageBoxButton.OK, MessageBoxImage.Information);
-                    ProviderDataGrid.Items.Refresh();
-                }
-            } else {
-                MessageBox.Show("Seleccione un proveedor primero", "Editar Proveedor", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
+        }
+
+        private void ShowArchived_Click(object sender, RoutedEventArgs e) {
+            var mainWindow = Window.GetWindow(this);
+            var archivedSuppliersWindow = new ArchivedSuppliersWindow(this);
+            makeThisOwnerWindow(archivedSuppliersWindow);
+        }
+
+        private void makeThisOwnerWindow(Window windowToOwn) {
+            var mainWindow = Window.GetWindow(this);
+            windowToOwn.Owner = mainWindow;
+            windowToOwn.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+            windowToOwn.ShowDialog();
         }
     }
  }

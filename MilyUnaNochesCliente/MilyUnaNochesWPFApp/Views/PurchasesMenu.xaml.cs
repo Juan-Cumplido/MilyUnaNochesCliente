@@ -15,19 +15,19 @@ using System.Windows.Shapes;
 
 namespace MilyUnaNochesWPFApp.Views {
     /// <summary>
-    /// Lógica de interacción para MenuProvider2.xaml
+    /// Lógica de interacción para PurchasesMenu.xaml
     /// </summary>
-    public partial class MenuProvider : Page {
-        public MenuProvider() {
+    public partial class PurchasesMenu : Page {
+        public PurchasesMenu() {
             InitializeComponent();
         }
 
-        private void ConsultarProveedores_Click(object sender, RoutedEventArgs e) {
-            mainFrame.Source = new System.Uri("FindProvider.xaml", System.UriKind.Relative);
+        private void ConsultarCompras_Click(object sender, RoutedEventArgs e) {
+            mainFrame.Source = new System.Uri("ConsultPurchase.xaml", System.UriKind.Relative);
         }
 
-        private void RegistrarProveedor_Click(object sender, RoutedEventArgs e) {
-            mainFrame.Source = new System.Uri("RegisterProvider.xaml", System.UriKind.Relative);
+        private void RegistrarCompra_Click(object sender, RoutedEventArgs e) {
+            //mainFrame.Source = new System.Uri("ConsultPurchase.xaml", System.UriKind.Relative);
         }
     }
 }

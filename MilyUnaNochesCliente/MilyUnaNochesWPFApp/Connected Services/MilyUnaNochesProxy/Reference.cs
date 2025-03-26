@@ -689,9 +689,6 @@ namespace MilyUnaNochesWPFApp.MilyUnaNochesProxy {
         private int idAddressField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string passwordField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string phoneNumberField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -748,19 +745,6 @@ namespace MilyUnaNochesWPFApp.MilyUnaNochesProxy {
                 if ((this.idAddressField.Equals(value) != true)) {
                     this.idAddressField = value;
                     this.RaisePropertyChanged("idAddress");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string password {
-            get {
-                return this.passwordField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.passwordField, value) != true)) {
-                    this.passwordField = value;
-                    this.RaisePropertyChanged("password");
                 }
             }
         }
@@ -1236,6 +1220,12 @@ namespace MilyUnaNochesWPFApp.MilyUnaNochesProxy {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProviderManager/GetProviders", ReplyAction="http://tempuri.org/IProviderManager/GetProvidersResponse")]
         System.Threading.Tasks.Task<MilyUnaNochesWPFApp.MilyUnaNochesProxy.Provider[]> GetProvidersAsync();
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProviderManager/GetArchivedProviders", ReplyAction="http://tempuri.org/IProviderManager/GetArchivedProvidersResponse")]
+        MilyUnaNochesWPFApp.MilyUnaNochesProxy.Provider[] GetArchivedProviders();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProviderManager/GetArchivedProviders", ReplyAction="http://tempuri.org/IProviderManager/GetArchivedProvidersResponse")]
+        System.Threading.Tasks.Task<MilyUnaNochesWPFApp.MilyUnaNochesProxy.Provider[]> GetArchivedProvidersAsync();
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProviderManager/ArchiveProvider", ReplyAction="http://tempuri.org/IProviderManager/ArchiveProviderResponse")]
         int ArchiveProvider(int idProvider);
         
@@ -1247,6 +1237,30 @@ namespace MilyUnaNochesWPFApp.MilyUnaNochesProxy {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProviderManager/DeleteProvider", ReplyAction="http://tempuri.org/IProviderManager/DeleteProviderResponse")]
         System.Threading.Tasks.Task<int> DeleteProviderAsync(int idProvider);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProviderManager/VerifyProviderExistance", ReplyAction="http://tempuri.org/IProviderManager/VerifyProviderExistanceResponse")]
+        int VerifyProviderExistance(string providerName);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProviderManager/VerifyProviderExistance", ReplyAction="http://tempuri.org/IProviderManager/VerifyProviderExistanceResponse")]
+        System.Threading.Tasks.Task<int> VerifyProviderExistanceAsync(string providerName);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProviderManager/UnArchiveProvider", ReplyAction="http://tempuri.org/IProviderManager/UnArchiveProviderResponse")]
+        int UnArchiveProvider(int idProvider);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProviderManager/UnArchiveProvider", ReplyAction="http://tempuri.org/IProviderManager/UnArchiveProviderResponse")]
+        System.Threading.Tasks.Task<int> UnArchiveProviderAsync(int idProvider);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProviderManager/GetSupplier", ReplyAction="http://tempuri.org/IProviderManager/GetSupplierResponse")]
+        MilyUnaNochesWPFApp.MilyUnaNochesProxy.Provider GetSupplier(int idProvider);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProviderManager/GetSupplier", ReplyAction="http://tempuri.org/IProviderManager/GetSupplierResponse")]
+        System.Threading.Tasks.Task<MilyUnaNochesWPFApp.MilyUnaNochesProxy.Provider> GetSupplierAsync(int idProvider);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProviderManager/EditSupplier", ReplyAction="http://tempuri.org/IProviderManager/EditSupplierResponse")]
+        int EditSupplier(MilyUnaNochesWPFApp.MilyUnaNochesProxy.Provider newProviderInfo, MilyUnaNochesWPFApp.MilyUnaNochesProxy.Address newAddressInfo);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProviderManager/EditSupplier", ReplyAction="http://tempuri.org/IProviderManager/EditSupplierResponse")]
+        System.Threading.Tasks.Task<int> EditSupplierAsync(MilyUnaNochesWPFApp.MilyUnaNochesProxy.Provider newProviderInfo, MilyUnaNochesWPFApp.MilyUnaNochesProxy.Address newAddressInfo);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1292,6 +1306,14 @@ namespace MilyUnaNochesWPFApp.MilyUnaNochesProxy {
             return base.Channel.GetProvidersAsync();
         }
         
+        public MilyUnaNochesWPFApp.MilyUnaNochesProxy.Provider[] GetArchivedProviders() {
+            return base.Channel.GetArchivedProviders();
+        }
+        
+        public System.Threading.Tasks.Task<MilyUnaNochesWPFApp.MilyUnaNochesProxy.Provider[]> GetArchivedProvidersAsync() {
+            return base.Channel.GetArchivedProvidersAsync();
+        }
+        
         public int ArchiveProvider(int idProvider) {
             return base.Channel.ArchiveProvider(idProvider);
         }
@@ -1306,6 +1328,38 @@ namespace MilyUnaNochesWPFApp.MilyUnaNochesProxy {
         
         public System.Threading.Tasks.Task<int> DeleteProviderAsync(int idProvider) {
             return base.Channel.DeleteProviderAsync(idProvider);
+        }
+        
+        public int VerifyProviderExistance(string providerName) {
+            return base.Channel.VerifyProviderExistance(providerName);
+        }
+        
+        public System.Threading.Tasks.Task<int> VerifyProviderExistanceAsync(string providerName) {
+            return base.Channel.VerifyProviderExistanceAsync(providerName);
+        }
+        
+        public int UnArchiveProvider(int idProvider) {
+            return base.Channel.UnArchiveProvider(idProvider);
+        }
+        
+        public System.Threading.Tasks.Task<int> UnArchiveProviderAsync(int idProvider) {
+            return base.Channel.UnArchiveProviderAsync(idProvider);
+        }
+        
+        public MilyUnaNochesWPFApp.MilyUnaNochesProxy.Provider GetSupplier(int idProvider) {
+            return base.Channel.GetSupplier(idProvider);
+        }
+        
+        public System.Threading.Tasks.Task<MilyUnaNochesWPFApp.MilyUnaNochesProxy.Provider> GetSupplierAsync(int idProvider) {
+            return base.Channel.GetSupplierAsync(idProvider);
+        }
+        
+        public int EditSupplier(MilyUnaNochesWPFApp.MilyUnaNochesProxy.Provider newProviderInfo, MilyUnaNochesWPFApp.MilyUnaNochesProxy.Address newAddressInfo) {
+            return base.Channel.EditSupplier(newProviderInfo, newAddressInfo);
+        }
+        
+        public System.Threading.Tasks.Task<int> EditSupplierAsync(MilyUnaNochesWPFApp.MilyUnaNochesProxy.Provider newProviderInfo, MilyUnaNochesWPFApp.MilyUnaNochesProxy.Address newAddressInfo) {
+            return base.Channel.EditSupplierAsync(newProviderInfo, newAddressInfo);
         }
     }
     
