@@ -98,6 +98,9 @@
     <Compile Include="Views\ConsultProductsView.xaml.cs">
       <DependentUpon>ConsultProductsView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\ConsultPurchase.xaml.cs">
+      <DependentUpon>ConsultPurchase.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\ConsultSale.xaml.cs">
       <DependentUpon>ConsultSale.xaml</DependentUpon>
     </Compile>
@@ -127,6 +130,9 @@
     </Compile>
     <Compile Include="Views\ProductDetailView.xaml.cs">
       <DependentUpon>ProductDetailView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PurchasesMenu.xaml.cs">
+      <DependentUpon>PurchasesMenu.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\RegisterProductView.xaml.cs">
       <DependentUpon>RegisterProductView.xaml</DependentUpon>
@@ -175,6 +181,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Views\ConsultPurchase.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\ConsultSale.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -212,6 +222,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\ProductDetailView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PurchasesMenu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -387,6 +401,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\Icons\SalesIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Background\FramePurchases.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
