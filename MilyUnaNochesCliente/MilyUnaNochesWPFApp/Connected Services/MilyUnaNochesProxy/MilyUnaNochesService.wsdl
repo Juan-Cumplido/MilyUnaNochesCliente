@@ -66,6 +66,7 @@
       <xsd:import schemaLocation="http://localhost:1442/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
       <xsd:import schemaLocation="http://localhost:1442/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/MilyUnaNochesService.Contracts" />
       <xsd:import schemaLocation="http://localhost:1442/?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/MilyUnaNochesService.Logic" />
+      <xsd:import schemaLocation="http://localhost:1442/?xsd=xsd4" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IUserManager_AddClient_InputMessage">
@@ -200,6 +201,24 @@
   <wsdl:message name="IProductsManager_GetProducts_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetProductsResponse" />
   </wsdl:message>
+  <wsdl:message name="IProductsManager_GetProductByCode_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetProductByCode" />
+  </wsdl:message>
+  <wsdl:message name="IProductsManager_GetProductByCode_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetProductByCodeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProductsManager_CheckStockByCode_InputMessage">
+    <wsdl:part name="parameters" element="tns:CheckStockByCode" />
+  </wsdl:message>
+  <wsdl:message name="IProductsManager_CheckStockByCode_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CheckStockByCodeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProductsManager_GetProductStock_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetProductStock" />
+  </wsdl:message>
+  <wsdl:message name="IProductsManager_GetProductStock_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetProductStockResponse" />
+  </wsdl:message>
   <wsdl:message name="ISaleManager_ProcessSale_InputMessage">
     <wsdl:part name="parameters" element="tns:ProcessSale" />
   </wsdl:message>
@@ -312,6 +331,18 @@
     <wsdl:operation name="GetProducts">
       <wsdl:input wsaw:Action="http://tempuri.org/IProductsManager/GetProducts" message="tns:IProductsManager_GetProducts_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IProductsManager/GetProductsResponse" message="tns:IProductsManager_GetProducts_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProductByCode">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProductsManager/GetProductByCode" message="tns:IProductsManager_GetProductByCode_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProductsManager/GetProductByCodeResponse" message="tns:IProductsManager_GetProductByCode_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckStockByCode">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProductsManager/CheckStockByCode" message="tns:IProductsManager_CheckStockByCode_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProductsManager/CheckStockByCodeResponse" message="tns:IProductsManager_CheckStockByCode_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProductStock">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProductsManager/GetProductStock" message="tns:IProductsManager_GetProductStock_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProductsManager/GetProductStockResponse" message="tns:IProductsManager_GetProductStock_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="ISaleManager">
@@ -534,6 +565,33 @@
     </wsdl:operation>
     <wsdl:operation name="GetProducts">
       <soap12:operation soapAction="http://tempuri.org/IProductsManager/GetProducts" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProductByCode">
+      <soap12:operation soapAction="http://tempuri.org/IProductsManager/GetProductByCode" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckStockByCode">
+      <soap12:operation soapAction="http://tempuri.org/IProductsManager/CheckStockByCode" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProductStock">
+      <soap12:operation soapAction="http://tempuri.org/IProductsManager/GetProductStock" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

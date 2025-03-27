@@ -306,6 +306,9 @@
     <None Include="Connected Services\MilyUnaNochesProxy\item3.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Connected Services\MilyUnaNochesProxy\item4.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Connected Services\MilyUnaNochesProxy\MilyUnaNochesService.wsdl" />
     <None Include="Connected Services\MilyUnaNochesProxy\MilyUnaNochesWPFApp.MilyUnaNochesProxy.Address.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>

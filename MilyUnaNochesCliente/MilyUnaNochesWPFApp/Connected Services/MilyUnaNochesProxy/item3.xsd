@@ -2,6 +2,7 @@
 <xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:import schemaLocation="http://localhost:1442/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/MilyUnaNochesService.Contracts" />
   <xs:import schemaLocation="http://localhost:1442/?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/MilyUnaNochesService.Logic" />
+  <xs:import schemaLocation="http://localhost:1442/?xsd=xsd4" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
   <xs:element name="AddClient">
     <xs:complexType>
       <xs:sequence>
@@ -312,18 +313,61 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="GetProductByCode">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="productCode" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetProductByCodeResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/MilyUnaNochesService.Logic" minOccurs="0" name="GetProductByCodeResult" nillable="true" type="q18:Product" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CheckStockByCode">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="productCode" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="quantity" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CheckStockByCodeResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="CheckStockByCodeResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetProductStock">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="productId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetProductStockResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/MilyUnaNochesService.Contracts" minOccurs="0" name="GetProductStockResult" nillable="true" type="q19:StockResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="ProcessSale">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/MilyUnaNochesService.Contracts" minOccurs="0" name="sale" nillable="true" type="q18:Venta" />
-        <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/MilyUnaNochesService.Contracts" minOccurs="0" name="details" nillable="true" type="q19:ArrayOfVentaProducto" />
+        <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/MilyUnaNochesService.Contracts" minOccurs="0" name="sale" nillable="true" type="q20:Venta" />
+        <xs:element xmlns:q21="http://schemas.datacontract.org/2004/07/MilyUnaNochesService.Contracts" minOccurs="0" name="details" nillable="true" type="q21:ArrayOfVentaProducto" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="ProcessSaleResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="ProcessSaleResult" type="xs:boolean" />
+        <xs:element xmlns:q22="http://schemas.datacontract.org/2004/07/MilyUnaNochesService.Contracts" minOccurs="0" name="ProcessSaleResult" nillable="true" type="q22:SaleResult" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -338,21 +382,21 @@
   <xs:element name="SearchSalesResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/MilyUnaNochesService.Contracts" minOccurs="0" name="SearchSalesResult" nillable="true" type="q20:ArrayOfVenta" />
+        <xs:element xmlns:q23="http://schemas.datacontract.org/2004/07/MilyUnaNochesService.Contracts" minOccurs="0" name="SearchSalesResult" nillable="true" type="q23:ArrayOfVenta" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="ValidateSale">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q21="http://schemas.datacontract.org/2004/07/MilyUnaNochesService.Contracts" minOccurs="0" name="details" nillable="true" type="q21:ArrayOfVentaProducto" />
+        <xs:element xmlns:q24="http://schemas.datacontract.org/2004/07/MilyUnaNochesService.Contracts" minOccurs="0" name="details" nillable="true" type="q24:ArrayOfVentaProducto" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="ValidateSaleResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="ValidateSaleResult" type="xs:boolean" />
+        <xs:element xmlns:q25="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="ValidateSaleResult" nillable="true" type="q25:ArrayOfstring" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
