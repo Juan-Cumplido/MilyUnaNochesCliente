@@ -41,6 +41,7 @@
     <Reference Include="log4net, Version=3.0.4.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
       <HintPath>..\packages\log4net.3.0.4\lib\net462\log4net.dll</HintPath>
     </Reference>
+    <Reference Include="PresentationFramework.Aero2" />
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
@@ -131,6 +132,9 @@
     <Compile Include="Views\ProductDetailView.xaml.cs">
       <DependentUpon>ProductDetailView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\PurchaseProductSelectionWindow.xaml.cs">
+      <DependentUpon>PurchaseProductSelectionWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\PurchasesMenu.xaml.cs">
       <DependentUpon>PurchasesMenu.xaml</DependentUpon>
     </Compile>
@@ -142,6 +146,9 @@
     </Compile>
     <Compile Include="Views\RegisterClient.xaml.cs">
       <DependentUpon>RegisterClient.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\RegisterPurchase.xaml.cs">
+      <DependentUpon>RegisterPurchase.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\RegisterSupplier.xaml.cs">
       <DependentUpon>RegisterSupplier.xaml</DependentUpon>
@@ -225,6 +232,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\PurchaseProductSelectionWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\PurchasesMenu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -238,6 +249,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\RegisterClient.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\RegisterPurchase.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
