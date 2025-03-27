@@ -8,67 +8,128 @@
       Background="#fdf8ef"
       d:DesignHeight="427" d:DesignWidth="1280"
       Title="ConsultSale">
+    
     <Page.Resources>
+        <!-- Estilo para las celdas del DataGrid -->
         <Style x:Key="CenteredCellStyle" TargetType="DataGridCell">
             <Setter Property="TextBlock.TextAlignment" Value="Center"/>
             <Setter Property="TextBlock.VerticalAlignment" Value="Center"/>
+            <Setter Property="Background" Value="#FFF9F2E7"/>
+            <Setter Property="Foreground" Value="#5A3825"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Padding" Value="10,5"/>
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="FontFamily" Value="Bodoni MT Condensed"/>
+        </Style>
+        
+        <!-- Estilo para los encabezados de columna -->
+        <Style x:Key="ColumnHeaderStyle" TargetType="DataGridColumnHeader">
+            <Setter Property="Background" Value="#AE7D5C"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="FontFamily" Value="Bodoni MT"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="Padding" Value="10,5"/>
+            <Setter Property="BorderThickness" Value="0"/>
+        </Style>
+        
+        <!-- Estilo para las filas alternas -->
+        <Style x:Key="AlternatingRowStyle" TargetType="DataGridRow">
+            <Setter Property="Background" Value="#FFF9F2E7"/>
+            <Style.Triggers>
+                <Trigger Property="AlternationIndex" Value="1">
+                    <Setter Property="Background" Value="#FFEDDFCC"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        
+        <!-- Estilo para el DataGrid -->
+        <Style TargetType="DataGrid">
+            <Setter Property="Background" Value="#fdf8ef"/>
+            <Setter Property="BorderBrush" Value="#AE7D5C"/>
+            <Setter Property="BorderThickness" Value="2"/>
+            <Setter Property="RowBackground" Value="Transparent"/>
+            <Setter Property="AlternatingRowBackground" Value="Transparent"/>
+            <Setter Property="GridLinesVisibility" Value="None"/>
+            <Setter Property="HeadersVisibility" Value="Column"/>
+            <Setter Property="CanUserAddRows" Value="False"/>
+            <Setter Property="IsReadOnly" Value="True"/>
+            <Setter Property="SelectionMode" Value="Single"/>
+            <Setter Property="SelectionUnit" Value="FullRow"/>
+            <Setter Property="RowHeight" Value="40"/>
+            <Setter Property="HorizontalGridLinesBrush" Value="Transparent"/>
+            <Setter Property="VerticalGridLinesBrush" Value="Transparent"/>
         </Style>
     </Page.Resources>
+    
     <Grid>
         <TextBox HorizontalAlignment="Left" 
-          Height="47" 
-          Margin="69,10,0,0" 
-          TextWrapping="Wrap" 
-          Text="Busque una venta" 
-          VerticalAlignment="Top" 
-          Width="278" 
-          BorderBrush="{x:Null}" 
-          BorderThickness="3,3,3,3" 
-          TextChanged="TextBox_TextChanged"
-          VerticalContentAlignment="Center"
-          FontSize="25"
-          FontFamily="Bodoni MT Condensed" 
-          Foreground="#FFAE7D5C" HorizontalContentAlignment="Center">
+                 Name="SearchTextBox"
+                 Height="47" 
+                 Margin="69,10,0,0" 
+                 TextWrapping="Wrap" 
+                 VerticalAlignment="Top" 
+                 Width="278" 
+                 BorderBrush="{x:Null}" 
+                 BorderThickness="3,3,3,3" 
+                 TextChanged="TextBox_TextChanged"
+                 VerticalContentAlignment="Center"
+                 FontSize="25"
+                 FontFamily="Bodoni MT Condensed" 
+                 Foreground="#FFAE7D5C" 
+                 HorizontalContentAlignment="Center" SelectionBrush="{x:Null}" AutomationProperties.HelpText="Busque una venta">
             <TextBox.Background>
                 <ImageBrush ImageSource="/Images/Background/Search.png"/>
             </TextBox.Background>
         </TextBox>
+        
+        
+
+
+
         <!-- DataGrid para mostrar las ventas -->
         <DataGrid x:Name="SalesDataGrid" 
-           AutoGenerateColumns="False"
-           HeadersVisibility="Column"
-           GridLinesVisibility="None"
-           CanUserAddRows="False"
-           IsReadOnly="True"
-           HorizontalAlignment="Center"
-           VerticalAlignment="Top"
-           Width="1130"
-           Height="250"
-           Background="#fdf8ef"
-           BorderThickness="0"
-           FontSize="25"
-           FontFamily="Bodoni MT Condensed" SelectionChanged="SalesDataGrid_SelectionChanged" Margin="0,68,0,0">
+          AutoGenerateColumns="False"
+          HorizontalAlignment="Center"
+          VerticalAlignment="Top"
+          Width="1130"
+          Height="250"
+          Margin="0,68,0,0"
+          AlternationCount="2"
+          RowStyle="{StaticResource AlternatingRowStyle}"
+          SelectionChanged="SalesDataGrid_SelectionChanged">
 
             <DataGrid.Columns>
-                <!-- Columna de No. Cliente -->
-                <DataGridTextColumn Header="No. Cliente" 
-                             Binding="{Binding Cliente}" 
-                             Width="*" 
-                             CellStyle="{StaticResource CenteredCellStyle}"/>
+                <!-- Columna de Cliente -->
+                <DataGridTextColumn Header="Cliente" 
+                            Binding="{Binding Cliente}" 
+                            Width="*" 
+                            CellStyle="{StaticResource CenteredCellStyle}"
+                            HeaderStyle="{StaticResource ColumnHeaderStyle}"/>
 
-                <!-- Columna de Monto Vendido -->
-                <DataGridTextColumn Header="Monto Vendido" 
-                             Binding="{Binding Monto}" 
-                             Width="*" 
-                             CellStyle="{StaticResource CenteredCellStyle}"/>
+                <!-- Columna de Monto -->
+                <DataGridTextColumn Header="Monto" 
+                            Binding="{Binding Monto}" 
+                            Width="*" 
+                            CellStyle="{StaticResource CenteredCellStyle}"
+                            HeaderStyle="{StaticResource ColumnHeaderStyle}"/>
+
+                <!-- Columna de Método de Pago -->
+                <DataGridTextColumn Header="Método Pago" 
+                            Binding="{Binding PaymentMethod}" 
+                            Width="*" 
+                            CellStyle="{StaticResource CenteredCellStyle}"
+                            HeaderStyle="{StaticResource ColumnHeaderStyle}"/>
 
                 <!-- Columna de Artículos -->
                 <DataGridTextColumn Header="Artículos" 
-                             Binding="{Binding Articulos}" 
-                             Width="2*" 
-                             CellStyle="{StaticResource CenteredCellStyle}"/>
+                            Binding="{Binding Articulos}" 
+                            Width="*" 
+                            CellStyle="{StaticResource CenteredCellStyle}"
+                            HeaderStyle="{StaticResource ColumnHeaderStyle}"/>
             </DataGrid.Columns>
         </DataGrid>
-
     </Grid>
 </Page>

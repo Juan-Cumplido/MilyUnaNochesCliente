@@ -48,6 +48,18 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
+  <wsp:Policy wsu:Id="NetTcpBinding_ISaleManager_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <wsrm:RMAssertion xmlns:wsrm="http://schemas.xmlsoap.org/ws/2005/02/rm/policy">
+          <wsrm:InactivityTimeout Milliseconds="600000" />
+          <wsrm:AcknowledgementInterval Milliseconds="200" />
+        </wsrm:RMAssertion>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
   <wsdl:types>
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
       <xsd:import schemaLocation="http://localhost:1442/?xsd=xsd0" namespace="http://tempuri.org/" />
@@ -164,6 +176,18 @@
   <wsdl:message name="IProviderManager_UnArchiveProvider_OutputMessage">
     <wsdl:part name="parameters" element="tns:UnArchiveProviderResponse" />
   </wsdl:message>
+  <wsdl:message name="IProviderManager_GetSupplier_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSupplier" />
+  </wsdl:message>
+  <wsdl:message name="IProviderManager_GetSupplier_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSupplierResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProviderManager_EditSupplier_InputMessage">
+    <wsdl:part name="parameters" element="tns:EditSupplier" />
+  </wsdl:message>
+  <wsdl:message name="IProviderManager_EditSupplier_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EditSupplierResponse" />
+  </wsdl:message>
   <wsdl:message name="IProductsManager_SaveProduct_InputMessage">
     <wsdl:part name="parameters" element="tns:SaveProduct" />
   </wsdl:message>
@@ -175,6 +199,24 @@
   </wsdl:message>
   <wsdl:message name="IProductsManager_GetProducts_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetProductsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISaleManager_ProcessSale_InputMessage">
+    <wsdl:part name="parameters" element="tns:ProcessSale" />
+  </wsdl:message>
+  <wsdl:message name="ISaleManager_ProcessSale_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ProcessSaleResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISaleManager_SearchSales_InputMessage">
+    <wsdl:part name="parameters" element="tns:SearchSales" />
+  </wsdl:message>
+  <wsdl:message name="ISaleManager_SearchSales_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SearchSalesResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISaleManager_ValidateSale_InputMessage">
+    <wsdl:part name="parameters" element="tns:ValidateSale" />
+  </wsdl:message>
+  <wsdl:message name="ISaleManager_ValidateSale_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ValidateSaleResponse" />
   </wsdl:message>
   <wsdl:portType name="IUserManager">
     <wsdl:operation name="AddClient">
@@ -253,6 +295,14 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IProviderManager/UnArchiveProvider" message="tns:IProviderManager_UnArchiveProvider_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IProviderManager/UnArchiveProviderResponse" message="tns:IProviderManager_UnArchiveProvider_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="GetSupplier">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProviderManager/GetSupplier" message="tns:IProviderManager_GetSupplier_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProviderManager/GetSupplierResponse" message="tns:IProviderManager_GetSupplier_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EditSupplier">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProviderManager/EditSupplier" message="tns:IProviderManager_EditSupplier_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProviderManager/EditSupplierResponse" message="tns:IProviderManager_EditSupplier_OutputMessage" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="IProductsManager">
     <wsdl:operation name="SaveProduct">
@@ -262,6 +312,20 @@
     <wsdl:operation name="GetProducts">
       <wsdl:input wsaw:Action="http://tempuri.org/IProductsManager/GetProducts" message="tns:IProductsManager_GetProducts_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IProductsManager/GetProductsResponse" message="tns:IProductsManager_GetProducts_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="ISaleManager">
+    <wsdl:operation name="ProcessSale">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISaleManager/ProcessSale" message="tns:ISaleManager_ProcessSale_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISaleManager/ProcessSaleResponse" message="tns:ISaleManager_ProcessSale_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SearchSales">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISaleManager/SearchSales" message="tns:ISaleManager_SearchSales_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISaleManager/SearchSalesResponse" message="tns:ISaleManager_SearchSales_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ValidateSale">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISaleManager/ValidateSale" message="tns:ISaleManager_ValidateSale_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISaleManager/ValidateSaleResponse" message="tns:ISaleManager_ValidateSale_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="NetTcpBinding_IUserManager" type="tns:IUserManager">
@@ -437,6 +501,24 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetSupplier">
+      <soap12:operation soapAction="http://tempuri.org/IProviderManager/GetSupplier" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EditSupplier">
+      <soap12:operation soapAction="http://tempuri.org/IProviderManager/EditSupplier" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="NetTcpBinding_IProductsManager" type="tns:IProductsManager">
     <wsp:PolicyReference URI="#NetTcpBinding_IProductsManager_policy" />
@@ -452,6 +534,37 @@
     </wsdl:operation>
     <wsdl:operation name="GetProducts">
       <soap12:operation soapAction="http://tempuri.org/IProductsManager/GetProducts" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="NetTcpBinding_ISaleManager" type="tns:ISaleManager">
+    <wsp:PolicyReference URI="#NetTcpBinding_ISaleManager_policy" />
+    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="ProcessSale">
+      <soap12:operation soapAction="http://tempuri.org/ISaleManager/ProcessSale" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchSales">
+      <soap12:operation soapAction="http://tempuri.org/ISaleManager/SearchSales" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidateSale">
+      <soap12:operation soapAction="http://tempuri.org/ISaleManager/ValidateSale" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -483,6 +596,12 @@
       <soap12:address location="net.tcp://localhost:1441/ProductsManager" />
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:1441/ProductsManager</wsa10:Address>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+    <wsdl:port name="NetTcpBinding_ISaleManager" binding="tns:NetTcpBinding_ISaleManager">
+      <soap12:address location="net.tcp://localhost:1441/SaleManager" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>net.tcp://localhost:1441/SaleManager</wsa10:Address>
       </wsa10:EndpointReference>
     </wsdl:port>
   </wsdl:service>
