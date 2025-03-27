@@ -994,6 +994,9 @@ namespace MilyUnaNochesWPFApp.MilyUnaNochesProxy {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private MilyUnaNochesWPFApp.MilyUnaNochesProxy.VentaProducto[] DetallesField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Nullable<int> IdClienteField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -1021,6 +1024,19 @@ namespace MilyUnaNochesWPFApp.MilyUnaNochesProxy {
             }
             set {
                 this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public MilyUnaNochesWPFApp.MilyUnaNochesProxy.VentaProducto[] Detalles {
+            get {
+                return this.DetallesField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DetallesField, value) != true)) {
+                    this.DetallesField = value;
+                    this.RaisePropertyChanged("Detalles");
+                }
             }
         }
         
@@ -1141,7 +1157,13 @@ namespace MilyUnaNochesWPFApp.MilyUnaNochesProxy {
         private int IdProductoField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NombreProductoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private decimal PrecioUnitarioField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private decimal SubtotalField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -1180,6 +1202,19 @@ namespace MilyUnaNochesWPFApp.MilyUnaNochesProxy {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public string NombreProducto {
+            get {
+                return this.NombreProductoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NombreProductoField, value) != true)) {
+                    this.NombreProductoField = value;
+                    this.RaisePropertyChanged("NombreProducto");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public decimal PrecioUnitario {
             get {
                 return this.PrecioUnitarioField;
@@ -1188,6 +1223,19 @@ namespace MilyUnaNochesWPFApp.MilyUnaNochesProxy {
                 if ((this.PrecioUnitarioField.Equals(value) != true)) {
                     this.PrecioUnitarioField = value;
                     this.RaisePropertyChanged("PrecioUnitario");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public decimal Subtotal {
+            get {
+                return this.SubtotalField;
+            }
+            set {
+                if ((this.SubtotalField.Equals(value) != true)) {
+                    this.SubtotalField = value;
+                    this.RaisePropertyChanged("Subtotal");
                 }
             }
         }

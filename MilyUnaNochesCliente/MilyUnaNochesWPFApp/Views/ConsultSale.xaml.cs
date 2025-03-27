@@ -28,41 +28,35 @@ namespace MilyUnaNochesWPFApp.Views {
             _filterTimer.Tick += OnFilterTimerTick;
         }
 
-
         public async Task<List<SaleDisplayItem>> GetSalesFromServerAsync() {
-            ISaleManager proxy = null;
             try {
-                proxy = new SaleManagerClient();
-                var salesDb = await proxy.SearchSalesAsync(null, null) ?? Array.Empty<Venta>();
+                ISaleManager proxy = new SaleManagerClient();
+                var salesDb = await proxy.SearchSalesAsync(null, null);
 
-                return salesDb.Select(s => new SaleDisplayItem {
+                // Mapeo de ventas a la clase de visualización
+                List<SaleDisplayItem> sales = salesDb.Select(s => new SaleDisplayItem {
                     SaleId = s.idVenta,
                     EmployeeId = s.IdEmpleado,
                     ClientId = s.IdCliente ?? 0,
-                    PaymentMethod = s.MetodoPago ?? "No especificado",
+                    PaymentMethod = s.MetodoPago,
                     TotalAmount = s.MontoTotal,
                     SaleDate = s.fecha,
+                    // Asignamos los detalles del producto
+                    ProductDetails = s.Detalles?.Select(d => new VentaProducto {
+                        IdProducto = d.IdProducto,
+                        NombreProducto = d.NombreProducto,
+                        Cantidad = d.Cantidad,
+                        PrecioUnitario = d.PrecioUnitario,
+                        Subtotal = d.Subtotal
+                    }).ToList(),
                     OriginalSale = s
                 }).ToList();
+
+                return sales;
             } catch (Exception ex) {
-                await Dispatcher.InvokeAsync(() => {
-                    MessageBox.Show($"Error al obtener ventas: {ex.Message}");
-                });
+                MessageBox.Show($"Error al obtener ventas: {ex.Message}", "Error",
+                    MessageBoxButton.OK, MessageBoxImage.Error);
                 return new List<SaleDisplayItem>();
-            } finally {
-                try {
-                    if (proxy != null) {
-                        if (proxy is ICommunicationObject client) {
-                            if (client.State == CommunicationState.Faulted) {
-                                client.Abort();
-                            } else {
-                                client.Close();
-                            }
-                        }
-                    }
-                } catch {
-                    // Ignorar errores al cerrar el proxy
-                }
             }
         }
 
@@ -79,7 +73,6 @@ namespace MilyUnaNochesWPFApp.Views {
                     }
 
                     SalesDataGrid.ItemsSource = _allSales;
-                    MessageBox.Show($"Mostrando {_allSales.Count} ventas");
                 });
             } catch (Exception ex) {
                 await Dispatcher.InvokeAsync(() => {
@@ -115,16 +108,13 @@ namespace MilyUnaNochesWPFApp.Views {
                         (s.ClientId.ToString().Contains(searchText)) ||
                         (s.TotalAmount.ToString("0.00").Contains(searchText)) ||
                         (s.EmployeeId.ToString().Contains(searchText)) ||
-                        (s.PaymentMethod?.ToLower()?.Contains(searchText) ?? false)
+                        (s.PaymentMethod?.ToLower()?.Contains(searchText) ?? false) ||
+                        (s.Articulos.ToLower().Contains(searchText)) // Búsqueda también en los artículos
                     );
                 }
 
                 var result = filteredSales.ToList();
                 SalesDataGrid.ItemsSource = result;
-
-                MessageBox.Show(result.Any()
-                    ? $"Mostrando {result.Count} ventas{(string.IsNullOrWhiteSpace(searchText) ? "" : " filtradas")}"
-                    : "No hay ventas que coincidan con la búsqueda");
             } catch (Exception ex) {
                 MessageBox.Show($"Error al filtrar ventas: {ex.Message}", "Error",
                     MessageBoxButton.OK, MessageBoxImage.Error);
@@ -136,7 +126,6 @@ namespace MilyUnaNochesWPFApp.Views {
             MessageBox.Show("No hay ventas registradas");
         }
 
-
         private void SalesDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e) {
             if (SalesDataGrid.SelectedItem is SaleDisplayItem selectedSale) {
                 // Implementar lógica de selección aquí
@@ -146,18 +135,29 @@ namespace MilyUnaNochesWPFApp.Views {
         public class SaleDisplayItem {
             public int SaleId { get; set; }
             public int EmployeeId { get; set; }
+            public string EmployeeName { get; set; }
             public int ClientId { get; set; }
             public string PaymentMethod { get; set; }
             public decimal TotalAmount { get; set; }
             public DateTime SaleDate { get; set; }
+            public List<VentaProducto> ProductDetails { get; set; }
 
             public string Cliente => ClientId == 0 ? "No registrado" : $"Cliente #{ClientId}";
             public string Monto => TotalAmount.ToString("C");
-            public string Articulos => "Ver detalles";
+            public string Articulos => GetFormattedProducts();
             public string Fecha => SaleDate.ToString("dd/MM/yyyy");
-            public string Empleado => $"Empleado #{EmployeeId}";
+            public string Empleado => string.IsNullOrEmpty(EmployeeName) ? $"Empleado #{EmployeeId}" : EmployeeName;
 
             public Venta OriginalSale { get; set; }
+
+            private string GetFormattedProducts() {
+                if (ProductDetails == null || !ProductDetails.Any())
+                    return "Sin artículos";
+
+                return string.Join(Environment.NewLine,
+                    ProductDetails.Select(p =>
+                        $"({p.Cantidad}) {p.NombreProducto} x {p.PrecioUnitario.ToString("0.00")} = {(p.Cantidad * p.PrecioUnitario).ToString("0.00")}"));
+            }
         }
     }
 }
