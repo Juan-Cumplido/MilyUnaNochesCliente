@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/MilyUnaNochesService.Contracts" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/MilyUnaNochesService.Contracts" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/MilyUnaNochesService.Contracts" xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/MilyUnaNochesService.Contracts" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:1442/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
   <xs:complexType name="Usuario">
     <xs:sequence>
       <xs:element minOccurs="0" name="correo" nillable="true" type="xs:string" />
@@ -59,4 +60,39 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfEmpleado" nillable="true" type="tns:ArrayOfEmpleado" />
+  <xs:complexType name="Venta">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Detalles" nillable="true" type="tns:ArrayOfVentaProducto" />
+      <xs:element minOccurs="0" name="IdCliente" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="IdEmpleado" type="xs:int" />
+      <xs:element minOccurs="0" name="MetodoPago" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MontoTotal" type="xs:decimal" />
+      <xs:element minOccurs="0" name="fecha" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="hora" type="ser:duration" />
+      <xs:element minOccurs="0" name="idVenta" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Venta" nillable="true" type="tns:Venta" />
+  <xs:complexType name="ArrayOfVentaProducto">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="VentaProducto" nillable="true" type="tns:VentaProducto" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfVentaProducto" nillable="true" type="tns:ArrayOfVentaProducto" />
+  <xs:complexType name="VentaProducto">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Cantidad" type="xs:int" />
+      <xs:element minOccurs="0" name="IdProducto" type="xs:int" />
+      <xs:element minOccurs="0" name="NombreProducto" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PrecioUnitario" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Subtotal" type="xs:decimal" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="VentaProducto" nillable="true" type="tns:VentaProducto" />
+  <xs:complexType name="ArrayOfVenta">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Venta" nillable="true" type="tns:Venta" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfVenta" nillable="true" type="tns:ArrayOfVenta" />
 </xs:schema>

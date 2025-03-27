@@ -312,4 +312,48 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="ProcessSale">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/MilyUnaNochesService.Contracts" minOccurs="0" name="sale" nillable="true" type="q18:Venta" />
+        <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/MilyUnaNochesService.Contracts" minOccurs="0" name="details" nillable="true" type="q19:ArrayOfVentaProducto" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ProcessSaleResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ProcessSaleResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SearchSales">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="date" nillable="true" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="employeeId" nillable="true" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SearchSalesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/MilyUnaNochesService.Contracts" minOccurs="0" name="SearchSalesResult" nillable="true" type="q20:ArrayOfVenta" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ValidateSale">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q21="http://schemas.datacontract.org/2004/07/MilyUnaNochesService.Contracts" minOccurs="0" name="details" nillable="true" type="q21:ArrayOfVentaProducto" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ValidateSaleResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ValidateSaleResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>
