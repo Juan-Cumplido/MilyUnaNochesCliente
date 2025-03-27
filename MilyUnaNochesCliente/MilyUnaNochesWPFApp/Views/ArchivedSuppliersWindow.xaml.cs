@@ -23,16 +23,16 @@ namespace MilyUnaNochesWPFApp.Views {
     public partial class ArchivedSuppliersWindow : Window {
         public ObservableCollection<Provider> Providers { get; set; }
         IProviderManager _providerManager = new ProviderManagerClient();
-        private FindProvider _parentPage;
+        private FindProvider parentPage;
         public ArchivedSuppliersWindow(FindProvider parentPage) {
             InitializeComponent();
-            _parentPage = parentPage;
+            this.parentPage = parentPage;
             LoadArchivedProviders();
         }
 
         private async void LoadArchivedProviders() {
             try {
-                var providersList = _providerManager.GetArchivedProviders();
+                var providersList = await _providerManager.GetArchivedProvidersAsync();
                 Providers = new ObservableCollection<Provider>(providersList);
                 ProviderDataGrid.ItemsSource = Providers;
             } catch (System.Exception ex) {
@@ -58,7 +58,7 @@ namespace MilyUnaNochesWPFApp.Views {
                 if (result == Constants.SuccessOperation) {
                     DialogManager.ShowSuccessMessageAlert("Proveedor desarchivado con éxito.");
                     Providers.Remove(selectedProvider);
-                    _parentPage.LoadProviders();
+                    parentPage.LoadProviders();
                 } else {
                     DialogManager.ShowErrorMessageAlert("No se pudo archivar el proveedor.");
                 }
