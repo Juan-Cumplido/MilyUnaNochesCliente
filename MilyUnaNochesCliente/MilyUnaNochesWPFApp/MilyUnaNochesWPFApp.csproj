@@ -114,6 +114,9 @@
     <Compile Include="Views\CashierMenu.xaml.cs">
       <DependentUpon>CashierMenu.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\GenerateReport.xaml.cs">
+      <DependentUpon>GenerateReport.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\LoginView.xaml.cs">
       <DependentUpon>LoginView.xaml</DependentUpon>
     </Compile>
@@ -208,6 +211,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\GenerateReport.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\LoginView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -297,6 +304,9 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Connected Services\MilyUnaNochesProxy\item3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\MilyUnaNochesProxy\item4.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Connected Services\MilyUnaNochesProxy\MilyUnaNochesService.wsdl" />
@@ -418,6 +428,13 @@
     <Resource Include="Images\Icons\SalesIcon.png" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Images\Background\FrameReports.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Background\BackGraundRadioButton1.png" />
+    <Resource Include="Images\Background\BackGraundRadioButton2.png" />
+    <Resource Include="Images\Background\BackGraundRadioButton3.png" />
+    <Resource Include="Images\Background\BackGraundRadioButton4.png" />
     <Resource Include="Images\Background\FramePurchases.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

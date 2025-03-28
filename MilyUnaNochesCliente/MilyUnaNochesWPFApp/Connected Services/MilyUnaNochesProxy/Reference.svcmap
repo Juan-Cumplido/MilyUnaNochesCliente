@@ -9,7 +9,9 @@
     <GenerateInternalTypes>false</GenerateInternalTypes>
     <GenerateMessageContracts>false</GenerateMessageContracts>
     <NamespaceMappings />
-    <CollectionMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.Generic.List`1" Category="List" />
+    </CollectionMappings>
     <GenerateSerializableTypes>true</GenerateSerializableTypes>
     <Serializer>Auto</Serializer>
     <UseSerializerForFaults>true</UseSerializerForFaults>
@@ -25,6 +27,7 @@
     <MetadataFile FileName="item.xsd" MetadataType="Schema" ID="359bbb6f-4dac-4edc-907d-f23b155b8d06" SourceId="1" SourceUrl="http://localhost:1442/?xsd=xsd1" />
     <MetadataFile FileName="item1.xsd" MetadataType="Schema" ID="89b186df-2941-42c1-b993-2b6bbb0119a7" SourceId="1" SourceUrl="http://localhost:1442/?xsd=xsd2" />
     <MetadataFile FileName="item2.xsd" MetadataType="Schema" ID="0ffc793e-8b48-4703-bf79-200712e7e9ec" SourceId="1" SourceUrl="http://localhost:1442/?xsd=xsd3" />
+    <MetadataFile FileName="item4.xsd" MetadataType="Schema" ID="536ec88f-9d28-4ebe-8601-d01cad238883" SourceId="1" SourceUrl="http://localhost:1442/?xsd=xsd4" />
     <MetadataFile FileName="MilyUnaNochesService.wsdl" MetadataType="Wsdl" ID="1979d8a4-d791-4ca3-a78b-bbed36995c1d" SourceId="1" SourceUrl="http://localhost:1442/?wsdl" />
     <MetadataFile FileName="item3.xsd" MetadataType="Schema" ID="3bd3e09a-73b5-4a78-8e5a-e83cbd6c665b" SourceId="1" SourceUrl="http://localhost:1442/?xsd=xsd0" />
   </Metadata>
