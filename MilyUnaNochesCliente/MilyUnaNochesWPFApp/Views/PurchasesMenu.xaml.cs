@@ -27,7 +27,7 @@ namespace MilyUnaNochesWPFApp.Views {
         }
 
         private void RegistrarCompra_Click(object sender, RoutedEventArgs e) {
-            //mainFrame.Source = new System.Uri("ConsultPurchase.xaml", System.UriKind.Relative);
+            mainFrame.Source = new System.Uri("RegisterPurchase.xaml", System.UriKind.Relative);
         }
     }
 }
