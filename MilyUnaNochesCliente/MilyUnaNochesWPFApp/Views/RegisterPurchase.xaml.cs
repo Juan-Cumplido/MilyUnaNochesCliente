@@ -22,11 +22,23 @@ namespace MilyUnaNochesWPFApp.Views {
     public partial class RegisterPurchase : Page {
         private readonly IProviderManager _providerClient;
         private readonly IAdressManager _addressClient;
+        private RegisterPurchase_sv _currentPurchase;
+
+
         public RegisterPurchase() {
             InitializeComponent();
             _providerClient = new ProviderManagerClient();
             _addressClient = new AdressManagerClient();
+            InitializeRegisterPurchase();
             LoadProvidersAsync();
+        }
+
+        public void InitializeRegisterPurchase() {
+            _currentPurchase = new RegisterPurchase_sv() {
+                Fecha = DateTime.Now.Date,
+                Hora = DateTime.Now.TimeOfDay,
+                Products = new ProductPurchase[0]
+            };
         }
         private async void LoadProvidersAsync() {
             try {
@@ -47,8 +59,21 @@ namespace MilyUnaNochesWPFApp.Views {
             return null;
         }
 
-        private void Register_Click(object sender, RoutedEventArgs e) {
-            
+        private async void Register_Click(object sender, RoutedEventArgs e) {
+            try {
+                _currentPurchase.IdProveedor = (int)txtProviderName.SelectedValue;
+                _currentPurchase.PayMethod = "Efectivo"; //Obtener el elemento del comboBox
+
+                var purchaseClient = new PurchaseManagerClient();
+                int result = await purchaseClient.SavePurchaseAsync(_currentPurchase);
+
+                if (result > 0) {
+                    MessageBox.Show("Compra registrada exitosamente!");
+                    //ClearFields();
+                }
+            } catch (Exception ex) {
+                MessageBox.Show("Error guardando compra: " + ex.Message);
+            }
         }
 
         private void Cancel_Click(object sender, RoutedEventArgs e) {
@@ -102,6 +127,12 @@ namespace MilyUnaNochesWPFApp.Views {
                 DialogManager.ShowErrorMessageAlert($"Error cargando detalles: {ex.Message}");
             }
         }
+
+        public void AddPurchasedProducts(List<ProductPurchase> products) {
+            _currentPurchase.Products = products.ToArray();
+
+            _currentPurchase.MontoTotal = products.Sum(p => p.MontoProducto);
+        }
         private void ClearFields() {
             txtContact.Text = string.Empty;
             txtPhone.Text = string.Empty;
@@ -113,8 +144,11 @@ namespace MilyUnaNochesWPFApp.Views {
         }
 
         private void OpenAddProductsView_Click(object sender, RoutedEventArgs e) {
-            var PurchaseProductSelectionWindow = new PurchaseProductSelectionWindow(this);
-            makeThisOwnerWindow(PurchaseProductSelectionWindow);
+            var selectionWindow = new PurchaseProductSelectionWindow(this);
+
+            selectionWindow.LoadExistingProducts(_currentPurchase.Products?.ToList() ?? new List<ProductPurchase>());
+
+            makeThisOwnerWindow(selectionWindow);
         }
 
         private void makeThisOwnerWindow(Window windowToOwn) {

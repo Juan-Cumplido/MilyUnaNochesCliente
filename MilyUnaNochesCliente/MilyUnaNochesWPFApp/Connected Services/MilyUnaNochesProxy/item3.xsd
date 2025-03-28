@@ -312,4 +312,18 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="SavePurchase">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/MilyUnaNochesService.Logic" minOccurs="0" name="purchase" nillable="true" type="q18:RegisterPurchase_sv" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SavePurchaseResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SavePurchaseResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>
