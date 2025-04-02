@@ -1,0 +1,270 @@
+﻿<Window x:Class="MilyUnaNochesWPFApp.Views.PurchaseProductSelectionWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MilyUnaNochesWPFApp.Views"
+        mc:Ignorable="d"
+        Title="Selección de Productos" Height="550" Width="1000"
+        WindowStartupLocation="CenterOwner">
+
+    <Window.Resources>
+        <!-- Estilo para los items de productos -->
+        <Style x:Key="ProductItemStyle" TargetType="Border">
+            <Setter Property="BorderBrush" Value="#FFAE7D5C"/>
+            <Setter Property="BorderThickness" Value="0 0 0 1"/>
+            <Setter Property="Margin" Value="0 10"/>
+            <Setter Property="Padding" Value="0 5"/>
+        </Style>
+
+        <Style x:Key="TextFieldStyle" TargetType="TextBox">
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="Width" Value="231"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="FontFamily" Value="Bodoni MT Condensed"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="BorderBrush" Value="{x:Null}"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="TextWrapping" Value="Wrap"/>
+            <Setter Property="Background">
+                <Setter.Value>
+                    <ImageBrush ImageSource="/Images/Background/BackgorundTextField.png"/>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- Estilo para los TextBox de unidades -->
+        <Style x:Key="UnitsTextBoxStyle" TargetType="TextBox" BasedOn="{StaticResource TextFieldStyle}">
+            <Setter Property="Width" Value="120"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        </Style>
+
+        <Style x:Key="LabelStyle" TargetType="Label">
+            <Setter Property="Width" Value="130"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="FontFamily" Value="Bodoni MT Condensed"/>
+            <Setter Property="Foreground" Value="#FFAE7D5C"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="0,0,10,0"/>
+        </Style>
+
+        <Style x:Key="ButtonStyle" TargetType="Button">
+            <Setter Property="FontFamily" Value="Bodoni MT Condensed"/>
+            <Setter Property="FontSize" Value="25"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Margin" Value="10"/>
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="MinWidth" Value="80"/>
+            <Setter Property="Background">
+                <Setter.Value>
+                    <ImageBrush ImageSource="/Images/Background/BackgroundTextBlock.png"/>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="ButtonStyle2" TargetType="Button">
+            <Setter Property="FontFamily" Value="Bodoni MT Condensed"/>
+            <Setter Property="FontSize" Value="25"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Margin" Value="10"/>
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="MinWidth" Value="80"/>
+            <Setter Property="Background">
+                <Setter.Value>
+                    <ImageBrush ImageSource="/Images/Background/BackgorundTextField.png"/>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="ComboBoxStyle" TargetType="ComboBox">
+            <Setter Property="FontFamily" Value="Bodoni MT Condensed"/>
+            <Setter Property="FontSize" Value="25"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Margin" Value="10"/>
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="MaxWidth" Value="235"/>
+        </Style>
+
+    </Window.Resources>
+
+    <Grid>
+
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="30"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Columna Izquierda -->
+        <Grid Grid.Column="0" Margin="70,10,0,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <!-- Título "Seleccionar productos" -->
+                <RowDefinition Height="Auto"/>
+                <!-- ComboBox + Botón Añadir -->
+                <RowDefinition Height="30"/>
+                <!-- Espacio -->
+                <RowDefinition Height="*" />
+                <!-- ListBox (productos seleccionados) -->
+                <RowDefinition Height="Auto"/>
+                <!-- Reservado (si lo necesitas) -->
+            </Grid.RowDefinitions>
+
+            <!-- Título -->
+            <Grid Grid.Row="0" Margin="0,0,0,10">
+                <Label Content="Seleccionar productos" 
+                        Width="400" 
+                        FontSize="40" 
+                        Style="{StaticResource LabelStyle}" 
+                        Margin="0,0,10,0"/>
+            </Grid>
+
+            <!-- ComboBox + Botón "Añadir" -->
+            <Grid Grid.Row="1" Margin="0,0,0,10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1.2"/>
+                    <ColumnDefinition Width="218.8"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <ComboBox Grid.Column="1" 
+                           x:Name="cmbProducts" 
+                           Style="{StaticResource ComboBoxStyle}"  
+                           Margin="0,10,0,10" 
+                           HorizontalAlignment="Center"  
+                           Height="35"
+                           Width="200" 
+                           ItemsSource="{Binding}" 
+                           DisplayMemberPath="NombreProducto" 
+                           SelectedValuePath="IdProducto"
+                           />
+                <TextBox Grid.Column="2" 
+                         x:Name="txtQuantity"
+                         HorizontalAlignment="Center" 
+                         Width="70"
+                         Height="35"
+                         FontSize="30"
+                         Margin="0,12,0,12"/>
+
+                <Button Grid.Column="3" 
+                         Content="Añadir" 
+                         Style="{StaticResource ButtonStyle2}" 
+                         HorizontalAlignment="Left" 
+                         Margin="21,10,0,10" Click="AddProduct_Click"/>
+            </Grid>
+
+            <!-- ListBox para productos seleccionados -->
+            <Grid Grid.Row="3" Margin="0,0,0,10">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="105*"/>
+                    <RowDefinition Height="68*"/>
+                </Grid.RowDefinitions>
+                <ListBox x:Name="lstSelectedProducts" 
+                          BorderThickness="0" 
+                          Background="Transparent"
+                          HorizontalAlignment="Left"
+                          Width="400" Grid.RowSpan="2">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding IdProducto}" Width="50"/>
+                                <TextBlock Text="{Binding Cantidad}" Width="50"/>
+                                <TextBlock Text="{Binding MontoProducto, StringFormat=C}"/>
+                                <TextBlock Text="{Binding NombreProducto}" Margin="10,0"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </Grid>
+        </Grid>
+
+        <!-- Columna Derecha -->
+        <Grid Grid.Column="2" Margin="0,10,0,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="150"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <!-- Logos -->
+            <Grid Grid.Row="0" Margin="0,0,0,10">
+                <Image x:Name="img_Logo" 
+                        HorizontalAlignment="Left" 
+                        Height="123" 
+                        VerticalAlignment="Top" 
+                        Width="253" 
+                        Source="/Images/Icons/Logo.png" 
+                        Margin="222,-6,0,0"/>
+                <Image x:Name="img_Logo2" 
+                        HorizontalAlignment="Left" 
+                        Height="94" 
+                        Margin="256,29,0,0" 
+                        VerticalAlignment="Top" 
+                        Width="184" 
+                        Source="/Images/Icons/Mil_y_una_Noches.png"/>
+            </Grid>
+
+            <!-- Método de pago -->
+            <Grid Grid.Row="2" Margin="0,0,0,10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Label Content="Método de pago" 
+                        FontSize="30" 
+                        Width="150" 
+                        Style="{StaticResource LabelStyle}"/>
+                <ComboBox Grid.Column="1" 
+                           HorizontalAlignment="Center" 
+                           Margin="0,7,0,0" 
+                           VerticalAlignment="Top" 
+                           Width="247" 
+                           Height="35"/>
+            </Grid>
+
+            <!-- Total -->
+            <Grid Grid.Row="3" Margin="0,0,0,10">
+                <Label Content="TOTAL:" 
+                        VerticalAlignment="Top"  
+                        HorizontalAlignment="Right"   
+                        FontSize="50" 
+                        Width="150" 
+                        Style="{StaticResource LabelStyle}"/>
+                <Label  x:Name="lbTotalAmount"
+                        Content="" 
+                        VerticalAlignment="Bottom"  
+                        HorizontalAlignment="Right"  
+                        FontSize="40" 
+                        Width="150" 
+                        Style="{StaticResource LabelStyle}" 
+                        Margin="0,50,0,0"/>
+            </Grid>
+
+            <!-- Botones -->
+            <Grid Grid.Row="3" VerticalAlignment="Top" Margin="10,111,10,0" Grid.RowSpan="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Button Grid.Column="1" 
+                         Content="Cancelar" 
+                         Click="Cancel_Click" 
+                        Margin="0,0,0,0" 
+                         Style="{StaticResource ButtonStyle}"/>
+                <Button Grid.Column="2" 
+                         Content="Aceptar" 
+                         Click="Accept_Click" 
+                         Margin="20,0,0,0" 
+                         Style="{StaticResource ButtonStyle}"/>
+            </Grid>
+        </Grid>
+    </Grid>
+
+
+</Window>
