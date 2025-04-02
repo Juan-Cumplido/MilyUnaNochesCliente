@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MilyUnaNochesWPFApp.Logic;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,9 +17,6 @@ using System.Windows.Shapes;
 
 namespace MilyUnaNochesWPFApp.Views
 {
-    /// <summary>
-    /// Lógica de interacción para LoginView.xaml
-    /// </summary>
     public partial class LoginView : Page
     {
         public LoginView()
@@ -28,7 +26,32 @@ namespace MilyUnaNochesWPFApp.Views
 
         private void BtnLogin_Click(object sender, RoutedEventArgs e)
         {
-            DisplayMainMenuView();
+            txtb_UserIdTextBox.BorderBrush = new SolidColorBrush(Colors.White);
+            pwb_PasswordBox.BorderBrush = new SolidColorBrush(Colors.White);
+
+            Profile userAccount = new Profile
+            {
+                username = txtb_Username.Text,
+                password = pwb_Password.Password
+            };
+
+            if (verifyFields())
+            {
+                int validateCredentials = ValidateCredentials(userAccount);
+
+                if (validateCredentials == 1)
+                {
+                    ValidateExistingUserSession();
+                }
+                else if (validateCredentials == 0)
+                {
+                    DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogMissmatchesCredentials);
+                }
+            }
+            else
+            {
+                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogWrongData);
+            }
         }
 
         private void DisplayMainMenuView()
@@ -38,19 +61,19 @@ namespace MilyUnaNochesWPFApp.Views
         }
         private void UserIdTextBox_GotFocus(object sender, RoutedEventArgs e)
         {
-            if (UserIdTextBox.Text == "Usuario")
+            if (txtb_UserIdTextBox.Text == "Usuario")
             {
-                UserIdTextBox.Text = "";
-                UserIdTextBox.Foreground = Brushes.Black;
+                txtb_UserIdTextBox.Text = "";
+                txtb_UserIdTextBox.Foreground = Brushes.Black;
             }
         }
 
         private void UserIdTextBox_LostFocus(object sender, RoutedEventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(UserIdTextBox.Text))
+            if (string.IsNullOrWhiteSpace(txtb_UserIdTextBox.Text))
             {
-                UserIdTextBox.Text = "Usuario";
-                UserIdTextBox.Foreground = Brushes.Gray;
+                txtb_UserIdTextBox.Text = "Usuario";
+                txtb_UserIdTextBox.Foreground = Brushes.Gray;
             }
         }
 
@@ -61,7 +84,7 @@ namespace MilyUnaNochesWPFApp.Views
 
         private void PasswordBox_LostFocus(object sender, RoutedEventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(PasswordBox.Password))
+            if (string.IsNullOrWhiteSpace(pwb_PasswordBox.Password))
             {
                 PasswordPlaceholder.Visibility = Visibility.Visible;
             }
@@ -69,7 +92,7 @@ namespace MilyUnaNochesWPFApp.Views
 
         private void PasswordBox_PasswordChanged(object sender, RoutedEventArgs e)
         {
-            PasswordPlaceholder.Visibility = string.IsNullOrEmpty(PasswordBox.Password) ? Visibility.Visible : Visibility.Collapsed;
+            PasswordPlaceholder.Visibility = string.IsNullOrEmpty(pwb_PasswordBox.Password) ? Visibility.Visible : Visibility.Collapsed;
         }
 
     }
