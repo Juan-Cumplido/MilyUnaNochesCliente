@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/MilyUnaNochesService.Logic" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/MilyUnaNochesService.Logic" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/MilyUnaNochesService.Logic" xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/MilyUnaNochesService.Logic" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:1442/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
   <xs:complexType name="Address">
     <xs:sequence>
       <xs:element minOccurs="0" name="Calle" nillable="true" type="xs:string" />
@@ -15,7 +16,6 @@
       <xs:element minOccurs="0" name="IdProvider" type="xs:int" />
       <xs:element minOccurs="0" name="email" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="idAddress" type="xs:int" />
-      <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="phoneNumber" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="providerAddress" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="providerContact" nillable="true" type="xs:string" />
@@ -49,4 +49,30 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfProduct" nillable="true" type="tns:ArrayOfProduct" />
+  <xs:complexType name="RegisterPurchase_sv">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Fecha" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Hora" type="ser:duration" />
+      <xs:element minOccurs="0" name="IdProveedor" type="xs:int" />
+      <xs:element minOccurs="0" name="MontoTotal" type="xs:decimal" />
+      <xs:element minOccurs="0" name="PayMethod" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Products" nillable="true" type="tns:ArrayOfProductPurchase" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RegisterPurchase_sv" nillable="true" type="tns:RegisterPurchase_sv" />
+  <xs:complexType name="ArrayOfProductPurchase">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ProductPurchase" nillable="true" type="tns:ProductPurchase" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfProductPurchase" nillable="true" type="tns:ArrayOfProductPurchase" />
+  <xs:complexType name="ProductPurchase">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Cantidad" type="xs:int" />
+      <xs:element minOccurs="0" name="IdProducto" type="xs:int" />
+      <xs:element minOccurs="0" name="MontoProducto" type="xs:decimal" />
+      <xs:element minOccurs="0" name="NombreProducto" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ProductPurchase" nillable="true" type="tns:ProductPurchase" />
 </xs:schema>

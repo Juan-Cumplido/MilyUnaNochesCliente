@@ -41,6 +41,7 @@
     <Reference Include="log4net, Version=3.0.4.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
       <HintPath>..\packages\log4net.3.0.4\lib\net462\log4net.dll</HintPath>
     </Reference>
+    <Reference Include="PresentationFramework.Aero2" />
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
@@ -85,26 +86,36 @@
     <Compile Include="Logic\Product.cs" />
     <Compile Include="Logic\Sale.cs" />
     <Compile Include="Logic\Validator.cs" />
+    <Compile Include="Utilities\Constants.cs" />
+    <Compile Include="Views\ArchivedSuppliersWindow.xaml.cs">
+      <DependentUpon>ArchivedSuppliersWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\ConsultEmployee.xaml.cs">
       <DependentUpon>ConsultEmployee.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ConsultClient.xaml.cs">
       <DependentUpon>ConsultClient.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\EditProvider.xaml.cs">
-      <DependentUpon>EditProvider.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\ConsultProductsView.xaml.cs">
       <DependentUpon>ConsultProductsView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\ConsultPurchase.xaml.cs">
+      <DependentUpon>ConsultPurchase.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\ConsultSale.xaml.cs">
       <DependentUpon>ConsultSale.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EditSupplierWindow.xaml.cs">
+      <DependentUpon>EditSupplierWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\FindProvider.xaml.cs">
       <DependentUpon>FindProvider.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\CashierMenu.xaml.cs">
       <DependentUpon>CashierMenu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\GenerateReport.xaml.cs">
+      <DependentUpon>GenerateReport.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\LoginView.xaml.cs">
       <DependentUpon>LoginView.xaml</DependentUpon>
@@ -118,11 +129,17 @@
     <Compile Include="Views\ManagerMenuContent.xaml.cs">
       <DependentUpon>ManagerMenuContent.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\MenuProvider.xaml.cs">
-      <DependentUpon>MenuProvider.xaml</DependentUpon>
+    <Compile Include="Views\MenuSupplier.xaml.cs">
+      <DependentUpon>MenuSupplier.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ProductDetailView.xaml.cs">
       <DependentUpon>ProductDetailView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PurchaseProductSelectionWindow.xaml.cs">
+      <DependentUpon>PurchaseProductSelectionWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PurchasesMenu.xaml.cs">
+      <DependentUpon>PurchasesMenu.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\RegisterProductView.xaml.cs">
       <DependentUpon>RegisterProductView.xaml</DependentUpon>
@@ -133,8 +150,11 @@
     <Compile Include="Views\RegisterClient.xaml.cs">
       <DependentUpon>RegisterClient.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\RegisterProvider.xaml.cs">
-      <DependentUpon>RegisterProvider.xaml</DependentUpon>
+    <Compile Include="Views\RegisterPurchase.xaml.cs">
+      <DependentUpon>RegisterPurchase.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\RegisterSupplier.xaml.cs">
+      <DependentUpon>RegisterSupplier.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Sale.xaml.cs">
       <DependentUpon>Sale.xaml</DependentUpon>
@@ -155,6 +175,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\ArchivedSuppliersWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\ConsultEmployee.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -163,12 +187,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\EditProvider.xaml" />
     <Page Include="Views\ConsultProductsView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Views\ConsultPurchase.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\ConsultSale.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\EditSupplierWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -177,6 +208,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\CashierMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\GenerateReport.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -196,11 +231,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\MenuProvider.xaml">
+    <Page Include="Views\MenuSupplier.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\ProductDetailView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PurchaseProductSelectionWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PurchasesMenu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -216,7 +259,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\RegisterProvider.xaml">
+    <Page Include="Views\RegisterPurchase.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\RegisterSupplier.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -257,6 +304,9 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Connected Services\MilyUnaNochesProxy\item3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\MilyUnaNochesProxy\item4.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Connected Services\MilyUnaNochesProxy\MilyUnaNochesService.wsdl" />
@@ -364,6 +414,31 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\Icons\Loading.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Icons\Logo2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Icons\ProvidersIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Icons\Designer.jpeg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Icons\ProductsIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Icons\SalesIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Background\FrameReports.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Background\BackGraundRadioButton1.png" />
+    <Resource Include="Images\Background\BackGraundRadioButton2.png" />
+    <Resource Include="Images\Background\BackGraundRadioButton3.png" />
+    <Resource Include="Images\Background\BackGraundRadioButton4.png" />
+    <Resource Include="Images\Background\FramePurchases.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

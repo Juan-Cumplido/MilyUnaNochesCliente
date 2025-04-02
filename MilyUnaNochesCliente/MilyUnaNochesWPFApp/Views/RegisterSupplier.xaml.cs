@@ -1,7 +1,9 @@
 ﻿using MilyUnaNochesWPFApp.Logic;
 using MilyUnaNochesWPFApp.MilyUnaNochesProxy;
+using MilyUnaNochesWPFApp.Utilities;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.Contracts;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -32,19 +34,25 @@ namespace MilyUnaNochesWPFApp.Views {
         }
 
         private void Register_Click(object sender, RoutedEventArgs e) {
-
             if (!ValidateForm()) {
+                return;
+            }
+
+            if (IsProviderRegistered(txtProviderName.Text) == Constants.DataMatches) {
+                DialogManager.ShowWarningMessageAlert("Ya existe un proveedor registrado con esta informacion", "Proveedor ya registrado");
+                return;
+            } else if (IsProviderRegistered(txtProviderName.Text) == Constants.ErrorOperation) {
+                DialogManager.ShowWarningMessageAlert("Ha ocurrido un error al intentar establecer conexión con la base de datos", "Error de conexion");
                 return;
             }
 
             int addressId = CreateAddressFromForm();
             int providerResult = CreateProviderFromForm(addressId);
-
-            if (providerResult > 0) {
-                MessageBox.Show("Proveedor registrado exitosamente.", "Registro", MessageBoxButton.OK, MessageBoxImage.Information);
+            if (providerResult == Constants.SuccessOperation) {
+                DialogManager.ShowSuccessMessageAlert("Registro realizado con exito");
                 ClearFields();
             } else {
-                MessageBox.Show("Error al registrar el proveedor.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                DialogManager.ShowErrorMessageAlert("Ha ocurrido un error al intentar establecer conexión con la base de datos.");
             }
 
         }
@@ -56,7 +64,6 @@ namespace MilyUnaNochesWPFApp.Views {
                 CodigoPostal = txtPostalCode.Text,
                 Ciudad = txtCity.Text
             };
-
             return _adressManager.createAddress(address);
         }
 
@@ -68,7 +75,6 @@ namespace MilyUnaNochesWPFApp.Views {
                 email = txtEmail.Text,
                 idAddress = addressId,
             };
-
             return _providerManager.CreateProvider(provider);
         }
         private void ClearFields() {
@@ -83,42 +89,33 @@ namespace MilyUnaNochesWPFApp.Views {
         }
 
         private bool ValidateForm() {
-            // Verificar si algún campo está vacío
-            if (string.IsNullOrWhiteSpace(txtProviderName.Text) ||
-                string.IsNullOrWhiteSpace(txtContact.Text) ||
-                string.IsNullOrWhiteSpace(txtPhone.Text) ||
-                string.IsNullOrWhiteSpace(txtEmail.Text) ||
-                string.IsNullOrWhiteSpace(txtStreet.Text) ||
-                string.IsNullOrWhiteSpace(txtNumber.Text) ||
-                string.IsNullOrWhiteSpace(txtPostalCode.Text) ||
-                string.IsNullOrWhiteSpace(txtCity.Text)) {
-                MessageBox.Show("Los campos no deben estar vacíos.", "Validación", MessageBoxButton.OK, MessageBoxImage.Warning);
+            if (!VerifyNoEmptyFields()) {
+                DialogManager.ShowWarningMessageAlert("Los campos no deben estar vacíos.", "Validación");
                 return false;
             }
 
-            // Validaciones de formato usando Regex
             if (!Validator.ValidateProviderName(txtProviderName.Text)) {
-                MessageBox.Show("El nombre del proveedor no es válido.", "Validación", MessageBoxButton.OK, MessageBoxImage.Warning);
+                DialogManager.ShowWarningMessageAlert("El nombre del proveedor no es válido.", "Validación");
                 return false;
             }
             if (!Validator.ValidateContact(txtContact.Text)) {
-                MessageBox.Show("El contacto no es válido.", "Validación", MessageBoxButton.OK, MessageBoxImage.Warning);
+                DialogManager.ShowWarningMessageAlert("El contacto no es válido.", "Validación");
                 return false;
             }
             if (!Validator.ValidatePhone(txtPhone.Text)) {
-                MessageBox.Show("El teléfono no es válido.", "Validación", MessageBoxButton.OK, MessageBoxImage.Warning);
+                DialogManager.ShowWarningMessageAlert("El teléfono no es válido.", "Validación");
                 return false;
             }
             if (!Validator.ValidateEmail(txtEmail.Text)) {
-                MessageBox.Show("El correo electrónico no es válido.", "Validación", MessageBoxButton.OK, MessageBoxImage.Warning);
+                DialogManager.ShowWarningMessageAlert("El correo electrónico no es válido.", "Validación");
                 return false;
             }
             if (!Validator.ValidateStreet(txtStreet.Text)) {
-                MessageBox.Show("La calle no es válida.", "Validación", MessageBoxButton.OK, MessageBoxImage.Warning);
+                DialogManager.ShowWarningMessageAlert("La calle no es válida.", "Validación");
                 return false;
             }
             if (!Validator.ValidateNumber(txtNumber.Text)) {
-                MessageBox.Show("El número no es válido.", "Validación", MessageBoxButton.OK, MessageBoxImage.Warning);
+                DialogManager.ShowWarningMessageAlert("El número no es válido.", "Validación");
                 return false;
             }
             if (!Validator.ValidatePostalCode(txtPostalCode.Text)) {
@@ -126,11 +123,30 @@ namespace MilyUnaNochesWPFApp.Views {
                 return false;
             }
             if (!Validator.ValidateCity(txtCity.Text)) {
-                MessageBox.Show("La ciudad no es válida.", "Validación", MessageBoxButton.OK, MessageBoxImage.Warning);
+                DialogManager.ShowWarningMessageAlert("La ciudad no es válida.", "Validación");
                 return false;
             }
-
             return true;
+        }
+
+        private int IsProviderRegistered(string providerName) {
+            int verificationResult = _providerManager.VerifyProviderExistance(providerName);
+            return verificationResult;
+        }
+
+        private bool VerifyNoEmptyFields() {
+            bool result = true;
+            if (string.IsNullOrWhiteSpace(txtProviderName.Text) ||
+                  string.IsNullOrWhiteSpace(txtContact.Text) ||
+                  string.IsNullOrWhiteSpace(txtPhone.Text) ||
+                  string.IsNullOrWhiteSpace(txtEmail.Text) ||
+                  string.IsNullOrWhiteSpace(txtStreet.Text) ||
+                  string.IsNullOrWhiteSpace(txtNumber.Text) ||
+                  string.IsNullOrWhiteSpace(txtPostalCode.Text) ||
+                  string.IsNullOrWhiteSpace(txtCity.Text)) {
+                result = false;
+            }
+            return result;
         }
 
     }

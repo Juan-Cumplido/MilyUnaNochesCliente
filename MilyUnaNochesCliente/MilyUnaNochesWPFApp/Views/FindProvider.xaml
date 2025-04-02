@@ -32,12 +32,13 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="54"/>
+            <RowDefinition/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <TextBox x:Name="SearchBar"
+ 
+        <TextBox x:Name="txtb_SearchBar"
                  Grid.Row="0"
                  HorizontalAlignment="Left" 
                  Height="44" 
@@ -46,18 +47,19 @@
                  VerticalAlignment="Top" 
                  Width="241" 
                  BorderBrush="{x:Null}" 
-                 TextChanged="SearchBar_TextChanged"
+                 TextChanged="txtb_SearchBar_TextChanged"
                  BorderThickness="0" 
                  VerticalContentAlignment="Center"
                  FontSize="20"
                  FontFamily="Bodoni MT Condensed" 
-                 Foreground="#FFAE7D5C" HorizontalContentAlignment="Center">
+                 Foreground="#FFAE7D5C" 
+                 HorizontalContentAlignment="Center">
             <TextBox.Background>
                 <ImageBrush ImageSource="/Images/Background/Search.png"/>
             </TextBox.Background>
         </TextBox>
 
-        <TextBlock x:Name="PlaceholderText" 
+        <TextBlock x:Name="txtb_PlaceholderText" 
                    Grid.Row="0"
                    HorizontalAlignment="Left" 
                    Margin="113,21,0,0" 
@@ -71,22 +73,23 @@
                    Foreground="#FF6A6565">
             <Run Language="es-mx" Text="Nombre o contacto (ej. Lala)"/>
         </TextBlock>
+
         <DataGrid x:Name="ProviderDataGrid"
-          Grid.Row="1"
-          AutoGenerateColumns="False"
-          HeadersVisibility="Column"
-          GridLinesVisibility="None"
-          CanUserAddRows="False"
-          IsReadOnly="True"
-          HorizontalAlignment="Left"
-          VerticalAlignment="Top"
-          Margin="70,10,70,10"
-          Width="1150"
-          Background="#fdf8ef"
-          BorderThickness="0"
-          FontSize="18"
-          FontFamily="Bodoni MT Condensed"
-          ItemsSource="{Binding Providers}">
+                  Grid.Row="1"
+                  AutoGenerateColumns="False"
+                  HeadersVisibility="Column"
+                  GridLinesVisibility="None"
+                  CanUserAddRows="False"
+                  IsReadOnly="True"
+                  HorizontalAlignment="Left"
+                  VerticalAlignment="Top"
+                  Margin="70,10,70,10"
+                  Width="1150"
+                  Background="#fdf8ef"
+                  BorderThickness="0"
+                  FontSize="18"
+                  FontFamily="Bodoni MT Condensed"
+                  ItemsSource="{Binding Providers}">
 
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Proveedor" 
@@ -112,14 +115,37 @@
             </DataGrid.Columns>
         </DataGrid>
 
-        <StackPanel Grid.Row="2"
-                    Orientation="Horizontal"
-                    HorizontalAlignment="Right"
-                    VerticalAlignment="Bottom"
-                    Margin="0,0,10,10">
-            <Button Content="Eliminar" Style="{StaticResource ButtonStyle}" Click="Eliminar_Click"/>
-            <Button Content="Archivar" Style="{StaticResource ButtonStyle}" Click="Archivar_Click"/>
-            <Button Content="Editar" Style="{StaticResource ButtonStyle}" Click="Editar_Click"/>
-        </StackPanel>
+        <Grid Grid.Row="2" Margin="0,0,10,10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <Button
+                    FontSize="14" 
+                    Width="100"
+                    Grid.Column="0"
+                    BorderThickness="0"
+                    Background="White"
+                    Click="ShowArchived_Click" Margin="10,17,870,17" Grid.ColumnSpan="2">
+                <TextBlock Text="Ver archivados" TextDecorations="Underline" Foreground="#FF6A6565" Width="106"/>
+            </Button>
+
+            <Button Content="Eliminar" 
+                    Grid.Column="2"
+                    Style="{StaticResource ButtonStyle}" 
+                    Click="Delete_Click"/>
+            <Button Content="Archivar" 
+                    Grid.Column="3"
+                    Style="{StaticResource ButtonStyle}" 
+                    Click="Archive_Click"/>
+            <Button Content="Editar" 
+                    Grid.Column="4"
+                    Style="{StaticResource ButtonStyle}" 
+                    Click="Edit_Click"/>
+        </Grid>
     </Grid>
 </Page>
