@@ -413,6 +413,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Images\Icons\Loading.gif" />
+  </ItemGroup>
+  <ItemGroup>
     <Resource Include="Images\Icons\Logo2.png" />
   </ItemGroup>
   <ItemGroup>
