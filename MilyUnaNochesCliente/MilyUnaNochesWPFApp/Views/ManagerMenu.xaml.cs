@@ -45,5 +45,9 @@ namespace MilyUnaNochesWPFApp.Views {
         private void Reports_Click(object sender, RoutedEventArgs e) {
 
         }
+
+        private void Purchases_Click(object sender, RoutedEventArgs e) {
+            fra_mainFrame.Source = new System.Uri("PurchasesMenu.xaml", System.UriKind.Relative);
+        }
     }
 }

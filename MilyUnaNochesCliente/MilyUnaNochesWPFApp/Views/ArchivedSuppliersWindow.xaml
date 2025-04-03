@@ -34,14 +34,10 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
-            <!-- Fila para la barra de búsqueda -->
             <RowDefinition Height="*"/>
-            <!-- Fila para el DataGrid -->
             <RowDefinition Height="Auto"/>
-            <!-- Fila para los botones -->
         </Grid.RowDefinitions>
 
-        <!-- Barra de búsqueda -->
         <TextBox x:Name="txtb_SearchBar"
                  Grid.Row="0"
                  HorizontalAlignment="Left" 
