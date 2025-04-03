@@ -202,6 +202,12 @@
   <wsdl:message name="IProductsManager_GetProducts_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetProductsResponse" />
   </wsdl:message>
+  <wsdl:message name="IProductsManager_ValidateProductName_InputMessage">
+    <wsdl:part name="parameters" element="tns:ValidateProductName" />
+  </wsdl:message>
+  <wsdl:message name="IProductsManager_ValidateProductName_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ValidateProductNameResponse" />
+  </wsdl:message>
   <wsdl:message name="IPurchaseManager_SavePurchase_InputMessage">
     <wsdl:part name="parameters" element="tns:SavePurchase" />
   </wsdl:message>
@@ -337,6 +343,10 @@
     <wsdl:operation name="GetProducts">
       <wsdl:input wsaw:Action="http://tempuri.org/IProductsManager/GetProducts" message="tns:IProductsManager_GetProducts_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IProductsManager/GetProductsResponse" message="tns:IProductsManager_GetProducts_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ValidateProductName">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProductsManager/ValidateProductName" message="tns:IProductsManager_ValidateProductName_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProductsManager/ValidateProductNameResponse" message="tns:IProductsManager_ValidateProductName_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetProductByCode">
       <wsdl:input wsaw:Action="http://tempuri.org/IProductsManager/GetProductByCode" message="tns:IProductsManager_GetProductByCode_InputMessage" />
@@ -584,6 +594,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="ValidateProductName">
+      <soap12:operation soapAction="http://tempuri.org/IProductsManager/ValidateProductName" style="document" />
     <wsdl:operation name="GetProductByCode">
       <soap12:operation soapAction="http://tempuri.org/IProductsManager/GetProductByCode" style="document" />
       <wsdl:input>
