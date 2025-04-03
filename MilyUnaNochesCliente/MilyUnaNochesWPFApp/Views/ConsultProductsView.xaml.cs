@@ -8,24 +8,29 @@ using System.Windows.Media.Imaging;
 using System.Windows.Media;
 using MilyUnaNochesWPFApp.Logic;
 using MilyUnaNochesWPFApp.MilyUnaNochesProxy;
+using System.Diagnostics;
 
 namespace MilyUnaNochesWPFApp.Views
 {
     public partial class ConsultProductsView : Page
     {
+        private List<Logic.Product> _allProducts = new List<Logic.Product>();
+        private List<Logic.Product> _filteredProducts = new List<Logic.Product>();
+
         public ConsultProductsView()
         {
             InitializeComponent();
             LoadProducts();
         }
-        public List<MilyUnaNochesWPFApp.Logic.Product> GetProductsFromServer()
+
+        public List<Logic.Product> GetProductsFromServer()
         {
             IProductsManager proxy = new ProductsManagerClient();
             try
             {
                 var productsDb = proxy.GetProducts();
 
-                List<MilyUnaNochesWPFApp.Logic.Product> products = productsDb.Select(p => new MilyUnaNochesWPFApp.Logic.Product
+                List<Logic.Product> products = productsDb.Select(p => new Logic.Product
                 {
                     CodigoProducto = p.CodigoProducto,
                     NombreProducto = p.NombreProducto,
@@ -41,62 +46,93 @@ namespace MilyUnaNochesWPFApp.Views
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Ocurrió un error al obtener los productos: {ex.Message}");
-                return new List<MilyUnaNochesWPFApp.Logic.Product>();
+                Debug.WriteLine($"Ocurrió un error al obtener los productos: {ex.Message}");
+                MessageBox.Show("Error al cargar los productos. Por favor, intente nuevamente.",
+                              "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return new List<Logic.Product>();
             }
         }
 
         private void LoadProducts()
         {
-            List<MilyUnaNochesWPFApp.Logic.Product> products = GetProductsFromServer();
-
-            ProductsDataGrid.ItemsSource = products;
-        }
-
-        private void Register(object sender, RoutedEventArgs e)
-        {
-            NavigationService?.Navigate(new RegisterProductView());
-        }
-
-        private void Consult(object sender, RoutedEventArgs e)
-        {
-            // Obtener el producto seleccionado
-            var selectedProduct = ProductsDataGrid.SelectedItem as MilyUnaNochesWPFApp.Logic.Product;
-
-            if (selectedProduct == null)
+            try
             {
-                MessageBox.Show("Por favor, seleccione un producto antes de consultar.", "Advertencia", MessageBoxButton.OK, MessageBoxImage.Warning);
+                _allProducts = GetProductsFromServer();
+                _filteredProducts = new List<Logic.Product>(_allProducts);
+                ProductsDataGrid.ItemsSource = _filteredProducts;
+
+                // Configurar el placeholder del buscador
+                SearchTextBox.Text = "Buscar producto...";
+                SearchTextBox.Foreground = Brushes.Gray;
+                SearchTextBox.GotFocus += RemoveSearchPlaceholder;
+                SearchTextBox.LostFocus += SetSearchPlaceholder;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"Error al cargar productos: {ex.Message}");
+            }
+        }
+
+        private void SearchTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (SearchTextBox.Text == "Buscar producto..." || string.IsNullOrWhiteSpace(SearchTextBox.Text))
+            {
+                ProductsDataGrid.ItemsSource = _allProducts;
                 return;
             }
 
-            NavigationService?.Navigate(new ProductDetailView(selectedProduct));
+            var searchText = SearchTextBox.Text.Trim().ToLower();
+
+            _filteredProducts = _allProducts
+                .Where(p => (p.NombreProducto != null && p.NombreProducto.ToLower().Contains(searchText)) ||
+                            (p.Categoria != null && p.Categoria.ToLower().Contains(searchText)))
+                .OrderByDescending(p => GetRelevanceScore(p, searchText))
+                .ThenBy(p => p.NombreProducto)
+                .ToList();
+
+            ProductsDataGrid.ItemsSource = _filteredProducts;
+
+            if (_filteredProducts.Any())
+            {
+                ProductsDataGrid.SelectedIndex = 0;
+                ProductsDataGrid.ScrollIntoView(ProductsDataGrid.SelectedItem);
+            }
         }
 
-        private void Validate(object sender, RoutedEventArgs e)
+        private int GetRelevanceScore(Logic.Product product, string searchText)
         {
-
+            if (product.NombreProducto != null && product.NombreProducto.ToLower().StartsWith(searchText))
+                return 3;
+            if (product.NombreProducto != null && product.NombreProducto.ToLower().Contains(searchText))
+                return 2;
+            if (product.Categoria != null && product.Categoria.ToLower().Contains(searchText))
+                return 1;
+            return 0;
         }
 
-        private void Delete(object sender, RoutedEventArgs e)
+        private void RemoveSearchPlaceholder(object sender, RoutedEventArgs e)
         {
-
+            if (SearchTextBox.Text == "Buscar producto...")
+            {
+                SearchTextBox.Text = "";
+                SearchTextBox.Foreground = Brushes.Black;
+            }
         }
 
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        private void SetSearchPlaceholder(object sender, RoutedEventArgs e)
         {
-
-        }
-
-        private void Edit(object sender, RoutedEventArgs e)
-        {
-
+            if (string.IsNullOrWhiteSpace(SearchTextBox.Text))
+            {
+                SearchTextBox.Text = "Buscar producto...";
+                SearchTextBox.Foreground = Brushes.Gray;
+            }
         }
 
         private void ProductsDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            // Mantener la selección única
             if (ProductsDataGrid.SelectedItem != null)
             {
-                // Desmarcar todos los CheckBox excepto el de la fila seleccionada
                 foreach (var item in ProductsDataGrid.Items)
                 {
                     if (item != ProductsDataGrid.SelectedItem)
@@ -134,6 +170,47 @@ namespace MilyUnaNochesWPFApp.Views
                 }
             }
             return null;
+        }
+
+
+        private void Register(object sender, RoutedEventArgs e)
+        {
+            NavigationService?.Navigate(new RegisterProductView());
+        }
+
+        private void ConsultPage(object sender, RoutedEventArgs e)
+        {
+            NavigationService?.Navigate(new ConsultProductsView());
+        }
+
+        private void Validate(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+
+        private void Consult(object sender, RoutedEventArgs e)
+        {
+            var selectedProduct = ProductsDataGrid.SelectedItem as Logic.Product;
+
+            if (selectedProduct == null)
+            {
+                MessageBox.Show("Por favor, seleccione un producto antes de consultar.",
+                              "Advertencia", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            NavigationService?.Navigate(new ProductDetailView(selectedProduct));
+        }
+
+        private void Edit(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Delete(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

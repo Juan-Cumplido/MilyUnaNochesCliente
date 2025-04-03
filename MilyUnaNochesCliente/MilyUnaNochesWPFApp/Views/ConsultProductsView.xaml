@@ -10,16 +10,59 @@
       Title="ConsultProductsView">
 
     <Page.Resources>
+        <!-- Estilo para celdas del DataGrid -->
         <Style x:Key="CenteredCellStyle" TargetType="DataGridCell">
-            <Setter Property="TextBlock.TextAlignment" Value="Center"/>
-            <Setter Property="TextBlock.VerticalAlignment" Value="Center"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="DataGridCell">
+                        <Grid Background="{TemplateBinding Background}">
+                            <ContentPresenter VerticalAlignment="Center" 
+                                            HorizontalAlignment="Center"/>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Padding" Value="5"/>
+            <Setter Property="BorderThickness" Value="0,0,0,1"/>
+            <Setter Property="BorderBrush" Value="#FFAE7D5C"/>
+            <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
         </Style>
+
+        <!-- Estilo para texto dentro de las celdas -->
+        <Style x:Key="HighlightTextBlockStyle" TargetType="TextBlock">
+            <Setter Property="TextWrapping" Value="NoWrap"/>
+            <Setter Property="TextTrimming" Value="CharacterEllipsis"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="Padding" Value="5,0,5,0"/>
+            <Setter Property="FontFamily" Value="Bodoni MT"/>
+            <Setter Property="FontSize" Value="14"/>
+        </Style>
+
+        <!-- Estilo para encabezados -->
         <Style x:Key="HeaderStyle" TargetType="DataGridColumnHeader">
             <Setter Property="Background" Value="#FFAE7D5C"/>
             <Setter Property="Foreground" Value="White"/>
             <Setter Property="FontSize" Value="16"/>
             <Setter Property="FontFamily" Value="Bodoni MT"/>
             <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="10"/>
+            <Setter Property="BorderThickness" Value="0,0,0,2"/>
+            <Setter Property="BorderBrush" Value="#5C2E0F"/>
+        </Style>
+
+        <!-- Estilo para filas -->
+        <Style x:Key="DataGridRowStyle" TargetType="DataGridRow">
+            <Setter Property="Background" Value="Transparent"/>
+            <Style.Triggers>
+                <Trigger Property="IsSelected" Value="True">
+                    <Setter Property="Background" Value="#FFE7D5C0"/>
+                    <Setter Property="BorderBrush" Value="#FFAE7D5C"/>
+                </Trigger>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#FFF5E9D9"/>
+                </Trigger>
+            </Style.Triggers>
         </Style>
     </Page.Resources>
 
@@ -33,71 +76,199 @@
                Source="/Images/Background/FrameProducts.png"/>
 
         <!-- Barra de búsqueda -->
-        <TextBox HorizontalAlignment="Left" 
+        <TextBox x:Name="SearchTextBox" 
+                 HorizontalAlignment="Left" 
                  Height="44" 
                  Margin="68,232,0,0" 
                  TextWrapping="Wrap" 
-                 Text="Busque un producto" 
+                 Text="" 
                  VerticalAlignment="Top" 
-                 Width="241" 
-                 BorderBrush="{x:Null}" 
-                 BorderThickness="3,3,3,3" 
-                 TextChanged="TextBox_TextChanged"
+                 Width="300" 
+                 BorderBrush="#FFAE7D5C" 
+                 BorderThickness="0,0,0,2" 
+                 TextChanged="SearchTextBox_TextChanged"
                  VerticalContentAlignment="Center"
                  FontSize="20"
                  FontFamily="Bodoni MT Condensed" 
-                 Foreground="#FFAE7D5C" HorizontalContentAlignment="Center">
+                 Foreground="#FFAE7D5C" 
+                 HorizontalContentAlignment="Left"
+                 Padding="10,0,0,0">
             <TextBox.Background>
-                <ImageBrush ImageSource="/Images/Background/Search.png"/>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                    <GradientStop Color="Transparent" Offset="0"/>
+                    <GradientStop Color="#10AE7D5C" Offset="1"/>
+                </LinearGradientBrush>
             </TextBox.Background>
+            <TextBox.Style>
+                <Style TargetType="TextBox">
+                    <Setter Property="Foreground" Value="#FFAE7D5C"/>
+                    <Style.Triggers>
+                        <Trigger Property="IsFocused" Value="True">
+                            <Setter Property="Foreground" Value="#5C2E0F"/>
+                            <Setter Property="BorderBrush" Value="#5C2E0F"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBox.Style>
         </TextBox>
 
         <!-- Botones de CU -->
-        <Button Content="REGISTRAR" HorizontalAlignment="Left" Margin="451,232,0,0" VerticalAlignment="Top" FontFamily="Bodoni MT" Height="55" Width="130" FontSize="19" Background="{x:Null}" Foreground="#FFAE7D5C" BorderBrush="{x:Null}" RenderTransformOrigin="0.52,0.144" Click="Register"/>
-        <Button Content="CONSULTAR" HorizontalAlignment="Left" Margin="714,232,0,0" VerticalAlignment="Top" FontFamily="Bodoni MT" Height="55" Width="130" FontSize="19" Background="{x:Null}" Foreground="#FFAE7D5C" BorderBrush="{x:Null}" RenderTransformOrigin="0.52,0.144" Click="Consult"/>
-        <Button Content="VALIDAR" HorizontalAlignment="Left" Margin="979,232,0,0" VerticalAlignment="Top" FontFamily="Bodoni MT" Height="55" Width="130" FontSize="19" Background="{x:Null}" Foreground="#FFAE7D5C" BorderBrush="{x:Null}" RenderTransformOrigin="0.52,0.144" Click="Validate"/>
+        <Button Content="REGISTRAR" HorizontalAlignment="Left" Margin="451,232,0,0" VerticalAlignment="Top" 
+                FontFamily="Bodoni MT" Height="55" Width="130" FontSize="19" 
+                Background="{x:Null}" Foreground="#FFAE7D5C" BorderBrush="{x:Null}" 
+                RenderTransformOrigin="0.52,0.144" Click="Register">
+            <Button.Style>
+                <Style TargetType="Button">
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Foreground" Value="#5C2E0F"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
 
-        <!-- Tabla de productos -->
+        <Button Content="CONSULTAR" HorizontalAlignment="Left" Margin="714,232,0,0" VerticalAlignment="Top" 
+                FontFamily="Bodoni MT" Height="55" Width="130" FontSize="19" 
+                Background="{x:Null}" Foreground="#FFAE7D5C" BorderBrush="{x:Null}" 
+                RenderTransformOrigin="0.52,0.144" Click="ConsultPage">
+            <Button.Style>
+                <Style TargetType="Button">
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Foreground" Value="#5C2E0F"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+
+        <Button Content="VALIDAR" HorizontalAlignment="Left" Margin="979,232,0,0" VerticalAlignment="Top" 
+                FontFamily="Bodoni MT" Height="55" Width="130" FontSize="19" 
+                Background="{x:Null}" Foreground="#FFAE7D5C" BorderBrush="{x:Null}" 
+                RenderTransformOrigin="0.52,0.144" Click="Validate">
+            <Button.Style>
+                <Style TargetType="Button">
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Foreground" Value="#5C2E0F"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+
+        <!-- Tabla de productos con imágenes ajustadas -->
         <DataGrid x:Name="ProductsDataGrid"
-          SelectionMode="Single"
-          AutoGenerateColumns="False" 
-          Height="300" 
-          Margin="68,300,347,0" 
-          VerticalAlignment="Top" 
-          SelectionChanged="ProductsDataGrid_SelectionChanged"
-          HeadersVisibility="Column"
-          BorderThickness="0"
-          RowHeaderWidth="0"
-          ColumnHeaderHeight="40"
-          RowHeight="40"
-          HorizontalContentAlignment="Stretch">
+                  SelectionMode="Single"
+                  AutoGenerateColumns="False" 
+                  Height="350" 
+                  Margin="68,300,347,0" 
+                  VerticalAlignment="Top" 
+                  SelectionChanged="ProductsDataGrid_SelectionChanged"
+                  HeadersVisibility="Column"
+                  BorderThickness="0,0,0,2"
+                  BorderBrush="#FFAE7D5C"
+                  RowHeaderWidth="0"
+                  ColumnHeaderHeight="40"
+                  RowHeight="60" 
+            HorizontalContentAlignment="Stretch"
+                  Background="Transparent"
+                  AlternatingRowBackground="#FFF5E9D9"
+                  IsReadOnly="True"
+                  ScrollViewer.VerticalScrollBarVisibility="Auto"
+                  RowStyle="{StaticResource DataGridRowStyle}"
+                  FontSize="14"
+                  FontFamily="Bodoni MT">
+
             <DataGrid.Columns>
-                <DataGridTemplateColumn Header="Foto" HeaderStyle="{StaticResource HeaderStyle}" Width="*">
+                <!-- Columna Foto con ajustes para mostrar imagen completa -->
+                <DataGridTemplateColumn Header="Foto" HeaderStyle="{StaticResource HeaderStyle}" Width="100">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Image Source="{Binding Imagen}" Height="50" Width="50"/>
+                            <Border Width="80" Height="50" Background="White" CornerRadius="5"
+                                    BorderBrush="#FFAE7D5C" BorderThickness="1" Margin="2"
+                                    HorizontalAlignment="Center" VerticalAlignment="Center">
+                                <Image Source="{Binding Imagen}" Stretch="Uniform" 
+                                       HorizontalAlignment="Center" VerticalAlignment="Center"
+                                       MaxWidth="70" MaxHeight="45"/>
+                            </Border>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
-                <DataGridTextColumn Header="Nombre" Binding="{Binding NombreProducto}" HeaderStyle="{StaticResource HeaderStyle}" CellStyle="{StaticResource CenteredCellStyle}" Width="*"/>
-                <DataGridTextColumn Header="Cantidad" Binding="{Binding Cantidad}" HeaderStyle="{StaticResource HeaderStyle}" CellStyle="{StaticResource CenteredCellStyle}" Width="*"/>
-                <DataGridTextColumn Header="Categoría" Binding="{Binding Categoria}" HeaderStyle="{StaticResource HeaderStyle}" CellStyle="{StaticResource CenteredCellStyle}" Width="*"/>
+
+                <DataGridTextColumn Header="Nombre" 
+                                    Binding="{Binding NombreProducto}" 
+                                    HeaderStyle="{StaticResource HeaderStyle}" 
+                                    Width="*"
+                                    MinWidth="150"
+                                    ElementStyle="{StaticResource HighlightTextBlockStyle}"
+                                    CellStyle="{StaticResource CenteredCellStyle}"/>
+
+                <DataGridTextColumn Header="Cantidad" 
+                                    Binding="{Binding Cantidad}" 
+                                    HeaderStyle="{StaticResource HeaderStyle}" 
+                                    Width="80"
+                                    ElementStyle="{StaticResource HighlightTextBlockStyle}"
+                                    CellStyle="{StaticResource CenteredCellStyle}"/>
+
+                <DataGridTextColumn Header="Categoría" 
+                                    Binding="{Binding Categoria}" 
+                                    HeaderStyle="{StaticResource HeaderStyle}" 
+                                    Width="*"
+                                    MinWidth="150"
+                                    ElementStyle="{StaticResource HighlightTextBlockStyle}"
+                                    CellStyle="{StaticResource CenteredCellStyle}"/>
             </DataGrid.Columns>
         </DataGrid>
-
 
         <!-- Botones de operación -->
         <Border CornerRadius="15" Background="#bb6d04" Height="50" Margin="1015,324,77,346">
             <Button Content="EDITAR" Height="50" Background="Transparent"
-            BorderThickness="0" FontSize="16" Foreground="White" FontFamily="Bahnschrift SemiLight" Click="Edit"/>
+                    BorderThickness="0" FontSize="16" Foreground="White" 
+                    FontFamily="Bahnschrift SemiLight" Click="Edit">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#8a5003"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
         </Border>
+
         <Border CornerRadius="15" Background="#bb6d04" Height="50" Margin="1015,390,77,280">
             <Button Content="ELIMINAR" Height="50" Background="Transparent"
-            BorderThickness="0" FontSize="16" Foreground="White" FontFamily="Bahnschrift SemiLight" Click="Delete"/>
+                    BorderThickness="0" FontSize="16" Foreground="White" 
+                    FontFamily="Bahnschrift SemiLight" Click="Delete">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#8a5003"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
         </Border>
+
         <Border CornerRadius="15" Background="#bb6d04" Height="50" Margin="1015,456,77,214">
             <Button Content="CONSULTAR" Height="50" Background="Transparent"
-            BorderThickness="0" FontSize="16" Foreground="White" FontFamily="Bahnschrift SemiLight" Click="Consult"/>
+                    BorderThickness="0" FontSize="16" Foreground="White" 
+                    FontFamily="Bahnschrift SemiLight" Click="Consult">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#8a5003"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
         </Border>
     </Grid>
 </Page>

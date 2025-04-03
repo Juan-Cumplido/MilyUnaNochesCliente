@@ -59,4 +59,12 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfEmpleado" nillable="true" type="tns:ArrayOfEmpleado" />
+  <xs:complexType name="StockResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Stock" type="xs:int" />
+      <xs:element minOccurs="0" name="Success" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="StockResponse" nillable="true" type="tns:StockResponse" />
 </xs:schema>
