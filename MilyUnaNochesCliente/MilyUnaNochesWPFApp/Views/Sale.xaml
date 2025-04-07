@@ -48,7 +48,8 @@
                  FontFamily="Bodoni MT Condensed" 
                  BorderBrush="{x:Null}" 
                  Name="txtNumeroVendedor" 
-                 FontSize="20">
+                 FontSize="20"
+                 IsReadOnly="True">
             <TextBox.Background>
                 <ImageBrush ImageSource="/Images/Background/BackgorundTextField.png"/>
             </TextBox.Background>
@@ -65,7 +66,8 @@
                  FontFamily="Bodoni MT Condensed" 
                  BorderBrush="{x:Null}" 
                  FontSize="20" 
-                 Name="txtNumeroCliente">
+                 Name="txtNumeroCliente"
+                 PreviewTextInput="NumberValidationTextBox">
             <TextBox.Background>
                 <ImageBrush ImageSource="/Images/Background/BackgorundTextField.png"/>
             </TextBox.Background>
@@ -82,7 +84,8 @@
                  HorizontalContentAlignment="Center" 
                  FontFamily="Bodoni MT Condensed" 
                  BorderBrush="{x:Null}" 
-                 FontSize="20">
+                 FontSize="20"
+                 IsReadOnly="True">
             <TextBox.Background>
                 <ImageBrush ImageSource="/Images/Background/BackgorundTextField.png"/>
             </TextBox.Background>
@@ -109,7 +112,7 @@
                FontFamily="Rockwell"
                HorizontalContentAlignment="Center"
                VerticalContentAlignment="Center"/>
-        <Button Content="CANCELAR COMPRA" 
+        <Label Content="CANCELAR COMPRA" 
                 HorizontalAlignment="Left"
                 Height="37"
                 Margin="45,245,0,0"
@@ -118,12 +121,13 @@
                 Foreground="#FFFDF8EF"
                 BorderBrush="{x:Null}" 
                 FontSize="16" 
-                FontWeight="Bold">
-            <Button.Background>
+                FontWeight="Bold"
+                MouseDown="CancelSaleButton_Click" VerticalContentAlignment="Center" HorizontalContentAlignment="Center">
+            <Label.Background>
                 <ImageBrush ImageSource="/Images/Background/BackgroundButton.png"/>
-            </Button.Background>
-        </Button>
-        <Button Content="PAGAR" 
+            </Label.Background>
+        </Label>
+        <Label Content="PAGAR" 
                 HorizontalAlignment="Left"
                 Height="37"
                 Margin="146,301,0,0"
@@ -132,12 +136,13 @@
                 Foreground="#FFFDF8EF"
                 BorderBrush="{x:Null}"
                 FontSize="16" 
-                FontWeight="Bold">
-            <Button.Background>
+                FontWeight="Bold"
+                MouseDown="PayButton_Click" VerticalContentAlignment="Center" HorizontalContentAlignment="Center">
+            <Label.Background>
                 <ImageBrush ImageSource="/Images/Background/BackgroundButton.png"/>
-            </Button.Background>
-        </Button>
-        <Button Content="AÑADIR PRODUCTOS" 
+            </Label.Background>
+        </Label>
+        <Label Content="AÑADIR PRODUCTOS" 
                 HorizontalAlignment="Left"
                 Height="37"
                 Margin="248,245,0,0"
@@ -146,11 +151,12 @@
                 Foreground="#FFFDF8EF" 
                 BorderBrush="{x:Null}"
                 FontSize="16" 
-                FontWeight="Bold">
-            <Button.Background>
+                FontWeight="Bold"
+                MouseDown="AddProductsButton_Click" VerticalContentAlignment="Center" HorizontalContentAlignment="Center">
+            <Label.Background>
                 <ImageBrush ImageSource="/Images/Background/BackgroundButton.png"/>
-            </Button.Background>
-        </Button>
+            </Label.Background>
+        </Label>
         <!-- Sección de productos en el carrito -->
         <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="504,5,45,62">
             <WrapPanel Name="ProductsPanel" Orientation="Horizontal" ItemWidth="200" ItemHeight="300">
@@ -176,79 +182,126 @@
                                    TextAlignment="Center" 
                                    FontFamily="Bodoni MT Condensed" 
                                    Foreground="#FFC18D5C"/>
-                        <Button Content="Quitar del carrito" 
+                        <Label Content="Quitar del carrito" 
                                 Background="#FFC18D5C" 
                                 Foreground="White"
                                 Margin="5" 
-                                BorderBrush="{x:Null}" FontWeight="Bold"/>
+                                BorderBrush="{x:Null}" 
+                                FontWeight="Bold"
+                                MouseDown="RemoveProduct_Click" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
                     </StackPanel>
                 </Border>
             </WrapPanel>
         </ScrollViewer>
-        <Grid Margin="211,226,128,233" 
-              Visibility="Collapsed" 
-              Name="gridSearchProduct">
+        <Grid Margin="180,-16,159,152" 
+              Name="gridSearchProduct" Visibility="Collapsed">
             <Image HorizontalAlignment="Center" 
-                   Height="232" 
-                   Margin="0,24,0,0" 
+                   Height="271" 
                    VerticalAlignment="Top" 
-                   Width="740" 
-                   Source="/Images/Background/BackgroundEnterProduct.png"/>
-            <TextBox HorizontalAlignment="Center"
-                     Height="76" 
-                     Margin="0,130,0,0" 
+                   Width="715" 
+                   Source="/Images/Background/BackGroundGrid.png" Margin="0,-9,0,0"/>
+            <Label Content="Ingrese código del producto" 
+       HorizontalAlignment="Center"
+       Height="58" 
+       Margin="0,29,0,0" 
+       VerticalAlignment="Top"
+       Width="409" FontFamily="Bernard MT Condensed" FontWeight="Bold" FontSize="36" Foreground="White"/>
+
+            <TextBox Name="txtSearchProduct"
+                     HorizontalAlignment="Left"
+                     Height="66" 
+                     Margin="190,0,0,0" 
                      TextWrapping="Wrap" 
-                     VerticalAlignment="Top"
-                     Width="416" 
+                     VerticalAlignment="Center"
+                     Width="344" 
                      BorderBrush="{x:Null}"
                      SelectionBrush="{x:Null}" 
                      VerticalContentAlignment="Center" 
                      HorizontalContentAlignment="Center" 
-                     FontSize="20">
+                     FontSize="20" SelectionTextBrush="#FF6C95F0">
                 <TextBox.Background>
                     <ImageBrush ImageSource="/Images/Background/BackgroundTextBlock.png"/>
                 </TextBox.Background>
             </TextBox>
-
+            <Button Content="X" 
+                    HorizontalAlignment="Right" 
+                    Width="41"
+                    Margin="0,-17,774,266"
+                    Background="Black"
+                    BorderBrush="Transparent"
+                    Foreground="White"
+                    FontWeight="Bold"
+                    Click="CloseSearchPanel_Click" 
+                    FontSize="20" 
+                    RenderTransformOrigin="0.5,0.5">
+                <Button.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="-0.61"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Button.RenderTransform>
+            </Button>
+            <Label Content="Agregar" 
+        HorizontalAlignment="Left" 
+        Margin="570,122,0,121" 
+        Width="136"
+        Foreground="Black"
+        FontWeight="Bold"
+        MouseDown="AddSelectedProduct_Click" BorderBrush="{x:Null}" FontFamily="Bodoni MT" FontSize="20" VerticalContentAlignment="Center" HorizontalContentAlignment="Center">
+                <Label.Background>
+                    <ImageBrush ImageSource="/Images/Background/BackgroundTextBlock.png"/>
+                </Label.Background>
+            </Label>
         </Grid>
         <Grid Name="gridFormPay" Visibility="Collapsed">
             <Image HorizontalAlignment="Center" 
                    Height="246" 
-                   Margin="0,303,0,0" 
+                   Margin="0,-25,0,0" 
                    VerticalAlignment="Top" 
                    Width="598" 
                    Source="/Images/Background/BackgroundGrid.png"/>
             <Label Content="Forma de pago" 
                    HorizontalAlignment="Center"
                    Height="58" 
-                   Margin="0,327,0,0" 
                    VerticalAlignment="Top"
                    Width="234" FontFamily="Bernard MT Condensed" FontWeight="Bold" FontSize="36" Foreground="White"/>
-            <Button Content="EFECTIVO" 
+            <Label Content="EFECTIVO" 
                     HorizontalAlignment="Left" 
                     Height="46" 
-                    Margin="438,401,0,0" 
+                    Margin="456,72,0,0" 
                     VerticalAlignment="Top" 
                     Width="144" 
-                    BorderBrush="{x:Null}" FontSize="20">
-                <Button.Background>
+                    BorderBrush="{x:Null}" 
+                    FontSize="20"
+                    MouseDown="ProcessPaymentButton_Click" VerticalContentAlignment="Center" HorizontalContentAlignment="Center">
+                <Label.Background>
                     <ImageBrush ImageSource="/Images/Background/BackgroundTextBlock.png"/>
-                </Button.Background>
-            </Button>
-            <Button Content="TARJETA" 
+                </Label.Background>
+            </Label>
+            <Label Content="TARJETA" 
                     HorizontalAlignment="Left"
                     Height="46" 
-                    Margin="666,401,0,0"
+                    Margin="685,72,0,0"
                     VerticalAlignment="Top"
                     Width="144" 
-                    BorderBrush="{x:Null}" FontSize="20">
-                <Button.Background>
+                    BorderBrush="{x:Null}" 
+                    FontSize="20"
+                    MouseDown="ProcessPaymentButton_Click" VerticalContentAlignment="Center" HorizontalContentAlignment="Center">
+                <Label.Background>
                     <ImageBrush ImageSource="/Images/Background/BackgroundTextBlock.png"/>
-                </Button.Background>
-            </Button>
-
+                </Label.Background>
+            </Label>
+            <Button Content="X" 
+                    HorizontalAlignment="Left" 
+                    Width="41"
+                    Margin="347,-25,0,411"
+                    Background="Black"
+                    BorderBrush="Transparent"
+                    FontWeight="Bold"
+                    Click="ClosePaymentPanel_Click" 
+                    Foreground="White" FontSize="20"/>
         </Grid>
     </Grid>
-
-
 </Page>

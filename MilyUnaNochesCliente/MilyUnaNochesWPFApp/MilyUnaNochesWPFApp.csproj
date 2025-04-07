@@ -114,6 +114,9 @@
     <Compile Include="Views\CashierMenu.xaml.cs">
       <DependentUpon>CashierMenu.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\GenerateReport.xaml.cs">
+      <DependentUpon>GenerateReport.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\LoginView.xaml.cs">
       <DependentUpon>LoginView.xaml</DependentUpon>
     </Compile>
@@ -208,6 +211,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\GenerateReport.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\LoginView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -299,6 +306,9 @@
     <None Include="Connected Services\MilyUnaNochesProxy\item3.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Connected Services\MilyUnaNochesProxy\item4.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Connected Services\MilyUnaNochesProxy\MilyUnaNochesService.wsdl" />
     <None Include="Connected Services\MilyUnaNochesProxy\MilyUnaNochesWPFApp.MilyUnaNochesProxy.Address.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -306,11 +316,22 @@
     <None Include="Connected Services\MilyUnaNochesProxy\MilyUnaNochesWPFApp.MilyUnaNochesProxy.Empleado.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Connected Services\MilyUnaNochesProxy\MilyUnaNochesWPFApp.MilyUnaNochesProxy.Product.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Connected Services\MilyUnaNochesProxy\MilyUnaNochesWPFApp.MilyUnaNochesProxy.Provider.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\MilyUnaNochesProxy\MilyUnaNochesWPFApp.MilyUnaNochesProxy.Usuario.datasource" />
-    <None Include="Connected Services\MilyUnaNochesProxy\MilyUnaNochesWPFApp.MilyUnaNochesProxy.Usuario1.datasource">
+    <None Include="Connected Services\MilyUnaNochesProxy\MilyUnaNochesWPFApp.MilyUnaNochesProxy.SaleResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\MilyUnaNochesProxy\MilyUnaNochesWPFApp.MilyUnaNochesProxy.StockResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\MilyUnaNochesProxy\MilyUnaNochesWPFApp.MilyUnaNochesProxy.Usuario.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\MilyUnaNochesProxy\MilyUnaNochesWPFApp.MilyUnaNochesProxy.Venta.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="packages.config" />
@@ -388,19 +409,7 @@
     <Resource Include="Images\Background\FrameProducts.png" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadataStorage Include="Connected Services\MilyUnaNochesProxy\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\MilyUnaNochesProxy\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\MilyUnaNochesProxy\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\MilyUnaNochesProxy\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
+    <Resource Include="Images\Icons\Loading.gif" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\Icons\Logo2.png" />
@@ -418,7 +427,29 @@
     <Resource Include="Images\Icons\SalesIcon.png" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Images\Background\FrameReports.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Background\BackGraundRadioButton1.png" />
+    <Resource Include="Images\Background\BackGraundRadioButton2.png" />
+    <Resource Include="Images\Background\BackGraundRadioButton3.png" />
+    <Resource Include="Images\Background\BackGraundRadioButton4.png" />
     <Resource Include="Images\Background\FramePurchases.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\MilyUnaNochesProxy\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\MilyUnaNochesProxy\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\MilyUnaNochesProxy\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\MilyUnaNochesProxy\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
