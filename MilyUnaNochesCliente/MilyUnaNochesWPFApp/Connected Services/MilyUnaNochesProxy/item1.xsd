@@ -69,6 +69,7 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="StockResponse" nillable="true" type="tns:StockResponse" />
+
   <xs:complexType name="Venta">
     <xs:sequence>
       <xs:element minOccurs="0" name="Detalles" nillable="true" type="tns:ArrayOfVentaProducto" />
