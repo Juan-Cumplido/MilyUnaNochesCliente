@@ -56,6 +56,13 @@ namespace MilyUnaNochesWPFApp.Views
                     return false;
                 }
             }
+            //Validar que el nombre del producto no exista en un registro previo
+            if (!ValidateProductName())
+            {
+                MessageBox.Show($"Existen datos invalidos",
+                "Validación", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return false;
+            }
             return true;
         }
         private bool EsNumero(string texto)
@@ -75,7 +82,27 @@ namespace MilyUnaNochesWPFApp.Views
                 }
             }
             return null;
+        
         }
+        private bool ValidateProductName()
+        {
+            IProductsManager proxy = new ProductsManagerClient();
+
+            try
+            {
+                bool exist = proxy.ValidateProductName(txtb_NombreProducto.Text);
+                return exist;
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Ocurrió un error: {ex.Message}");
+                MessageBox.Show($"Error en el registro",
+                                "ERROR", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return false;
+            }
+        }
+
         private void SaveProduct(object sender, RoutedEventArgs e)
         {
             if (ValidarCampos())
