@@ -29,6 +29,7 @@ namespace MilyUnaNochesWPFApp.Views
 
         private void Registrar_Click(object sender, RoutedEventArgs e)
         {
+            string hashedPassword = Hasher.hashToSHA2(txtb_password.Text);
             RestartColorTxtBox();
             if (VerifyField())
             {
@@ -58,7 +59,7 @@ namespace MilyUnaNochesWPFApp.Views
             Acceso newAccess = new Acceso
             {
                 usuario = txtb_User.Text,
-                contraseña = txtb_password.Text,
+                contraseña = hashedPassword,
             };
 
 
