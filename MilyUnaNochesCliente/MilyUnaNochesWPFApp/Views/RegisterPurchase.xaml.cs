@@ -23,6 +23,7 @@ namespace MilyUnaNochesWPFApp.Views {
         private readonly IProviderManager _providerClient;
         private readonly IAdressManager _addressClient;
         private RegisterPurchase_sv _currentPurchase;
+        public string SelectedPayMethod { get; set; }
 
 
         public RegisterPurchase() {
@@ -61,19 +62,49 @@ namespace MilyUnaNochesWPFApp.Views {
 
         private async void Register_Click(object sender, RoutedEventArgs e) {
             try {
-                _currentPurchase.IdProveedor = (int)txtProviderName.SelectedValue;
-                _currentPurchase.PayMethod = "Efectivo"; //Obtener el elemento del comboBox
 
+                if (!validateFields()) {
+                    return;
+                }
+
+                _currentPurchase.IdProveedor = (int)txtProviderName.SelectedValue;
+
+                _currentPurchase.MontoTotal = _currentPurchase.Products.Sum(p => p.MontoProducto);
+
+                _currentPurchase.Fecha = DateTime.Now.Date;
+                _currentPurchase.Hora = DateTime.Now.TimeOfDay;
+                _currentPurchase.ContactoProveedor = txtContact.Text;
+                
+
+                _currentPurchase.PayMethod = SelectedPayMethod;
                 var purchaseClient = new PurchaseManagerClient();
                 int result = await purchaseClient.SavePurchaseAsync(_currentPurchase);
 
                 if (result > 0) {
-                    MessageBox.Show("Compra registrada exitosamente!");
-                    //ClearFields();
+                    DialogManager.ShowSuccessMessageAlert("Compra registrada exitosamente", "Compra registrada");
+                    ClearFields();
+                    InitializeRegisterPurchase();
+                    SelectedPayMethod = "";
+                } else {
+                    DialogManager.ShowErrorMessageAlert("No se pudo registrar la compra");
                 }
             } catch (Exception ex) {
-                MessageBox.Show("Error guardando compra: " + ex.Message);
+                DialogManager.ShowErrorMessageAlert("No se pudo registrar la compra. Intente mas tarde");
             }
+        }
+
+        private bool validateFields() {
+            if (txtProviderName.SelectedValue == null) {
+                DialogManager.ShowWarningMessageAlert("Seleccione un proveedor válido.");
+                return false;
+            }
+
+            // Validar que se hayan agregado productos
+            if (_currentPurchase.Products == null || _currentPurchase.Products.Length == 0) {
+                DialogManager.ShowWarningMessageAlert("Debe agregar al menos un producto");
+                return false;
+            }
+            return true;
         }
 
         private void Cancel_Click(object sender, RoutedEventArgs e) {
@@ -134,6 +165,8 @@ namespace MilyUnaNochesWPFApp.Views {
             _currentPurchase.MontoTotal = products.Sum(p => p.MontoProducto);
         }
         private void ClearFields() {
+            txtProviderName.SelectedIndex = -1;
+            SelectedPayMethod = string.Empty;
             txtContact.Text = string.Empty;
             txtPhone.Text = string.Empty;
             txtEmail.Text = string.Empty;
