@@ -12,21 +12,25 @@ using System.Windows.Media.Imaging;
 using MilyUnaNochesWPFApp.Logic;
 using MilyUnaNochesWPFApp.MilyUnaNochesProxy;
 
-namespace MilyUnaNochesWPFApp.Views {
-    public partial class Sale : Page {
+namespace MilyUnaNochesWPFApp.Views
+{
+    public partial class Sale : Page
+    {
         private List<VentaProducto> _currentSaleDetails = new List<VentaProducto>();
         private decimal _totalAmount = 0;
         private int _currentEmployeeId;
         private List<MilyUnaNochesWPFApp.MilyUnaNochesProxy.Product> _availableProducts = new List<MilyUnaNochesWPFApp.MilyUnaNochesProxy.Product>();
 
-        public Sale(int employeeId) {
+        public Sale(int employeeId)
+        {
             InitializeComponent();
             _currentEmployeeId = employeeId;
             txtNumeroVendedor.Text = employeeId.ToString();
             InitializeUI();
         }
 
-        private void InitializeUI() {
+        private void InitializeUI()
+        {
             ProductsPanel.Children.Clear();
             txtNumeroProductos.Text = "0";
             lblPrecio.Content = "$0.00";
@@ -36,7 +40,8 @@ namespace MilyUnaNochesWPFApp.Views {
         }
 
 
-        private void AddProductsButton_Click(object sender, RoutedEventArgs e) {
+        private void AddProductsButton_Click(object sender, RoutedEventArgs e)
+        {
             gridSearchProduct.Visibility = Visibility.Visible;
             txtSearchProduct.Text = "";
             txtSearchProduct.Focus();
@@ -44,8 +49,10 @@ namespace MilyUnaNochesWPFApp.Views {
 
         private Dictionary<int, int> _productCounts = new Dictionary<int, int>();
 
-        private async void AddSelectedProduct_Click(object sender, RoutedEventArgs e) {
-            if (string.IsNullOrWhiteSpace(txtSearchProduct.Text)) {
+        private async void AddSelectedProduct_Click(object sender, RoutedEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtSearchProduct.Text))
+            {
                 MessageBox.Show("Ingrese el código del producto", "Advertencia",
                     MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
@@ -53,11 +60,13 @@ namespace MilyUnaNochesWPFApp.Views {
 
             string productCode = txtSearchProduct.Text.Trim();
 
-            try {
+            try
+            {
                 IProductsManager proxy = new ProductsManagerClient();
                 var product = await proxy.GetProductByCodeAsync(productCode);
 
-                if (product == null) {
+                if (product == null)
+                {
                     MessageBox.Show($"No se encontró producto con código: {productCode}",
                         "Producto no encontrado",
                         MessageBoxButton.OK, MessageBoxImage.Error);
@@ -66,7 +75,8 @@ namespace MilyUnaNochesWPFApp.Views {
 
                 var stockResponse = await proxy.GetProductStockAsync(product.IdProducto);
 
-                if (!stockResponse.Success) {
+                if (!stockResponse.Success)
+                {
                     MessageBox.Show($"Error al consultar stock: {stockResponse.Message}",
                         "Error",
                         MessageBoxButton.OK, MessageBoxImage.Error);
@@ -76,14 +86,16 @@ namespace MilyUnaNochesWPFApp.Views {
                 int currentStock = stockResponse.Stock;
                 int inCart = _productCounts.ContainsKey(product.IdProducto) ? _productCounts[product.IdProducto] : 0;
 
-                if (currentStock <= 0) {
+                if (currentStock <= 0)
+                {
                     MessageBox.Show($"Producto agotado: {product.NombreProducto}\nCódigo: {product.CodigoProducto}",
                         "Stock agotado",
                         MessageBoxButton.OK, MessageBoxImage.Warning);
                     return;
                 }
 
-                if (inCart >= currentStock) {
+                if (inCart >= currentStock)
+                {
                     MessageBox.Show($"No hay suficiente stock de {product.NombreProducto}\n" +
                                    $"En carrito: {inCart}, Disponible: {currentStock}",
                         "Stock insuficiente",
@@ -91,7 +103,8 @@ namespace MilyUnaNochesWPFApp.Views {
                     return;
                 }
 
-                if (currentStock <= 10) {
+                if (currentStock <= 10)
+                {
                     MessageBox.Show($"Advertencia: Stock bajo de {product.NombreProducto}\n" +
                                   $"Unidades restantes: {currentStock}\n" +
                                   $"Considere reabastecer pronto.",
@@ -99,7 +112,8 @@ namespace MilyUnaNochesWPFApp.Views {
                         MessageBoxButton.OK, MessageBoxImage.Exclamation);
                 }
 
-                var ventaProducto = new VentaProducto {
+                var ventaProducto = new VentaProducto
+                {
                     IdProducto = product.IdProducto,
                     NombreProducto = product.NombreProducto,
                     Cantidad = 1,
@@ -116,24 +130,30 @@ namespace MilyUnaNochesWPFApp.Views {
 
                 UpdateUI();
                 gridSearchProduct.Visibility = Visibility.Collapsed;
-            } catch (Exception ex) {
+            }
+            catch (Exception ex)
+            {
                 MessageBox.Show($"Error al buscar producto: {ex.Message}",
                     "Error",
                     MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
-        private void UpdateUI() {
+        private void UpdateUI()
+        {
             txtNumeroProductos.Text = _currentSaleDetails.Count.ToString();
             _totalAmount = _currentSaleDetails.Sum(d => d.Subtotal);
             lblPrecio.Content = _totalAmount.ToString("C");
             UpdateProductsPanel();
         }
 
-        private void UpdateProductsPanel() {
+        private void UpdateProductsPanel()
+        {
             ProductsPanel.Children.Clear();
-            foreach (var product in _currentSaleDetails) {
-                var border = new Border {
+            foreach (var product in _currentSaleDetails)
+            {
+                var border = new Border
+                {
                     CornerRadius = new CornerRadius(10),
                     Padding = new Thickness(10),
                     Width = 180,
@@ -144,14 +164,16 @@ namespace MilyUnaNochesWPFApp.Views {
 
                 var stackPanel = new StackPanel();
 
-                var image = new Image {
+                var image = new Image
+                {
                     Source = new BitmapImage(new Uri("/Images/Products/Product1.png", UriKind.Relative)),
                     Width = 146,
                     Height = 145,
                     Stretch = Stretch.UniformToFill
                 };
 
-                var nameText = new TextBlock {
+                var nameText = new TextBlock
+                {
                     Text = product.NombreProducto,
                     FontWeight = FontWeights.Bold,
                     FontSize = 16,
@@ -160,7 +182,8 @@ namespace MilyUnaNochesWPFApp.Views {
                     FontFamily = new FontFamily("Bodoni MT Condensed")
                 };
 
-                var priceText = new TextBlock {
+                var priceText = new TextBlock
+                {
                     Text = $"Precio: {product.PrecioUnitario:C}",
                     FontSize = 16,
                     TextAlignment = TextAlignment.Center,
@@ -168,7 +191,8 @@ namespace MilyUnaNochesWPFApp.Views {
                     Foreground = (Brush)new BrushConverter().ConvertFrom("#FFC18D5C")
                 };
 
-                var removeButton = new Button {
+                var removeButton = new Button
+                {
                     Content = "Quitar",
                     Background = (Brush)new BrushConverter().ConvertFrom("#FFC18D5C"),
                     Foreground = Brushes.White,
@@ -189,11 +213,14 @@ namespace MilyUnaNochesWPFApp.Views {
             }
         }
 
-        private void RemoveProduct_Click(object sender, RoutedEventArgs e) {
-            if (sender is Button button && button.Tag is VentaProducto product) {
+        private void RemoveProduct_Click(object sender, RoutedEventArgs e)
+        {
+            if (sender is Button button && button.Tag is VentaProducto product)
+            {
                 _currentSaleDetails.Remove(product);
 
-                if (_productCounts.ContainsKey(product.IdProducto)) {
+                if (_productCounts.ContainsKey(product.IdProducto))
+                {
                     _productCounts[product.IdProducto]--;
                     if (_productCounts[product.IdProducto] <= 0)
                         _productCounts.Remove(product.IdProducto);
@@ -203,13 +230,16 @@ namespace MilyUnaNochesWPFApp.Views {
             }
         }
 
-        private void CancelSaleButton_Click(object sender, RoutedEventArgs e) {
+        private void CancelSaleButton_Click(object sender, RoutedEventArgs e)
+        {
             _currentSaleDetails.Clear();
             InitializeUI();
         }
 
-        private void PayButton_Click(object sender, RoutedEventArgs e) {
-            if (_currentSaleDetails.Count == 0) {
+        private void PayButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (_currentSaleDetails.Count == 0)
+            {
                 MessageBox.Show("No hay productos en la venta", "Advertencia",
                     MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
@@ -218,12 +248,15 @@ namespace MilyUnaNochesWPFApp.Views {
             gridFormPay.Visibility = Visibility.Visible;
         }
 
-        private async void ProcessPaymentButton_Click(object sender, RoutedEventArgs e) {
+        private async void ProcessPaymentButton_Click(object sender, RoutedEventArgs e)
+        {
             string paymentMethod = (sender as Button)?.Content.ToString();
 
-            try {
+            try
+            {
                 ISaleManager proxy = new SaleManagerClient();
-                var newSale = new Venta {
+                var newSale = new Venta
+                {
                     IdEmpleado = _currentEmployeeId,
                     IdCliente = int.TryParse(txtNumeroCliente.Text, out int temp) ? temp : (int?)null,
                     MetodoPago = paymentMethod,
@@ -232,9 +265,11 @@ namespace MilyUnaNochesWPFApp.Views {
 
                 var validationResult = await proxy.ValidateSaleAsync(_currentSaleDetails.ToList());
 
-                if (validationResult.Any()) {
+                if (validationResult.Any())
+                {
                     var errorMessage = new StringBuilder("Problemas con el stock:\n");
-                    foreach (var error in validationResult) {
+                    foreach (var error in validationResult)
+                    {
                         errorMessage.AppendLine($"• {error}");
                     }
 
@@ -243,36 +278,48 @@ namespace MilyUnaNochesWPFApp.Views {
                     return;
                 }
 
-                var saleResult = await proxy.ProcessSaleAsync(newSale, _currentSaleDetails.ToList());
+                //var saleResult = await proxy.ProcessSaleAsync(newSale, _currentSaleDetails.ToList());
 
-                if (saleResult.Success) {
-                    MessageBox.Show("Venta registrada exitosamente", "Éxito",
-                        MessageBoxButton.OK, MessageBoxImage.Information);
-                    InitializeUI();
-                } else {
-                    var errorMessage = string.Join("\n", saleResult.Errors);
-                    MessageBox.Show(errorMessage, "Error en la venta",
-                        MessageBoxButton.OK, MessageBoxImage.Error);
-                }
-            } catch (Exception ex) {
+                /* if (saleResult.Success)
+                 {
+                     MessageBox.Show("Venta registrada exitosamente", "Éxito",
+                         MessageBoxButton.OK, MessageBoxImage.Information);
+                     InitializeUI();
+                 }
+                 else
+                 {
+                     var errorMessage = string.Join("\n", saleResult.Errors);
+                     MessageBox.Show(errorMessage, "Error en la venta",
+                         MessageBoxButton.OK, MessageBoxImage.Error);
+                 }*/
+            }
+            catch (Exception ex)
+            {
                 MessageBox.Show($"Error inesperado: {ex.Message}", "Error",
                     MessageBoxButton.OK, MessageBoxImage.Error);
-            } finally {
+            }
+            finally
+            {
                 gridFormPay.Visibility = Visibility.Collapsed;
             }
         }
 
-        private void CloseSearchPanel_Click(object sender, RoutedEventArgs e) {
+        private void CloseSearchPanel_Click(object sender, RoutedEventArgs e)
+        {
             gridSearchProduct.Visibility = Visibility.Collapsed;
         }
 
-        private void ClosePaymentPanel_Click(object sender, RoutedEventArgs e) {
+        private void ClosePaymentPanel_Click(object sender, RoutedEventArgs e)
+        {
             gridFormPay.Visibility = Visibility.Collapsed;
         }
 
-        private void NumberValidationTextBox(object sender, TextCompositionEventArgs e) {
-            foreach (char c in e.Text) {
-                if (!char.IsDigit(c)) {
+        private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
+        {
+            foreach (char c in e.Text)
+            {
+                if (!char.IsDigit(c))
+                {
                     e.Handled = true;
                     break;
                 }

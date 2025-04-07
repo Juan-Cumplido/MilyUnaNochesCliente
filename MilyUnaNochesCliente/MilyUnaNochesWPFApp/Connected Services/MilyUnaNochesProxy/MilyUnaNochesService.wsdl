@@ -243,9 +243,6 @@
   <wsdl:message name="IProductsManager_ValidateProductName_OutputMessage">
     <wsdl:part name="parameters" element="tns:ValidateProductNameResponse" />
   </wsdl:message>
-  <wsdl:message name="IPurchaseManager_SavePurchase_InputMessage">
-    <wsdl:part name="parameters" element="tns:SavePurchase" />
-  </wsdl:message>
   <wsdl:message name="IProductsManager_GetProductByCode_InputMessage">
     <wsdl:part name="parameters" element="tns:GetProductByCode" />
   </wsdl:message>
