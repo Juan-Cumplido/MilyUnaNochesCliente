@@ -373,22 +373,6 @@
     </xs:complexType>
   </xs:element>
   <xs:element name="ValidateProductName">
-
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="productName" nillable="true" type="xs:string" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="ValidateProductNameResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="ValidateProductNameResult" type="xs:boolean" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="SavePurchase">
-
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="productName" nillable="true" type="xs:string" />
