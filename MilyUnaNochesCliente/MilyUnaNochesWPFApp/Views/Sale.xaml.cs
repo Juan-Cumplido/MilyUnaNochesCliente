@@ -263,7 +263,7 @@ namespace MilyUnaNochesWPFApp.Views
                     MontoTotal = _totalAmount
                 };
 
-                var validationResult = await proxy.ValidateSaleAsync(_currentSaleDetails.ToList());
+                var validationResult = await proxy.ValidateSaleAsync(_currentSaleDetails.ToArray());
 
                 if (validationResult.Any())
                 {

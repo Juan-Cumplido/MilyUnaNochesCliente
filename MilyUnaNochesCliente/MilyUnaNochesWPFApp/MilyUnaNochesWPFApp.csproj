@@ -313,6 +313,9 @@
     <None Include="Connected Services\MilyUnaNochesProxy\MilyUnaNochesWPFApp.MilyUnaNochesProxy.Address.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Connected Services\MilyUnaNochesProxy\MilyUnaNochesWPFApp.MilyUnaNochesProxy.ConsultPurchase_SV.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Connected Services\MilyUnaNochesProxy\MilyUnaNochesWPFApp.MilyUnaNochesProxy.Empleado.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -438,6 +441,9 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Connected Services\MilyUnaNochesProxy\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\MilyUnaNochesProxy\item.disco" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Connected Services\MilyUnaNochesProxy\configuration91.svcinfo" />
