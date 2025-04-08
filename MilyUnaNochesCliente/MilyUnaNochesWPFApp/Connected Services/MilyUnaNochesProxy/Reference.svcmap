@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ID="182a33b0-47be-4008-8692-e187c476d33f" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ID="c3be274d-59a8-49ce-bbf2-e2f02d6238ff" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
@@ -19,15 +19,16 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://localhost:1442/?wsdl" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://localhost:1442" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="item.xsd" MetadataType="Schema" ID="8396ec98-0e23-4556-8206-4c6baa4e2475" SourceId="1" SourceUrl="http://localhost:1442/?xsd=xsd1" />
-    <MetadataFile FileName="item1.xsd" MetadataType="Schema" ID="bf82e634-d4c7-440b-ba65-c14f0bd39f96" SourceId="1" SourceUrl="http://localhost:1442/?xsd=xsd2" />
-    <MetadataFile FileName="item2.xsd" MetadataType="Schema" ID="6eb3370d-9c5a-4fb1-aca7-3b95eb519ed4" SourceId="1" SourceUrl="http://localhost:1442/?xsd=xsd3" />
-    <MetadataFile FileName="item4.xsd" MetadataType="Schema" ID="f18d9ae4-7795-4678-bcca-021bb4be5d7c" SourceId="1" SourceUrl="http://localhost:1442/?xsd=xsd4" />
-    <MetadataFile FileName="MilyUnaNochesService.wsdl" MetadataType="Wsdl" ID="e7326b15-a0f8-4866-a3d8-9b77c4c7d310" SourceId="1" SourceUrl="http://localhost:1442/?wsdl" />
-    <MetadataFile FileName="item3.xsd" MetadataType="Schema" ID="84fcd574-08ac-4784-8e42-287137004157" SourceId="1" SourceUrl="http://localhost:1442/?xsd=xsd0" />
+    <MetadataFile FileName="item.xsd" MetadataType="Schema" ID="db5b1bf1-6be2-4ef9-a39d-4d496e7534ba" SourceId="1" SourceUrl="http://localhost:1442/?xsd=xsd1" />
+    <MetadataFile FileName="item1.xsd" MetadataType="Schema" ID="9c986c54-6a68-443d-8abe-f5ebd5a38e83" SourceId="1" SourceUrl="http://localhost:1442/?xsd=xsd2" />
+    <MetadataFile FileName="item.disco" MetadataType="Disco" ID="69ea8dd5-c2bf-4ff3-a066-637bc30a6be2" SourceId="1" SourceUrl="http://localhost:1442/?disco" />
+    <MetadataFile FileName="item2.xsd" MetadataType="Schema" ID="c8472e91-47e8-4072-b506-275b75107b85" SourceId="1" SourceUrl="http://localhost:1442/?xsd=xsd4" />
+    <MetadataFile FileName="MilyUnaNochesService.wsdl" MetadataType="Wsdl" ID="6c9c7a26-40d0-468b-9c46-1731e36de309" SourceId="1" SourceUrl="http://localhost:1442/?wsdl" />
+    <MetadataFile FileName="item3.xsd" MetadataType="Schema" ID="4ce2c54f-b914-4e38-a92e-bbc5fdc64d6a" SourceId="1" SourceUrl="http://localhost:1442/?xsd=xsd3" />
+    <MetadataFile FileName="item4.xsd" MetadataType="Schema" ID="2c004ce0-61f8-4ad1-98ed-15a4fd475638" SourceId="1" SourceUrl="http://localhost:1442/?xsd=xsd0" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
