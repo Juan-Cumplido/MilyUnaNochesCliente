@@ -231,6 +231,12 @@
   <wsdl:message name="IProductsManager_GetProductStock_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetProductStockResponse" />
   </wsdl:message>
+  <wsdl:message name="IPurchaseManager_SavePurchase_InputMessage">
+    <wsdl:part name="parameters" element="tns:SavePurchase" />
+  </wsdl:message>
+  <wsdl:message name="IPurchaseManager_SavePurchase_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SavePurchaseResponse" />
+  </wsdl:message>
   <wsdl:message name="ISaleManager_ProcessSale_InputMessage">
     <wsdl:part name="parameters" element="tns:ProcessSale" />
   </wsdl:message>
@@ -359,6 +365,12 @@
     <wsdl:operation name="GetProductStock">
       <wsdl:input wsaw:Action="http://tempuri.org/IProductsManager/GetProductStock" message="tns:IProductsManager_GetProductStock_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IProductsManager/GetProductStockResponse" message="tns:IProductsManager_GetProductStock_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="IPurchaseManager">
+    <wsdl:operation name="SavePurchase">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPurchaseManager/SavePurchase" message="tns:IPurchaseManager_SavePurchase_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPurchaseManager/SavePurchaseResponse" message="tns:IPurchaseManager_SavePurchase_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="ISaleManager">
@@ -616,6 +628,19 @@
     </wsdl:operation>
     <wsdl:operation name="GetProductStock">
       <soap12:operation soapAction="http://tempuri.org/IProductsManager/GetProductStock" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="NetTcpBinding_IPurchaseManager" type="tns:IPurchaseManager">
+    <wsp:PolicyReference URI="#NetTcpBinding_IPurchaseManager_policy" />
+    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="SavePurchase">
+      <soap12:operation soapAction="http://tempuri.org/IPurchaseManager/SavePurchase" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
