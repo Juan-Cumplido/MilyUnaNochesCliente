@@ -51,6 +51,7 @@
   <xs:element name="ArrayOfProduct" nillable="true" type="tns:ArrayOfProduct" />
   <xs:complexType name="RegisterPurchase_sv">
     <xs:sequence>
+      <xs:element minOccurs="0" name="ContactoProveedor" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Fecha" type="xs:dateTime" />
       <xs:element minOccurs="0" name="Hora" type="ser:duration" />
       <xs:element minOccurs="0" name="IdProveedor" type="xs:int" />
@@ -69,10 +70,28 @@
   <xs:complexType name="ProductPurchase">
     <xs:sequence>
       <xs:element minOccurs="0" name="Cantidad" type="xs:int" />
+      <xs:element minOccurs="0" name="ContactoProveedor" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="IdProducto" type="xs:int" />
       <xs:element minOccurs="0" name="MontoProducto" type="xs:decimal" />
       <xs:element minOccurs="0" name="NombreProducto" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ProductPurchase" nillable="true" type="tns:ProductPurchase" />
+  <xs:complexType name="ArrayOfConsultPurchase_SV">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ConsultPurchase_SV" nillable="true" type="tns:ConsultPurchase_SV" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfConsultPurchase_SV" nillable="true" type="tns:ArrayOfConsultPurchase_SV" />
+  <xs:complexType name="ConsultPurchase_SV">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Hora" type="ser:duration" />
+      <xs:element minOccurs="0" name="amountPaid" type="xs:decimal" />
+      <xs:element minOccurs="0" name="payMethod" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="providerContact" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="providerName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="purchasedProducts" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ConsultPurchase_SV" nillable="true" type="tns:ConsultPurchase_SV" />
 </xs:schema>

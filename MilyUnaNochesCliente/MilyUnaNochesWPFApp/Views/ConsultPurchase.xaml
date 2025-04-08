@@ -89,7 +89,7 @@
                 BorderThickness="0"
                 FontSize="18"
                 FontFamily="Bodoni MT Condensed"
-                ItemsSource="{Binding Providers}">
+                ItemsSource="{Binding Purchases}">
 
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Proveedor" 
@@ -103,11 +103,11 @@
                 <DataGridTextColumn Header="Fecha" 
                         Width=".5*" 
                         CellStyle="{StaticResource CenteredCellStyle}"
-                        Binding="{Binding purchaseDate}"/>
+                        Binding="{Binding Fecha}"/>
                 <DataGridTextColumn Header="Productos" 
                         Width="*" 
                         CellStyle="{StaticResource CenteredCellStyle}"
-                        Binding="{Binding purchaseProducts}"/>
+                        Binding="{Binding purchasedProducts}"/>
                 <DataGridTextColumn Header="Metodo pago" 
                         Width=".5*" 
                         CellStyle="{StaticResource CenteredCellStyle}"

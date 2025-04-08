@@ -1,4 +1,4 @@
-﻿using MilyUnaNochesWPFApp.MilyUnaNochesProxy;
+﻿using MilyUnaNochesWPFApp.MilyUnaNochesService;
 using System;
 using System.Collections.Generic;
 using System.Linq;
