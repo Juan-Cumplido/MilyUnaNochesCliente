@@ -16,9 +16,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace MilyUnaNochesWPFApp.Views {
-    /// <summary>
-    /// Lógica de interacción para RegisterPurchase.xaml
-    /// </summary>
+
     public partial class RegisterPurchase : Page {
         private readonly IProviderManager _providerClient;
         private readonly IAdressManager _addressClient;

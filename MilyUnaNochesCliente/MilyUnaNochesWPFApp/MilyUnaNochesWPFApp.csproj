@@ -228,6 +228,9 @@
     <Compile Include="Views\RegisterClient.xaml.cs">
       <DependentUpon>RegisterClient.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\RegisterPurchase.xaml.cs">
+      <DependentUpon>RegisterPurchase.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\RegisterSupplier.xaml.cs">
       <DependentUpon>RegisterSupplier.xaml</DependentUpon>
     </Compile>
@@ -329,6 +332,10 @@
     <Page Include="Views\RegisterClient.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\RegisterPurchase.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\RegisterSupplier.xaml">
       <SubType>Designer</SubType>
