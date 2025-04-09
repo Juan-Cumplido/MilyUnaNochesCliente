@@ -150,6 +150,9 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="WpfAnimatedGif, Version=2.0.0.0, Culture=neutral, PublicKeyToken=9e7cd3b544a090dc, processorArchitecture=MSIL">
+      <HintPath>..\packages\WpfAnimatedGif.2.0.2\lib\net40\WpfAnimatedGif.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -166,6 +169,7 @@
     <Compile Include="Logic\LoggerManager.cs" />
     <Compile Include="Logic\Product.cs" />
     <Compile Include="Logic\Sale.cs" />
+    <Compile Include="Logic\UserProfileSingleton.cs" />
     <Compile Include="Logic\Validator.cs" />
     <Compile Include="Utilities\Constants.cs" />
     <Compile Include="Views\ArchivedSuppliersWindow.xaml.cs">
@@ -497,9 +501,6 @@
     <Resource Include="Images\Icons\Logo1.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\Background\LoginBackground.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Images\Icons\LockIcon.png" />
     <Resource Include="Images\Icons\UserIcon.png" />
     <Resource Include="Images\Background\FrameProviders.png" />
@@ -564,6 +565,12 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Icons\craft.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Background\loginBackground.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
