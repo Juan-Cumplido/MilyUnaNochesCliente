@@ -399,8 +399,4 @@ FodyWeavers.xsd
 
 /MilyUnaNochesCliente/MilyUnaNochesCliente/bin
 /MilyUnaNochesCliente/MilyUnaNochesCliente/obj
-/MilyUnaNochesCliente/MilyUnaNochesWPFApp/Connected Services/MilyUnaNochesProxy/MilyUnaNochesService.wsdl
-/MilyUnaNochesCliente/MilyUnaNochesWPFApp/Connected Services/MilyUnaNochesProxy/item1.xsd
-/MilyUnaNochesCliente/MilyUnaNochesWPFApp/Connected Services/MilyUnaNochesProxy/item2.xsd
-/MilyUnaNochesCliente/MilyUnaNochesWPFApp/Connected Services/MilyUnaNochesProxy/item3.xsd
-/MilyUnaNochesCliente/MilyUnaNochesWPFApp/Connected Services/MilyUnaNochesProxy/Reference.cs
+
