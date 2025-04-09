@@ -1063,6 +1063,2163 @@ namespace MilyUnaNochesWPFApp.MilyUnaNochesProxy {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="RegisterPurchase_sv", Namespace="http://schemas.datacontract.org/2004/07/MilyUnaNochesService.Logic")]
+    [System.SerializableAttribute()]
+    public partial class RegisterPurchase_sv : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime FechaField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.TimeSpan HoraField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IdProveedorField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private decimal MontoTotalField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string PayMethodField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Collections.Generic.List<MilyUnaNochesWPFApp.MilyUnaNochesProxy.ProductPurchase> ProductsField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime Fecha {
+            get {
+                return this.FechaField;
+            }
+            set {
+                if ((this.FechaField.Equals(value) != true)) {
+                    this.FechaField = value;
+                    this.RaisePropertyChanged("Fecha");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.TimeSpan Hora {
+            get {
+                return this.HoraField;
+            }
+            set {
+                if ((this.HoraField.Equals(value) != true)) {
+                    this.HoraField = value;
+                    this.RaisePropertyChanged("Hora");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int IdProveedor {
+            get {
+                return this.IdProveedorField;
+            }
+            set {
+                if ((this.IdProveedorField.Equals(value) != true)) {
+                    this.IdProveedorField = value;
+                    this.RaisePropertyChanged("IdProveedor");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public decimal MontoTotal {
+            get {
+                return this.MontoTotalField;
+            }
+            set {
+                if ((this.MontoTotalField.Equals(value) != true)) {
+                    this.MontoTotalField = value;
+                    this.RaisePropertyChanged("MontoTotal");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string PayMethod {
+            get {
+                return this.PayMethodField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PayMethodField, value) != true)) {
+                    this.PayMethodField = value;
+                    this.RaisePropertyChanged("PayMethod");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Collections.Generic.List<MilyUnaNochesWPFApp.MilyUnaNochesProxy.ProductPurchase> Products {
+            get {
+                return this.ProductsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ProductsField, value) != true)) {
+                    this.ProductsField = value;
+                    this.RaisePropertyChanged("Products");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ProductPurchase", Namespace="http://schemas.datacontract.org/2004/07/MilyUnaNochesService.Logic")]
+    [System.SerializableAttribute()]
+    public partial class ProductPurchase : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int CantidadField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IdProductoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private decimal MontoProductoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NombreProductoField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Cantidad {
+            get {
+                return this.CantidadField;
+            }
+            set {
+                if ((this.CantidadField.Equals(value) != true)) {
+                    this.CantidadField = value;
+                    this.RaisePropertyChanged("Cantidad");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int IdProducto {
+            get {
+                return this.IdProductoField;
+            }
+            set {
+                if ((this.IdProductoField.Equals(value) != true)) {
+                    this.IdProductoField = value;
+                    this.RaisePropertyChanged("IdProducto");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public decimal MontoProducto {
+            get {
+                return this.MontoProductoField;
+            }
+            set {
+                if ((this.MontoProductoField.Equals(value) != true)) {
+                    this.MontoProductoField = value;
+                    this.RaisePropertyChanged("MontoProducto");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string NombreProducto {
+            get {
+                return this.NombreProductoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NombreProductoField, value) != true)) {
+                    this.NombreProductoField = value;
+                    this.RaisePropertyChanged("NombreProducto");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ReportMetadata", Namespace="http://schemas.datacontract.org/2004/07/DataBaseManager.Logic")]
+    [System.SerializableAttribute()]
+    public partial class ReportMetadata : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CategoryField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DescriptionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime EndDateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int ItemCountField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string PeriodTypeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ReportIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime StartDateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string TitleField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private decimal TotalValueField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Category {
+            get {
+                return this.CategoryField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CategoryField, value) != true)) {
+                    this.CategoryField = value;
+                    this.RaisePropertyChanged("Category");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Description {
+            get {
+                return this.DescriptionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DescriptionField, value) != true)) {
+                    this.DescriptionField = value;
+                    this.RaisePropertyChanged("Description");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime EndDate {
+            get {
+                return this.EndDateField;
+            }
+            set {
+                if ((this.EndDateField.Equals(value) != true)) {
+                    this.EndDateField = value;
+                    this.RaisePropertyChanged("EndDate");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int ItemCount {
+            get {
+                return this.ItemCountField;
+            }
+            set {
+                if ((this.ItemCountField.Equals(value) != true)) {
+                    this.ItemCountField = value;
+                    this.RaisePropertyChanged("ItemCount");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string PeriodType {
+            get {
+                return this.PeriodTypeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PeriodTypeField, value) != true)) {
+                    this.PeriodTypeField = value;
+                    this.RaisePropertyChanged("PeriodType");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ReportId {
+            get {
+                return this.ReportIdField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ReportIdField, value) != true)) {
+                    this.ReportIdField = value;
+                    this.RaisePropertyChanged("ReportId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime StartDate {
+            get {
+                return this.StartDateField;
+            }
+            set {
+                if ((this.StartDateField.Equals(value) != true)) {
+                    this.StartDateField = value;
+                    this.RaisePropertyChanged("StartDate");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Title {
+            get {
+                return this.TitleField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TitleField, value) != true)) {
+                    this.TitleField = value;
+                    this.RaisePropertyChanged("Title");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public decimal TotalValue {
+            get {
+                return this.TotalValueField;
+            }
+            set {
+                if ((this.TotalValueField.Equals(value) != true)) {
+                    this.TotalValueField = value;
+                    this.RaisePropertyChanged("TotalValue");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ProductReportData", Namespace="http://schemas.datacontract.org/2004/07/DataBaseManager.Logic")]
+    [System.SerializableAttribute()]
+    public partial class ProductReportData : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime EndDateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private MilyUnaNochesWPFApp.MilyUnaNochesProxy.ProductInfo ProductInfoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ReportIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Collections.Generic.List<MilyUnaNochesWPFApp.MilyUnaNochesProxy.ProductSalesDetail> SalesDetailsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime StartDateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private MilyUnaNochesWPFApp.MilyUnaNochesProxy.SalesSummary SummaryField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string TitleField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime EndDate {
+            get {
+                return this.EndDateField;
+            }
+            set {
+                if ((this.EndDateField.Equals(value) != true)) {
+                    this.EndDateField = value;
+                    this.RaisePropertyChanged("EndDate");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public MilyUnaNochesWPFApp.MilyUnaNochesProxy.ProductInfo ProductInfo {
+            get {
+                return this.ProductInfoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ProductInfoField, value) != true)) {
+                    this.ProductInfoField = value;
+                    this.RaisePropertyChanged("ProductInfo");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ReportId {
+            get {
+                return this.ReportIdField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ReportIdField, value) != true)) {
+                    this.ReportIdField = value;
+                    this.RaisePropertyChanged("ReportId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Collections.Generic.List<MilyUnaNochesWPFApp.MilyUnaNochesProxy.ProductSalesDetail> SalesDetails {
+            get {
+                return this.SalesDetailsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SalesDetailsField, value) != true)) {
+                    this.SalesDetailsField = value;
+                    this.RaisePropertyChanged("SalesDetails");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime StartDate {
+            get {
+                return this.StartDateField;
+            }
+            set {
+                if ((this.StartDateField.Equals(value) != true)) {
+                    this.StartDateField = value;
+                    this.RaisePropertyChanged("StartDate");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public MilyUnaNochesWPFApp.MilyUnaNochesProxy.SalesSummary Summary {
+            get {
+                return this.SummaryField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SummaryField, value) != true)) {
+                    this.SummaryField = value;
+                    this.RaisePropertyChanged("Summary");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Title {
+            get {
+                return this.TitleField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TitleField, value) != true)) {
+                    this.TitleField = value;
+                    this.RaisePropertyChanged("Title");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ProductInfo", Namespace="http://schemas.datacontract.org/2004/07/DataBaseManager.Logic")]
+    [System.SerializableAttribute()]
+    public partial class ProductInfo : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CategoryField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private decimal CurrentPriceField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int CurrentStockField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DescriptionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.DateTime> LastRestockDateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ProductCodeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int ProductIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ProductNameField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Category {
+            get {
+                return this.CategoryField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CategoryField, value) != true)) {
+                    this.CategoryField = value;
+                    this.RaisePropertyChanged("Category");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public decimal CurrentPrice {
+            get {
+                return this.CurrentPriceField;
+            }
+            set {
+                if ((this.CurrentPriceField.Equals(value) != true)) {
+                    this.CurrentPriceField = value;
+                    this.RaisePropertyChanged("CurrentPrice");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int CurrentStock {
+            get {
+                return this.CurrentStockField;
+            }
+            set {
+                if ((this.CurrentStockField.Equals(value) != true)) {
+                    this.CurrentStockField = value;
+                    this.RaisePropertyChanged("CurrentStock");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Description {
+            get {
+                return this.DescriptionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DescriptionField, value) != true)) {
+                    this.DescriptionField = value;
+                    this.RaisePropertyChanged("Description");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.DateTime> LastRestockDate {
+            get {
+                return this.LastRestockDateField;
+            }
+            set {
+                if ((this.LastRestockDateField.Equals(value) != true)) {
+                    this.LastRestockDateField = value;
+                    this.RaisePropertyChanged("LastRestockDate");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ProductCode {
+            get {
+                return this.ProductCodeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ProductCodeField, value) != true)) {
+                    this.ProductCodeField = value;
+                    this.RaisePropertyChanged("ProductCode");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int ProductId {
+            get {
+                return this.ProductIdField;
+            }
+            set {
+                if ((this.ProductIdField.Equals(value) != true)) {
+                    this.ProductIdField = value;
+                    this.RaisePropertyChanged("ProductId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ProductName {
+            get {
+                return this.ProductNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ProductNameField, value) != true)) {
+                    this.ProductNameField = value;
+                    this.RaisePropertyChanged("ProductName");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="SalesSummary", Namespace="http://schemas.datacontract.org/2004/07/DataBaseManager.Logic")]
+    [System.SerializableAttribute()]
+    public partial class SalesSummary : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private decimal AverageSaleField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int TotalItemsSoldField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private decimal TotalProfitField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private decimal TotalSalesField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int TotalTransactionsField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public decimal AverageSale {
+            get {
+                return this.AverageSaleField;
+            }
+            set {
+                if ((this.AverageSaleField.Equals(value) != true)) {
+                    this.AverageSaleField = value;
+                    this.RaisePropertyChanged("AverageSale");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int TotalItemsSold {
+            get {
+                return this.TotalItemsSoldField;
+            }
+            set {
+                if ((this.TotalItemsSoldField.Equals(value) != true)) {
+                    this.TotalItemsSoldField = value;
+                    this.RaisePropertyChanged("TotalItemsSold");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public decimal TotalProfit {
+            get {
+                return this.TotalProfitField;
+            }
+            set {
+                if ((this.TotalProfitField.Equals(value) != true)) {
+                    this.TotalProfitField = value;
+                    this.RaisePropertyChanged("TotalProfit");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public decimal TotalSales {
+            get {
+                return this.TotalSalesField;
+            }
+            set {
+                if ((this.TotalSalesField.Equals(value) != true)) {
+                    this.TotalSalesField = value;
+                    this.RaisePropertyChanged("TotalSales");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int TotalTransactions {
+            get {
+                return this.TotalTransactionsField;
+            }
+            set {
+                if ((this.TotalTransactionsField.Equals(value) != true)) {
+                    this.TotalTransactionsField = value;
+                    this.RaisePropertyChanged("TotalTransactions");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ProductSalesDetail", Namespace="http://schemas.datacontract.org/2004/07/DataBaseManager.Logic")]
+    [System.SerializableAttribute()]
+    public partial class ProductSalesDetail : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private decimal CostPriceField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CustomerNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int QuantitySoldField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime SaleDateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.TimeSpan SaleTimeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string SoldByField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string TransactionIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private decimal UnitPriceField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public decimal CostPrice {
+            get {
+                return this.CostPriceField;
+            }
+            set {
+                if ((this.CostPriceField.Equals(value) != true)) {
+                    this.CostPriceField = value;
+                    this.RaisePropertyChanged("CostPrice");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string CustomerName {
+            get {
+                return this.CustomerNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CustomerNameField, value) != true)) {
+                    this.CustomerNameField = value;
+                    this.RaisePropertyChanged("CustomerName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int QuantitySold {
+            get {
+                return this.QuantitySoldField;
+            }
+            set {
+                if ((this.QuantitySoldField.Equals(value) != true)) {
+                    this.QuantitySoldField = value;
+                    this.RaisePropertyChanged("QuantitySold");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime SaleDate {
+            get {
+                return this.SaleDateField;
+            }
+            set {
+                if ((this.SaleDateField.Equals(value) != true)) {
+                    this.SaleDateField = value;
+                    this.RaisePropertyChanged("SaleDate");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.TimeSpan SaleTime {
+            get {
+                return this.SaleTimeField;
+            }
+            set {
+                if ((this.SaleTimeField.Equals(value) != true)) {
+                    this.SaleTimeField = value;
+                    this.RaisePropertyChanged("SaleTime");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string SoldBy {
+            get {
+                return this.SoldByField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SoldByField, value) != true)) {
+                    this.SoldByField = value;
+                    this.RaisePropertyChanged("SoldBy");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string TransactionId {
+            get {
+                return this.TransactionIdField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TransactionIdField, value) != true)) {
+                    this.TransactionIdField = value;
+                    this.RaisePropertyChanged("TransactionId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public decimal UnitPrice {
+            get {
+                return this.UnitPriceField;
+            }
+            set {
+                if ((this.UnitPriceField.Equals(value) != true)) {
+                    this.UnitPriceField = value;
+                    this.RaisePropertyChanged("UnitPrice");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="CategoryReportData", Namespace="http://schemas.datacontract.org/2004/07/DataBaseManager.Logic")]
+    [System.SerializableAttribute()]
+    public partial class CategoryReportData : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CategoryNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime EndDateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ReportIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Collections.Generic.List<MilyUnaNochesWPFApp.MilyUnaNochesProxy.CategorySalesDetail> SalesDetailsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime StartDateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private MilyUnaNochesWPFApp.MilyUnaNochesProxy.SalesSummary SummaryField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string TitleField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Collections.Generic.List<MilyUnaNochesWPFApp.MilyUnaNochesProxy.TopProduct> TopProductsField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string CategoryName {
+            get {
+                return this.CategoryNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CategoryNameField, value) != true)) {
+                    this.CategoryNameField = value;
+                    this.RaisePropertyChanged("CategoryName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime EndDate {
+            get {
+                return this.EndDateField;
+            }
+            set {
+                if ((this.EndDateField.Equals(value) != true)) {
+                    this.EndDateField = value;
+                    this.RaisePropertyChanged("EndDate");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ReportId {
+            get {
+                return this.ReportIdField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ReportIdField, value) != true)) {
+                    this.ReportIdField = value;
+                    this.RaisePropertyChanged("ReportId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Collections.Generic.List<MilyUnaNochesWPFApp.MilyUnaNochesProxy.CategorySalesDetail> SalesDetails {
+            get {
+                return this.SalesDetailsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SalesDetailsField, value) != true)) {
+                    this.SalesDetailsField = value;
+                    this.RaisePropertyChanged("SalesDetails");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime StartDate {
+            get {
+                return this.StartDateField;
+            }
+            set {
+                if ((this.StartDateField.Equals(value) != true)) {
+                    this.StartDateField = value;
+                    this.RaisePropertyChanged("StartDate");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public MilyUnaNochesWPFApp.MilyUnaNochesProxy.SalesSummary Summary {
+            get {
+                return this.SummaryField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SummaryField, value) != true)) {
+                    this.SummaryField = value;
+                    this.RaisePropertyChanged("Summary");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Title {
+            get {
+                return this.TitleField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TitleField, value) != true)) {
+                    this.TitleField = value;
+                    this.RaisePropertyChanged("Title");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Collections.Generic.List<MilyUnaNochesWPFApp.MilyUnaNochesProxy.TopProduct> TopProducts {
+            get {
+                return this.TopProductsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TopProductsField, value) != true)) {
+                    this.TopProductsField = value;
+                    this.RaisePropertyChanged("TopProducts");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="CategorySalesDetail", Namespace="http://schemas.datacontract.org/2004/07/DataBaseManager.Logic")]
+    [System.SerializableAttribute()]
+    public partial class CategorySalesDetail : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int ProductsSoldField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime SaleDateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private decimal TotalProfitField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private decimal TotalSalesField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string TransactionIdField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int ProductsSold {
+            get {
+                return this.ProductsSoldField;
+            }
+            set {
+                if ((this.ProductsSoldField.Equals(value) != true)) {
+                    this.ProductsSoldField = value;
+                    this.RaisePropertyChanged("ProductsSold");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime SaleDate {
+            get {
+                return this.SaleDateField;
+            }
+            set {
+                if ((this.SaleDateField.Equals(value) != true)) {
+                    this.SaleDateField = value;
+                    this.RaisePropertyChanged("SaleDate");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public decimal TotalProfit {
+            get {
+                return this.TotalProfitField;
+            }
+            set {
+                if ((this.TotalProfitField.Equals(value) != true)) {
+                    this.TotalProfitField = value;
+                    this.RaisePropertyChanged("TotalProfit");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public decimal TotalSales {
+            get {
+                return this.TotalSalesField;
+            }
+            set {
+                if ((this.TotalSalesField.Equals(value) != true)) {
+                    this.TotalSalesField = value;
+                    this.RaisePropertyChanged("TotalSales");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string TransactionId {
+            get {
+                return this.TransactionIdField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TransactionIdField, value) != true)) {
+                    this.TransactionIdField = value;
+                    this.RaisePropertyChanged("TransactionId");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="TopProduct", Namespace="http://schemas.datacontract.org/2004/07/DataBaseManager.Logic")]
+    [System.SerializableAttribute()]
+    public partial class TopProduct : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ProductCodeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int ProductIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ProductNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private decimal ProfitField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private decimal TotalSalesField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int UnitsSoldField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ProductCode {
+            get {
+                return this.ProductCodeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ProductCodeField, value) != true)) {
+                    this.ProductCodeField = value;
+                    this.RaisePropertyChanged("ProductCode");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int ProductId {
+            get {
+                return this.ProductIdField;
+            }
+            set {
+                if ((this.ProductIdField.Equals(value) != true)) {
+                    this.ProductIdField = value;
+                    this.RaisePropertyChanged("ProductId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ProductName {
+            get {
+                return this.ProductNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ProductNameField, value) != true)) {
+                    this.ProductNameField = value;
+                    this.RaisePropertyChanged("ProductName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public decimal Profit {
+            get {
+                return this.ProfitField;
+            }
+            set {
+                if ((this.ProfitField.Equals(value) != true)) {
+                    this.ProfitField = value;
+                    this.RaisePropertyChanged("Profit");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public decimal TotalSales {
+            get {
+                return this.TotalSalesField;
+            }
+            set {
+                if ((this.TotalSalesField.Equals(value) != true)) {
+                    this.TotalSalesField = value;
+                    this.RaisePropertyChanged("TotalSales");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int UnitsSold {
+            get {
+                return this.UnitsSoldField;
+            }
+            set {
+                if ((this.UnitsSoldField.Equals(value) != true)) {
+                    this.UnitsSoldField = value;
+                    this.RaisePropertyChanged("UnitsSold");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="InventoryReportData", Namespace="http://schemas.datacontract.org/2004/07/DataBaseManager.Logic")]
+    [System.SerializableAttribute()]
+    public partial class InventoryReportData : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Collections.Generic.List<MilyUnaNochesWPFApp.MilyUnaNochesProxy.InventoryItem> ItemsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime ReportDateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ReportIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private MilyUnaNochesWPFApp.MilyUnaNochesProxy.InventorySummary SummaryField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string TitleField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Collections.Generic.List<MilyUnaNochesWPFApp.MilyUnaNochesProxy.InventoryItem> Items {
+            get {
+                return this.ItemsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ItemsField, value) != true)) {
+                    this.ItemsField = value;
+                    this.RaisePropertyChanged("Items");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime ReportDate {
+            get {
+                return this.ReportDateField;
+            }
+            set {
+                if ((this.ReportDateField.Equals(value) != true)) {
+                    this.ReportDateField = value;
+                    this.RaisePropertyChanged("ReportDate");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ReportId {
+            get {
+                return this.ReportIdField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ReportIdField, value) != true)) {
+                    this.ReportIdField = value;
+                    this.RaisePropertyChanged("ReportId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public MilyUnaNochesWPFApp.MilyUnaNochesProxy.InventorySummary Summary {
+            get {
+                return this.SummaryField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SummaryField, value) != true)) {
+                    this.SummaryField = value;
+                    this.RaisePropertyChanged("Summary");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Title {
+            get {
+                return this.TitleField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TitleField, value) != true)) {
+                    this.TitleField = value;
+                    this.RaisePropertyChanged("Title");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="InventorySummary", Namespace="http://schemas.datacontract.org/2004/07/DataBaseManager.Logic")]
+    [System.SerializableAttribute()]
+    public partial class InventorySummary : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int LowStockField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int OutOfStockField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private decimal TotalInventoryValueField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int TotalProductsField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int LowStock {
+            get {
+                return this.LowStockField;
+            }
+            set {
+                if ((this.LowStockField.Equals(value) != true)) {
+                    this.LowStockField = value;
+                    this.RaisePropertyChanged("LowStock");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int OutOfStock {
+            get {
+                return this.OutOfStockField;
+            }
+            set {
+                if ((this.OutOfStockField.Equals(value) != true)) {
+                    this.OutOfStockField = value;
+                    this.RaisePropertyChanged("OutOfStock");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public decimal TotalInventoryValue {
+            get {
+                return this.TotalInventoryValueField;
+            }
+            set {
+                if ((this.TotalInventoryValueField.Equals(value) != true)) {
+                    this.TotalInventoryValueField = value;
+                    this.RaisePropertyChanged("TotalInventoryValue");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int TotalProducts {
+            get {
+                return this.TotalProductsField;
+            }
+            set {
+                if ((this.TotalProductsField.Equals(value) != true)) {
+                    this.TotalProductsField = value;
+                    this.RaisePropertyChanged("TotalProducts");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="InventoryItem", Namespace="http://schemas.datacontract.org/2004/07/DataBaseManager.Logic")]
+    [System.SerializableAttribute()]
+    public partial class InventoryItem : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CategoryField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int CurrentStockField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.DateTime> LastRestockDateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.DateTime> LastSaleDateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ProductCodeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int ProductIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ProductNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private decimal PurchasePriceField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private decimal SalePriceField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string SupplierNameField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Category {
+            get {
+                return this.CategoryField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CategoryField, value) != true)) {
+                    this.CategoryField = value;
+                    this.RaisePropertyChanged("Category");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int CurrentStock {
+            get {
+                return this.CurrentStockField;
+            }
+            set {
+                if ((this.CurrentStockField.Equals(value) != true)) {
+                    this.CurrentStockField = value;
+                    this.RaisePropertyChanged("CurrentStock");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.DateTime> LastRestockDate {
+            get {
+                return this.LastRestockDateField;
+            }
+            set {
+                if ((this.LastRestockDateField.Equals(value) != true)) {
+                    this.LastRestockDateField = value;
+                    this.RaisePropertyChanged("LastRestockDate");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.DateTime> LastSaleDate {
+            get {
+                return this.LastSaleDateField;
+            }
+            set {
+                if ((this.LastSaleDateField.Equals(value) != true)) {
+                    this.LastSaleDateField = value;
+                    this.RaisePropertyChanged("LastSaleDate");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ProductCode {
+            get {
+                return this.ProductCodeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ProductCodeField, value) != true)) {
+                    this.ProductCodeField = value;
+                    this.RaisePropertyChanged("ProductCode");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int ProductId {
+            get {
+                return this.ProductIdField;
+            }
+            set {
+                if ((this.ProductIdField.Equals(value) != true)) {
+                    this.ProductIdField = value;
+                    this.RaisePropertyChanged("ProductId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ProductName {
+            get {
+                return this.ProductNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ProductNameField, value) != true)) {
+                    this.ProductNameField = value;
+                    this.RaisePropertyChanged("ProductName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public decimal PurchasePrice {
+            get {
+                return this.PurchasePriceField;
+            }
+            set {
+                if ((this.PurchasePriceField.Equals(value) != true)) {
+                    this.PurchasePriceField = value;
+                    this.RaisePropertyChanged("PurchasePrice");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public decimal SalePrice {
+            get {
+                return this.SalePriceField;
+            }
+            set {
+                if ((this.SalePriceField.Equals(value) != true)) {
+                    this.SalePriceField = value;
+                    this.RaisePropertyChanged("SalePrice");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string SupplierName {
+            get {
+                return this.SupplierNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SupplierNameField, value) != true)) {
+                    this.SupplierNameField = value;
+                    this.RaisePropertyChanged("SupplierName");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ProfitReportData", Namespace="http://schemas.datacontract.org/2004/07/DataBaseManager.Logic")]
+    [System.SerializableAttribute()]
+    public partial class ProfitReportData : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Collections.Generic.List<MilyUnaNochesWPFApp.MilyUnaNochesProxy.CategoryProfit> CategoryBreakdownField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime EndDateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private MilyUnaNochesWPFApp.MilyUnaNochesProxy.FinancialSummary FinancialsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Collections.Generic.List<MilyUnaNochesWPFApp.MilyUnaNochesProxy.MonthlyProfit> MonthlyTrendField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ReportIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime StartDateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string TitleField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Collections.Generic.List<MilyUnaNochesWPFApp.MilyUnaNochesProxy.CategoryProfit> CategoryBreakdown {
+            get {
+                return this.CategoryBreakdownField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CategoryBreakdownField, value) != true)) {
+                    this.CategoryBreakdownField = value;
+                    this.RaisePropertyChanged("CategoryBreakdown");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime EndDate {
+            get {
+                return this.EndDateField;
+            }
+            set {
+                if ((this.EndDateField.Equals(value) != true)) {
+                    this.EndDateField = value;
+                    this.RaisePropertyChanged("EndDate");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public MilyUnaNochesWPFApp.MilyUnaNochesProxy.FinancialSummary Financials {
+            get {
+                return this.FinancialsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FinancialsField, value) != true)) {
+                    this.FinancialsField = value;
+                    this.RaisePropertyChanged("Financials");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Collections.Generic.List<MilyUnaNochesWPFApp.MilyUnaNochesProxy.MonthlyProfit> MonthlyTrend {
+            get {
+                return this.MonthlyTrendField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.MonthlyTrendField, value) != true)) {
+                    this.MonthlyTrendField = value;
+                    this.RaisePropertyChanged("MonthlyTrend");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ReportId {
+            get {
+                return this.ReportIdField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ReportIdField, value) != true)) {
+                    this.ReportIdField = value;
+                    this.RaisePropertyChanged("ReportId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime StartDate {
+            get {
+                return this.StartDateField;
+            }
+            set {
+                if ((this.StartDateField.Equals(value) != true)) {
+                    this.StartDateField = value;
+                    this.RaisePropertyChanged("StartDate");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Title {
+            get {
+                return this.TitleField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TitleField, value) != true)) {
+                    this.TitleField = value;
+                    this.RaisePropertyChanged("Title");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="FinancialSummary", Namespace="http://schemas.datacontract.org/2004/07/DataBaseManager.Logic")]
+    [System.SerializableAttribute()]
+    public partial class FinancialSummary : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private decimal GrossProfitField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private decimal NetProfitField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private decimal OperatingExpensesField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private decimal ProfitMarginField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private decimal TotalCostsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private decimal TotalSalesField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public decimal GrossProfit {
+            get {
+                return this.GrossProfitField;
+            }
+            set {
+                if ((this.GrossProfitField.Equals(value) != true)) {
+                    this.GrossProfitField = value;
+                    this.RaisePropertyChanged("GrossProfit");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public decimal NetProfit {
+            get {
+                return this.NetProfitField;
+            }
+            set {
+                if ((this.NetProfitField.Equals(value) != true)) {
+                    this.NetProfitField = value;
+                    this.RaisePropertyChanged("NetProfit");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public decimal OperatingExpenses {
+            get {
+                return this.OperatingExpensesField;
+            }
+            set {
+                if ((this.OperatingExpensesField.Equals(value) != true)) {
+                    this.OperatingExpensesField = value;
+                    this.RaisePropertyChanged("OperatingExpenses");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public decimal ProfitMargin {
+            get {
+                return this.ProfitMarginField;
+            }
+            set {
+                if ((this.ProfitMarginField.Equals(value) != true)) {
+                    this.ProfitMarginField = value;
+                    this.RaisePropertyChanged("ProfitMargin");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public decimal TotalCosts {
+            get {
+                return this.TotalCostsField;
+            }
+            set {
+                if ((this.TotalCostsField.Equals(value) != true)) {
+                    this.TotalCostsField = value;
+                    this.RaisePropertyChanged("TotalCosts");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public decimal TotalSales {
+            get {
+                return this.TotalSalesField;
+            }
+            set {
+                if ((this.TotalSalesField.Equals(value) != true)) {
+                    this.TotalSalesField = value;
+                    this.RaisePropertyChanged("TotalSales");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="CategoryProfit", Namespace="http://schemas.datacontract.org/2004/07/DataBaseManager.Logic")]
+    [System.SerializableAttribute()]
+    public partial class CategoryProfit : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CategoryNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private decimal ProfitPercentageField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private decimal SalesPercentageField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string CategoryName {
+            get {
+                return this.CategoryNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CategoryNameField, value) != true)) {
+                    this.CategoryNameField = value;
+                    this.RaisePropertyChanged("CategoryName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public decimal ProfitPercentage {
+            get {
+                return this.ProfitPercentageField;
+            }
+            set {
+                if ((this.ProfitPercentageField.Equals(value) != true)) {
+                    this.ProfitPercentageField = value;
+                    this.RaisePropertyChanged("ProfitPercentage");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public decimal SalesPercentage {
+            get {
+                return this.SalesPercentageField;
+            }
+            set {
+                if ((this.SalesPercentageField.Equals(value) != true)) {
+                    this.SalesPercentageField = value;
+                    this.RaisePropertyChanged("SalesPercentage");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="MonthlyProfit", Namespace="http://schemas.datacontract.org/2004/07/DataBaseManager.Logic")]
+    [System.SerializableAttribute()]
+    public partial class MonthlyProfit : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string MonthYearField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private decimal ProfitField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private decimal SalesField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string MonthYear {
+            get {
+                return this.MonthYearField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.MonthYearField, value) != true)) {
+                    this.MonthYearField = value;
+                    this.RaisePropertyChanged("MonthYear");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public decimal Profit {
+            get {
+                return this.ProfitField;
+            }
+            set {
+                if ((this.ProfitField.Equals(value) != true)) {
+                    this.ProfitField = value;
+                    this.RaisePropertyChanged("Profit");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public decimal Sales {
+            get {
+                return this.SalesField;
+            }
+            set {
+                if ((this.SalesField.Equals(value) != true)) {
+                    this.SalesField = value;
+                    this.RaisePropertyChanged("Sales");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="Venta", Namespace="http://schemas.datacontract.org/2004/07/MilyUnaNochesService.Contracts")]
     [System.SerializableAttribute()]
     public partial class Venta : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -1239,6 +3396,12 @@ namespace MilyUnaNochesWPFApp.MilyUnaNochesProxy {
         private decimal PrecioUnitarioField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private decimal PrecioCompraField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private decimal MargenGananciaField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private decimal SubtotalField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
@@ -1304,6 +3467,32 @@ namespace MilyUnaNochesWPFApp.MilyUnaNochesProxy {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute(Order=4)]
+        public decimal PrecioCompra {
+            get {
+                return this.PrecioCompraField;
+            }
+            set {
+                if ((this.PrecioCompraField.Equals(value) != true)) {
+                    this.PrecioCompraField = value;
+                    this.RaisePropertyChanged("PrecioCompra");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=5)]
+        public decimal MargenGanancia {
+            get {
+                return this.MargenGananciaField;
+            }
+            set {
+                if ((this.MargenGananciaField.Equals(value) != true)) {
+                    this.MargenGananciaField = value;
+                    this.RaisePropertyChanged("MargenGanancia");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=6)]
         public decimal Subtotal {
             get {
                 return this.SubtotalField;
@@ -1882,6 +4071,282 @@ namespace MilyUnaNochesWPFApp.MilyUnaNochesProxy {
         
         public System.Threading.Tasks.Task<MilyUnaNochesWPFApp.MilyUnaNochesProxy.StockResponse> GetProductStockAsync(int productId) {
             return base.Channel.GetProductStockAsync(productId);
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="MilyUnaNochesProxy.IPurchaseManager")]
+    public interface IPurchaseManager {
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPurchaseManager/SavePurchase", ReplyAction="http://tempuri.org/IPurchaseManager/SavePurchaseResponse")]
+        int SavePurchase(MilyUnaNochesWPFApp.MilyUnaNochesProxy.RegisterPurchase_sv purchase);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPurchaseManager/SavePurchase", ReplyAction="http://tempuri.org/IPurchaseManager/SavePurchaseResponse")]
+        System.Threading.Tasks.Task<int> SavePurchaseAsync(MilyUnaNochesWPFApp.MilyUnaNochesProxy.RegisterPurchase_sv purchase);
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface IPurchaseManagerChannel : MilyUnaNochesWPFApp.MilyUnaNochesProxy.IPurchaseManager, System.ServiceModel.IClientChannel {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class PurchaseManagerClient : System.ServiceModel.ClientBase<MilyUnaNochesWPFApp.MilyUnaNochesProxy.IPurchaseManager>, MilyUnaNochesWPFApp.MilyUnaNochesProxy.IPurchaseManager {
+        
+        public PurchaseManagerClient() {
+        }
+        
+        public PurchaseManagerClient(string endpointConfigurationName) : 
+                base(endpointConfigurationName) {
+        }
+        
+        public PurchaseManagerClient(string endpointConfigurationName, string remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public PurchaseManagerClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public PurchaseManagerClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(binding, remoteAddress) {
+        }
+        
+        public int SavePurchase(MilyUnaNochesWPFApp.MilyUnaNochesProxy.RegisterPurchase_sv purchase) {
+            return base.Channel.SavePurchase(purchase);
+        }
+        
+        public System.Threading.Tasks.Task<int> SavePurchaseAsync(MilyUnaNochesWPFApp.MilyUnaNochesProxy.RegisterPurchase_sv purchase) {
+            return base.Channel.SavePurchaseAsync(purchase);
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="MilyUnaNochesProxy.IReportManager")]
+    public interface IReportManager {
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReportManager/GetAvailableProductReports", ReplyAction="http://tempuri.org/IReportManager/GetAvailableProductReportsResponse")]
+        System.Collections.Generic.List<MilyUnaNochesWPFApp.MilyUnaNochesProxy.ReportMetadata> GetAvailableProductReports(string productCode, string periodType, int skip, int take);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReportManager/GetAvailableProductReports", ReplyAction="http://tempuri.org/IReportManager/GetAvailableProductReportsResponse")]
+        System.Threading.Tasks.Task<System.Collections.Generic.List<MilyUnaNochesWPFApp.MilyUnaNochesProxy.ReportMetadata>> GetAvailableProductReportsAsync(string productCode, string periodType, int skip, int take);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReportManager/GetAvailableCategoryReports", ReplyAction="http://tempuri.org/IReportManager/GetAvailableCategoryReportsResponse")]
+        System.Collections.Generic.List<MilyUnaNochesWPFApp.MilyUnaNochesProxy.ReportMetadata> GetAvailableCategoryReports(string category, string periodType, int skip, int take);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReportManager/GetAvailableCategoryReports", ReplyAction="http://tempuri.org/IReportManager/GetAvailableCategoryReportsResponse")]
+        System.Threading.Tasks.Task<System.Collections.Generic.List<MilyUnaNochesWPFApp.MilyUnaNochesProxy.ReportMetadata>> GetAvailableCategoryReportsAsync(string category, string periodType, int skip, int take);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReportManager/GetAvailableInventoryReports", ReplyAction="http://tempuri.org/IReportManager/GetAvailableInventoryReportsResponse")]
+        System.Collections.Generic.List<MilyUnaNochesWPFApp.MilyUnaNochesProxy.ReportMetadata> GetAvailableInventoryReports(string periodType, int skip, int take);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReportManager/GetAvailableInventoryReports", ReplyAction="http://tempuri.org/IReportManager/GetAvailableInventoryReportsResponse")]
+        System.Threading.Tasks.Task<System.Collections.Generic.List<MilyUnaNochesWPFApp.MilyUnaNochesProxy.ReportMetadata>> GetAvailableInventoryReportsAsync(string periodType, int skip, int take);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReportManager/GetAvailableProfitReports", ReplyAction="http://tempuri.org/IReportManager/GetAvailableProfitReportsResponse")]
+        System.Collections.Generic.List<MilyUnaNochesWPFApp.MilyUnaNochesProxy.ReportMetadata> GetAvailableProfitReports(string periodType, int skip, int take);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReportManager/GetAvailableProfitReports", ReplyAction="http://tempuri.org/IReportManager/GetAvailableProfitReportsResponse")]
+        System.Threading.Tasks.Task<System.Collections.Generic.List<MilyUnaNochesWPFApp.MilyUnaNochesProxy.ReportMetadata>> GetAvailableProfitReportsAsync(string periodType, int skip, int take);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReportManager/GetProductReportData", ReplyAction="http://tempuri.org/IReportManager/GetProductReportDataResponse")]
+        MilyUnaNochesWPFApp.MilyUnaNochesProxy.ProductReportData GetProductReportData(string reportId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReportManager/GetProductReportData", ReplyAction="http://tempuri.org/IReportManager/GetProductReportDataResponse")]
+        System.Threading.Tasks.Task<MilyUnaNochesWPFApp.MilyUnaNochesProxy.ProductReportData> GetProductReportDataAsync(string reportId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReportManager/GetCategoryReportData", ReplyAction="http://tempuri.org/IReportManager/GetCategoryReportDataResponse")]
+        MilyUnaNochesWPFApp.MilyUnaNochesProxy.CategoryReportData GetCategoryReportData(string reportId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReportManager/GetCategoryReportData", ReplyAction="http://tempuri.org/IReportManager/GetCategoryReportDataResponse")]
+        System.Threading.Tasks.Task<MilyUnaNochesWPFApp.MilyUnaNochesProxy.CategoryReportData> GetCategoryReportDataAsync(string reportId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReportManager/GetInventoryReportData", ReplyAction="http://tempuri.org/IReportManager/GetInventoryReportDataResponse")]
+        MilyUnaNochesWPFApp.MilyUnaNochesProxy.InventoryReportData GetInventoryReportData(string reportId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReportManager/GetInventoryReportData", ReplyAction="http://tempuri.org/IReportManager/GetInventoryReportDataResponse")]
+        System.Threading.Tasks.Task<MilyUnaNochesWPFApp.MilyUnaNochesProxy.InventoryReportData> GetInventoryReportDataAsync(string reportId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReportManager/GetProfitReportData", ReplyAction="http://tempuri.org/IReportManager/GetProfitReportDataResponse")]
+        MilyUnaNochesWPFApp.MilyUnaNochesProxy.ProfitReportData GetProfitReportData(string reportId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReportManager/GetProfitReportData", ReplyAction="http://tempuri.org/IReportManager/GetProfitReportDataResponse")]
+        System.Threading.Tasks.Task<MilyUnaNochesWPFApp.MilyUnaNochesProxy.ProfitReportData> GetProfitReportDataAsync(string reportId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReportManager/GetProductReportsCount", ReplyAction="http://tempuri.org/IReportManager/GetProductReportsCountResponse")]
+        int GetProductReportsCount(string productCode, string periodType);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReportManager/GetProductReportsCount", ReplyAction="http://tempuri.org/IReportManager/GetProductReportsCountResponse")]
+        System.Threading.Tasks.Task<int> GetProductReportsCountAsync(string productCode, string periodType);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReportManager/GetCategoryReportsCount", ReplyAction="http://tempuri.org/IReportManager/GetCategoryReportsCountResponse")]
+        int GetCategoryReportsCount(string category, string periodType);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReportManager/GetCategoryReportsCount", ReplyAction="http://tempuri.org/IReportManager/GetCategoryReportsCountResponse")]
+        System.Threading.Tasks.Task<int> GetCategoryReportsCountAsync(string category, string periodType);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReportManager/GetInventoryReportsCount", ReplyAction="http://tempuri.org/IReportManager/GetInventoryReportsCountResponse")]
+        int GetInventoryReportsCount(string periodType);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReportManager/GetInventoryReportsCount", ReplyAction="http://tempuri.org/IReportManager/GetInventoryReportsCountResponse")]
+        System.Threading.Tasks.Task<int> GetInventoryReportsCountAsync(string periodType);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReportManager/GetProfitReportsCount", ReplyAction="http://tempuri.org/IReportManager/GetProfitReportsCountResponse")]
+        int GetProfitReportsCount(string periodType);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReportManager/GetProfitReportsCount", ReplyAction="http://tempuri.org/IReportManager/GetProfitReportsCountResponse")]
+        System.Threading.Tasks.Task<int> GetProfitReportsCountAsync(string periodType);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReportManager/GetProductSalesDetails", ReplyAction="http://tempuri.org/IReportManager/GetProductSalesDetailsResponse")]
+        System.Collections.Generic.List<MilyUnaNochesWPFApp.MilyUnaNochesProxy.ProductSalesDetail> GetProductSalesDetails(string productCode, System.DateTime startDate, System.DateTime endDate);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReportManager/GetProductSalesDetails", ReplyAction="http://tempuri.org/IReportManager/GetProductSalesDetailsResponse")]
+        System.Threading.Tasks.Task<System.Collections.Generic.List<MilyUnaNochesWPFApp.MilyUnaNochesProxy.ProductSalesDetail>> GetProductSalesDetailsAsync(string productCode, System.DateTime startDate, System.DateTime endDate);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReportManager/GetCategorySalesDetails", ReplyAction="http://tempuri.org/IReportManager/GetCategorySalesDetailsResponse")]
+        System.Collections.Generic.List<MilyUnaNochesWPFApp.MilyUnaNochesProxy.CategorySalesDetail> GetCategorySalesDetails(string category, System.DateTime startDate, System.DateTime endDate);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReportManager/GetCategorySalesDetails", ReplyAction="http://tempuri.org/IReportManager/GetCategorySalesDetailsResponse")]
+        System.Threading.Tasks.Task<System.Collections.Generic.List<MilyUnaNochesWPFApp.MilyUnaNochesProxy.CategorySalesDetail>> GetCategorySalesDetailsAsync(string category, System.DateTime startDate, System.DateTime endDate);
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface IReportManagerChannel : MilyUnaNochesWPFApp.MilyUnaNochesProxy.IReportManager, System.ServiceModel.IClientChannel {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class ReportManagerClient : System.ServiceModel.ClientBase<MilyUnaNochesWPFApp.MilyUnaNochesProxy.IReportManager>, MilyUnaNochesWPFApp.MilyUnaNochesProxy.IReportManager {
+        
+        public ReportManagerClient() {
+        }
+        
+        public ReportManagerClient(string endpointConfigurationName) : 
+                base(endpointConfigurationName) {
+        }
+        
+        public ReportManagerClient(string endpointConfigurationName, string remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public ReportManagerClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public ReportManagerClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(binding, remoteAddress) {
+        }
+        
+        public System.Collections.Generic.List<MilyUnaNochesWPFApp.MilyUnaNochesProxy.ReportMetadata> GetAvailableProductReports(string productCode, string periodType, int skip, int take) {
+            return base.Channel.GetAvailableProductReports(productCode, periodType, skip, take);
+        }
+        
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<MilyUnaNochesWPFApp.MilyUnaNochesProxy.ReportMetadata>> GetAvailableProductReportsAsync(string productCode, string periodType, int skip, int take) {
+            return base.Channel.GetAvailableProductReportsAsync(productCode, periodType, skip, take);
+        }
+        
+        public System.Collections.Generic.List<MilyUnaNochesWPFApp.MilyUnaNochesProxy.ReportMetadata> GetAvailableCategoryReports(string category, string periodType, int skip, int take) {
+            return base.Channel.GetAvailableCategoryReports(category, periodType, skip, take);
+        }
+        
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<MilyUnaNochesWPFApp.MilyUnaNochesProxy.ReportMetadata>> GetAvailableCategoryReportsAsync(string category, string periodType, int skip, int take) {
+            return base.Channel.GetAvailableCategoryReportsAsync(category, periodType, skip, take);
+        }
+        
+        public System.Collections.Generic.List<MilyUnaNochesWPFApp.MilyUnaNochesProxy.ReportMetadata> GetAvailableInventoryReports(string periodType, int skip, int take) {
+            return base.Channel.GetAvailableInventoryReports(periodType, skip, take);
+        }
+        
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<MilyUnaNochesWPFApp.MilyUnaNochesProxy.ReportMetadata>> GetAvailableInventoryReportsAsync(string periodType, int skip, int take) {
+            return base.Channel.GetAvailableInventoryReportsAsync(periodType, skip, take);
+        }
+        
+        public System.Collections.Generic.List<MilyUnaNochesWPFApp.MilyUnaNochesProxy.ReportMetadata> GetAvailableProfitReports(string periodType, int skip, int take) {
+            return base.Channel.GetAvailableProfitReports(periodType, skip, take);
+        }
+        
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<MilyUnaNochesWPFApp.MilyUnaNochesProxy.ReportMetadata>> GetAvailableProfitReportsAsync(string periodType, int skip, int take) {
+            return base.Channel.GetAvailableProfitReportsAsync(periodType, skip, take);
+        }
+        
+        public MilyUnaNochesWPFApp.MilyUnaNochesProxy.ProductReportData GetProductReportData(string reportId) {
+            return base.Channel.GetProductReportData(reportId);
+        }
+        
+        public System.Threading.Tasks.Task<MilyUnaNochesWPFApp.MilyUnaNochesProxy.ProductReportData> GetProductReportDataAsync(string reportId) {
+            return base.Channel.GetProductReportDataAsync(reportId);
+        }
+        
+        public MilyUnaNochesWPFApp.MilyUnaNochesProxy.CategoryReportData GetCategoryReportData(string reportId) {
+            return base.Channel.GetCategoryReportData(reportId);
+        }
+        
+        public System.Threading.Tasks.Task<MilyUnaNochesWPFApp.MilyUnaNochesProxy.CategoryReportData> GetCategoryReportDataAsync(string reportId) {
+            return base.Channel.GetCategoryReportDataAsync(reportId);
+        }
+        
+        public MilyUnaNochesWPFApp.MilyUnaNochesProxy.InventoryReportData GetInventoryReportData(string reportId) {
+            return base.Channel.GetInventoryReportData(reportId);
+        }
+        
+        public System.Threading.Tasks.Task<MilyUnaNochesWPFApp.MilyUnaNochesProxy.InventoryReportData> GetInventoryReportDataAsync(string reportId) {
+            return base.Channel.GetInventoryReportDataAsync(reportId);
+        }
+        
+        public MilyUnaNochesWPFApp.MilyUnaNochesProxy.ProfitReportData GetProfitReportData(string reportId) {
+            return base.Channel.GetProfitReportData(reportId);
+        }
+        
+        public System.Threading.Tasks.Task<MilyUnaNochesWPFApp.MilyUnaNochesProxy.ProfitReportData> GetProfitReportDataAsync(string reportId) {
+            return base.Channel.GetProfitReportDataAsync(reportId);
+        }
+        
+        public int GetProductReportsCount(string productCode, string periodType) {
+            return base.Channel.GetProductReportsCount(productCode, periodType);
+        }
+        
+        public System.Threading.Tasks.Task<int> GetProductReportsCountAsync(string productCode, string periodType) {
+            return base.Channel.GetProductReportsCountAsync(productCode, periodType);
+        }
+        
+        public int GetCategoryReportsCount(string category, string periodType) {
+            return base.Channel.GetCategoryReportsCount(category, periodType);
+        }
+        
+        public System.Threading.Tasks.Task<int> GetCategoryReportsCountAsync(string category, string periodType) {
+            return base.Channel.GetCategoryReportsCountAsync(category, periodType);
+        }
+        
+        public int GetInventoryReportsCount(string periodType) {
+            return base.Channel.GetInventoryReportsCount(periodType);
+        }
+        
+        public System.Threading.Tasks.Task<int> GetInventoryReportsCountAsync(string periodType) {
+            return base.Channel.GetInventoryReportsCountAsync(periodType);
+        }
+        
+        public int GetProfitReportsCount(string periodType) {
+            return base.Channel.GetProfitReportsCount(periodType);
+        }
+        
+        public System.Threading.Tasks.Task<int> GetProfitReportsCountAsync(string periodType) {
+            return base.Channel.GetProfitReportsCountAsync(periodType);
+        }
+        
+        public System.Collections.Generic.List<MilyUnaNochesWPFApp.MilyUnaNochesProxy.ProductSalesDetail> GetProductSalesDetails(string productCode, System.DateTime startDate, System.DateTime endDate) {
+            return base.Channel.GetProductSalesDetails(productCode, startDate, endDate);
+        }
+        
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<MilyUnaNochesWPFApp.MilyUnaNochesProxy.ProductSalesDetail>> GetProductSalesDetailsAsync(string productCode, System.DateTime startDate, System.DateTime endDate) {
+            return base.Channel.GetProductSalesDetailsAsync(productCode, startDate, endDate);
+        }
+        
+        public System.Collections.Generic.List<MilyUnaNochesWPFApp.MilyUnaNochesProxy.CategorySalesDetail> GetCategorySalesDetails(string category, System.DateTime startDate, System.DateTime endDate) {
+            return base.Channel.GetCategorySalesDetails(category, startDate, endDate);
+        }
+        
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<MilyUnaNochesWPFApp.MilyUnaNochesProxy.CategorySalesDetail>> GetCategorySalesDetailsAsync(string category, System.DateTime startDate, System.DateTime endDate) {
+            return base.Channel.GetCategorySalesDetailsAsync(category, startDate, endDate);
         }
     }
     
