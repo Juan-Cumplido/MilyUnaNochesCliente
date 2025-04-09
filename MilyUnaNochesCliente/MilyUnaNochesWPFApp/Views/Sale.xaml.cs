@@ -118,6 +118,7 @@ namespace MilyUnaNochesWPFApp.Views
                     NombreProducto = product.NombreProducto,
                     Cantidad = 1,
                     PrecioUnitario = product.PrecioVenta,
+                    PrecioCompra = product.PrecioCompra, // Nuevo campo
                     Subtotal = product.PrecioVenta
                 };
 
@@ -278,23 +279,23 @@ namespace MilyUnaNochesWPFApp.Views
                     return;
                 }
 
-                //var saleResult = await proxy.ProcessSaleAsync(newSale, _currentSaleDetails.ToList());
 
-                /* if (saleResult.Success)
-                 {
-                     MessageBox.Show("Venta registrada exitosamente", "Éxito",
-                         MessageBoxButton.OK, MessageBoxImage.Information);
-                     InitializeUI();
-                 }
-                 else
-                 {
-                     var errorMessage = string.Join("\n", saleResult.Errors);
-                     MessageBox.Show(errorMessage, "Error en la venta",
-                         MessageBoxButton.OK, MessageBoxImage.Error);
-                 }*/
-            }
-            catch (Exception ex)
-            {
+                var saleResult = await proxy.ProcessSaleAsync(newSale, _currentSaleDetails.ToList());
+
+                if (saleResult.Success) {
+                    // Mostrar ticket con los nuevos campos
+                    ShowReceipt(newSale, saleResult.SaleId.Value);
+
+                    MessageBox.Show("Venta registrada exitosamente", "Éxito",
+                        MessageBoxButton.OK, MessageBoxImage.Information);
+                    InitializeUI();
+                } else {
+                    var errorMessage = string.Join("\n", saleResult.Errors);
+                    MessageBox.Show(errorMessage, "Error en la venta",
+                        MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            } catch (Exception ex) {
+
                 MessageBox.Show($"Error inesperado: {ex.Message}", "Error",
                     MessageBoxButton.OK, MessageBoxImage.Error);
             }
@@ -304,8 +305,75 @@ namespace MilyUnaNochesWPFApp.Views
             }
         }
 
-        private void CloseSearchPanel_Click(object sender, RoutedEventArgs e)
-        {
+
+        private void ShowReceipt(Venta sale, int saleId) {
+            var receiptWindow = new Window {
+                Title = $"Ticket de Venta # {saleId}",
+                Width = 400,
+                Height = 600,
+                WindowStartupLocation = WindowStartupLocation.CenterScreen
+            };
+
+            var stackPanel = new StackPanel { Margin = new Thickness(20) };
+
+            // Encabezado
+            stackPanel.Children.Add(new TextBlock {
+                Text = $"Venta #{saleId}",
+                FontSize = 20,
+                FontWeight = FontWeights.Bold,
+                HorizontalAlignment = HorizontalAlignment.Center
+            });
+
+            stackPanel.Children.Add(new TextBlock {
+                Text = DateTime.Now.ToString("f"),
+                HorizontalAlignment = HorizontalAlignment.Center,
+                Margin = new Thickness(0, 5, 0, 15)
+            });
+
+            // Detalles de productos
+            foreach (var product in _currentSaleDetails) {
+                var productPanel = new StackPanel { Margin = new Thickness(0, 0, 0, 10) };
+
+                productPanel.Children.Add(new TextBlock {
+                    Text = $"{product.NombreProducto}",
+                    FontWeight = FontWeights.Bold
+                });
+
+                productPanel.Children.Add(new TextBlock {
+                    Text = $"Cantidad: {product.Cantidad} x {product.PrecioUnitario:C}",
+                    Margin = new Thickness(15, 0, 0, 0)
+                });
+
+                productPanel.Children.Add(new TextBlock {
+                    Text = $"Subtotal: {product.Subtotal:C}",
+                    Margin = new Thickness(15, 0, 0, 0)
+                });
+
+                // Nuevo: Mostrar margen de ganancia
+                productPanel.Children.Add(new TextBlock {
+                    Text = $"Margen: {(product.PrecioUnitario - product.PrecioCompra):C}",
+                    Margin = new Thickness(15, 0, 0, 0),
+                    Foreground = Brushes.Green
+                });
+
+                stackPanel.Children.Add(productPanel);
+                stackPanel.Children.Add(new Separator());
+            }
+
+            // Total
+            stackPanel.Children.Add(new TextBlock {
+                Text = $"Total: {_totalAmount:C}",
+                FontSize = 16,
+                FontWeight = FontWeights.Bold,
+                Margin = new Thickness(0, 15, 0, 0)
+            });
+
+            receiptWindow.Content = stackPanel;
+            receiptWindow.ShowDialog();
+        }
+
+        private void CloseSearchPanel_Click(object sender, RoutedEventArgs e) {
+
             gridSearchProduct.Visibility = Visibility.Collapsed;
         }
 
