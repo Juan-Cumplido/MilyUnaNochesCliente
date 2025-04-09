@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/MilyUnaNochesService.Logic" xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/MilyUnaNochesService.Logic" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:import schemaLocation="http://localhost:1442/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
   <xs:complexType name="Address">
@@ -95,5 +94,4 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ConsultPurchase_SV" nillable="true" type="tns:ConsultPurchase_SV" />
-
 </xs:schema>
