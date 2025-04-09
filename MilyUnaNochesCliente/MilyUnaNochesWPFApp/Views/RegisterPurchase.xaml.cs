@@ -16,9 +16,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace MilyUnaNochesWPFApp.Views {
-    /// <summary>
-    /// Lógica de interacción para RegisterPurchase.xaml
-    /// </summary>
+
     public partial class RegisterPurchase : Page {
         private readonly IProviderManager _providerClient;
         private readonly IAdressManager _addressClient;
@@ -38,12 +36,12 @@ namespace MilyUnaNochesWPFApp.Views {
             _currentPurchase = new RegisterPurchase_sv() {
                 Fecha = DateTime.Now.Date,
                 Hora = DateTime.Now.TimeOfDay,
-                Products = new ProductPurchase[0]
+                Products = new List<ProductPurchase>()
             };
         }
         private async void LoadProvidersAsync() {
             try {
-                Provider[] providers = await _providerClient.GetProvidersAsync();
+                var providers = await _providerClient.GetProvidersAsync();
 
                 txtProviderName.ItemsSource = providers.ToList();
                 txtProviderName.DisplayMemberPath = "providerName";
@@ -100,7 +98,7 @@ namespace MilyUnaNochesWPFApp.Views {
             }
 
             // Validar que se hayan agregado productos
-            if (_currentPurchase.Products == null || _currentPurchase.Products.Length == 0) {
+            if (_currentPurchase.Products == null || _currentPurchase.Products.Count == 0) {
                 DialogManager.ShowWarningMessageAlert("Debe agregar al menos un producto");
                 return false;
             }
@@ -160,7 +158,7 @@ namespace MilyUnaNochesWPFApp.Views {
         }
 
         public void AddPurchasedProducts(List<ProductPurchase> products) {
-            _currentPurchase.Products = products.ToArray();
+            _currentPurchase.Products = products;
 
             _currentPurchase.MontoTotal = products.Sum(p => p.MontoProducto);
         }

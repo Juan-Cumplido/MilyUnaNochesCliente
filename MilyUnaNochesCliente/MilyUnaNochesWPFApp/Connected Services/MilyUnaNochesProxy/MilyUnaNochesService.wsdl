@@ -1220,7 +1220,7 @@
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:1441/UserService</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
-          <Upn>ERICK_ATZIN\abdie</Upn>
+          <Upn>Z\cv419</Upn>
         </Identity>
       </wsa10:EndpointReference>
     </wsdl:port>
@@ -1229,7 +1229,7 @@
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:1441/AddressManager</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
-          <Upn>ERICK_ATZIN\abdie</Upn>
+          <Upn>Z\cv419</Upn>
         </Identity>
       </wsa10:EndpointReference>
     </wsdl:port>
@@ -1238,7 +1238,7 @@
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:1441/ProviderManager</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
-          <Upn>ERICK_ATZIN\abdie</Upn>
+          <Upn>Z\cv419</Upn>
         </Identity>
       </wsa10:EndpointReference>
     </wsdl:port>
@@ -1247,7 +1247,7 @@
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:1441/ProductsManager</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
-          <Upn>ERICK_ATZIN\abdie</Upn>
+          <Upn>Z\cv419</Upn>
         </Identity>
       </wsa10:EndpointReference>
     </wsdl:port>
@@ -1256,7 +1256,7 @@
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:1441/PurchaseManager</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
-          <Upn>ERICK_ATZIN\abdie</Upn>
+          <Upn>Z\cv419</Upn>
         </Identity>
       </wsa10:EndpointReference>
     </wsdl:port>
@@ -1265,7 +1265,7 @@
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:1441/SaleManager</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
-          <Upn>ERICK_ATZIN\abdie</Upn>
+          <Upn>Z\cv419</Upn>
         </Identity>
       </wsa10:EndpointReference>
     </wsdl:port>
@@ -1274,7 +1274,7 @@
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:1441/ReportManager</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
-          <Upn>ERICK_ATZIN\abdie</Upn>
+          <Upn>Z\cv419</Upn>
         </Identity>
       </wsa10:EndpointReference>
     </wsdl:port>
