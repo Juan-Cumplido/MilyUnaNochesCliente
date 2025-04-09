@@ -4,6 +4,8 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:MilyUnaNochesWPFApp.Views"
+      xmlns:wpfGif="http://wpfanimatedgif.codeplex.com"
+
       mc:Ignorable="d" 
       d:DesignHeight="720" d:DesignWidth="1280">
 
@@ -14,6 +16,18 @@
                     <ImageBrush ImageSource="/Images/Background/loginBackground.png" Stretch="UniformToFill" />
                 </Border.Background>
             </Border>
+
+            <Image wpfGif:ImageBehavior.AnimatedSource="/Images/Icons/craft.gif"
+                    Stretch="Uniform"
+                    Margin="52,262,670,78"/>
+            <Image x:Name="imgLoading"
+               wpfGif:ImageBehavior.AnimatedSource="/Images/Icons/loading.gif"
+               Width="122"
+               Visibility="Collapsed"
+               HorizontalAlignment="Center"
+               Margin="0,278,0,278"/>
+
+
 
             <Border Width="450" Background="White" CornerRadius="15" Padding="25"
                     VerticalAlignment="Top" HorizontalAlignment="Left" Margin="750,230,0,0" Height="380">
@@ -48,7 +62,7 @@
 
 
                     <Border Background="#ae7d5c" CornerRadius="15" Margin="10">
-                        <Button Content="INICIAR SESIÓN" Width="350" Height="60" FontSize="27" FontFamily="Bodoni MT Condensed" 
+                        <Button x:Name="btnLogin" Content="INICIAR SESIÓN" Width="350" Height="60" FontSize="27" FontFamily="Bodoni MT Condensed" 
                             Background="Transparent" Foreground="White" FontWeight="Bold"
                             BorderThickness="0" Cursor="Hand"
                             OverridesDefaultStyle="True" Click="BtnLogin_Click">
