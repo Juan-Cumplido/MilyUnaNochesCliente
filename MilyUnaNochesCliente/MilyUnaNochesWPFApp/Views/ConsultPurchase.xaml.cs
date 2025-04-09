@@ -40,7 +40,9 @@ namespace MilyUnaNochesWPFApp.Views {
         }
 
         private void Back_Click(object sender, RoutedEventArgs e) {
-
+            if (NavigationService != null && NavigationService.CanGoBack) {
+                NavigationService.GoBack();
+            }
         }
 
         private void txtb_SearchBar_TextChanged(object sender, TextChangedEventArgs e) {
