@@ -43,9 +43,9 @@
     </Page.Resources>
 
     <Grid>
-        
-        <Image x:Name="img_Logo" HorizontalAlignment="Left" Height="123" VerticalAlignment="Top" Width="253" Source="/Images/Icons/Logo.png"/>
-        <Image x:Name="img_Logo2" HorizontalAlignment="Left" Height="94" Margin="28,29,0,0" VerticalAlignment="Top" Width="184" Source="/Images/Icons/Mil_y_una_Noches.png"/>
+
+        <Image x:Name="img_Logo" HorizontalAlignment="Left" Height="123" VerticalAlignment="Top" Width="253" Source="/Images/Icons/Logo.png" MouseLeftButtonDown="ImgLogo1_MouseLeftButtonDown"/>
+        <Image x:Name="img_Logo2" HorizontalAlignment="Left" Height="94" Margin="28,29,0,0" VerticalAlignment="Top" Width="184" Source="/Images/Icons/Mil_y_una_Noches.png" MouseLeftButtonDown="ImgLogo2_MouseLeftButtonDown"/>
         
     
 
