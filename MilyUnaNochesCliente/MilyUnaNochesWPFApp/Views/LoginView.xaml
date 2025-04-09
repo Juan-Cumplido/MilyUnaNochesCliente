@@ -23,7 +23,7 @@
                     <Border BorderThickness="1" Background="#dcd9d7" CornerRadius="15" Margin="10" Height="65">
                         <DockPanel>
                             <Image Source="/Images/Icons/UserIcon.png" Width="35" Height="35" Margin="10" DockPanel.Dock="Right"/>
-                            <TextBox x:Name="UserIdTextBox" Width="280" Height="40" FontSize="27" Background="Transparent" 
+                            <TextBox x:Name="txtb_UserIdTextBox" Width="280" Height="40" FontSize="27" Background="Transparent" 
                                      BorderThickness="0" Text="Usuario" Foreground="Gray" FontFamily="Bodoni MT Condensed" 
                                      GotFocus="UserIdTextBox_GotFocus" LostFocus="UserIdTextBox_LostFocus"/>
                         </DockPanel>
@@ -39,7 +39,7 @@
                        FontSize="27" VerticalAlignment="Top" Margin="0,11,10,0"/>
 
 
-                                <PasswordBox x:Name="PasswordBox" Width="280" Height="40" FontSize="27" Background="Transparent" 
+                                <PasswordBox x:Name="pwb_PasswordBox" Width="280" Height="40" FontSize="27" Background="Transparent" 
                          BorderThickness="0" PasswordChanged="PasswordBox_PasswordChanged"
                          GotFocus="PasswordBox_GotFocus" LostFocus="PasswordBox_LostFocus"/>
                             </Grid>

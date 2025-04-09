@@ -4,8 +4,10 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
+using System.ServiceModel.Description;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace MilyUnaNochesWPFApp.Views {
     /// <summary>
@@ -23,6 +25,15 @@ namespace MilyUnaNochesWPFApp.Views {
             _productsManager = new ProductsManagerClient();
             LoadProductsAsync();
             lstSelectedProducts.ItemsSource = _selectedProducts;
+
+            if (!string.IsNullOrEmpty(parentPage.SelectedPayMethod)) {
+                foreach (ComboBoxItem item in cb_SelectedPayMethod.Items) {
+                    if (item.Content.ToString() == parentPage.SelectedPayMethod) {
+                        cb_SelectedPayMethod.SelectedItem = item;
+                        break;
+                    }
+                }
+            }
         }
         private async void LoadProductsAsync() {
             try {
@@ -42,6 +53,12 @@ namespace MilyUnaNochesWPFApp.Views {
 
         private void Accept_Click(object sender, RoutedEventArgs e) {
             if (parentPage != null) {
+                if (cb_SelectedPayMethod.SelectedItem == null) {
+                    MessageBox.Show("Selecciona un método de pago válido.");
+                    return; 
+                }
+                var selectedItem = cb_SelectedPayMethod.SelectedItem as ComboBoxItem;
+                parentPage.SelectedPayMethod = selectedItem?.Content.ToString();
                 parentPage.AddPurchasedProducts(_selectedProducts.ToList());
             }
             this.Close();
@@ -80,6 +97,50 @@ namespace MilyUnaNochesWPFApp.Views {
                 _selectedProducts.Add(product);
             }
             UpdateTotal();
+        }
+
+        // Método para aumentar la cantidad en 1
+        private void Increase_Click(object sender, RoutedEventArgs e) {
+            if (sender is Button btn && btn.Tag is ProductPurchase product) {
+                product.Cantidad += 1;
+                // Actualiza el monto según el precio de compra. 
+                // Se asume que puedes obtener el precio base (PrecioCompra) del producto. 
+                // Si no lo tienes en la clase ProductPurchase, podrías necesitar consultarlo.
+                // Aquí se asume que MontoProducto se actualiza de la siguiente manera:
+                var prodBase = _products.FirstOrDefault(p => p.IdProducto == product.IdProducto);
+                if (prodBase != null) {
+                    product.MontoProducto = prodBase.PrecioCompra * product.Cantidad;
+                }
+                UpdateTotal();
+                // Actualizamos la vista
+                lstSelectedProducts.Items.Refresh();
+            }
+        }
+
+        // Método para disminuir la cantidad en 1 (asegurándose de que no baje de 1)
+        private void Decrease_Click(object sender, RoutedEventArgs e) {
+            if (sender is Button btn && btn.Tag is ProductPurchase product) {
+                if (product.Cantidad > 1) {
+                    product.Cantidad -= 1;
+                    var prodBase = _products.FirstOrDefault(p => p.IdProducto == product.IdProducto);
+                    if (prodBase != null) {
+                        product.MontoProducto = prodBase.PrecioCompra * product.Cantidad;
+                    }
+                    UpdateTotal();
+                    lstSelectedProducts.Items.Refresh();
+                } else {
+                    // O se puede eliminar directamente si la cantidad llega a 1, dependiendo de la lógica deseada.
+                    MessageBox.Show("La cantidad mínima es 1. Si desea eliminar el producto, use el botón 'X'.");
+                }
+            }
+        }
+
+        // Método para eliminar el producto de la lista
+        private void RemoveProduct_Click(object sender, RoutedEventArgs e) {
+            if (sender is Button btn && btn.Tag is ProductPurchase product) {
+                _selectedProducts.Remove(product);
+                UpdateTotal();
+            }
         }
     }
 }
