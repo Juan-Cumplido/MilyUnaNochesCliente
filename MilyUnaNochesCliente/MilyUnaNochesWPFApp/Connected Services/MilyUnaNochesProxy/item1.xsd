@@ -94,6 +94,8 @@
       <xs:element minOccurs="0" name="NombreProducto" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Cantidad" type="xs:int" />
       <xs:element minOccurs="0" name="PrecioUnitario" type="xs:decimal" />
+      <xs:element minOccurs="0" name="PrecioCompra" type="xs:decimal" />
+      <xs:element minOccurs="0" name="MargenGanancia" type="xs:decimal" />
       <xs:element minOccurs="0" name="Subtotal" type="xs:decimal" />
     </xs:sequence>
   </xs:complexType>

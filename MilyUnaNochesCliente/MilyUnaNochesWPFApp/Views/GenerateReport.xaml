@@ -21,6 +21,14 @@
             <Setter Property="FontFamily" Value="Bodoni MT"/>
             <Setter Property="HorizontalContentAlignment" Value="Center"/>
         </Style>
+        <Style x:Key="PaginationButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="#FFAE7D5C"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="FontFamily" Value="Bodoni MT"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Padding" Value="5"/>
+        </Style>
     </Page.Resources>
 
     <Grid>
@@ -74,24 +82,55 @@
             </Label.Background>
         </Label>
 
-        <!-- Tabla de productos -->
+        <!-- Tabla de reportes -->
         <DataGrid x:Name="dg_Reports"
-                  SelectionMode="Single"
-                  AutoGenerateColumns="False" 
-                  Height="300" 
-                  Margin="68,300,347,0" 
-                  VerticalAlignment="Top" 
-                  SelectionChanged="Dg_Reports_SelectionChanged"
-                  HeadersVisibility="Column"
-                  BorderThickness="0"
-                  RowHeaderWidth="0"
-                  ColumnHeaderHeight="40"
-                  RowHeight="40"
-                  HorizontalContentAlignment="Stretch">
+          SelectionMode="Single"
+          AutoGenerateColumns="False" 
+          Height="300" 
+          Margin="68,300,347,0" 
+          VerticalAlignment="Top" 
+          SelectionChanged="Dg_Reports_SelectionChanged"
+          HeadersVisibility="Column"
+          BorderThickness="0"
+          RowHeaderWidth="0"
+          ColumnHeaderHeight="40"
+          RowHeight="40"
+          HorizontalContentAlignment="Stretch">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="No. Reporte" Binding="{Binding NombreProducto}" HeaderStyle="{StaticResource HeaderStyle}" CellStyle="{StaticResource CenteredCellStyle}" Width="*"/>
-                <DataGridTextColumn Header="Fechas" Binding="{Binding Cantidad}" HeaderStyle="{StaticResource HeaderStyle}" CellStyle="{StaticResource CenteredCellStyle}" Width="*"/>
-                <DataGridTextColumn Header="Tipo de reporte" Binding="{Binding Categoria}" HeaderStyle="{StaticResource HeaderStyle}" CellStyle="{StaticResource CenteredCellStyle}" Width="*"/>
+                <!-- Columna 1: Número de fila -->
+                <DataGridTextColumn Header="No." 
+                        Binding="{Binding No}"
+                        HeaderStyle="{StaticResource HeaderStyle}" 
+                        CellStyle="{StaticResource CenteredCellStyle}" 
+                        Width="0.5*"/>
+
+                <!-- Columna 2: Tipo de reporte -->
+                <DataGridTextColumn Header="Tipo de Reporte" 
+                        Binding="{Binding Tipo}" 
+                    HeaderStyle="{StaticResource HeaderStyle}" 
+                        CellStyle="{StaticResource CenteredCellStyle}" 
+                        Width="1.2*"/>
+
+                <!-- Columna 3: Período (ya formateado en C#) -->
+                <DataGridTextColumn Header="Período" 
+                        Binding="{Binding Periodo}"
+                        HeaderStyle="{StaticResource HeaderStyle}" 
+                        CellStyle="{StaticResource CenteredCellStyle}" 
+                        Width="1.5*"/>
+
+                <!-- Columna 4: Ámbito -->
+                <DataGridTextColumn Header="Categoría" 
+                        Binding="{Binding Categoria}"  
+                            HeaderStyle="{StaticResource HeaderStyle}" 
+                        CellStyle="{StaticResource CenteredCellStyle}" 
+                        Width="1.2*"/>
+
+                <!-- Columna 5: Descripción -->
+                <DataGridTextColumn Header="Descripción" 
+                        Binding="{Binding Descripcion}" 
+                                HeaderStyle="{StaticResource HeaderStyle}" 
+                        CellStyle="{StaticResource CenteredCellStyle}" 
+                        Width="2*"/>
             </DataGrid.Columns>
         </DataGrid>
 
@@ -477,6 +516,26 @@
                 </Label>
             </Grid>
         </Grid>
+        <!-- Controles de paginación -->
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,610,347,0">
+            <Button x:Name="btnPrimeraPagina" Content="&lt;&lt;" ToolTip="Primera página"
+            Width="40" Style="{StaticResource PaginationButtonStyle}"
+            Click="BtnPrimeraPagina_Click"/>
 
+            <Button x:Name="btnPaginaAnterior" Content="&lt;" ToolTip="Página anterior"
+            Width="40" Margin="5,0,0,0" Style="{StaticResource PaginationButtonStyle}"
+            Click="BtnPaginaAnterior_Click"/>
+
+            <Label x:Name="lblInfoPagina" Content="Página 1" 
+           VerticalAlignment="Center" Margin="10,0" FontFamily="Bodoni MT" FontSize="16"/>
+
+            <Button x:Name="btnPaginaSiguiente" Content=">" ToolTip="Página siguiente"
+            Width="40" Margin="0,0,5,0" Style="{StaticResource PaginationButtonStyle}"
+            Click="BtnPaginaSiguiente_Click"/>
+
+            <Button x:Name="btnUltimaPagina" Content=">>" ToolTip="Última página"
+            Width="40" Style="{StaticResource PaginationButtonStyle}"
+            Click="BtnUltimaPagina_Click"/>
+        </StackPanel>
     </Grid>
 </Page>
