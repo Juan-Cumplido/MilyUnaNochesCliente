@@ -231,6 +231,39 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
+  <wsp:Policy wsu:Id="NetTcpBinding_IUserSessionManager_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <wsrm:RMAssertion xmlns:wsrm="http://schemas.xmlsoap.org/ws/2005/02/rm/policy">
+          <wsrm:InactivityTimeout Milliseconds="600000" />
+          <wsrm:AcknowledgementInterval Milliseconds="200" />
+        </wsrm:RMAssertion>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
+        <sp:TransportBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:TransportToken>
+              <wsp:Policy>
+                <msf:WindowsTransportSecurity xmlns:msf="http://schemas.microsoft.com/ws/2006/05/framing/policy">
+                  <msf:ProtectionLevel>EncryptAndSign</msf:ProtectionLevel>
+                </msf:WindowsTransportSecurity>
+              </wsp:Policy>
+            </sp:TransportToken>
+            <sp:AlgorithmSuite>
+              <wsp:Policy>
+                <sp:Basic256 />
+              </wsp:Policy>
+            </sp:AlgorithmSuite>
+            <sp:Layout>
+              <wsp:Policy>
+                <sp:Strict />
+              </wsp:Policy>
+            </sp:Layout>
+          </wsp:Policy>
+        </sp:TransportBinding>
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
   <wsdl:types>
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
       <xsd:import schemaLocation="http://localhost:1442/?xsd=xsd0" namespace="http://tempuri.org/" />
@@ -535,6 +568,24 @@
   <wsdl:message name="IReportManager_GetCategorySalesDetails_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetCategorySalesDetailsResponse" />
   </wsdl:message>
+  <wsdl:message name="IUserSessionManager_Connect_InputMessage">
+    <wsdl:part name="parameters" element="tns:Connect" />
+  </wsdl:message>
+  <wsdl:message name="IUserSessionManager_Connect_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ConnectResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUserSessionManager_Disconnect_InputMessage">
+    <wsdl:part name="parameters" element="tns:Disconnect" />
+  </wsdl:message>
+  <wsdl:message name="IUserSessionManager_Disconnect_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DisconnectResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUserSessionManager_VerifyConnectivity_InputMessage">
+    <wsdl:part name="parameters" element="tns:VerifyConnectivity" />
+  </wsdl:message>
+  <wsdl:message name="IUserSessionManager_VerifyConnectivity_OutputMessage">
+    <wsdl:part name="parameters" element="tns:VerifyConnectivityResponse" />
+  </wsdl:message>
   <wsdl:portType name="IUserManager">
     <wsdl:operation name="AddClient">
       <wsdl:input wsaw:Action="http://tempuri.org/IUserManager/AddClient" message="tns:IUserManager_AddClient_InputMessage" />
@@ -743,6 +794,20 @@
     <wsdl:operation name="GetCategorySalesDetails">
       <wsdl:input wsaw:Action="http://tempuri.org/IReportManager/GetCategorySalesDetails" message="tns:IReportManager_GetCategorySalesDetails_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IReportManager/GetCategorySalesDetailsResponse" message="tns:IReportManager_GetCategorySalesDetails_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="IUserSessionManager">
+    <wsdl:operation name="Connect">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserSessionManager/Connect" message="tns:IUserSessionManager_Connect_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserSessionManager/ConnectResponse" message="tns:IUserSessionManager_Connect_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Disconnect">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserSessionManager/Disconnect" message="tns:IUserSessionManager_Disconnect_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserSessionManager/DisconnectResponse" message="tns:IUserSessionManager_Disconnect_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="VerifyConnectivity">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserSessionManager/VerifyConnectivity" message="tns:IUserSessionManager_VerifyConnectivity_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserSessionManager/VerifyConnectivityResponse" message="tns:IUserSessionManager_VerifyConnectivity_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="NetTcpBinding_IUserManager" type="tns:IUserManager">
@@ -1214,13 +1279,44 @@
       </wsdl:output>
     </wsdl:operation>
   </wsdl:binding>
+  <wsdl:binding name="NetTcpBinding_IUserSessionManager" type="tns:IUserSessionManager">
+    <wsp:PolicyReference URI="#NetTcpBinding_IUserSessionManager_policy" />
+    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="Connect">
+      <soap12:operation soapAction="http://tempuri.org/IUserSessionManager/Connect" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Disconnect">
+      <soap12:operation soapAction="http://tempuri.org/IUserSessionManager/Disconnect" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="VerifyConnectivity">
+      <soap12:operation soapAction="http://tempuri.org/IUserSessionManager/VerifyConnectivity" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
   <wsdl:service name="MilyUnaNochesService">
     <wsdl:port name="NetTcpBinding_IUserManager" binding="tns:NetTcpBinding_IUserManager">
       <soap12:address location="net.tcp://localhost:1441/UserService" />
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:1441/UserService</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
-          <Upn>Z\cv419</Upn>
+          <Upn>DESKTOP-8TVMGHH\cumpl</Upn>
         </Identity>
       </wsa10:EndpointReference>
     </wsdl:port>
@@ -1229,7 +1325,7 @@
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:1441/AddressManager</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
-          <Upn>Z\cv419</Upn>
+          <Upn>DESKTOP-8TVMGHH\cumpl</Upn>
         </Identity>
       </wsa10:EndpointReference>
     </wsdl:port>
@@ -1238,7 +1334,7 @@
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:1441/ProviderManager</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
-          <Upn>Z\cv419</Upn>
+          <Upn>DESKTOP-8TVMGHH\cumpl</Upn>
         </Identity>
       </wsa10:EndpointReference>
     </wsdl:port>
@@ -1247,7 +1343,7 @@
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:1441/ProductsManager</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
-          <Upn>Z\cv419</Upn>
+          <Upn>DESKTOP-8TVMGHH\cumpl</Upn>
         </Identity>
       </wsa10:EndpointReference>
     </wsdl:port>
@@ -1256,7 +1352,7 @@
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:1441/PurchaseManager</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
-          <Upn>Z\cv419</Upn>
+          <Upn>DESKTOP-8TVMGHH\cumpl</Upn>
         </Identity>
       </wsa10:EndpointReference>
     </wsdl:port>
@@ -1265,16 +1361,25 @@
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:1441/SaleManager</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
-          <Upn>Z\cv419</Upn>
+          <Upn>DESKTOP-8TVMGHH\cumpl</Upn>
         </Identity>
       </wsa10:EndpointReference>
     </wsdl:port>
     <wsdl:port name="NetTcpBinding_IReportManager" binding="tns:NetTcpBinding_IReportManager">
-      <soap12:address location="net.tcp://localhost:1441/ReportManager" />
+      <soap12:address location="net.tcp://localhost:1441/SaleManager" />
       <wsa10:EndpointReference>
-        <wsa10:Address>net.tcp://localhost:1441/ReportManager</wsa10:Address>
+        <wsa10:Address>net.tcp://localhost:1441/SaleManager</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
-          <Upn>Z\cv419</Upn>
+          <Upn>DESKTOP-8TVMGHH\cumpl</Upn>
+        </Identity>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+    <wsdl:port name="NetTcpBinding_IUserSessionManager" binding="tns:NetTcpBinding_IUserSessionManager">
+      <soap12:address location="net.tcp://localhost:1441/SaleManager" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>net.tcp://localhost:1441/SaleManager</wsa10:Address>
+        <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
+          <Upn>DESKTOP-8TVMGHH\cumpl</Upn>
         </Identity>
       </wsa10:EndpointReference>
     </wsdl:port>

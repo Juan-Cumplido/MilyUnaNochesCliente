@@ -15,6 +15,22 @@
             <Setter Property="TextBlock.VerticalAlignment" Value="Center"/>
         </Style>
 
+        <Style x:Key="ProductsCellStyle" TargetType="DataGridCell">
+            <Setter Property="TextBlock.TextAlignment" Value="Center"/>
+            <Setter Property="TextBlock.VerticalAlignment" Value="Center"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="DataGridCell">
+                        <Grid Background="{TemplateBinding Background}">
+                            <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Margin="2">
+                                <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center" />
+                            </ScrollViewer>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
         <Style x:Key="ButtonStyle" TargetType="Button">
             <Setter Property="FontFamily" Value="Bodoni MT Condensed"/>
             <Setter Property="BorderThickness" Value="0"/>
@@ -106,8 +122,16 @@
                         Binding="{Binding Fecha}"/>
                 <DataGridTextColumn Header="Productos" 
                         Width="*" 
-                        CellStyle="{StaticResource CenteredCellStyle}"
-                        Binding="{Binding purchasedProducts}"/>
+                        CellStyle="{StaticResource ProductsCellStyle}"
+                        Binding="{Binding purchasedProducts}">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="TextWrapping" Value="Wrap"/>
+                            <Setter Property="TextAlignment" Value="Center"/>
+                            <Setter Property="VerticalAlignment" Value="Center"/>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
                 <DataGridTextColumn Header="Metodo pago" 
                         Width=".5*" 
                         CellStyle="{StaticResource CenteredCellStyle}"
@@ -135,4 +159,3 @@
         </Grid>
     </Grid>
 </Page>
-    
