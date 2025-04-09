@@ -1215,6 +1215,9 @@ namespace MilyUnaNochesWPFApp.MilyUnaNochesProxy {
         private int CantidadField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CodigoProductoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string ContactoProveedorField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -1245,6 +1248,19 @@ namespace MilyUnaNochesWPFApp.MilyUnaNochesProxy {
                 if ((this.CantidadField.Equals(value) != true)) {
                     this.CantidadField = value;
                     this.RaisePropertyChanged("Cantidad");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string CodigoProducto {
+            get {
+                return this.CodigoProductoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CodigoProductoField, value) != true)) {
+                    this.CodigoProductoField = value;
+                    this.RaisePropertyChanged("CodigoProducto");
                 }
             }
         }
