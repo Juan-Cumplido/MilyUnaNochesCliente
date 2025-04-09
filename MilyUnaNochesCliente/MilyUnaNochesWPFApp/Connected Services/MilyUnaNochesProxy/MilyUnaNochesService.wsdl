@@ -165,7 +165,7 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsp:Policy wsu:Id="NetTcpBinding_IReportManager_policy">
+  <wsp:Policy wsu:Id="NetTcpBinding_ISaleManager_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <wsrm:RMAssertion xmlns:wsrm="http://schemas.xmlsoap.org/ws/2005/02/rm/policy">
@@ -198,19 +198,7 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsp:Policy wsu:Id="NetTcpBinding_IPurchaseManager_policy">
-    <wsp:ExactlyOne>
-      <wsp:All>
-        <wsrm:RMAssertion xmlns:wsrm="http://schemas.xmlsoap.org/ws/2005/02/rm/policy">
-          <wsrm:InactivityTimeout Milliseconds="600000" />
-          <wsrm:AcknowledgementInterval Milliseconds="200" />
-        </wsrm:RMAssertion>
-        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
-        <wsaw:UsingAddressing />
-      </wsp:All>
-    </wsp:ExactlyOne>
-  </wsp:Policy>
-  <wsp:Policy wsu:Id="NetTcpBinding_ISaleManager_policy">
+  <wsp:Policy wsu:Id="NetTcpBinding_IReportManager_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <wsrm:RMAssertion xmlns:wsrm="http://schemas.xmlsoap.org/ws/2005/02/rm/policy">
@@ -249,8 +237,8 @@
       <xsd:import schemaLocation="http://localhost:1442/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
       <xsd:import schemaLocation="http://localhost:1442/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/MilyUnaNochesService.Contracts" />
       <xsd:import schemaLocation="http://localhost:1442/?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/MilyUnaNochesService.Logic" />
-      <xsd:import schemaLocation="http://localhost:1442/?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/DataBaseManager.Logic" />
-      <xsd:import schemaLocation="http://localhost:1442/?xsd=xsd5" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xsd:import schemaLocation="http://localhost:1442/?xsd=xsd4" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xsd:import schemaLocation="http://localhost:1442/?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/DataBaseManager.Logic" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IUserManager_AddClient_InputMessage">
@@ -439,13 +427,11 @@
   <wsdl:message name="IPurchaseManager_SavePurchase_OutputMessage">
     <wsdl:part name="parameters" element="tns:SavePurchaseResponse" />
   </wsdl:message>
-
   <wsdl:message name="IPurchaseManager_GetPurchases_InputMessage">
     <wsdl:part name="parameters" element="tns:GetPurchases" />
   </wsdl:message>
   <wsdl:message name="IPurchaseManager_GetPurchases_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetPurchasesResponse" />
-
   </wsdl:message>
   <wsdl:message name="ISaleManager_ProcessSale_InputMessage">
     <wsdl:part name="parameters" element="tns:ProcessSale" />
@@ -464,6 +450,90 @@
   </wsdl:message>
   <wsdl:message name="ISaleManager_ValidateSale_OutputMessage">
     <wsdl:part name="parameters" element="tns:ValidateSaleResponse" />
+  </wsdl:message>
+  <wsdl:message name="IReportManager_GetAvailableProductReports_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAvailableProductReports" />
+  </wsdl:message>
+  <wsdl:message name="IReportManager_GetAvailableProductReports_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAvailableProductReportsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IReportManager_GetAvailableCategoryReports_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAvailableCategoryReports" />
+  </wsdl:message>
+  <wsdl:message name="IReportManager_GetAvailableCategoryReports_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAvailableCategoryReportsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IReportManager_GetAvailableInventoryReports_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAvailableInventoryReports" />
+  </wsdl:message>
+  <wsdl:message name="IReportManager_GetAvailableInventoryReports_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAvailableInventoryReportsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IReportManager_GetAvailableProfitReports_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAvailableProfitReports" />
+  </wsdl:message>
+  <wsdl:message name="IReportManager_GetAvailableProfitReports_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAvailableProfitReportsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IReportManager_GetProductReportData_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetProductReportData" />
+  </wsdl:message>
+  <wsdl:message name="IReportManager_GetProductReportData_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetProductReportDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="IReportManager_GetCategoryReportData_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCategoryReportData" />
+  </wsdl:message>
+  <wsdl:message name="IReportManager_GetCategoryReportData_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCategoryReportDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="IReportManager_GetInventoryReportData_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetInventoryReportData" />
+  </wsdl:message>
+  <wsdl:message name="IReportManager_GetInventoryReportData_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetInventoryReportDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="IReportManager_GetProfitReportData_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetProfitReportData" />
+  </wsdl:message>
+  <wsdl:message name="IReportManager_GetProfitReportData_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetProfitReportDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="IReportManager_GetProductReportsCount_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetProductReportsCount" />
+  </wsdl:message>
+  <wsdl:message name="IReportManager_GetProductReportsCount_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetProductReportsCountResponse" />
+  </wsdl:message>
+  <wsdl:message name="IReportManager_GetCategoryReportsCount_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCategoryReportsCount" />
+  </wsdl:message>
+  <wsdl:message name="IReportManager_GetCategoryReportsCount_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCategoryReportsCountResponse" />
+  </wsdl:message>
+  <wsdl:message name="IReportManager_GetInventoryReportsCount_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetInventoryReportsCount" />
+  </wsdl:message>
+  <wsdl:message name="IReportManager_GetInventoryReportsCount_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetInventoryReportsCountResponse" />
+  </wsdl:message>
+  <wsdl:message name="IReportManager_GetProfitReportsCount_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetProfitReportsCount" />
+  </wsdl:message>
+  <wsdl:message name="IReportManager_GetProfitReportsCount_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetProfitReportsCountResponse" />
+  </wsdl:message>
+  <wsdl:message name="IReportManager_GetProductSalesDetails_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetProductSalesDetails" />
+  </wsdl:message>
+  <wsdl:message name="IReportManager_GetProductSalesDetails_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetProductSalesDetailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IReportManager_GetCategorySalesDetails_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCategorySalesDetails" />
+  </wsdl:message>
+  <wsdl:message name="IReportManager_GetCategorySalesDetails_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCategorySalesDetailsResponse" />
   </wsdl:message>
   <wsdl:portType name="IUserManager">
     <wsdl:operation name="AddClient">
@@ -598,11 +668,9 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IPurchaseManager/SavePurchase" message="tns:IPurchaseManager_SavePurchase_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IPurchaseManager/SavePurchaseResponse" message="tns:IPurchaseManager_SavePurchase_OutputMessage" />
     </wsdl:operation>
-
     <wsdl:operation name="GetPurchases">
       <wsdl:input wsaw:Action="http://tempuri.org/IPurchaseManager/GetPurchases" message="tns:IPurchaseManager_GetPurchases_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IPurchaseManager/GetPurchasesResponse" message="tns:IPurchaseManager_GetPurchases_OutputMessage" />
-
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="ISaleManager">
@@ -617,6 +685,64 @@
     <wsdl:operation name="ValidateSale">
       <wsdl:input wsaw:Action="http://tempuri.org/ISaleManager/ValidateSale" message="tns:ISaleManager_ValidateSale_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ISaleManager/ValidateSaleResponse" message="tns:ISaleManager_ValidateSale_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="IReportManager">
+    <wsdl:operation name="GetAvailableProductReports">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReportManager/GetAvailableProductReports" message="tns:IReportManager_GetAvailableProductReports_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReportManager/GetAvailableProductReportsResponse" message="tns:IReportManager_GetAvailableProductReports_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAvailableCategoryReports">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReportManager/GetAvailableCategoryReports" message="tns:IReportManager_GetAvailableCategoryReports_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReportManager/GetAvailableCategoryReportsResponse" message="tns:IReportManager_GetAvailableCategoryReports_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAvailableInventoryReports">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReportManager/GetAvailableInventoryReports" message="tns:IReportManager_GetAvailableInventoryReports_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReportManager/GetAvailableInventoryReportsResponse" message="tns:IReportManager_GetAvailableInventoryReports_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAvailableProfitReports">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReportManager/GetAvailableProfitReports" message="tns:IReportManager_GetAvailableProfitReports_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReportManager/GetAvailableProfitReportsResponse" message="tns:IReportManager_GetAvailableProfitReports_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProductReportData">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReportManager/GetProductReportData" message="tns:IReportManager_GetProductReportData_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReportManager/GetProductReportDataResponse" message="tns:IReportManager_GetProductReportData_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCategoryReportData">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReportManager/GetCategoryReportData" message="tns:IReportManager_GetCategoryReportData_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReportManager/GetCategoryReportDataResponse" message="tns:IReportManager_GetCategoryReportData_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetInventoryReportData">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReportManager/GetInventoryReportData" message="tns:IReportManager_GetInventoryReportData_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReportManager/GetInventoryReportDataResponse" message="tns:IReportManager_GetInventoryReportData_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProfitReportData">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReportManager/GetProfitReportData" message="tns:IReportManager_GetProfitReportData_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReportManager/GetProfitReportDataResponse" message="tns:IReportManager_GetProfitReportData_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProductReportsCount">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReportManager/GetProductReportsCount" message="tns:IReportManager_GetProductReportsCount_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReportManager/GetProductReportsCountResponse" message="tns:IReportManager_GetProductReportsCount_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCategoryReportsCount">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReportManager/GetCategoryReportsCount" message="tns:IReportManager_GetCategoryReportsCount_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReportManager/GetCategoryReportsCountResponse" message="tns:IReportManager_GetCategoryReportsCount_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetInventoryReportsCount">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReportManager/GetInventoryReportsCount" message="tns:IReportManager_GetInventoryReportsCount_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReportManager/GetInventoryReportsCountResponse" message="tns:IReportManager_GetInventoryReportsCount_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProfitReportsCount">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReportManager/GetProfitReportsCount" message="tns:IReportManager_GetProfitReportsCount_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReportManager/GetProfitReportsCountResponse" message="tns:IReportManager_GetProfitReportsCount_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProductSalesDetails">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReportManager/GetProductSalesDetails" message="tns:IReportManager_GetProductSalesDetails_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReportManager/GetProductSalesDetailsResponse" message="tns:IReportManager_GetProductSalesDetails_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCategorySalesDetails">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReportManager/GetCategorySalesDetails" message="tns:IReportManager_GetCategorySalesDetails_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReportManager/GetCategorySalesDetailsResponse" message="tns:IReportManager_GetCategorySalesDetails_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="NetTcpBinding_IUserManager" type="tns:IUserManager">
@@ -917,10 +1043,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-
     <wsdl:operation name="GetPurchases">
       <soap12:operation soapAction="http://tempuri.org/IPurchaseManager/GetPurchases" style="document" />
-
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -952,6 +1076,136 @@
     </wsdl:operation>
     <wsdl:operation name="ValidateSale">
       <soap12:operation soapAction="http://tempuri.org/ISaleManager/ValidateSale" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="NetTcpBinding_IReportManager" type="tns:IReportManager">
+    <wsp:PolicyReference URI="#NetTcpBinding_IReportManager_policy" />
+    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="GetAvailableProductReports">
+      <soap12:operation soapAction="http://tempuri.org/IReportManager/GetAvailableProductReports" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAvailableCategoryReports">
+      <soap12:operation soapAction="http://tempuri.org/IReportManager/GetAvailableCategoryReports" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAvailableInventoryReports">
+      <soap12:operation soapAction="http://tempuri.org/IReportManager/GetAvailableInventoryReports" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAvailableProfitReports">
+      <soap12:operation soapAction="http://tempuri.org/IReportManager/GetAvailableProfitReports" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProductReportData">
+      <soap12:operation soapAction="http://tempuri.org/IReportManager/GetProductReportData" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCategoryReportData">
+      <soap12:operation soapAction="http://tempuri.org/IReportManager/GetCategoryReportData" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetInventoryReportData">
+      <soap12:operation soapAction="http://tempuri.org/IReportManager/GetInventoryReportData" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProfitReportData">
+      <soap12:operation soapAction="http://tempuri.org/IReportManager/GetProfitReportData" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProductReportsCount">
+      <soap12:operation soapAction="http://tempuri.org/IReportManager/GetProductReportsCount" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCategoryReportsCount">
+      <soap12:operation soapAction="http://tempuri.org/IReportManager/GetCategoryReportsCount" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetInventoryReportsCount">
+      <soap12:operation soapAction="http://tempuri.org/IReportManager/GetInventoryReportsCount" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProfitReportsCount">
+      <soap12:operation soapAction="http://tempuri.org/IReportManager/GetProfitReportsCount" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProductSalesDetails">
+      <soap12:operation soapAction="http://tempuri.org/IReportManager/GetProductSalesDetails" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCategorySalesDetails">
+      <soap12:operation soapAction="http://tempuri.org/IReportManager/GetCategorySalesDetails" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -1006,25 +1260,19 @@
         </Identity>
       </wsa10:EndpointReference>
     </wsdl:port>
-    <wsdl:port name="NetTcpBinding_IReportManager" binding="tns:NetTcpBinding_IReportManager">
-      <soap12:address location="net.tcp://localhost:1441/ReportManager" />
+    <wsdl:port name="NetTcpBinding_ISaleManager" binding="tns:NetTcpBinding_ISaleManager">
+      <soap12:address location="net.tcp://localhost:1441/SaleManager" />
       <wsa10:EndpointReference>
-        <wsa10:Address>net.tcp://localhost:1441/ReportManager</wsa10:Address>
+        <wsa10:Address>net.tcp://localhost:1441/SaleManager</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
           <Upn>ERICK_ATZIN\abdie</Upn>
         </Identity>
       </wsa10:EndpointReference>
     </wsdl:port>
-    <wsdl:port name="NetTcpBinding_IPurchaseManager" binding="tns:NetTcpBinding_IPurchaseManager">
-      <soap12:address location="net.tcp://localhost:1441/PurchaseManager" />
+    <wsdl:port name="NetTcpBinding_IReportManager" binding="tns:NetTcpBinding_IReportManager">
+      <soap12:address location="net.tcp://localhost:1441/ReportManager" />
       <wsa10:EndpointReference>
-        <wsa10:Address>net.tcp://localhost:1441/PurchaseManager</wsa10:Address>
-      </wsa10:EndpointReference>
-    </wsdl:port>
-    <wsdl:port name="NetTcpBinding_ISaleManager" binding="tns:NetTcpBinding_ISaleManager">
-      <soap12:address location="net.tcp://localhost:1441/SaleManager" />
-      <wsa10:EndpointReference>
-        <wsa10:Address>net.tcp://localhost:1441/SaleManager</wsa10:Address>
+        <wsa10:Address>net.tcp://localhost:1441/ReportManager</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
           <Upn>ERICK_ATZIN\abdie</Upn>
         </Identity>

@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/DataBaseManager.Logic" xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/DataBaseManager.Logic" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:1442/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:complexType name="ArrayOfReportMetadata">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ReportMetadata" nillable="true" type="tns:ReportMetadata" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfReportMetadata" nillable="true" type="tns:ArrayOfReportMetadata" />
+  <xs:complexType name="ReportMetadata">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Category" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EndDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ItemCount" type="xs:int" />
+      <xs:element minOccurs="0" name="PeriodType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ReportId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StartDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Title" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TotalValue" type="xs:decimal" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ReportMetadata" nillable="true" type="tns:ReportMetadata" />
+  <xs:complexType name="ProductReportData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="EndDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ProductInfo" nillable="true" type="tns:ProductInfo" />
+      <xs:element minOccurs="0" name="ReportId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SalesDetails" nillable="true" type="tns:ArrayOfProductSalesDetail" />
+      <xs:element minOccurs="0" name="StartDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Summary" nillable="true" type="tns:SalesSummary" />
+      <xs:element minOccurs="0" name="Title" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ProductReportData" nillable="true" type="tns:ProductReportData" />
+  <xs:complexType name="ProductInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Category" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CurrentPrice" type="xs:decimal" />
+      <xs:element minOccurs="0" name="CurrentStock" type="xs:int" />
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LastRestockDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ProductCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ProductId" type="xs:int" />
+      <xs:element minOccurs="0" name="ProductName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ProductInfo" nillable="true" type="tns:ProductInfo" />
+  <xs:complexType name="ArrayOfProductSalesDetail">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ProductSalesDetail" nillable="true" type="tns:ProductSalesDetail" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfProductSalesDetail" nillable="true" type="tns:ArrayOfProductSalesDetail" />
+  <xs:complexType name="ProductSalesDetail">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CostPrice" type="xs:decimal" />
+      <xs:element minOccurs="0" name="CustomerName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="QuantitySold" type="xs:int" />
+      <xs:element minOccurs="0" name="SaleDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="SaleTime" type="ser:duration" />
+      <xs:element minOccurs="0" name="SoldBy" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TransactionId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UnitPrice" type="xs:decimal" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ProductSalesDetail" nillable="true" type="tns:ProductSalesDetail" />
+  <xs:complexType name="SalesSummary">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AverageSale" type="xs:decimal" />
+      <xs:element minOccurs="0" name="TotalItemsSold" type="xs:int" />
+      <xs:element minOccurs="0" name="TotalProfit" type="xs:decimal" />
+      <xs:element minOccurs="0" name="TotalSales" type="xs:decimal" />
+      <xs:element minOccurs="0" name="TotalTransactions" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SalesSummary" nillable="true" type="tns:SalesSummary" />
+  <xs:complexType name="CategoryReportData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CategoryName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EndDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ReportId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SalesDetails" nillable="true" type="tns:ArrayOfCategorySalesDetail" />
+      <xs:element minOccurs="0" name="StartDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Summary" nillable="true" type="tns:SalesSummary" />
+      <xs:element minOccurs="0" name="Title" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TopProducts" nillable="true" type="tns:ArrayOfTopProduct" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CategoryReportData" nillable="true" type="tns:CategoryReportData" />
+  <xs:complexType name="ArrayOfCategorySalesDetail">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CategorySalesDetail" nillable="true" type="tns:CategorySalesDetail" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCategorySalesDetail" nillable="true" type="tns:ArrayOfCategorySalesDetail" />
+  <xs:complexType name="CategorySalesDetail">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ProductsSold" type="xs:int" />
+      <xs:element minOccurs="0" name="SaleDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="TotalProfit" type="xs:decimal" />
+      <xs:element minOccurs="0" name="TotalSales" type="xs:decimal" />
+      <xs:element minOccurs="0" name="TransactionId" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CategorySalesDetail" nillable="true" type="tns:CategorySalesDetail" />
+  <xs:complexType name="ArrayOfTopProduct">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="TopProduct" nillable="true" type="tns:TopProduct" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTopProduct" nillable="true" type="tns:ArrayOfTopProduct" />
+  <xs:complexType name="TopProduct">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ProductCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ProductId" type="xs:int" />
+      <xs:element minOccurs="0" name="ProductName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Profit" type="xs:decimal" />
+      <xs:element minOccurs="0" name="TotalSales" type="xs:decimal" />
+      <xs:element minOccurs="0" name="UnitsSold" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TopProduct" nillable="true" type="tns:TopProduct" />
+  <xs:complexType name="InventoryReportData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Items" nillable="true" type="tns:ArrayOfInventoryItem" />
+      <xs:element minOccurs="0" name="ReportDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ReportId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Summary" nillable="true" type="tns:InventorySummary" />
+      <xs:element minOccurs="0" name="Title" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="InventoryReportData" nillable="true" type="tns:InventoryReportData" />
+  <xs:complexType name="ArrayOfInventoryItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="InventoryItem" nillable="true" type="tns:InventoryItem" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfInventoryItem" nillable="true" type="tns:ArrayOfInventoryItem" />
+  <xs:complexType name="InventoryItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Category" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CurrentStock" type="xs:int" />
+      <xs:element minOccurs="0" name="LastRestockDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="LastSaleDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ProductCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ProductId" type="xs:int" />
+      <xs:element minOccurs="0" name="ProductName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PurchasePrice" type="xs:decimal" />
+      <xs:element minOccurs="0" name="SalePrice" type="xs:decimal" />
+      <xs:element minOccurs="0" name="SupplierName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="InventoryItem" nillable="true" type="tns:InventoryItem" />
+  <xs:complexType name="InventorySummary">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="LowStock" type="xs:int" />
+      <xs:element minOccurs="0" name="OutOfStock" type="xs:int" />
+      <xs:element minOccurs="0" name="TotalInventoryValue" type="xs:decimal" />
+      <xs:element minOccurs="0" name="TotalProducts" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="InventorySummary" nillable="true" type="tns:InventorySummary" />
+  <xs:complexType name="ProfitReportData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CategoryBreakdown" nillable="true" type="tns:ArrayOfCategoryProfit" />
+      <xs:element minOccurs="0" name="EndDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Financials" nillable="true" type="tns:FinancialSummary" />
+      <xs:element minOccurs="0" name="MonthlyTrend" nillable="true" type="tns:ArrayOfMonthlyProfit" />
+      <xs:element minOccurs="0" name="ReportId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StartDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Title" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ProfitReportData" nillable="true" type="tns:ProfitReportData" />
+  <xs:complexType name="ArrayOfCategoryProfit">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CategoryProfit" nillable="true" type="tns:CategoryProfit" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCategoryProfit" nillable="true" type="tns:ArrayOfCategoryProfit" />
+  <xs:complexType name="CategoryProfit">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CategoryName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ProfitPercentage" type="xs:decimal" />
+      <xs:element minOccurs="0" name="SalesPercentage" type="xs:decimal" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CategoryProfit" nillable="true" type="tns:CategoryProfit" />
+  <xs:complexType name="FinancialSummary">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="GrossProfit" type="xs:decimal" />
+      <xs:element minOccurs="0" name="NetProfit" type="xs:decimal" />
+      <xs:element minOccurs="0" name="OperatingExpenses" type="xs:decimal" />
+      <xs:element minOccurs="0" name="ProfitMargin" type="xs:decimal" />
+      <xs:element minOccurs="0" name="TotalCosts" type="xs:decimal" />
+      <xs:element minOccurs="0" name="TotalSales" type="xs:decimal" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="FinancialSummary" nillable="true" type="tns:FinancialSummary" />
+  <xs:complexType name="ArrayOfMonthlyProfit">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="MonthlyProfit" nillable="true" type="tns:MonthlyProfit" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfMonthlyProfit" nillable="true" type="tns:ArrayOfMonthlyProfit" />
+  <xs:complexType name="MonthlyProfit">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="MonthYear" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Profit" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Sales" type="xs:decimal" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="MonthlyProfit" nillable="true" type="tns:MonthlyProfit" />
+</xs:schema>

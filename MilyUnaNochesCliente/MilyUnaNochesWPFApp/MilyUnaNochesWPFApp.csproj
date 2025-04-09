@@ -379,8 +379,17 @@
     <None Include="Connected Services\MilyUnaNochesProxy\item5.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Connected Services\MilyUnaNochesProxy\item6.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Connected Services\MilyUnaNochesProxy\MilyUnaNochesService.wsdl" />
     <None Include="Connected Services\MilyUnaNochesProxy\MilyUnaNochesWPFApp.MilyUnaNochesProxy.Address.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\MilyUnaNochesProxy\MilyUnaNochesWPFApp.MilyUnaNochesProxy.CategoryReportData.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\MilyUnaNochesProxy\MilyUnaNochesWPFApp.MilyUnaNochesProxy.CategorySalesDetail.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\MilyUnaNochesProxy\MilyUnaNochesWPFApp.MilyUnaNochesProxy.ConsultPurchase_SV.datasource">
@@ -389,10 +398,25 @@
     <None Include="Connected Services\MilyUnaNochesProxy\MilyUnaNochesWPFApp.MilyUnaNochesProxy.Empleado.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Connected Services\MilyUnaNochesProxy\MilyUnaNochesWPFApp.MilyUnaNochesProxy.InventoryReportData.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Connected Services\MilyUnaNochesProxy\MilyUnaNochesWPFApp.MilyUnaNochesProxy.Product.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Connected Services\MilyUnaNochesProxy\MilyUnaNochesWPFApp.MilyUnaNochesProxy.ProductReportData.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\MilyUnaNochesProxy\MilyUnaNochesWPFApp.MilyUnaNochesProxy.ProductSalesDetail.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\MilyUnaNochesProxy\MilyUnaNochesWPFApp.MilyUnaNochesProxy.ProfitReportData.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Connected Services\MilyUnaNochesProxy\MilyUnaNochesWPFApp.MilyUnaNochesProxy.Provider.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\MilyUnaNochesProxy\MilyUnaNochesWPFApp.MilyUnaNochesProxy.ReportMetadata.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\MilyUnaNochesProxy\MilyUnaNochesWPFApp.MilyUnaNochesProxy.SaleResult.datasource">
