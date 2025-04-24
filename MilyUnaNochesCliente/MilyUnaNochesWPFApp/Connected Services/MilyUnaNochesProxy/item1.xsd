@@ -30,6 +30,8 @@
       <xs:element minOccurs="0" name="ciudad" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="codigoPostal" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="correo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="idAcceso" type="xs:int" />
+      <xs:element minOccurs="0" name="idEmpleado" type="xs:int" />
       <xs:element minOccurs="0" name="idUsuario" type="xs:int" />
       <xs:element minOccurs="0" name="nombre" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="numero" nillable="true" type="xs:string" />
@@ -94,6 +96,8 @@
       <xs:element minOccurs="0" name="NombreProducto" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Cantidad" type="xs:int" />
       <xs:element minOccurs="0" name="PrecioUnitario" type="xs:decimal" />
+      <xs:element minOccurs="0" name="PrecioCompra" type="xs:decimal" />
+      <xs:element minOccurs="0" name="MargenGanancia" type="xs:decimal" />
       <xs:element minOccurs="0" name="Subtotal" type="xs:decimal" />
     </xs:sequence>
   </xs:complexType>
@@ -112,4 +116,11 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfVenta" nillable="true" type="tns:ArrayOfVenta" />
+  <xs:complexType name="UserSession">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="idAcceso" type="xs:int" />
+      <xs:element minOccurs="0" name="usuario" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UserSession" nillable="true" type="tns:UserSession" />
 </xs:schema>

@@ -70,6 +70,7 @@
   <xs:complexType name="ProductPurchase">
     <xs:sequence>
       <xs:element minOccurs="0" name="Cantidad" type="xs:int" />
+      <xs:element minOccurs="0" name="CodigoProducto" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="ContactoProveedor" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="IdProducto" type="xs:int" />
       <xs:element minOccurs="0" name="MontoProducto" type="xs:decimal" />
