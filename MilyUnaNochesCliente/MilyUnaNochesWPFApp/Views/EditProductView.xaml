@@ -1,4 +1,4 @@
-﻿<Page x:Class="MilyUnaNochesWPFApp.Views.RegisterProductView"
+﻿<Page x:Class="MilyUnaNochesWPFApp.Views.EditProductView"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -7,7 +7,7 @@
       mc:Ignorable="d" 
       d:DesignHeight="720" d:DesignWidth="1280"
       Background="#fdf8ef"
-      Title="RegisterProductView">
+      Title="EditProductView">
 
     <Page.Resources>
         <Style x:Key="CenteredCellStyle" TargetType="DataGridCell">
@@ -28,7 +28,7 @@
         <!-- Barra de búsqueda -->
 
         <!-- Botones de CU -->
-        <Button Content="REGISTRAR" HorizontalAlignment="Left" Margin="451,232,0,0" VerticalAlignment="Top" FontFamily="Bodoni MT" Height="55" Width="130" FontSize="19" Background="{x:Null}" Foreground="#FFAE7D5C" BorderBrush="{x:Null}" RenderTransformOrigin="0.52,0.144"/>
+        <Button Content="REGISTRAR" HorizontalAlignment="Left" Margin="451,232,0,0" VerticalAlignment="Top" FontFamily="Bodoni MT" Height="55" Width="130" FontSize="19" Background="{x:Null}" Foreground="#FFAE7D5C" BorderBrush="{x:Null}" RenderTransformOrigin="0.52,0.144" Click="Register"/>
         <Button Content="CONSULTAR" HorizontalAlignment="Left" Margin="714,232,0,0" VerticalAlignment="Top" FontFamily="Bodoni MT" Height="55" Width="130" FontSize="19" Background="{x:Null}" Foreground="#FFAE7D5C" BorderBrush="{x:Null}" RenderTransformOrigin="0.52,0.144" Click="Consult"/>
         <Button Content="VALIDAR" HorizontalAlignment="Left" Margin="979,232,0,0" VerticalAlignment="Top" FontFamily="Bodoni MT" Height="55" Width="130" FontSize="19" Background="{x:Null}" Foreground="#FFAE7D5C" BorderBrush="{x:Null}" RenderTransformOrigin="0.52,0.144" Click="Validate"/>
 
@@ -200,15 +200,15 @@
                 Padding="10" />
         </Border>
 
-        <Border Name="btn_PhotoBorder" CornerRadius="15" Background="#FF683317" Height="50" Margin="287,617,867,53">
+        <Border Name="btn_PhotoBorder" CornerRadius="15" Background="#FF683317" Height="50" Margin="287,617,887,53" RenderTransformOrigin="0.767,0.54">
             <Button Name="btn_Photo" Content="ADJUNTE ARCHIVOS" Height="50" Background="Transparent"
             BorderThickness="0" FontSize="8" Foreground="White" FontFamily="Bahnschrift SemiLight" Click="UploadPhoto"/>
         </Border>
 
         <Border CornerRadius="15" Background="#FFB45E2D" Height="50" Margin="967,614,125,56">
-            <Button Content="GUARDAR" Height="50" Background="Transparent"
-            BorderThickness="0" FontSize="16" Foreground="White" FontFamily="Bahnschrift SemiLight" Click="SaveProduct" />
+            <Button Content="ACTUALIZAR" Height="50" Background="Transparent"
+            BorderThickness="0" FontSize="16" Foreground="White" FontFamily="Bahnschrift SemiLight" Click="UploadProduct" />
         </Border>
-        <Image Name="img_Photo" HorizontalAlignment="Left" Height="82" Margin="434,604,0,0" VerticalAlignment="Top" Width="90"/>
+        <Image Name="img_Photo" HorizontalAlignment="Left" Height="82" Margin="424,601,0,0" VerticalAlignment="Top" Width="90"/>
     </Grid>
 </Page>
