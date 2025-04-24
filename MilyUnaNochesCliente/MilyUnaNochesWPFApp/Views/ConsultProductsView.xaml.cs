@@ -9,6 +9,7 @@ using System.Windows.Media;
 using MilyUnaNochesWPFApp.Logic;
 using MilyUnaNochesWPFApp.MilyUnaNochesProxy;
 using System.Diagnostics;
+using System.Windows.Forms;
 
 namespace MilyUnaNochesWPFApp.Views
 {
@@ -47,7 +48,7 @@ namespace MilyUnaNochesWPFApp.Views
             catch (Exception ex)
             {
                 Debug.WriteLine($"Ocurrió un error al obtener los productos: {ex.Message}");
-                MessageBox.Show("Error al cargar los productos. Por favor, intente nuevamente.",
+                System.Windows.MessageBox.Show("Error al cargar los productos. Por favor, intente nuevamente.",
                               "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return new List<Logic.Product>();
             }
@@ -140,7 +141,7 @@ namespace MilyUnaNochesWPFApp.Views
                         var row = ProductsDataGrid.ItemContainerGenerator.ContainerFromItem(item) as DataGridRow;
                         if (row != null)
                         {
-                            var checkBox = FindVisualChild<CheckBox>(row);
+                            var checkBox = FindVisualChild<System.Windows.Controls.CheckBox>(row);
                             if (checkBox != null)
                             {
                                 checkBox.IsChecked = false;
@@ -185,6 +186,11 @@ namespace MilyUnaNochesWPFApp.Views
 
         private void Validate(object sender, RoutedEventArgs e)
         {
+            ValidateProductsView validateProducts = new ValidateProductsView();
+            Window mainWindow = Window.GetWindow(this);
+            validateProducts.Owner = mainWindow;
+            validateProducts.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+            validateProducts.ShowDialog();
 
         }
 
@@ -195,7 +201,7 @@ namespace MilyUnaNochesWPFApp.Views
 
             if (selectedProduct == null)
             {
-                MessageBox.Show("Por favor, seleccione un producto antes de consultar.",
+                System.Windows.MessageBox.Show("Por favor, seleccione un producto antes de consultar.",
                               "Advertencia", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
@@ -205,11 +211,48 @@ namespace MilyUnaNochesWPFApp.Views
 
         private void Edit(object sender, RoutedEventArgs e)
         {
+            var selectedProduct = ProductsDataGrid.SelectedItem as Logic.Product;
+
+            if (selectedProduct == null)
+            {
+                System.Windows.MessageBox.Show("Por favor, seleccione un producto antes de editarlo.",
+                              "Advertencia", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            NavigationService?.Navigate(new EditProductView(selectedProduct));
 
         }
 
         private void Delete(object sender, RoutedEventArgs e)
         {
+            var selectedProduct = ProductsDataGrid.SelectedItem as Logic.Product;
+
+            if (selectedProduct == null)
+            {
+                System.Windows.MessageBox.Show("Por favor, seleccione un producto antes de eliminarlo.",
+                              "Advertencia", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            DialogResult result = System.Windows.Forms.MessageBox.Show(
+                "¿Estas seguro que deseas borrar el producto " + selectedProduct.NombreProducto + "?",
+                "Confirmar",
+                MessageBoxButtons.YesNo, // Botones Sí/No (o OK/Cancel)
+                MessageBoxIcon.Question // Icono de pregunta
+                );
+
+            if (result == DialogResult.Yes)
+            {
+                IProductsManager proxy = new ProductsManagerClient();
+                if (proxy.DeleteProduct(selectedProduct.NombreProducto))
+                {
+                    System.Windows.MessageBox.Show($"Eliminación realizada con éxito",
+                        "Éxito", MessageBoxButton.OK, MessageBoxImage.Information);
+                    NavigationService?.Navigate(new ConsultProductsView());
+                }
+
+            }
 
         }
     }
