@@ -1,0 +1,59 @@
+﻿<Window x:Class="MilyUnaNochesWPFApp.Views.ValidateProductsView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Validar productos" 
+        Height="300" Width="500"
+        WindowStartupLocation="CenterOwner"
+        ResizeMode="NoResize"
+        Background="#c18d5c"
+        FocusManager.FocusedElement="{Binding ElementName=txtCantidad}">
+
+    <Grid Margin="15">
+
+
+        <!-- Texto descriptivo -->
+        <Border Height="254" VerticalAlignment="Center">
+            <TextBlock Name="Text" Grid.Row="0" Text="Ingresa la cantidad de productos" Margin="0,26,0,71" FontWeight="Bold" FontSize="27" 
+                       FontFamily="Bodoni MT" Foreground="White" FontStyle="Italic" HorizontalAlignment="Center" TextWrapping="Wrap" Width="428" TextAlignment="Center"/>
+        </Border>
+
+        <!-- Cuadro de texto para entrada -->
+        <Border x:Name="productNumBorder" HorizontalAlignment="Left" Visibility="Visible" 
+        Width="304"
+        Margin="21,103,0,79"
+        CornerRadius="25"
+        Background="White">
+            <TextBox FontFamily="Bodoni MT Condensed"
+             FontSize="20"
+             BorderThickness="0"
+             Background="Transparent"
+             Name="txtb_ProductNum"
+             Padding="10"/>
+        </Border>
+
+
+        <!-- Botón Validar -->
+        <Border Name="btn_Validate"  CornerRadius="15" Background="#FFE0CAA3" Margin="344,103,25,87">
+            <Button Content="Validar" Background="Transparent"
+            BorderThickness="0" FontSize="16" Foreground="White" FontFamily="Bahnschrift SemiLight" Click="Validate" Margin="0,0,1,0" />
+        </Border>
+
+        <!-- Botón Ok -->
+        <Border Name="btn_Ok" CornerRadius="15" Background="#FFE0CAA3" Margin="336,182,25,21" Visibility="Collapsed">
+            <Button Content="Ok" Background="Transparent"
+            BorderThickness="0" FontSize="16" Foreground="White" FontFamily="Bahnschrift SemiLight" Click="Ok" />
+        </Border>
+
+        <!-- Textos informativo -->
+        <TextBlock x:Name="InformativeText" Grid.Row="0" Margin="3,127,0,83" FontWeight="Bold" FontSize="18" Visibility="Collapsed" 
+                       FontFamily="Bodoni MT" Foreground="White" HorizontalAlignment="Left" TextWrapping="Wrap" Width="267" TextAlignment="Center"><Run Language="es-mx" Text="Número de productos ingresado:"/></TextBlock>
+
+        <TextBlock x:Name="InformativeText2" Grid.Row="0" Margin="10,166,0,38" FontWeight="Bold" FontSize="18" Visibility="Collapsed" 
+                       FontFamily="Bodoni MT" Foreground="White" HorizontalAlignment="Left" TextWrapping="Wrap" Width="262" TextAlignment="Center"><Run Language="es-mx" Text="Número de productos registrados:"/></TextBlock>
+
+        <TextBlock x:Name="InformativeTextNum" Grid.Row="0" Margin="270,127,0,83" FontWeight="Bold" FontSize="18" Visibility="Collapsed" 
+            FontFamily="Bodoni MT" Foreground="White" HorizontalAlignment="Left" TextWrapping="Wrap" Width="36" TextAlignment="Center" />
+        <TextBlock x:Name="InformativeText2Num" Grid.Row="0" Margin="277,166,0,38" FontWeight="Bold" FontSize="18" Visibility="Collapsed" 
+            FontFamily="Bodoni MT" Foreground="White" HorizontalAlignment="Left" TextWrapping="Wrap" Width="33" TextAlignment="Center" />
+    </Grid>
+</Window>
