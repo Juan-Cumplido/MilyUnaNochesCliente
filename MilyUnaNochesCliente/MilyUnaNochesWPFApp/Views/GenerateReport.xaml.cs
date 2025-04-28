@@ -48,12 +48,14 @@ namespace MilyUnaNochesWPFApp.Views {
         private void BtnClick_Categoria(object sender, RoutedEventArgs e) {
             _tipoReporte = "Categoria";
             ShowGrid(grid_Categoria);
+            txtb_CategoriaProducto.Text = "";
             AssignEventsCategory();
         }
 
         private void BtnClick_Producto(object sender, RoutedEventArgs e) {
             _tipoReporte = "Producto";
             ShowGrid(grid_Producto);
+            txtb_CodigoProducto.Text = "";
             AssignEvents();
         }
 

@@ -1316,7 +1316,7 @@
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:1441/UserService</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
-          <Upn>DESKTOP-8TVMGHH\cumpl</Upn>
+          <Upn>ERICK_ATZIN\abdie</Upn>
         </Identity>
       </wsa10:EndpointReference>
     </wsdl:port>
@@ -1325,7 +1325,7 @@
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:1441/AddressManager</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
-          <Upn>DESKTOP-8TVMGHH\cumpl</Upn>
+          <Upn>ERICK_ATZIN\abdie</Upn>
         </Identity>
       </wsa10:EndpointReference>
     </wsdl:port>
@@ -1334,7 +1334,7 @@
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:1441/ProviderManager</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
-          <Upn>DESKTOP-8TVMGHH\cumpl</Upn>
+          <Upn>ERICK_ATZIN\abdie</Upn>
         </Identity>
       </wsa10:EndpointReference>
     </wsdl:port>
@@ -1343,7 +1343,7 @@
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:1441/ProductsManager</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
-          <Upn>DESKTOP-8TVMGHH\cumpl</Upn>
+          <Upn>ERICK_ATZIN\abdie</Upn>
         </Identity>
       </wsa10:EndpointReference>
     </wsdl:port>
@@ -1352,7 +1352,7 @@
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:1441/PurchaseManager</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
-          <Upn>DESKTOP-8TVMGHH\cumpl</Upn>
+          <Upn>ERICK_ATZIN\abdie</Upn>
         </Identity>
       </wsa10:EndpointReference>
     </wsdl:port>
@@ -1361,25 +1361,25 @@
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:1441/SaleManager</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
-          <Upn>DESKTOP-8TVMGHH\cumpl</Upn>
+          <Upn>ERICK_ATZIN\abdie</Upn>
         </Identity>
       </wsa10:EndpointReference>
     </wsdl:port>
     <wsdl:port name="NetTcpBinding_IReportManager" binding="tns:NetTcpBinding_IReportManager">
-      <soap12:address location="net.tcp://localhost:1441/SaleManager" />
+      <soap12:address location="net.tcp://localhost:1441/ReportManager" />
       <wsa10:EndpointReference>
-        <wsa10:Address>net.tcp://localhost:1441/SaleManager</wsa10:Address>
+        <wsa10:Address>net.tcp://localhost:1441/ReportManager</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
-          <Upn>DESKTOP-8TVMGHH\cumpl</Upn>
+          <Upn>ERICK_ATZIN\abdie</Upn>
         </Identity>
       </wsa10:EndpointReference>
     </wsdl:port>
     <wsdl:port name="NetTcpBinding_IUserSessionManager" binding="tns:NetTcpBinding_IUserSessionManager">
-      <soap12:address location="net.tcp://localhost:1441/SaleManager" />
+      <soap12:address location="net.tcp://localhost:1441/UserSesionManager" />
       <wsa10:EndpointReference>
-        <wsa10:Address>net.tcp://localhost:1441/SaleManager</wsa10:Address>
+        <wsa10:Address>net.tcp://localhost:1441/UserSesionManager</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
-          <Upn>DESKTOP-8TVMGHH\cumpl</Upn>
+          <Upn>ERICK_ATZIN\abdie</Upn>
         </Identity>
       </wsa10:EndpointReference>
     </wsdl:port>

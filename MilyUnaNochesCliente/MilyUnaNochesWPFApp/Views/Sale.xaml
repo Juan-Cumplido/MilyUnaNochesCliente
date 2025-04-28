@@ -9,7 +9,7 @@
       Background="#fdf8ef"
       Title="Sale">
 
-    <Grid>
+    <Grid x:Name="gridPrincipal">
         <Label Content="Número de cliente" 
                HorizontalAlignment="Left" 
                Height="40" 
@@ -113,6 +113,7 @@
                HorizontalContentAlignment="Center"
                VerticalContentAlignment="Center"/>
         <Label Content="CANCELAR COMPRA" 
+               Name="lblCancelSale"
                 HorizontalAlignment="Left"
                 Height="37"
                 Margin="45,245,0,0"
@@ -128,6 +129,7 @@
             </Label.Background>
         </Label>
         <Label Content="PAGAR" 
+               Name="lblPay"
                 HorizontalAlignment="Left"
                 Height="37"
                 Margin="146,301,0,0"
@@ -143,7 +145,8 @@
             </Label.Background>
         </Label>
         <Label Content="AÑADIR PRODUCTOS" 
-                HorizontalAlignment="Left"
+               Name="lblAddProduct" 
+               HorizontalAlignment="Left"
                 Height="37"
                 Margin="248,245,0,0"
                 VerticalAlignment="Top"
@@ -193,7 +196,7 @@
                 </Border>
             </WrapPanel>
         </ScrollViewer>
-        <Grid Margin="180,-16,159,152" 
+        <Grid Margin="0,-16,0,0" 
               Name="gridSearchProduct" Visibility="Collapsed">
             <Image HorizontalAlignment="Center" 
                    Height="271" 
@@ -209,24 +212,19 @@
 
             <TextBox Name="txtSearchProduct"
                      HorizontalAlignment="Left"
-                     Height="66" 
-                     Margin="190,0,0,0" 
+                     Height="63" 
+                     Margin="340,107,0,0" 
                      TextWrapping="Wrap" 
-                     VerticalAlignment="Center"
-                     Width="344" 
-                     BorderBrush="{x:Null}"
+                     VerticalAlignment="Top"
+                     Width="344"
                      SelectionBrush="{x:Null}" 
                      VerticalContentAlignment="Center" 
                      HorizontalContentAlignment="Center" 
-                     FontSize="20" SelectionTextBrush="#FF6C95F0">
-                <TextBox.Background>
-                    <ImageBrush ImageSource="/Images/Background/BackgroundTextBlock.png"/>
-                </TextBox.Background>
-            </TextBox>
+                     FontSize="20" SelectionTextBrush="{x:Null}" Background="White" BorderBrush="Black" BorderThickness="1,1,5,8"/>
             <Button Content="X" 
                     HorizontalAlignment="Right" 
-                    Width="41"
-                    Margin="0,-17,774,266"
+                    Width="50"
+                    Margin="0,-18,937,404"
                     Background="Black"
                     BorderBrush="Transparent"
                     Foreground="White"
@@ -245,7 +243,7 @@
             </Button>
             <Label Content="Agregar" 
         HorizontalAlignment="Left" 
-        Margin="570,122,0,121" 
+        Margin="767,107,0,273" 
         Width="136"
         Foreground="Black"
         FontWeight="Bold"

@@ -40,6 +40,19 @@ namespace MilyUnaNochesWPFApp.Views {
             gridSearchProduct.Visibility = Visibility.Visible;
             txtSearchProduct.Text = "";
             txtSearchProduct.Focus();
+            deshabilitarBotones();
+        }
+
+        private void deshabilitarBotones() {
+            lblPay.IsEnabled = false;
+            lblCancelSale.IsEnabled = false;
+            lblAddProduct.IsEnabled = false;
+        } 
+
+        private void habilitarBotones() {
+            lblPay.IsEnabled = true;
+            lblCancelSale.IsEnabled = true;
+            lblAddProduct.IsEnabled = true;
         }
 
         private Dictionary<int, int> _productCounts = new Dictionary<int, int>();
@@ -117,6 +130,7 @@ namespace MilyUnaNochesWPFApp.Views {
 
                 UpdateUI();
                 gridSearchProduct.Visibility = Visibility.Collapsed;
+                habilitarBotones();
             } catch (Exception ex) {
                 MessageBox.Show($"Error al buscar producto: {ex.Message}",
                     "Error",
@@ -334,6 +348,10 @@ namespace MilyUnaNochesWPFApp.Views {
 
         private void CloseSearchPanel_Click(object sender, RoutedEventArgs e) {
             gridSearchProduct.Visibility = Visibility.Collapsed;
+            lblPay.IsEnabled = true;
+            lblCancelSale.IsEnabled = true;
+            lblAddProduct.IsEnabled = true;
+
         }
 
         private void ClosePaymentPanel_Click(object sender, RoutedEventArgs e) {
