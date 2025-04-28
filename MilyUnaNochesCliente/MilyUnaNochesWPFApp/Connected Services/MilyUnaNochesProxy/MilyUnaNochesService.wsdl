@@ -454,6 +454,24 @@
   <wsdl:message name="IProductsManager_GetProductStock_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetProductStockResponse" />
   </wsdl:message>
+  <wsdl:message name="IProductsManager_UpdateProduct_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateProduct" />
+  </wsdl:message>
+  <wsdl:message name="IProductsManager_UpdateProduct_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateProductResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProductsManager_DeleteProduct_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteProduct" />
+  </wsdl:message>
+  <wsdl:message name="IProductsManager_DeleteProduct_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteProductResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProductsManager_NumProducts_InputMessage">
+    <wsdl:part name="parameters" element="tns:NumProducts" />
+  </wsdl:message>
+  <wsdl:message name="IProductsManager_NumProducts_OutputMessage">
+    <wsdl:part name="parameters" element="tns:NumProductsResponse" />
+  </wsdl:message>
   <wsdl:message name="IPurchaseManager_SavePurchase_InputMessage">
     <wsdl:part name="parameters" element="tns:SavePurchase" />
   </wsdl:message>
@@ -712,6 +730,18 @@
     <wsdl:operation name="GetProductStock">
       <wsdl:input wsaw:Action="http://tempuri.org/IProductsManager/GetProductStock" message="tns:IProductsManager_GetProductStock_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IProductsManager/GetProductStockResponse" message="tns:IProductsManager_GetProductStock_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateProduct">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProductsManager/UpdateProduct" message="tns:IProductsManager_UpdateProduct_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProductsManager/UpdateProductResponse" message="tns:IProductsManager_UpdateProduct_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteProduct">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProductsManager/DeleteProduct" message="tns:IProductsManager_DeleteProduct_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProductsManager/DeleteProductResponse" message="tns:IProductsManager_DeleteProduct_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="NumProducts">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProductsManager/NumProducts" message="tns:IProductsManager_NumProducts_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProductsManager/NumProductsResponse" message="tns:IProductsManager_NumProducts_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="IPurchaseManager">
@@ -1095,6 +1125,33 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="UpdateProduct">
+      <soap12:operation soapAction="http://tempuri.org/IProductsManager/UpdateProduct" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteProduct">
+      <soap12:operation soapAction="http://tempuri.org/IProductsManager/DeleteProduct" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="NumProducts">
+      <soap12:operation soapAction="http://tempuri.org/IProductsManager/NumProducts" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="NetTcpBinding_IPurchaseManager" type="tns:IPurchaseManager">
     <wsp:PolicyReference URI="#NetTcpBinding_IPurchaseManager_policy" />
@@ -1316,7 +1373,7 @@
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:1441/UserService</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
-          <Upn>ERICK_ATZIN\abdie</Upn>
+          <Upn>ERILAP\Erick</Upn>
         </Identity>
       </wsa10:EndpointReference>
     </wsdl:port>
@@ -1325,7 +1382,7 @@
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:1441/AddressManager</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
-          <Upn>ERICK_ATZIN\abdie</Upn>
+          <Upn>ERILAP\Erick</Upn>
         </Identity>
       </wsa10:EndpointReference>
     </wsdl:port>
@@ -1334,7 +1391,7 @@
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:1441/ProviderManager</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
-          <Upn>ERICK_ATZIN\abdie</Upn>
+          <Upn>ERILAP\Erick</Upn>
         </Identity>
       </wsa10:EndpointReference>
     </wsdl:port>
@@ -1343,7 +1400,7 @@
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:1441/ProductsManager</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
-          <Upn>ERICK_ATZIN\abdie</Upn>
+          <Upn>ERILAP\Erick</Upn>
         </Identity>
       </wsa10:EndpointReference>
     </wsdl:port>
@@ -1352,7 +1409,7 @@
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:1441/PurchaseManager</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
-          <Upn>ERICK_ATZIN\abdie</Upn>
+          <Upn>ERILAP\Erick</Upn>
         </Identity>
       </wsa10:EndpointReference>
     </wsdl:port>
@@ -1361,25 +1418,25 @@
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:1441/SaleManager</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
-          <Upn>ERICK_ATZIN\abdie</Upn>
+          <Upn>ERILAP\Erick</Upn>
         </Identity>
       </wsa10:EndpointReference>
     </wsdl:port>
     <wsdl:port name="NetTcpBinding_IReportManager" binding="tns:NetTcpBinding_IReportManager">
-      <soap12:address location="net.tcp://localhost:1441/ReportManager" />
+      <soap12:address location="net.tcp://localhost:1441/SaleManager" />
       <wsa10:EndpointReference>
-        <wsa10:Address>net.tcp://localhost:1441/ReportManager</wsa10:Address>
+        <wsa10:Address>net.tcp://localhost:1441/SaleManager</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
-          <Upn>ERICK_ATZIN\abdie</Upn>
+          <Upn>ERILAP\Erick</Upn>
         </Identity>
       </wsa10:EndpointReference>
     </wsdl:port>
     <wsdl:port name="NetTcpBinding_IUserSessionManager" binding="tns:NetTcpBinding_IUserSessionManager">
-      <soap12:address location="net.tcp://localhost:1441/UserSesionManager" />
+      <soap12:address location="net.tcp://localhost:1441/SaleManager" />
       <wsa10:EndpointReference>
-        <wsa10:Address>net.tcp://localhost:1441/UserSesionManager</wsa10:Address>
+        <wsa10:Address>net.tcp://localhost:1441/SaleManager</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
-          <Upn>ERICK_ATZIN\abdie</Upn>
+          <Upn>ERILAP\Erick</Upn>
         </Identity>
       </wsa10:EndpointReference>
     </wsdl:port>
