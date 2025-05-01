@@ -26,34 +26,46 @@ namespace MilyUnaNochesWPFApp.Views
             InitializeComponent();
         }
 
-        private void BtnLogin_Click(object sender, RoutedEventArgs e)
+        private async void BtnLogin_Click(object sender, RoutedEventArgs e)
         {
-            /*txtb_UserIdTextBox.BorderBrush = new SolidColorBrush(Colors.White);
+            txtb_UserIdTextBox.BorderBrush = new SolidColorBrush(Colors.White);
             pwb_PasswordBox.BorderBrush = new SolidColorBrush(Colors.White);
-
-            Acceso userAccount = new Acceso
+            btnLogin.IsEnabled = false;
+            imgLoading.Visibility = Visibility.Visible;
+            try
             {
-                usuario = txtb_UserIdTextBox.Text,
-                contraseña = pwb_PasswordBox.Password
-            };
-
-            if (verifyFields())
-            {
-                int validateCredentials = ValidateCredentials(userAccount);
-
-                if (validateCredentials == 1)
+                Acceso userAccount = new Acceso
                 {
-                    ValidateExistingUserSession();
-                }
-                else if (validateCredentials == 0)
+                    usuario = txtb_UserIdTextBox.Text,
+                    contraseña = pwb_PasswordBox.Password
+                };
+
+                if (verifyFields())
                 {
-                    DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogMissmatchesCredentials);
+                    int validateCredentials = await Task.Run(() => ValidateCredentials(userAccount));
+
+                    if (validateCredentials == 1)
+                    {
+                        await ValidateExistingUserSession();
+                    }
+                    else if (validateCredentials == 0)
+                    {
+                        imgLoading.Visibility = Visibility.Collapsed;
+                        DialogManager.ShowErrorMessageAlert("No se ha podido encontrar la cuenta. Por favor verifique que el nombre de usuario y contraseña sea correcto.");
+                    }
                 }
+                else
+                {
+                    imgLoading.Visibility = Visibility.Collapsed;
+                    DialogManager.ShowErrorMessageAlert("La información que ha ingresado es incorrecta. Intentelo de nuevo.");
+                }
+
             }
-            else
+            finally
             {
-                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogWrongData);
-            }*/
+                imgLoading.Visibility = Visibility.Collapsed; 
+                btnLogin.IsEnabled = true; 
+            }
         }
 
         public bool verifyFields()
@@ -75,6 +87,52 @@ namespace MilyUnaNochesWPFApp.Views
             
 
             return isValid;
+        }
+
+        public async Task ValidateExistingUserSession()
+        {
+            bool existingSessionValidation = false;
+            LoggerManager logger = new LoggerManager(this.GetType());
+            MilyUnaNochesProxy.UserSessionManagerClient userSessionManagerClient = new UserSessionManagerClient();
+            try
+            {
+                string userId = string.Empty;
+                    txtb_UserIdTextBox.Dispatcher.Invoke(() =>
+                {
+                    userId = txtb_UserIdTextBox.Text;
+                });
+
+                UserSession session = new UserSession()
+                {
+                    usuario = userId,
+                    idAcceso = UserProfileSingleton.idAcceso
+                };
+                existingSessionValidation = userSessionManagerClient.VerifyConnectivity(session);
+                if (existingSessionValidation)
+                {
+                    DialogManager.ShowWarningMessageAlert("Ya existe una session abierta con ese usuario");
+                }
+                else
+                {
+                    userSessionManagerClient.Connect(session);
+                    DisplayMainMenuView();
+                }
+            }
+            catch (EndpointNotFoundException endPointException)
+            {
+                logger.LogFatal(endPointException);
+                DialogManager.ShowErrorMessageAlert("No se pudo establecer conexión con el servidor. Por favor, verifique la configuración de red e intente nuevamente.");
+            }
+            catch (TimeoutException timeOutException)
+            {
+                logger.LogWarn(timeOutException);
+                DialogManager.ShowErrorMessageAlert("Inténtalo de nuevo. El tiempo de espera ha expirado. Por favor, verifica tu conexión al servidor.");
+            }
+            catch (CommunicationException communicationException)
+            {
+                logger.LogFatal(communicationException);
+                DialogManager.ShowErrorMessageAlert("Se ha producido un fallo para establecer la conexión al servidor. Chequee su conexión a internet e inténtelo de nuevo.");
+            }
         }
 
         public int ValidateCredentials(Acceso access)
@@ -120,13 +178,12 @@ namespace MilyUnaNochesWPFApp.Views
 
         public void obtainSingletonData(Acceso access)
         {
-            /*LoggerManager logger = new LoggerManager(this.GetType());
-
+            LoggerManager logger = new LoggerManager(this.GetType());
             try
             {
                 IUserManager userManager = new UserManagerClient();
                 string hashedPassword = Hasher.hashToSHA2(access.contraseña);
-                Acceso userAccount = userManager.GetUserProfile(access.usuario, hashedPassword);
+                Empleado userAccount = userManager.GetUserProfile(access.usuario,hashedPassword );
 
                 if (userAccount != null)
                 {
@@ -136,25 +193,46 @@ namespace MilyUnaNochesWPFApp.Views
             catch (EndpointNotFoundException endPointException)
             {
                 logger.LogFatal(endPointException);
-                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogEndPointException);
+                DialogManager.ShowErrorMessageAlert("No se pudo establecer conexión con el servidor. Por favor, verifique la configuración de red e intente nuevamente.");
             }
             catch (TimeoutException timeOutException)
             {
                 logger.LogWarn(timeOutException);
-                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogTimeOutException);
+                DialogManager.ShowErrorMessageAlert("Inténtalo de nuevo. El tiempo de espera ha expirado. Por favor, verifica tu conexión al servidor.");
             }
             catch (CommunicationException communicationException)
             {
                 logger.LogFatal(communicationException);
-                DialogManager.ShowErrorMessageAlert(Properties.Resources.dialogComunicationException);
-            }*/
+                DialogManager.ShowErrorMessageAlert("Se ha producido un fallo para establecer la conexión al servidor. Chequee su conexión a internet e inténtelo de nuevo.");
+            }
         }
 
         private void DisplayMainMenuView()
         {
-            MenuEmployees menuEmployees = new MenuEmployees();
-            this.NavigationService.Navigate(menuEmployees);
+            string tipoEmpleado = UserProfileSingleton.typeEmployee; 
+
+            switch (tipoEmpleado)
+            {
+                case "Gerente":
+                    ManagerMenu managerMenu = new ManagerMenu();
+                    this.NavigationService.Navigate(managerMenu);
+                    break;
+
+                case "Cajero":
+                    CashierMenu cashierMenu = new CashierMenu();
+                    this.NavigationService.Navigate(cashierMenu);
+                    break;
+
+                case "Bodeguista":
+                    RegisterProductView registerProductView = new RegisterProductView();
+                    this.NavigationService.Navigate(registerProductView);
+                    break;
+
+                default:
+                     break;
+            }
         }
+
         private void UserIdTextBox_GotFocus(object sender, RoutedEventArgs e)
         {
             if (txtb_UserIdTextBox.Text == "Usuario")

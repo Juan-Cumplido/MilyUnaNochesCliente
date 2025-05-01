@@ -285,6 +285,12 @@ namespace MilyUnaNochesWPFApp.MilyUnaNochesProxy {
         private string correoField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int idAccesoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int idEmpleadoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int idUsuarioField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -363,6 +369,32 @@ namespace MilyUnaNochesWPFApp.MilyUnaNochesProxy {
                 if ((object.ReferenceEquals(this.correoField, value) != true)) {
                     this.correoField = value;
                     this.RaisePropertyChanged("correo");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int idAcceso {
+            get {
+                return this.idAccesoField;
+            }
+            set {
+                if ((this.idAccesoField.Equals(value) != true)) {
+                    this.idAccesoField = value;
+                    this.RaisePropertyChanged("idAcceso");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int idEmpleado {
+            get {
+                return this.idEmpleadoField;
+            }
+            set {
+                if ((this.idEmpleadoField.Equals(value) != true)) {
+                    this.idEmpleadoField = value;
+                    this.RaisePropertyChanged("idEmpleado");
                 }
             }
         }
@@ -3765,6 +3797,67 @@ namespace MilyUnaNochesWPFApp.MilyUnaNochesProxy {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="UserSession", Namespace="http://schemas.datacontract.org/2004/07/MilyUnaNochesService.Contracts")]
+    [System.SerializableAttribute()]
+    public partial class UserSession : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int idAccesoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string usuarioField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int idAcceso {
+            get {
+                return this.idAccesoField;
+            }
+            set {
+                if ((this.idAccesoField.Equals(value) != true)) {
+                    this.idAccesoField = value;
+                    this.RaisePropertyChanged("idAcceso");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string usuario {
+            get {
+                return this.usuarioField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.usuarioField, value) != true)) {
+                    this.usuarioField = value;
+                    this.RaisePropertyChanged("usuario");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="MilyUnaNochesProxy.IUserManager")]
     public interface IUserManager {
@@ -4239,6 +4332,24 @@ namespace MilyUnaNochesWPFApp.MilyUnaNochesProxy {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductsManager/GetProductStock", ReplyAction="http://tempuri.org/IProductsManager/GetProductStockResponse")]
         System.Threading.Tasks.Task<MilyUnaNochesWPFApp.MilyUnaNochesProxy.StockResponse> GetProductStockAsync(int productId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductsManager/UpdateProduct", ReplyAction="http://tempuri.org/IProductsManager/UpdateProductResponse")]
+        bool UpdateProduct(MilyUnaNochesWPFApp.MilyUnaNochesProxy.Product product, string oldProductName);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductsManager/UpdateProduct", ReplyAction="http://tempuri.org/IProductsManager/UpdateProductResponse")]
+        System.Threading.Tasks.Task<bool> UpdateProductAsync(MilyUnaNochesWPFApp.MilyUnaNochesProxy.Product product, string oldProductName);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductsManager/DeleteProduct", ReplyAction="http://tempuri.org/IProductsManager/DeleteProductResponse")]
+        bool DeleteProduct(string productName);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductsManager/DeleteProduct", ReplyAction="http://tempuri.org/IProductsManager/DeleteProductResponse")]
+        System.Threading.Tasks.Task<bool> DeleteProductAsync(string productName);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductsManager/NumProducts", ReplyAction="http://tempuri.org/IProductsManager/NumProductsResponse")]
+        int NumProducts();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductsManager/NumProducts", ReplyAction="http://tempuri.org/IProductsManager/NumProductsResponse")]
+        System.Threading.Tasks.Task<int> NumProductsAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -4314,6 +4425,30 @@ namespace MilyUnaNochesWPFApp.MilyUnaNochesProxy {
         
         public System.Threading.Tasks.Task<MilyUnaNochesWPFApp.MilyUnaNochesProxy.StockResponse> GetProductStockAsync(int productId) {
             return base.Channel.GetProductStockAsync(productId);
+        }
+        
+        public bool UpdateProduct(MilyUnaNochesWPFApp.MilyUnaNochesProxy.Product product, string oldProductName) {
+            return base.Channel.UpdateProduct(product, oldProductName);
+        }
+        
+        public System.Threading.Tasks.Task<bool> UpdateProductAsync(MilyUnaNochesWPFApp.MilyUnaNochesProxy.Product product, string oldProductName) {
+            return base.Channel.UpdateProductAsync(product, oldProductName);
+        }
+        
+        public bool DeleteProduct(string productName) {
+            return base.Channel.DeleteProduct(productName);
+        }
+        
+        public System.Threading.Tasks.Task<bool> DeleteProductAsync(string productName) {
+            return base.Channel.DeleteProductAsync(productName);
+        }
+        
+        public int NumProducts() {
+            return base.Channel.NumProducts();
+        }
+        
+        public System.Threading.Tasks.Task<int> NumProductsAsync() {
+            return base.Channel.NumProductsAsync();
         }
     }
     
@@ -4679,6 +4814,81 @@ namespace MilyUnaNochesWPFApp.MilyUnaNochesProxy {
         
         public System.Threading.Tasks.Task<System.Collections.Generic.List<MilyUnaNochesWPFApp.MilyUnaNochesProxy.CategorySalesDetail>> GetCategorySalesDetailsAsync(string category, System.DateTime startDate, System.DateTime endDate) {
             return base.Channel.GetCategorySalesDetailsAsync(category, startDate, endDate);
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="MilyUnaNochesProxy.IUserSessionManager")]
+    public interface IUserSessionManager {
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserSessionManager/Connect", ReplyAction="http://tempuri.org/IUserSessionManager/ConnectResponse")]
+        int Connect(MilyUnaNochesWPFApp.MilyUnaNochesProxy.UserSession user);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserSessionManager/Connect", ReplyAction="http://tempuri.org/IUserSessionManager/ConnectResponse")]
+        System.Threading.Tasks.Task<int> ConnectAsync(MilyUnaNochesWPFApp.MilyUnaNochesProxy.UserSession user);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserSessionManager/Disconnect", ReplyAction="http://tempuri.org/IUserSessionManager/DisconnectResponse")]
+        int Disconnect(MilyUnaNochesWPFApp.MilyUnaNochesProxy.UserSession user, bool isInMatch);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserSessionManager/Disconnect", ReplyAction="http://tempuri.org/IUserSessionManager/DisconnectResponse")]
+        System.Threading.Tasks.Task<int> DisconnectAsync(MilyUnaNochesWPFApp.MilyUnaNochesProxy.UserSession user, bool isInMatch);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserSessionManager/VerifyConnectivity", ReplyAction="http://tempuri.org/IUserSessionManager/VerifyConnectivityResponse")]
+        bool VerifyConnectivity(MilyUnaNochesWPFApp.MilyUnaNochesProxy.UserSession user);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserSessionManager/VerifyConnectivity", ReplyAction="http://tempuri.org/IUserSessionManager/VerifyConnectivityResponse")]
+        System.Threading.Tasks.Task<bool> VerifyConnectivityAsync(MilyUnaNochesWPFApp.MilyUnaNochesProxy.UserSession user);
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface IUserSessionManagerChannel : MilyUnaNochesWPFApp.MilyUnaNochesProxy.IUserSessionManager, System.ServiceModel.IClientChannel {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class UserSessionManagerClient : System.ServiceModel.ClientBase<MilyUnaNochesWPFApp.MilyUnaNochesProxy.IUserSessionManager>, MilyUnaNochesWPFApp.MilyUnaNochesProxy.IUserSessionManager {
+        
+        public UserSessionManagerClient() {
+        }
+        
+        public UserSessionManagerClient(string endpointConfigurationName) : 
+                base(endpointConfigurationName) {
+        }
+        
+        public UserSessionManagerClient(string endpointConfigurationName, string remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public UserSessionManagerClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public UserSessionManagerClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(binding, remoteAddress) {
+        }
+        
+        public int Connect(MilyUnaNochesWPFApp.MilyUnaNochesProxy.UserSession user) {
+            return base.Channel.Connect(user);
+        }
+        
+        public System.Threading.Tasks.Task<int> ConnectAsync(MilyUnaNochesWPFApp.MilyUnaNochesProxy.UserSession user) {
+            return base.Channel.ConnectAsync(user);
+        }
+        
+        public int Disconnect(MilyUnaNochesWPFApp.MilyUnaNochesProxy.UserSession user, bool isInMatch) {
+            return base.Channel.Disconnect(user, isInMatch);
+        }
+        
+        public System.Threading.Tasks.Task<int> DisconnectAsync(MilyUnaNochesWPFApp.MilyUnaNochesProxy.UserSession user, bool isInMatch) {
+            return base.Channel.DisconnectAsync(user, isInMatch);
+        }
+        
+        public bool VerifyConnectivity(MilyUnaNochesWPFApp.MilyUnaNochesProxy.UserSession user) {
+            return base.Channel.VerifyConnectivity(user);
+        }
+        
+        public System.Threading.Tasks.Task<bool> VerifyConnectivityAsync(MilyUnaNochesWPFApp.MilyUnaNochesProxy.UserSession user) {
+            return base.Channel.VerifyConnectivityAsync(user);
         }
     }
 }
