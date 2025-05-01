@@ -31,7 +31,8 @@ namespace MilyUnaNochesWPFApp.Views {
         }
 
         private void Users_Click(object sender, RoutedEventArgs e) {
-
+            CashierMenu cashierMenu = new CashierMenu();
+            this.NavigationService.Navigate(cashierMenu);
         }
 
         private void Products_Click(object sender, RoutedEventArgs e) {
