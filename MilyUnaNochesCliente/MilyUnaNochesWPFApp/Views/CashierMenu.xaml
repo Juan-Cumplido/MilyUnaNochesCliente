@@ -14,7 +14,7 @@
                     <ImageBrush ImageSource="/Images/Background/ClientBackground.png" Stretch="UniformToFill" />
                 </Border.Background>
             </Border>
-            <Image Name="img_GoOut" Source="/Images/Icons/User.png" 
+            <Image Name="img_GoOut" Source="/Images/Icons/User.png" MouseDown="Image_MouseDown" 
                    Cursor="Hand" Margin="1176,43,57,611" RenderTransformOrigin="0.5,0.506"/>
 
             <Label x:Name="lbl_Client" Content="C L I E N T E S"

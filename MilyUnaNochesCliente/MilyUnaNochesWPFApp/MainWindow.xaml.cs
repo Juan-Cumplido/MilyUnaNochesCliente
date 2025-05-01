@@ -22,7 +22,9 @@ namespace MilyUnaNochesWPFApp
         public MainWindow()
         {
             InitializeComponent();
-            fra_NavigationFrame.Navigate(new Views.GenerateReport());
+
+            fra_NavigationFrame.Navigate(new Views.MenuEmployees());
+
         }
         private void NavigationFrame_Navigating(object sender, NavigatingCancelEventArgs e)
         {
