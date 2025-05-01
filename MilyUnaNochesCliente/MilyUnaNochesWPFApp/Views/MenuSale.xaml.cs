@@ -2,6 +2,7 @@
 using System.Windows.Controls;
 using System.Windows.Input;
 using MilyUnaNochesWPFApp.Views;
+using MilyUnaNochesWPFApp.Logic;
 
 namespace MilyUnaNochesWPFApp.Views {
     public partial class MenuSale : Page {
@@ -12,6 +13,7 @@ namespace MilyUnaNochesWPFApp.Views {
         }
 
         private void lbl_RegisterSale_Click(object sender, MouseButtonEventArgs e) {
+            int employeeId = UserProfileSingleton.idEmployee;
             // Navegar a Sale con ID por defecto (1)
             Frame.Navigate(new Sale(1)); // Usando constructor con parámetro
         }

@@ -9,6 +9,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using MilyUnaNochesWPFApp.Logic;
 using MilyUnaNochesWPFApp.MilyUnaNochesProxy;
 
@@ -17,6 +18,7 @@ namespace MilyUnaNochesWPFApp.Views {
         private List<VentaProducto> _currentSaleDetails = new List<VentaProducto>();
         private decimal _totalAmount = 0;
         private int _currentEmployeeId;
+        private int _currentClientId = 0;
         private List<MilyUnaNochesWPFApp.MilyUnaNochesProxy.Product> _availableProducts = new List<MilyUnaNochesWPFApp.MilyUnaNochesProxy.Product>();
 
         public Sale(int employeeId) {
@@ -40,16 +42,16 @@ namespace MilyUnaNochesWPFApp.Views {
             gridSearchProduct.Visibility = Visibility.Visible;
             txtSearchProduct.Text = "";
             txtSearchProduct.Focus();
-            deshabilitarBotones();
+            DisableButtons();
         }
 
-        private void deshabilitarBotones() {
+        private void DisableButtons() {
             lblPay.IsEnabled = false;
             lblCancelSale.IsEnabled = false;
             lblAddProduct.IsEnabled = false;
-        } 
+        }
 
-        private void habilitarBotones() {
+        private void EnableButtons() {
             lblPay.IsEnabled = true;
             lblCancelSale.IsEnabled = true;
             lblAddProduct.IsEnabled = true;
@@ -112,16 +114,23 @@ namespace MilyUnaNochesWPFApp.Views {
                         MessageBoxButton.OK, MessageBoxImage.Exclamation);
                 }
 
-                var ventaProducto = new VentaProducto {
-                    IdProducto = product.IdProducto,
-                    NombreProducto = product.NombreProducto,
-                    Cantidad = 1,
-                    PrecioUnitario = product.PrecioVenta,
-                    PrecioCompra = product.PrecioCompra, // Nuevo campo
-                    Subtotal = product.PrecioVenta
-                };
+                var existingProduct = _currentSaleDetails.FirstOrDefault(p => p.IdProducto == product.IdProducto);
 
-                _currentSaleDetails.Add(ventaProducto);
+                if (existingProduct != null) {
+                    existingProduct.Cantidad += 1;
+                    existingProduct.Subtotal = existingProduct.Cantidad * existingProduct.PrecioUnitario;
+                } else {
+                    var ventaProducto = new VentaProducto {
+                        IdProducto = product.IdProducto,
+                        NombreProducto = product.NombreProducto,
+                        Cantidad = 1,
+                        PrecioUnitario = product.PrecioVenta,
+                        PrecioCompra = product.PrecioCompra, 
+                        Subtotal = product.PrecioVenta
+                    };
+
+                    _currentSaleDetails.Add(ventaProducto);
+                }
 
                 if (_productCounts.ContainsKey(product.IdProducto))
                     _productCounts[product.IdProducto]++;
@@ -130,7 +139,7 @@ namespace MilyUnaNochesWPFApp.Views {
 
                 UpdateUI();
                 gridSearchProduct.Visibility = Visibility.Collapsed;
-                habilitarBotones();
+                EnableButtons();
             } catch (Exception ex) {
                 MessageBox.Show($"Error al buscar producto: {ex.Message}",
                     "Error",
@@ -139,7 +148,7 @@ namespace MilyUnaNochesWPFApp.Views {
         }
 
         private void UpdateUI() {
-            txtNumeroProductos.Text = _currentSaleDetails.Count.ToString();
+            txtNumeroProductos.Text = _productCounts.Values.Sum().ToString(); 
             _totalAmount = _currentSaleDetails.Sum(d => d.Subtotal);
             lblPrecio.Content = _totalAmount.ToString("C");
             UpdateProductsPanel();
@@ -147,74 +156,119 @@ namespace MilyUnaNochesWPFApp.Views {
 
         private void UpdateProductsPanel() {
             ProductsPanel.Children.Clear();
-            foreach (var product in _currentSaleDetails) {
-                var border = new Border {
-                    CornerRadius = new CornerRadius(10),
-                    Padding = new Thickness(10),
-                    Width = 180,
-                    Height = 234,
-                    Background = Brushes.White,
-                    Margin = new Thickness(5)
-                };
 
-                var stackPanel = new StackPanel();
+            foreach (var kvp in _productCounts) {
+                int productId = kvp.Key;
+                int cantidad = kvp.Value;
 
-                var image = new Image {
-                    Source = new BitmapImage(new Uri("/Images/Products/Product1.png", UriKind.Relative)),
-                    Width = 146,
-                    Height = 145,
-                    Stretch = Stretch.UniformToFill
-                };
+                var product = _currentSaleDetails.FirstOrDefault(p => p.IdProducto == productId);
+                if (product == null)
+                    continue;
 
-                var nameText = new TextBlock {
-                    Text = product.NombreProducto,
-                    FontWeight = FontWeights.Bold,
-                    FontSize = 16,
-                    TextAlignment = TextAlignment.Center,
-                    Foreground = (Brush)new BrushConverter().ConvertFrom("#FFC18D5C"),
-                    FontFamily = new FontFamily("Bodoni MT Condensed")
-                };
+                for (int i = 0; i < cantidad; i++) {
+                    var border = new Border {
+                        CornerRadius = new CornerRadius(10),
+                        Padding = new Thickness(10),
+                        Width = 180,
+                        Height = 234,
+                        Background = Brushes.White,
+                        Margin = new Thickness(5)
+                    };
 
-                var priceText = new TextBlock {
-                    Text = $"Precio: {product.PrecioUnitario:C}",
-                    FontSize = 16,
-                    TextAlignment = TextAlignment.Center,
-                    FontFamily = new FontFamily("Bodoni MT Condensed"),
-                    Foreground = (Brush)new BrushConverter().ConvertFrom("#FFC18D5C")
-                };
+                    var stackPanel = new StackPanel();
 
-                var removeButton = new Button {
-                    Content = "Quitar",
-                    Background = (Brush)new BrushConverter().ConvertFrom("#FFC18D5C"),
-                    Foreground = Brushes.White,
-                    Margin = new Thickness(5),
-                    BorderBrush = Brushes.Transparent,
-                    FontWeight = FontWeights.Bold,
-                    Tag = product
-                };
-                removeButton.Click += RemoveProduct_Click;
+                    var image = new Image {
+                        Source = new BitmapImage(new Uri("/Images/Products/Product1.png", UriKind.Relative)),
+                        Width = 146,
+                        Height = 145,
+                        Stretch = Stretch.UniformToFill
+                    };
 
-                stackPanel.Children.Add(image);
-                stackPanel.Children.Add(nameText);
-                stackPanel.Children.Add(priceText);
-                stackPanel.Children.Add(removeButton);
+                    var nameText = new TextBlock {
+                        Text = product.NombreProducto,
+                        FontWeight = FontWeights.Bold,
+                        FontSize = 16,
+                        TextAlignment = TextAlignment.Center,
+                        Foreground = (Brush)new BrushConverter().ConvertFrom("#FFC18D5C"),
+                        FontFamily = new FontFamily("Bodoni MT Condensed")
+                    };
 
-                border.Child = stackPanel;
-                ProductsPanel.Children.Add(border);
+                    var priceText = new TextBlock {
+                        Text = $"Precio: {product.PrecioUnitario:C}",
+                        FontSize = 16,
+                        TextAlignment = TextAlignment.Center,
+                        FontFamily = new FontFamily("Bodoni MT Condensed"),
+                        Foreground = (Brush)new BrushConverter().ConvertFrom("#FFC18D5C")
+                    };
+
+                    var removeButton = new Button {
+                        Content = "Quitar",
+                        Background = (Brush)new BrushConverter().ConvertFrom("#FFC18D5C"),
+                        Foreground = Brushes.White,
+                        Margin = new Thickness(5),
+                        BorderBrush = Brushes.Transparent,
+                        FontWeight = FontWeights.Bold,
+                        Tag = product 
+                    };
+                    removeButton.Click += RemoveProduct_Click;
+
+                    stackPanel.Children.Add(image);
+                    stackPanel.Children.Add(nameText);
+                    stackPanel.Children.Add(priceText);
+                    stackPanel.Children.Add(removeButton);
+
+                    border.Child = stackPanel;
+                    ProductsPanel.Children.Add(border);
+                }
             }
         }
 
         private void RemoveProduct_Click(object sender, RoutedEventArgs e) {
             if (sender is Button button && button.Tag is VentaProducto product) {
-                _currentSaleDetails.Remove(product);
-
                 if (_productCounts.ContainsKey(product.IdProducto)) {
                     _productCounts[product.IdProducto]--;
-                    if (_productCounts[product.IdProducto] <= 0)
-                        _productCounts.Remove(product.IdProducto);
-                }
 
-                UpdateUI();
+                    if (_productCounts[product.IdProducto] <= 0) {
+                        _productCounts.Remove(product.IdProducto);
+                        var existingProduct = _currentSaleDetails.FirstOrDefault(p => p.IdProducto == product.IdProducto);
+                        if (existingProduct != null) {
+                            _currentSaleDetails.Remove(existingProduct);
+                        }
+                    } else {
+                        var existingProduct = _currentSaleDetails.FirstOrDefault(p => p.IdProducto == product.IdProducto);
+                        if (existingProduct != null) {
+                            existingProduct.Cantidad--;
+                            existingProduct.Subtotal = existingProduct.Cantidad * existingProduct.PrecioUnitario;
+                        }
+                    }
+
+                    UpdateUI();
+                }
+            }
+        }
+
+        private async void ValidateNumberPhoneClient() {
+            if (txtNumeroCliente.Text.Length == 10) {
+                try {
+                    IUserManager userManager = new MilyUnaNochesProxy.UserManagerClient();
+                    var clients = await userManager.GetUserProfileByNamePhoneAsync(txtNumeroCliente.Text);
+
+                    var exactMatch = clients?.FirstOrDefault(c => c.telefono == txtNumeroCliente.Text);
+
+                    if (exactMatch != null) {
+                        MessageBox.Show($"Cliente encontrado: {exactMatch.nombre} {exactMatch.primerApellido}");
+                        _currentClientId = exactMatch.idUsuario; 
+                    } else {
+                        var result = MessageBox.Show("Cliente no registrado. ¿Desea registrarlo?",
+                                                   "Aviso",
+                                                   MessageBoxButton.YesNo);
+                        if (result == MessageBoxResult.Yes) {
+                            NavigationService.Navigate(new RegisterClient());
+                        }
+                    }
+                } catch (Exception ex) {
+                    MessageBox.Show($"Error al buscar cliente: {ex.Message}");
+                }
             }
         }
 
@@ -229,7 +283,6 @@ namespace MilyUnaNochesWPFApp.Views {
                     MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
-
             gridFormPay.Visibility = Visibility.Visible;
         }
 
@@ -261,11 +314,11 @@ namespace MilyUnaNochesWPFApp.Views {
                 var saleResult = await proxy.ProcessSaleAsync(newSale, _currentSaleDetails.ToList());
 
                 if (saleResult.Success) {
-                    // Mostrar ticket con los nuevos campos
-                    ShowReceipt(newSale, saleResult.SaleId.Value);
+                    ShowReceipt(newSale, _currentEmployeeId);
 
                     MessageBox.Show("Venta registrada exitosamente", "Éxito",
                         MessageBoxButton.OK, MessageBoxImage.Information);
+                    _currentSaleDetails.Clear();
                     InitializeUI();
                 } else {
                     var errorMessage = string.Join("\n", saleResult.Errors);
@@ -280,9 +333,9 @@ namespace MilyUnaNochesWPFApp.Views {
             }
         }
 
-        private void ShowReceipt(Venta sale, int saleId) {
+        private void ShowReceipt(Venta sale, int employeeId) {
             var receiptWindow = new Window {
-                Title = $"Ticket de Venta # {saleId}",
+                Title = $"Venta del empleado {employeeId}",
                 Width = 400,
                 Height = 600,
                 WindowStartupLocation = WindowStartupLocation.CenterScreen
@@ -290,9 +343,8 @@ namespace MilyUnaNochesWPFApp.Views {
 
             var stackPanel = new StackPanel { Margin = new Thickness(20) };
 
-            // Encabezado
             stackPanel.Children.Add(new TextBlock {
-                Text = $"Venta #{saleId}",
+                Text = $"Venta de empleado #{employeeId}",
                 FontSize = 20,
                 FontWeight = FontWeights.Bold,
                 HorizontalAlignment = HorizontalAlignment.Center
@@ -304,7 +356,6 @@ namespace MilyUnaNochesWPFApp.Views {
                 Margin = new Thickness(0, 5, 0, 15)
             });
 
-            // Detalles de productos
             foreach (var product in _currentSaleDetails) {
                 var productPanel = new StackPanel { Margin = new Thickness(0, 0, 0, 10) };
 
@@ -323,9 +374,8 @@ namespace MilyUnaNochesWPFApp.Views {
                     Margin = new Thickness(15, 0, 0, 0)
                 });
 
-                // Nuevo: Mostrar margen de ganancia
                 productPanel.Children.Add(new TextBlock {
-                    Text = $"Margen: {(product.PrecioUnitario - product.PrecioCompra):C}",
+                    Text = $"Margen por producto: {(product.PrecioUnitario - product.PrecioCompra):C}",
                     Margin = new Thickness(15, 0, 0, 0),
                     Foreground = Brushes.Green
                 });
@@ -334,7 +384,6 @@ namespace MilyUnaNochesWPFApp.Views {
                 stackPanel.Children.Add(new Separator());
             }
 
-            // Total
             stackPanel.Children.Add(new TextBlock {
                 Text = $"Total: {_totalAmount:C}",
                 FontSize = 16,

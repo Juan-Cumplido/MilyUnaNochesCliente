@@ -10,12 +10,12 @@
       Title="Sale">
 
     <Grid x:Name="gridPrincipal">
-        <Label Content="Número de cliente" 
+        <Label Content="Número de telefono de cliente" 
                HorizontalAlignment="Left" 
                Height="40" 
-               Margin="45,74,0,0" 
+               Margin="19,74,0,0" 
                VerticalAlignment="Top" 
-               Width="130" FontSize="20" 
+               Width="182" FontSize="20" 
                FontFamily="Bodoni MT Condensed" 
                Foreground="#FFAE7D5C"/>
         <Label Content="Número de vendedor" 
@@ -58,7 +58,7 @@
                  Height="40" 
                  Margin="220,74,0,0" 
                  TextWrapping="Wrap" 
-                 Text="Numero cliente" 
+                 Text="Numero de telefono de cliente" 
                  VerticalAlignment="Top" 
                  Width="231"
                  VerticalContentAlignment="Center"
