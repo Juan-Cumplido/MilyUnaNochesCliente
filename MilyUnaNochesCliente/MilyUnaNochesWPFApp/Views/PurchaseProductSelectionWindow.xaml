@@ -179,7 +179,7 @@
                                             </Grid.ColumnDefinitions>
 
                                             <TextBlock Grid.Column="0" 
-                                                          Text="{Binding IdProducto}" 
+                                                          Text="{Binding CodigoProducto}" 
                                                           VerticalAlignment="Center"
                                                           TextAlignment="Center"/>
                                             <ScrollViewer Grid.Column="1" 

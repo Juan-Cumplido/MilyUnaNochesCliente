@@ -31,7 +31,7 @@ namespace MilyUnaNochesWPFApp.Views {
         }
 
         private void FrameProducts_Click(object sender, RoutedEventArgs e) {
-            this.NavigationService.Navigate(new Uri("Views/MenuSupplier.xaml", UriKind.Relative));
+            this.NavigationService.Navigate(new Uri("Views/ConsultProductsView.xaml", UriKind.Relative));
         }
     }
 }

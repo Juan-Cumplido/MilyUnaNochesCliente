@@ -190,9 +190,6 @@
     <Compile Include="Views\ConsultSale.xaml.cs">
       <DependentUpon>ConsultSale.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\CustomDialog.xaml.cs">
-      <DependentUpon>CustomDialog.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\EditSupplierWindow.xaml.cs">
       <DependentUpon>EditSupplierWindow.xaml</DependentUpon>
     </Compile>
@@ -250,6 +247,9 @@
     <Compile Include="Views\MenuSale.xaml.cs">
       <DependentUpon>MenuSale.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\ValidateProductsView.xaml.cs">
+      <DependentUpon>ValidateProductsView.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -284,10 +284,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\ConsultSale.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\CustomDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -335,13 +331,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\PurchasesMenu.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Views\RegisterProductView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\PurchasesMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\RegisterEmployee.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -366,6 +362,10 @@
     <Page Include="Views\MenuSale.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ValidateProductsView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
   <ItemGroup>

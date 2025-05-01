@@ -1247,6 +1247,9 @@ namespace MilyUnaNochesWPFApp.MilyUnaNochesProxy {
         private int CantidadField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CodigoProductoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string ContactoProveedorField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -1277,6 +1280,19 @@ namespace MilyUnaNochesWPFApp.MilyUnaNochesProxy {
                 if ((this.CantidadField.Equals(value) != true)) {
                     this.CantidadField = value;
                     this.RaisePropertyChanged("Cantidad");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string CodigoProducto {
+            get {
+                return this.CodigoProductoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CodigoProductoField, value) != true)) {
+                    this.CodigoProductoField = value;
+                    this.RaisePropertyChanged("CodigoProducto");
                 }
             }
         }
@@ -4316,6 +4332,24 @@ namespace MilyUnaNochesWPFApp.MilyUnaNochesProxy {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductsManager/GetProductStock", ReplyAction="http://tempuri.org/IProductsManager/GetProductStockResponse")]
         System.Threading.Tasks.Task<MilyUnaNochesWPFApp.MilyUnaNochesProxy.StockResponse> GetProductStockAsync(int productId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductsManager/UpdateProduct", ReplyAction="http://tempuri.org/IProductsManager/UpdateProductResponse")]
+        bool UpdateProduct(MilyUnaNochesWPFApp.MilyUnaNochesProxy.Product product, string oldProductName);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductsManager/UpdateProduct", ReplyAction="http://tempuri.org/IProductsManager/UpdateProductResponse")]
+        System.Threading.Tasks.Task<bool> UpdateProductAsync(MilyUnaNochesWPFApp.MilyUnaNochesProxy.Product product, string oldProductName);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductsManager/DeleteProduct", ReplyAction="http://tempuri.org/IProductsManager/DeleteProductResponse")]
+        bool DeleteProduct(string productName);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductsManager/DeleteProduct", ReplyAction="http://tempuri.org/IProductsManager/DeleteProductResponse")]
+        System.Threading.Tasks.Task<bool> DeleteProductAsync(string productName);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductsManager/NumProducts", ReplyAction="http://tempuri.org/IProductsManager/NumProductsResponse")]
+        int NumProducts();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductsManager/NumProducts", ReplyAction="http://tempuri.org/IProductsManager/NumProductsResponse")]
+        System.Threading.Tasks.Task<int> NumProductsAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -4391,6 +4425,30 @@ namespace MilyUnaNochesWPFApp.MilyUnaNochesProxy {
         
         public System.Threading.Tasks.Task<MilyUnaNochesWPFApp.MilyUnaNochesProxy.StockResponse> GetProductStockAsync(int productId) {
             return base.Channel.GetProductStockAsync(productId);
+        }
+        
+        public bool UpdateProduct(MilyUnaNochesWPFApp.MilyUnaNochesProxy.Product product, string oldProductName) {
+            return base.Channel.UpdateProduct(product, oldProductName);
+        }
+        
+        public System.Threading.Tasks.Task<bool> UpdateProductAsync(MilyUnaNochesWPFApp.MilyUnaNochesProxy.Product product, string oldProductName) {
+            return base.Channel.UpdateProductAsync(product, oldProductName);
+        }
+        
+        public bool DeleteProduct(string productName) {
+            return base.Channel.DeleteProduct(productName);
+        }
+        
+        public System.Threading.Tasks.Task<bool> DeleteProductAsync(string productName) {
+            return base.Channel.DeleteProductAsync(productName);
+        }
+        
+        public int NumProducts() {
+            return base.Channel.NumProducts();
+        }
+        
+        public System.Threading.Tasks.Task<int> NumProductsAsync() {
+            return base.Channel.NumProductsAsync();
         }
     }
     

@@ -29,14 +29,18 @@ namespace MilyUnaNochesWPFApp.Views {
         private void Button_Click(object sender, RoutedEventArgs e) {
 
         }
-
+        private void ImgLogo1_MouseLeftButtonDown(object sender, MouseButtonEventArgs e) {
+            fra_mainFrame.Source = new System.Uri("ManagerMenuContent.xaml", System.UriKind.Relative);
+        }
+        private void ImgLogo2_MouseLeftButtonDown(object sender, MouseButtonEventArgs e) {
+            fra_mainFrame.Source = new System.Uri("ManagerMenuContent.xaml", System.UriKind.Relative);
+        }
         private void Users_Click(object sender, RoutedEventArgs e) {
-            CashierMenu cashierMenu = new CashierMenu();
-            this.NavigationService.Navigate(cashierMenu);
+            fra_mainFrame.Source = new System.Uri("ConsultClient.xaml", System.UriKind.Relative);
         }
 
         private void Products_Click(object sender, RoutedEventArgs e) {
-
+            fra_mainFrame.Source = new System.Uri("ConsultProductsView.xaml", System.UriKind.Relative);
         }
 
         private void Suppliers_Click(object sender, RoutedEventArgs e) {
@@ -44,7 +48,7 @@ namespace MilyUnaNochesWPFApp.Views {
         }
 
         private void Reports_Click(object sender, RoutedEventArgs e) {
-
+            fra_mainFrame.Source = new System.Uri("GenerateReport.xaml", System.UriKind.Relative);
         }
 
         private void Purchases_Click(object sender, RoutedEventArgs e) {
