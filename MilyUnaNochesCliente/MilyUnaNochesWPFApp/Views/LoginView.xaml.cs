@@ -16,6 +16,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using static MilyUnaNochesWPFApp.Views.CustomDialog;
 
 namespace MilyUnaNochesWPFApp.Views
 {
@@ -25,6 +26,13 @@ namespace MilyUnaNochesWPFApp.Views
         {
             InitializeComponent();
         }
+        private void ShowCustomMessage(string message, DialogType type)
+        {
+            var dialog = new CustomDialog(message, type);
+            dialog.Owner = Window.GetWindow(this);
+            dialog.ShowDialog();
+        }
+
 
         private async void BtnLogin_Click(object sender, RoutedEventArgs e)
         {
@@ -51,13 +59,14 @@ namespace MilyUnaNochesWPFApp.Views
                     else if (validateCredentials == 0)
                     {
                         imgLoading.Visibility = Visibility.Collapsed;
-                        DialogManager.ShowErrorMessageAlert("No se ha podido encontrar la cuenta. Por favor verifique que el nombre de usuario y contraseña sea correcto.");
+                        ShowCustomMessage("Usuario o contraseña incorrectos.", DialogType.Warning);
                     }
                 }
                 else
                 {
                     imgLoading.Visibility = Visibility.Collapsed;
-                    DialogManager.ShowErrorMessageAlert("La información que ha ingresado es incorrecta. Intentelo de nuevo.");
+                    ShowCustomMessage("La información que ha ingresado es incorrecta. Intentelo de nuevo.", DialogType.Warning);
+                    
                 }
 
             }
@@ -268,6 +277,35 @@ namespace MilyUnaNochesWPFApp.Views
         {
             PasswordPlaceholder.Visibility = string.IsNullOrEmpty(pwb_PasswordBox.Password) ? Visibility.Visible : Visibility.Collapsed;
         }
+        private bool isPasswordVisible = false;
+
+        private void TogglePasswordVisibility(object sender, MouseButtonEventArgs e)
+        {
+            isPasswordVisible = !isPasswordVisible;
+
+            if (isPasswordVisible)
+            {
+                txtVisiblePassword.Text = pwb_PasswordBox.Password;
+                txtVisiblePassword.Visibility = Visibility.Visible;
+                pwb_PasswordBox.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                pwb_PasswordBox.Password = txtVisiblePassword.Text;
+                pwb_PasswordBox.Visibility = Visibility.Visible;
+                txtVisiblePassword.Visibility = Visibility.Collapsed;
+            }
+        }
+
+         private void VisiblePassword_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (isPasswordVisible)
+            {
+                pwb_PasswordBox.Password = txtVisiblePassword.Text;
+            }
+        }
+
 
     }
+
 }

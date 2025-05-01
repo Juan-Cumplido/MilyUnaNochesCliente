@@ -1,0 +1,56 @@
+﻿<Window  x:Class="MilyUnaNochesWPFApp.Views.CustomDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Mensaje"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Background="Transparent"
+        SizeToContent="WidthAndHeight"
+        WindowStartupLocation="CenterOwner" Width="394">
+
+    <Border x:Name="MainBorder" CornerRadius="10" Padding="20" BorderThickness="1">
+        <Grid Margin="-11,0,-11,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <!-- Imagen -->
+                <ColumnDefinition Width="*"/>
+                <!-- Texto y botón -->
+            </Grid.ColumnDefinitions>
+
+            <!-- Ícono -->
+            <Image x:Name="IconImage"
+               Width="58"
+               Height="57"
+               Margin="10"
+               Grid.Column="0"/>
+
+            <!-- Contenedor de texto y botón -->
+            <StackPanel Grid.Column="1" VerticalAlignment="Center" Margin="10,0,0,0">
+                <TextBlock x:Name="MessageText"
+                       FontSize="15"
+                       FontFamily="Bodoni MT Condensed"
+                       FontWeight="Bold"
+                       Foreground="Black"
+                       TextWrapping="Wrap"
+                       TextAlignment="Center"
+                       Width="198"
+                       Height="32"/>
+                <Button Content="Aceptar"
+                    Width="62"
+                    Height="21"
+                    FontSize="16"
+                    FontFamily="Bodoni MT Condensed"
+                    Background="White"
+                    BorderBrush="Black"
+                    Cursor="Hand"
+                    Margin="0,10,0,0"
+                    Click="Close_Click">
+                    <Button.Effect>
+                        <DropShadowEffect BlurRadius="5" Direction="270" ShadowDepth="5" Color="Black" Opacity="0.6"/>
+                    </Button.Effect>
+                </Button>
+            </StackPanel>
+        </Grid>
+    </Border>
+
+</Window>
