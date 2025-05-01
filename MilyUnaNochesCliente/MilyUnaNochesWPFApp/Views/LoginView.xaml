@@ -45,17 +45,28 @@
 
                     <Border BorderThickness="1" Background="#dcd9d7" CornerRadius="15" Margin="10" Height="65">
                         <DockPanel>
-                            <Image Source="/Images/Icons/LockIcon.png" Width="35" Height="35" Margin="10" DockPanel.Dock="Right"/>
-
+                            <Image Source="/Images/Icons/LockIcon.png"
+                               Width="35" Height="35" Margin="10"
+                               DockPanel.Dock="Right"
+                               Cursor="Hand"
+                               MouseLeftButtonUp="TogglePasswordVisibility"/>           
                             <Grid Width="280">
 
                                 <TextBlock x:Name="PasswordPlaceholder" Text="Contraseña" Foreground="Gray" FontFamily="Bodoni MT Condensed" 
-                       FontSize="27" VerticalAlignment="Top" Margin="0,11,10,0"/>
+                                   FontSize="27" VerticalAlignment="Top" Margin="0,11,10,0"/>
 
 
-                                <PasswordBox x:Name="pwb_PasswordBox" Width="280" Height="40" FontSize="27" Background="Transparent" 
-                         BorderThickness="0" PasswordChanged="PasswordBox_PasswordChanged"
-                         GotFocus="PasswordBox_GotFocus" LostFocus="PasswordBox_LostFocus"/>
+                                <PasswordBox x:Name="pwb_PasswordBox" Width="280" Height="40" FontSize="24"
+                                     Background="Transparent" BorderThickness="0"
+                                     PasswordChanged="PasswordBox_PasswordChanged"
+                                     GotFocus="PasswordBox_GotFocus"
+                                     LostFocus="PasswordBox_LostFocus"/>
+
+                                            
+                                 <TextBox x:Name="txtVisiblePassword" Width="280" Height="40" FontSize="24"
+                                 Background="Transparent" BorderThickness="0"
+                                 Visibility="Collapsed"
+                                 TextChanged="VisiblePassword_TextChanged"/>
                             </Grid>
                         </DockPanel>
                     </Border>
@@ -90,7 +101,9 @@
                                     </Setter>
                                 </Style>
                             </Button.Style>
+                            
                         </Button>
+                        
                     </Border>
 
 
