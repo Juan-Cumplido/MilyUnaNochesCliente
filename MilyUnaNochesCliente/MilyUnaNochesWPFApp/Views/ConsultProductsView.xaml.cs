@@ -10,6 +10,10 @@ using MilyUnaNochesWPFApp.Logic;
 using MilyUnaNochesWPFApp.MilyUnaNochesProxy;
 using System.Diagnostics;
 using System.Windows.Forms;
+using static MilyUnaNochesWPFApp.Views.CustomDialog;
+using MilyUnaNochesWPFApp.Utilities;
+using System.ServiceModel;
+using System.Windows.Input;
 
 namespace MilyUnaNochesWPFApp.Views
 {
@@ -17,11 +21,94 @@ namespace MilyUnaNochesWPFApp.Views
     {
         private List<Logic.Product> _allProducts = new List<Logic.Product>();
         private List<Logic.Product> _filteredProducts = new List<Logic.Product>();
-
-        public ConsultProductsView()
+        private string origen;
+    
+        public ConsultProductsView(string origen = "")
         {
             InitializeComponent();
-            LoadProducts();
+            this.origen = origen;
+
+            if (origen == "ManagerMenu")
+            {
+                img_GoOut.Visibility = Visibility.Collapsed;
+                img_goBack.Visibility = Visibility.Visible;
+                btn_Registrar.Visibility = Visibility.Collapsed;
+                btn_Registrar.Visibility = Visibility.Collapsed;
+                btn_Validar.Visibility = Visibility.Collapsed;
+                btn_Editar.Visibility = Visibility.Collapsed;
+                btn_Eliminar.Visibility = Visibility.Collapsed;
+                brd_editar.Visibility = Visibility.Collapsed;
+                brd_eliminar.Visibility = Visibility.Collapsed;
+                btn_consultar.Visibility = Visibility.Collapsed;
+                brd_consultar.Visibility = Visibility.Collapsed;
+            }
+
+        LoadProducts();
+        }
+
+        private void Image_MouseDownGoBack(object sender, MouseButtonEventArgs e)
+        {
+            ManagerMenu managerMenu = new ManagerMenu();
+            this.NavigationService.Navigate(managerMenu);
+        }
+
+        private void ShowCustomMessage(string message, DialogType type)
+        {
+            var dialog = new CustomDialog(message, type);
+            dialog.Owner = Window.GetWindow(this);
+            dialog.ShowDialog();
+        }
+        private void Image_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            var dialog = new CustomDialog("Regresará a la ventana de inicio de sesión. ¿Está seguro de salir?", CustomDialog.DialogType.Confirmation);
+            dialog.ShowDialog();
+            LoggerManager logger = new LoggerManager(this.GetType());
+            if (dialog.UserConfirmed == true)
+            {
+                try
+                {
+                    MilyUnaNochesProxy.UserSessionManagerClient userSessionManagerClient = new MilyUnaNochesProxy.UserSessionManagerClient();
+                    UserSession userSession = new UserSession()
+                    {
+
+                        idAcceso = UserProfileSingleton.idAcceso
+                    };
+
+
+                    int disconnectionResult = userSessionManagerClient.Disconnect(userSession, false);
+                    if (disconnectionResult == Constants.SuccessOperation)
+                    {
+                        UserProfileSingleton.Instance.ResetSingleton();
+                        LoginView login = new LoginView();
+                        this.NavigationService.Navigate(login);
+                    }
+                    else if (disconnectionResult == Constants.NoDataMatches)
+                    {
+                        ShowCustomMessage("No se ha podido encontrar la sesión de usuario", DialogType.Warning);
+                    }
+                    else
+                    {
+                        ShowCustomMessage("Ocurrio un error al cerrar la sesión, intentelo de nuevo", DialogType.Warning);
+                    }
+                }
+                catch (EndpointNotFoundException endPointException)
+                {
+                    logger.LogFatal(endPointException);
+                    ShowCustomMessage("No se pudo establecer conexión con el servidor. Por favor, verifique la configuración de red e intente nuevamente.\r\n", DialogType.Error);
+
+                }
+                catch (TimeoutException timeOutException)
+                {
+                    logger.LogWarn(timeOutException);
+                    ShowCustomMessage("Inténtalo de nuevo. El tiempo de espera ha expirado. Por favor, verifica tu conexión al servidor.", DialogType.Error);
+                }
+                catch (CommunicationException communicationException)
+                {
+                    logger.LogFatal(communicationException);
+                    ShowCustomMessage("Se ha producido un fallo para establecer la conexión al servidor. Cheque su conexión a internet e inténtelo de nuevo", DialogType.Error);
+
+                }
+            }
         }
 
         public List<Logic.Product> GetProductsFromServer()
@@ -48,8 +135,8 @@ namespace MilyUnaNochesWPFApp.Views
             catch (Exception ex)
             {
                 Debug.WriteLine($"Ocurrió un error al obtener los productos: {ex.Message}");
-                System.Windows.MessageBox.Show("Error al cargar los productos. Por favor, intente nuevamente.",
-                              "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                
+                ShowCustomMessage("Error al cargar los productos. Por favor, intente nuevamente.", DialogType.Error);
                 return new List<Logic.Product>();
             }
         }
@@ -62,7 +149,6 @@ namespace MilyUnaNochesWPFApp.Views
                 _filteredProducts = new List<Logic.Product>(_allProducts);
                 ProductsDataGrid.ItemsSource = _filteredProducts;
 
-                // Configurar el placeholder del buscador
                 SearchTextBox.Text = "Buscar producto...";
                 SearchTextBox.Foreground = Brushes.Gray;
                 SearchTextBox.GotFocus += RemoveSearchPlaceholder;
@@ -131,7 +217,7 @@ namespace MilyUnaNochesWPFApp.Views
 
         private void ProductsDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            // Mantener la selección única
+       
             if (ProductsDataGrid.SelectedItem != null)
             {
                 foreach (var item in ProductsDataGrid.Items)
@@ -201,8 +287,8 @@ namespace MilyUnaNochesWPFApp.Views
 
             if (selectedProduct == null)
             {
-                System.Windows.MessageBox.Show("Por favor, seleccione un producto antes de consultar.",
-                              "Advertencia", MessageBoxButton.OK, MessageBoxImage.Warning);
+           
+                ShowCustomMessage("Por favor, seleccione un producto antes de consultar.", DialogType.Warning);
                 return;
             }
 
@@ -215,8 +301,8 @@ namespace MilyUnaNochesWPFApp.Views
 
             if (selectedProduct == null)
             {
-                System.Windows.MessageBox.Show("Por favor, seleccione un producto antes de editarlo.",
-                              "Advertencia", MessageBoxButton.OK, MessageBoxImage.Warning);
+                
+                ShowCustomMessage("Por favor, seleccione un producto antes de editarlo.", DialogType.Warning);
                 return;
             }
 
@@ -230,25 +316,20 @@ namespace MilyUnaNochesWPFApp.Views
 
             if (selectedProduct == null)
             {
-                System.Windows.MessageBox.Show("Por favor, seleccione un producto antes de eliminarlo.",
-                              "Advertencia", MessageBoxButton.OK, MessageBoxImage.Warning);
+              
+                ShowCustomMessage("Por favor, seleccione un producto antes de eliminarlo.", DialogType.Warning);
                 return;
-            }
+            }        
 
-            DialogResult result = System.Windows.Forms.MessageBox.Show(
-                "¿Estas seguro que deseas borrar el producto " + selectedProduct.NombreProducto + "?",
-                "Confirmar",
-                MessageBoxButtons.YesNo, // Botones Sí/No (o OK/Cancel)
-                MessageBoxIcon.Question // Icono de pregunta
-                );
-
-            if (result == DialogResult.Yes)
+            var dialog = new CustomDialog($"¿Estás seguro que deseas borrar el producto {selectedProduct.NombreProducto} ?", CustomDialog.DialogType.Confirmation);
+            dialog.ShowDialog();
+            if (dialog.UserConfirmed == true)
             {
                 IProductsManager proxy = new ProductsManagerClient();
                 if (proxy.DeleteProduct(selectedProduct.NombreProducto))
                 {
-                    System.Windows.MessageBox.Show($"Eliminación realizada con éxito",
-                        "Éxito", MessageBoxButton.OK, MessageBoxImage.Information);
+                    
+                    ShowCustomMessage("Eliminación realizada con éxito", DialogType.Success);
                     NavigationService?.Navigate(new ConsultProductsView());
                 }
 

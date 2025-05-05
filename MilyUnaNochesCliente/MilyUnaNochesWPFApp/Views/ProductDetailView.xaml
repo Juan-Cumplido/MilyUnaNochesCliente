@@ -17,15 +17,12 @@
     </Page.Resources>
 
     <Grid>
-        <!-- Imagen superior -->
         <Image HorizontalAlignment="Center"
                Height="144" 
                Margin="0,73,0,0" 
                VerticalAlignment="Top" 
                Width="1280" 
                Source="/Images/Background/FrameProducts.png"/>
-
-        <!-- Botones de CU -->
         <Button Content="REGISTRAR" HorizontalAlignment="Left" Margin="451,232,0,0" VerticalAlignment="Top" FontFamily="Bodoni MT" Height="55" Width="130" FontSize="19" Background="{x:Null}" Foreground="#FFAE7D5C" BorderBrush="{x:Null}" RenderTransformOrigin="0.52,0.144" Click="Register"/>
         <Button Content="CONSULTAR" HorizontalAlignment="Left" Margin="714,232,0,0" VerticalAlignment="Top" FontFamily="Bodoni MT" Height="55" Width="130" FontSize="19" Background="{x:Null}" Foreground="#FFAE7D5C" BorderBrush="{x:Null}" RenderTransformOrigin="0.52,0.144" Click="Consult"/>
         <Button Content="VALIDAR" HorizontalAlignment="Left" Margin="979,232,0,0" VerticalAlignment="Top" FontFamily="Bodoni MT" Height="55" Width="130" FontSize="19" Background="{x:Null}" Foreground="#FFAE7D5C" BorderBrush="{x:Null}" RenderTransformOrigin="0.52,0.144" Click="Validate"/>
@@ -49,36 +46,31 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
 
-                <!-- Nombre del Producto -->
+
                 <TextBlock Text="Nombre:" Grid.Row="0" Grid.Column="0" Margin="5" FontSize="25" FontFamily="Bodoni MT"/>
                 <TextBlock x:Name="txtNombre" Grid.Row="0" Grid.Column="1" Margin="5" FontSize="25" FontFamily="Bodoni MT"/>
 
-                <!-- Código del Producto -->
+
                 <TextBlock Text="Código:" Grid.Row="1" Grid.Column="0" Margin="5" FontSize="25" FontFamily="Bodoni MT"/>
                 <TextBlock x:Name="txtCodigo" Grid.Row="1" Grid.Column="1" Margin="5" FontSize="25" FontFamily="Bodoni MT"/>
 
-                <!-- Descripción -->
                 <TextBlock Text="Descripción:" Grid.Row="2" Grid.Column="0" Margin="5" FontSize="25" FontFamily="Bodoni MT"/>
                 <TextBlock x:Name="txtDescripcion" Grid.Row="2" Grid.Column="1" Margin="5" FontSize="25" FontFamily="Bodoni MT"/>
 
-                <!-- Categoría -->
+             
                 <TextBlock Text="Categoría:" Grid.Row="3" Grid.Column="0" Margin="5" FontSize="25" FontFamily="Bodoni MT"/>
                 <TextBlock x:Name="txtCategoria" Grid.Row="3" Grid.Column="1" Margin="5" FontSize="25" FontFamily="Bodoni MT"/>
 
-                <!-- Cantidad en Stock -->
                 <TextBlock Text="Cantidad en Stock:" Grid.Row="4" Grid.Column="0" Margin="5" FontSize="25" FontFamily="Bodoni MT"/>
                 <TextBlock x:Name="txtCantidad" Grid.Row="4" Grid.Column="1" Margin="5" FontSize="25" FontFamily="Bodoni MT"/>
 
-                <!-- Precio de Venta -->
                 <TextBlock Text="Precio de Venta:" Grid.Row="5" Grid.Column="0" Margin="5" FontSize="25" FontFamily="Bodoni MT"/>
                 <TextBlock x:Name="txtPrecioVenta" Grid.Row="5" Grid.Column="1" Margin="5" FontSize="25" FontFamily="Bodoni MT"/>
 
-                <!-- Precio de Compra -->
                 <TextBlock Text="Precio de Compra:" Grid.Row="6" Grid.Column="0" Margin="5" FontSize="25" FontFamily="Bodoni MT"/>
                 <TextBlock x:Name="txtPrecioCompra" Grid.Row="6" Grid.Column="1" Margin="5" FontSize="25" FontFamily="Bodoni MT"/>
 
-                <!-- Imagen -->
-                <TextBlock Text="Imagen:" Grid.Row="8" Grid.Column="0" Margin="5,5,5,31" FontSize="25" FontFamily="Bodoni MT"/>
+               <TextBlock Text="Imagen:" Grid.Row="8" Grid.Column="0" Margin="5,5,5,31" FontSize="25" FontFamily="Bodoni MT"/>
                 <Image x:Name="imgProducto" Grid.Row="8" Grid.Column="1" Width="100" Height="100" Margin="5"/>
             </Grid>
         </Border>

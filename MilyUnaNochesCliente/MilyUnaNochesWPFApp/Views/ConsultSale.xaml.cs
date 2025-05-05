@@ -8,6 +8,7 @@ using System.Windows.Controls;
 using System.Windows.Navigation;
 using System.Windows.Threading;
 using MilyUnaNochesWPFApp.MilyUnaNochesProxy;
+using static MilyUnaNochesWPFApp.Views.CustomDialog;
 
 namespace MilyUnaNochesWPFApp.Views {
     public partial class ConsultSale : Page {
@@ -20,6 +21,13 @@ namespace MilyUnaNochesWPFApp.Views {
             InitializeFilterTimer();
             LoadSales();
         }
+        private void ShowCustomMessage(string message, DialogType type)
+        {
+            var dialog = new CustomDialog(message, type);
+            dialog.Owner = Window.GetWindow(this);
+            dialog.ShowDialog();
+        }
+
 
         private void InitializeFilterTimer() {
             _filterTimer = new DispatcherTimer {
@@ -33,7 +41,6 @@ namespace MilyUnaNochesWPFApp.Views {
                 ISaleManager proxy = new SaleManagerClient();
                 var salesDb = await proxy.SearchSalesAsync(null, null);
 
-                // Mapeo de ventas a la clase de visualización
                 List<SaleDisplayItem> sales = salesDb.Select(s => new SaleDisplayItem {
                     SaleId = s.idVenta,
                     EmployeeId = s.IdEmpleado,
@@ -41,7 +48,7 @@ namespace MilyUnaNochesWPFApp.Views {
                     PaymentMethod = s.MetodoPago,
                     TotalAmount = s.MontoTotal,
                     SaleDate = s.fecha,
-                    // Asignamos los detalles del producto
+
                     ProductDetails = s.Detalles?.Select(d => new VentaProducto {
                         IdProducto = d.IdProducto,
                         NombreProducto = d.NombreProducto,
@@ -54,8 +61,8 @@ namespace MilyUnaNochesWPFApp.Views {
 
                 return sales;
             } catch (Exception ex) {
-                MessageBox.Show($"Error al obtener ventas: {ex.Message}", "Error",
-                    MessageBoxButton.OK, MessageBoxImage.Error);
+                
+                ShowCustomMessage("Error al obtener ventas.", DialogType.Error);
                 return new List<SaleDisplayItem>();
             }
         }
@@ -76,8 +83,8 @@ namespace MilyUnaNochesWPFApp.Views {
                 });
             } catch (Exception ex) {
                 await Dispatcher.InvokeAsync(() => {
-                    MessageBox.Show($"Error al cargar ventas: {ex.Message}", "Error",
-                        MessageBoxButton.OK, MessageBoxImage.Error);
+                  
+                    ShowCustomMessage("Error al cargar ventas.", DialogType.Error);
                 });
             }
         }
@@ -109,28 +116,22 @@ namespace MilyUnaNochesWPFApp.Views {
                         (s.TotalAmount.ToString("0.00").Contains(searchText)) ||
                         (s.EmployeeId.ToString().Contains(searchText)) ||
                         (s.PaymentMethod?.ToLower()?.Contains(searchText) ?? false) ||
-                        (s.Articulos.ToLower().Contains(searchText)) // Búsqueda también en los artículos
+                        (s.Articulos.ToLower().Contains(searchText)) 
                     );
                 }
 
                 var result = filteredSales.ToList();
                 SalesDataGrid.ItemsSource = result;
             } catch (Exception ex) {
-                MessageBox.Show($"Error al filtrar ventas: {ex.Message}", "Error",
-                    MessageBoxButton.OK, MessageBoxImage.Error);
+                ShowCustomMessage("Error al filtrar ventas", DialogType.Error);
             }
         }
 
         private void ShowNoSalesMessage() {
             SalesDataGrid.ItemsSource = new List<SaleDisplayItem>();
-            MessageBox.Show("No hay ventas registradas");
+            ShowCustomMessage("No hay ventas registradas", DialogType.Warning);
         }
 
-        private void SalesDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e) {
-            if (SalesDataGrid.SelectedItem is SaleDisplayItem selectedSale) {
-                // Implementar lógica de selección aquí
-            }
-        }
 
         public class SaleDisplayItem {
             public int SaleId { get; set; }

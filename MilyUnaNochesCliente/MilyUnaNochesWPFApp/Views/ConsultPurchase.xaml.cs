@@ -15,6 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using static MilyUnaNochesWPFApp.Views.CustomDialog;
 
 namespace MilyUnaNochesWPFApp.Views {
     /// <summary>
@@ -28,6 +29,12 @@ namespace MilyUnaNochesWPFApp.Views {
             LoadPurchases();
             this.DataContext = this;
         }
+        private void ShowCustomMessage(string message, DialogType type)
+        {
+            var dialog = new CustomDialog(message, type);
+            dialog.Owner = Window.GetWindow(this);
+            dialog.ShowDialog();
+        }
 
         public async void LoadPurchases() {
             try {
@@ -35,7 +42,7 @@ namespace MilyUnaNochesWPFApp.Views {
                 Purchases = new ObservableCollection<ConsultPurchase_SV>(purchasesList);
                 PurchasesDataGrid.ItemsSource = Purchases;
             } catch (Exception ex) {
-                DialogManager.ShowErrorMessageAlert("Error al cargar proveedores");
+                ShowCustomMessage("Error al cargar proveedores", DialogType.Error);
             }
         }
 

@@ -15,6 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.ServiceModel;
+using static MilyUnaNochesWPFApp.Views.CustomDialog;
 
 namespace MilyUnaNochesWPFApp.Views
 {
@@ -29,6 +30,13 @@ namespace MilyUnaNochesWPFApp.Views
             InitializeComponent();
             _serviceClient = new UserManagerClient();
             _logger = new LoggerManager(this.GetType());
+        }
+
+        private void ShowCustomMessage(string message, DialogType type)
+        {
+            var dialog = new CustomDialog(message, type);
+            dialog.Owner = Window.GetWindow(this);
+            dialog.ShowDialog();
         }
 
         private void SearchForClient_GotFocus(object sender, RoutedEventArgs e)
@@ -56,7 +64,7 @@ namespace MilyUnaNochesWPFApp.Views
             string searchTerm = txtb_searchForEmployee?.Text?.Trim();
             if (string.IsNullOrWhiteSpace(searchTerm) || searchTerm == "Nombre o teléfono (ej. Juan)")
             {
-                grd_ProviderDataGrid.ItemsSource = null;
+                grd_EmployeeDataGrid.ItemsSource = null;
                 return;
             }
 
@@ -66,11 +74,11 @@ namespace MilyUnaNochesWPFApp.Views
 
                 if (employee == null || !employee.Any())
                 {
-                    grd_ProviderDataGrid.ItemsSource = null;
+                    grd_EmployeeDataGrid.ItemsSource = null;
                     return;
                 }
 
-                grd_ProviderDataGrid.ItemsSource = employee.Select(c => new
+                grd_EmployeeDataGrid.ItemsSource = employee.Select(c => new
                 {
                     IdUsuario = c.idUsuario,
                     Nombre = c.nombre ?? "N/A",
@@ -85,30 +93,28 @@ namespace MilyUnaNochesWPFApp.Views
             catch (EndpointNotFoundException endPointException)
             {
                 _logger.LogFatal(endPointException);
-                DialogManager.ShowErrorMessageAlert("No se pudo establecer conexión con el servidor. Verifique su red.");
+                ShowCustomMessage("No se pudo establecer conexión con el servidor. Por favor, verifique la configuración de red e intente nuevamente.", DialogType.Error);
+
             }
             catch (TimeoutException timeOutException)
             {
                 _logger.LogWarn(timeOutException);
-                DialogManager.ShowErrorMessageAlert("Tiempo de espera agotado. Revise su conexión al servidor.");
+                ShowCustomMessage("Inténtalo de nuevo. El tiempo de espera ha expirado. Por favor, verifica tu conexión al servidor.", DialogType.Error);
             }
             catch (CommunicationException communicationException)
             {
                 _logger.LogFatal(communicationException);
-                DialogManager.ShowErrorMessageAlert("Error en la conexión con el servidor. Verifique su internet.");
+                ShowCustomMessage("Se ha producido un fallo para establecer la conexión al servidor. Cheque su conexión a internet e inténtelo de nuevo.", DialogType.Error);
+
             }
-            catch (Exception ex)
-            {
-                _logger.LogFatal(ex);
-                DialogManager.ShowErrorMessageAlert("Ocurrió un error inesperado al buscar clientes.");
-            }
+            
         }
 
         private void grd_ProviderDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (grd_ProviderDataGrid.SelectedItem != null)
+            if (grd_EmployeeDataGrid.SelectedItem != null)
             {
-                var selectedRow = grd_ProviderDataGrid.SelectedItem;
+                var selectedRow = grd_EmployeeDataGrid.SelectedItem;
 
                 var idUsuarioProperty = selectedRow.GetType().GetProperty("IdUsuario");
                 if (idUsuarioProperty != null)
@@ -126,12 +132,12 @@ namespace MilyUnaNochesWPFApp.Views
         {
             if (string.IsNullOrEmpty(selectedUserId))
             {
-                DialogManager.ShowErrorMessageAlert("Por favor, seleccione un cliente antes de eliminar.");
+                ShowCustomMessage("Por favor, seleccione un Empleado antes de eliminar.", DialogType.Warning);
                 return;
             }
-
-            MessageBoxResult result = MessageBox.Show("¿Está seguro de archivar este cliente?", "Confirmación", MessageBoxButton.YesNo, MessageBoxImage.Question);
-            if (result != MessageBoxResult.Yes)
+            var dialog = new CustomDialog("¿Está seguro de archivar este cliente?", CustomDialog.DialogType.Confirmation);
+            dialog.ShowDialog();
+            if (dialog.UserConfirmed == true)
             {
                 return;
             }
@@ -143,39 +149,65 @@ namespace MilyUnaNochesWPFApp.Views
 
                 if (response == 1)
                 {
-                    DialogManager.ShowSuccessMessageAlert("Cliente archivado exitosamente.");
+                    ShowCustomMessage("Empleado archivado exitosamente.", DialogType.Success);
                     SearchForClient_TextChanged(null, null);
                 }
                 else
                 {
-                    DialogManager.ShowErrorMessageAlert("No se pudo archivar el cliente. Verifique e intente nuevamente.");
+                    ShowCustomMessage("No se pudo archivar el Empleado. Verifique e intente nuevamente.", DialogType.Warning);
+                    
                 }
             }
             catch (EndpointNotFoundException endPointException)
             {
                 _logger.LogFatal(endPointException);
-                DialogManager.ShowErrorMessageAlert("No se pudo conectar con el servidor. Verifique su red.");
+                ShowCustomMessage("No se pudo establecer conexión con el servidor. Por favor, verifique la configuración de red e intente nuevamente.", DialogType.Error);
+
             }
             catch (TimeoutException timeOutException)
             {
                 _logger.LogWarn(timeOutException);
-                DialogManager.ShowErrorMessageAlert("Tiempo de espera agotado. Revise su conexión.");
+                ShowCustomMessage("Inténtalo de nuevo. El tiempo de espera ha expirado. Por favor, verifica tu conexión al servidor.", DialogType.Error);
             }
             catch (CommunicationException communicationException)
             {
                 _logger.LogFatal(communicationException);
-                DialogManager.ShowErrorMessageAlert("Error en la conexión con el servidor.");
-            }
-            catch (Exception ex)
-            {
-                _logger.LogFatal(ex);
-                DialogManager.ShowErrorMessageAlert("Ocurrió un error inesperado.");
+                ShowCustomMessage("Se ha producido un fallo para establecer la conexión al servidor. Cheque su conexión a internet e inténtelo de nuevo.", DialogType.Error);
+
             }
         }
 
         private void Editar_Click(object sender, RoutedEventArgs e)
         {
+            if (grd_EmployeeDataGrid.SelectedItem == null)
+            {
+                ShowCustomMessage("Por favor, seleccione un empleado antes de editar.", DialogType.Warning);
 
+                return;
+            }
+
+            var selectedRow = grd_EmployeeDataGrid.SelectedItem;
+            var idUsuarioProperty = selectedRow.GetType().GetProperty("IdUsuario");
+
+            if (idUsuarioProperty != null)
+            {
+                int idUsuario = Convert.ToInt32(idUsuarioProperty.GetValue(selectedRow));
+                var editWindow = new EditEmployee(idUsuario, this);
+                makeThisOwnerWindow(editWindow);
+            }
+            else
+            {
+                ShowCustomMessage("No se pudo obtener el ID del empleado seleccionado.", DialogType.Warning);
+            }
+        }
+
+
+        private void makeThisOwnerWindow(Window windowToOwn)
+        {
+            var mainWindow = Window.GetWindow(this);
+            windowToOwn.Owner = mainWindow;
+            windowToOwn.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+            windowToOwn.ShowDialog();
         }
     }
 

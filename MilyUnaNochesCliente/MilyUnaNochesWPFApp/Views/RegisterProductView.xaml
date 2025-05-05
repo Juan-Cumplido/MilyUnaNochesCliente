@@ -17,7 +17,8 @@
     </Page.Resources>
 
     <Grid>
-        <!-- Imagen superior -->
+        <Image Name="img_GoOut" Source="/Images/Icons/User.png" MouseDown="Image_MouseDown" 
+                Cursor="Hand" Margin="10,0,1210,642" RenderTransformOrigin="0.5,0.506"/>
         <Image HorizontalAlignment="Center"
                Height="144" 
                Margin="0,73,0,0" 
@@ -25,14 +26,12 @@
                Width="1280" 
                Source="/Images/Background/FrameProducts.png"/>
 
-        <!-- Barra de búsqueda -->
-
-        <!-- Botones de CU -->
+        
         <Button Content="REGISTRAR" HorizontalAlignment="Left" Margin="451,232,0,0" VerticalAlignment="Top" FontFamily="Bodoni MT" Height="55" Width="130" FontSize="19" Background="{x:Null}" Foreground="#FFAE7D5C" BorderBrush="{x:Null}" RenderTransformOrigin="0.52,0.144"/>
         <Button Content="CONSULTAR" HorizontalAlignment="Left" Margin="714,232,0,0" VerticalAlignment="Top" FontFamily="Bodoni MT" Height="55" Width="130" FontSize="19" Background="{x:Null}" Foreground="#FFAE7D5C" BorderBrush="{x:Null}" RenderTransformOrigin="0.52,0.144" Click="Consult"/>
         <Button Content="VALIDAR" HorizontalAlignment="Left" Margin="979,232,0,0" VerticalAlignment="Top" FontFamily="Bodoni MT" Height="55" Width="130" FontSize="19" Background="{x:Null}" Foreground="#FFAE7D5C" BorderBrush="{x:Null}" RenderTransformOrigin="0.52,0.144" Click="Validate"/>
 
-        <!-- Interfaz para registrar -->
+        
         <Label Content="Nombre del producto" 
             HorizontalAlignment="Left" 
             Height="40" 
@@ -200,15 +199,43 @@
                 Padding="10" />
         </Border>
 
-        <Border Name="btn_PhotoBorder" CornerRadius="15" Background="#FF683317" Height="50" Margin="287,617,867,53">
-            <Button Name="btn_Photo" Content="ADJUNTE ARCHIVOS" Height="50" Background="Transparent"
-            BorderThickness="0" FontSize="8" Foreground="White" FontFamily="Bahnschrift SemiLight" Click="UploadPhoto"/>
+       
+        <Border Name="btn_PhotoBorder" CornerRadius="20" Background="#FF683317" Height="50" Margin="287,617,764,53"
+        SnapsToDevicePixels="True" >
+            <Button Name="btn_Photo" Content="📎 Adjuntar Archivos" Height="50" Background="Transparent" Cursor="Hand"
+            BorderThickness="0" FontSize="20" Foreground="White" FontFamily="Segoe UI Semibold" Click="UploadPhoto"
+            Padding="10,0">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Opacity" Value="1"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Opacity" Value="0.85"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
         </Border>
 
-        <Border CornerRadius="15" Background="#FFB45E2D" Height="50" Margin="967,614,125,56">
-            <Button Content="GUARDAR" Height="50" Background="Transparent"
-            BorderThickness="0" FontSize="16" Foreground="White" FontFamily="Bahnschrift SemiLight" Click="SaveProduct" />
+        <Border CornerRadius="20" Background="#FFB45E2D" Height="50" Margin="967,614,125,56"
+        SnapsToDevicePixels="True" >
+            <Button Content="💾 Guardar" Height="50" Background="Transparent" Cursor="Hand"
+            BorderThickness="0" FontSize="20" Foreground="White" FontFamily="Segoe UI Semibold" Click="SaveProduct"
+            Padding="10,0">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Opacity" Value="1"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Opacity" Value="0.85"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
         </Border>
-        <Image Name="img_Photo" HorizontalAlignment="Left" Height="82" Margin="434,604,0,0" VerticalAlignment="Top" Width="90"/>
+
+        <Image Name="img_Photo" HorizontalAlignment="Left" Height="107" Margin="525,593,0,0" VerticalAlignment="Top" Width="134"/>
     </Grid>
 </Page>

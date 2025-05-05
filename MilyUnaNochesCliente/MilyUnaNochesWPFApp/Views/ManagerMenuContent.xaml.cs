@@ -13,25 +13,25 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace MilyUnaNochesWPFApp.Views {
+namespace MilyUnaNochesWPFApp.Views
+{
     /// <summary>
     /// Lógica de interacción para ManagerMenuContent.xaml
     /// </summary>
-    public partial class ManagerMenuContent : Page {
-        public ManagerMenuContent() {
+    public partial class ManagerMenuContent : Page
+    {
+        public ManagerMenuContent()
+        {
             InitializeComponent();
         }
 
-        private void FrameSale_Click(object sender, RoutedEventArgs e) {
-            this.NavigationService.Navigate(new Uri("/Views/MenuSupplier.xaml", UriKind.Relative));
-        }
+       
 
-        private void FrameSuppliers_Click(object sender, RoutedEventArgs e) {
+        private void FrameSuppliers_Click(object sender, RoutedEventArgs e)
+        {
             this.NavigationService.Navigate(new Uri("Views/MenuSupplier.xaml", UriKind.Relative));
         }
 
-        private void FrameProducts_Click(object sender, RoutedEventArgs e) {
-            this.NavigationService.Navigate(new Uri("Views/ConsultProductsView.xaml", UriKind.Relative));
-        }
+        
     }
 }

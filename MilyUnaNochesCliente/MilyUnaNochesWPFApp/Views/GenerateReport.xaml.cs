@@ -13,6 +13,8 @@ using iTextSharp.text.pdf;
 using System.IO;
 using MilyUnaNochesWPFApp.MilyUnaNochesProxy;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ProgressBar;
+using System.Windows.Input;
+using static MilyUnaNochesWPFApp.Views.CustomDialog;
 
 namespace MilyUnaNochesWPFApp.Views {
     public partial class GenerateReport : Page {
@@ -20,8 +22,8 @@ namespace MilyUnaNochesWPFApp.Views {
         private string _periodoSeleccionado = "";
         private string _parametroBusqueda = "";
         private List<ReportMetadata> _reportesDisponibles = new List<ReportMetadata>();
-        private int _currentPage = 0;  // Página actual (base 0)
-        private const int _pageSize = 5; // Items por página (ajusta según tu lógica)
+        private int _currentPage = 0;  
+        private const int _pageSize = 5; 
         private int _totalItems = 0;
         private int _totalPages = 0;
 
@@ -30,8 +32,22 @@ namespace MilyUnaNochesWPFApp.Views {
             ConfigureInterfaz();
         }
 
+        private void ShowCustomMessage(string message, DialogType type)
+        {
+            var dialog = new CustomDialog(message, type);
+            dialog.Owner = Window.GetWindow(this);
+            dialog.ShowDialog();
+        }
+
+
         private void ConfigureInterfaz() {
             HideAllGrids();
+        }
+
+        private void Image_MouseDownGoBack(object sender, MouseButtonEventArgs e)
+        {
+            ManagerMenu managerMenu = new ManagerMenu();
+            this.NavigationService.Navigate(managerMenu);
         }
 
         private void HideAllGrids() {
@@ -73,21 +89,20 @@ namespace MilyUnaNochesWPFApp.Views {
 
         private async void BtnClick_Descargar(object sender, RoutedEventArgs e) {
             if (dg_Reports.SelectedItem == null) {
-                MessageBox.Show("Por favor seleccione un reporte para descargar", "Advertencia",
-                    MessageBoxButton.OK, MessageBoxImage.Warning);
+
+                ShowCustomMessage("Por favor seleccione un reporte para descargar.", DialogType.Warning);
                 return;
             }
 
             IReportManager proxy = null;
             try {
-                // Obtener el reporte seleccionado
                 var selectedIndex = dg_Reports.SelectedIndex;
                 var reportMetadata = _reportesDisponibles[selectedIndex + (_currentPage * _pageSize)];
 
-                // Crear el proxy
+         
                 proxy = new ReportManagerClient();
 
-                // Mostrar diálogo para guardar el archivo
+               
                 var saveFileDialog = new SaveFileDialog {
                     Filter = "Archivo PDF (*.pdf)|*.pdf",
                     Title = "Guardar reporte como PDF",
@@ -95,7 +110,7 @@ namespace MilyUnaNochesWPFApp.Views {
                 };
 
                 if (saveFileDialog.ShowDialog() == true) {
-                    // Obtener los datos completos según el tipo de reporte
+                    
                     switch (_tipoReporte.ToLower()) {
                         case "producto":
                             var productReport = await proxy.GetProductReportDataAsync(reportMetadata.ReportId);
@@ -134,7 +149,7 @@ namespace MilyUnaNochesWPFApp.Views {
                 MessageBox.Show($"Error inesperado: {ex.Message}", "Error",
                     MessageBoxButton.OK, MessageBoxImage.Error);
             } finally {
-                // Cerrar el proxy adecuadamente
+                
                 if (proxy != null && proxy is ICommunicationObject) {
                     try {
                         if (((ICommunicationObject)proxy).State == CommunicationState.Faulted) {
@@ -149,48 +164,48 @@ namespace MilyUnaNochesWPFApp.Views {
             }
         }
 
-        // Métodos para generar PDFs (implementación básica)
+     
         private void GenerarPDFProducto(string filePath, ProductReportData reporte) {
             using (var fs = new FileStream(filePath, FileMode.Create)) {
                 using (var doc = new Document(PageSize.A4, 30, 30, 30, 30)) {
                     iTextSharp.text.pdf.PdfWriter.GetInstance(doc, fs);
                     doc.Open();
 
-                    // Fuentes personalizadas
+                   
                     var tituloFont = FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 18);
                     var subtituloFont = FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 12);
                     var normalFont = FontFactory.GetFont(FontFactory.HELVETICA, 10);
 
-                    // Título
+                
                     doc.Add(new Paragraph($"REPORTE DE PRODUCTO - {reporte.ProductInfo.ProductName}", tituloFont));
                     doc.Add(new Paragraph($"Generado el: {DateTime.Now.ToString("g")}", normalFont));
 
-                    // Información básica
+                  
                     doc.Add(new Paragraph("INFORMACIÓN DEL PRODUCTO:", subtituloFont));
                     doc.Add(new Paragraph($"• Código: {reporte.ProductInfo.ProductCode}", normalFont));
                     doc.Add(new Paragraph($"• Categoría: {reporte.ProductInfo.Category}", normalFont));
                     doc.Add(new Paragraph($"• Descripción: {reporte.ProductInfo.Description}", normalFont));
                     doc.Add(new Paragraph($"• Período del reporte: {reporte.StartDate.ToString("d")} a {reporte.EndDate.ToString("d")}", normalFont));
 
-                    // Resumen
+               
                     doc.Add(new Paragraph("RESUMEN DE VENTAS:", subtituloFont));
                     doc.Add(new Paragraph($"• Total vendido: {reporte.Summary.TotalSales:C}", normalFont));
                     doc.Add(new Paragraph($"• Beneficio: {reporte.Summary.TotalProfit:C}", normalFont));
                     doc.Add(new Paragraph($"• Unidades vendidas: {reporte.Summary.TotalItemsSold}", normalFont));
                     doc.Add(new Paragraph($"• Transacciones: {reporte.Summary.TotalTransactions}", normalFont));
 
-                    // Tabla de ventas detalladas
+                 
                     doc.Add(new Paragraph("DETALLE DE VENTAS:", subtituloFont));
 
-                    // Ajustamos la tabla a 6 columnas (coincide con los datos que vamos a mostrar)
+                   
                     var table = new PdfPTable(6);
                     table.WidthPercentage = 100;
 
-                    // Configuramos los anchos de las columnas (opcional)
+                   
                     float[] columnWidths = { 15f, 10f, 12f, 12f, 20f, 20f };
                     table.SetWidths(columnWidths);
 
-                    // Encabezados
+                    
                     table.AddCell(new Phrase("Fecha", subtituloFont));
                     table.AddCell(new Phrase("Cantidad", subtituloFont));
                     table.AddCell(new Phrase("P. Unitario", subtituloFont));
@@ -198,7 +213,7 @@ namespace MilyUnaNochesWPFApp.Views {
                     table.AddCell(new Phrase("Vendedor", subtituloFont));
                     table.AddCell(new Phrase("Cliente", subtituloFont));
 
-                    // Datos
+             
                     foreach (var venta in reporte.SalesDetails) {
                         table.AddCell(new Phrase(venta.SaleDate.ToString("d"), normalFont));
                         table.AddCell(new Phrase(venta.QuantitySold.ToString(), normalFont));
@@ -215,18 +230,18 @@ namespace MilyUnaNochesWPFApp.Views {
         }
         private void GenerarPDFCategoria(string filePath, CategoryReportData reporte) {
             using (var fs = new FileStream(filePath, FileMode.Create)) {
-                using (var doc = new Document(PageSize.A4.Rotate())) // Horizontal para más espacio
+                using (var doc = new Document(PageSize.A4.Rotate())) 
                 {
                     iTextSharp.text.pdf.PdfWriter.GetInstance(doc, fs);
                     doc.Open();
 
-                    // Encabezado
+                    
                     doc.Add(new Paragraph($"REPORTE DE CATEGORÍA: {reporte.CategoryName}",
                           new Font(Font.FontFamily.HELVETICA, 18, Font.BOLD)));
                     doc.Add(new Paragraph($"Período: {reporte.StartDate:dd/MM/yyyy} - {reporte.EndDate:dd/MM/yyyy}"));
                     doc.Add(new Paragraph($"Generado el: {DateTime.Now:g}"));
 
-                    // Resumen Estadístico
+                  
                     var summaryTable = new PdfPTable(4);
                     summaryTable.WidthPercentage = 100;
                     summaryTable.AddCell(new PdfPCell(new Phrase("RESUMEN ESTADÍSTICO",
@@ -244,7 +259,7 @@ namespace MilyUnaNochesWPFApp.Views {
 
                     doc.Add(summaryTable);
 
-                    // Productos Más Vendidos
+                   
                     doc.Add(new Paragraph("TOP PRODUCTOS:",
                         new Font(Font.FontFamily.HELVETICA, 14, Font.BOLD)));
 
@@ -268,17 +283,17 @@ namespace MilyUnaNochesWPFApp.Views {
         }
         private void GenerarPDFInventario(string filePath, InventoryReportData reporte) {
             using (var fs = new FileStream(filePath, FileMode.Create)) {
-                using (var doc = new Document(PageSize.A4.Rotate())) // Horizontal para mejor visualización
+                using (var doc = new Document(PageSize.A4.Rotate())) 
                 {
                     iTextSharp.text.pdf.PdfWriter.GetInstance(doc, fs);
                     doc.Open();
 
-                    // Encabezado
+              
                     doc.Add(new Paragraph("REPORTE DE INVENTARIO",
                         new Font(Font.FontFamily.HELVETICA, 18, Font.BOLD)));
                     doc.Add(new Paragraph($"Fecha del reporte: {reporte.ReportDate:dd/MM/yyyy}"));
 
-                    // Resumen General
+              
                     var summaryTable = new PdfPTable(4);
                     summaryTable.WidthPercentage = 100;
                     summaryTable.AddCell(new PdfPCell(new Phrase("RESUMEN GENERAL",
@@ -296,14 +311,14 @@ namespace MilyUnaNochesWPFApp.Views {
 
                     doc.Add(summaryTable);
 
-                    // Detalle de Inventario
+                  
                     doc.Add(new Paragraph("DETALLE DE PRODUCTOS:",
                         new Font(Font.FontFamily.HELVETICA, 14, Font.BOLD)));
 
                     var inventoryTable = new PdfPTable(8);
                     inventoryTable.WidthPercentage = 100;
 
-                    // Encabezados
+                   
                     inventoryTable.AddCell("Código");
                     inventoryTable.AddCell("Nombre");
                     inventoryTable.AddCell("Categoría");
@@ -313,7 +328,7 @@ namespace MilyUnaNochesWPFApp.Views {
                     inventoryTable.AddCell("Últ. Reabastecimiento");
                     inventoryTable.AddCell("Últ. Venta");
 
-                    // Datos
+                    
                     foreach (var item in reporte.Items) {
                         inventoryTable.AddCell(item.ProductCode);
                         inventoryTable.AddCell(item.ProductName);
@@ -336,13 +351,12 @@ namespace MilyUnaNochesWPFApp.Views {
                     iTextSharp.text.pdf.PdfWriter.GetInstance(doc, fs);
                     doc.Open();
 
-                    // Encabezado
                     doc.Add(new Paragraph("REPORTE DE GANANCIAS",
                         new Font(Font.FontFamily.HELVETICA, 18, Font.BOLD)));
                     doc.Add(new Paragraph($"Período: {reporte.StartDate:dd/MM/yyyy} - {reporte.EndDate:dd/MM/yyyy}"));
                     doc.Add(new Paragraph($"Generado el: {DateTime.Now:g}"));
 
-                    // Resumen Financiero
+                
                     var financeTable = new PdfPTable(2);
                     financeTable.WidthPercentage = 100;
                     financeTable.AddCell(new PdfPCell(new Phrase("RESUMEN FINANCIERO",
@@ -357,7 +371,7 @@ namespace MilyUnaNochesWPFApp.Views {
 
                     doc.Add(financeTable);
 
-                    // Desglose por Categoría
+                   
                     doc.Add(new Paragraph("GANANCIAS POR CATEGORÍA:",
                         new Font(Font.FontFamily.HELVETICA, 14, Font.BOLD)));
 
@@ -375,7 +389,6 @@ namespace MilyUnaNochesWPFApp.Views {
 
                     doc.Add(categoryTable);
 
-                    // Tendencia Mensual (Gráfico opcional)
                     doc.Add(new Paragraph("TENDENCIA MENSUAL:",
                         new Font(Font.FontFamily.HELVETICA, 14, Font.BOLD)));
 
@@ -394,7 +407,7 @@ namespace MilyUnaNochesWPFApp.Views {
             }
         }
 
-        // Método auxiliar para filas financieras
+
         private void AddFinanceRow(PdfPTable table, string label, decimal value, bool isPercentage = false) {
             table.AddCell(new PdfPCell(new Phrase(label,
                 new Font(Font.FontFamily.HELVETICA, 10, Font.BOLD))));
@@ -403,7 +416,6 @@ namespace MilyUnaNochesWPFApp.Views {
                 new Font(Font.FontFamily.HELVETICA, 10))));
         }
 
-        // Lógica para la creación de reporte producto
         private void AssignEvents() {
             txtb_CodigoProducto.TextChanged += TxtCodigoProducto_TextChanged;
             lbl_DiarioProducto.MouseDown += (s, e) => SelectPeriod(lbl_DiarioProducto);
@@ -439,20 +451,20 @@ namespace MilyUnaNochesWPFApp.Views {
         }
 
         private void SelectPeriod(Label botonSeleccionado) {
-            // Restablecer opacidad de todos los botones de periodo
+
             lbl_DiarioProducto.Opacity = 0.5;
             lbl_SemanalProducto.Opacity = 0.5;
             lbl_MensualProducto.Opacity = 0.5;
             lbl_AnualProducto.Opacity = 0.5;
 
-            // Resaltar el botón seleccionado
+
             botonSeleccionado.Opacity = 1.0;
 
-            // Habilitar botón de generar
+
             lbl_GenerarProducto.IsEnabled = true;
             lbl_GenerarProducto.Opacity = 1.0;
 
-            // Guardar el periodo seleccionado
+
             _periodoSeleccionado = botonSeleccionado.Content.ToString().ToLower();
         }
 
@@ -467,14 +479,14 @@ namespace MilyUnaNochesWPFApp.Views {
         private async void BtnClickGenerarProducto(object sender, RoutedEventArgs e) {
             try {
                 if (string.IsNullOrWhiteSpace(txtb_CodigoProducto.Text)) {
-                    MessageBox.Show("Por favor introduzca un codigo de producto");
+
+                    ShowCustomMessage("Por favor introduzca un codigo de producto.", DialogType.Warning);
                 }
                 _parametroBusqueda = txtb_CodigoProducto.Text;
                 await CargarReportesDisponibles();
                 HideAllGrids();
             } catch (Exception ex) {
-                MessageBox.Show($"Error al cargar reportes: {ex.Message}", "Error",
-                    MessageBoxButton.OK, MessageBoxImage.Error);
+                ShowCustomMessage($"Error al cargar reportes: {ex.Message}", DialogType.Error);
             }
         }
 
@@ -482,7 +494,6 @@ namespace MilyUnaNochesWPFApp.Views {
             try {
                 IReportManager proxy = new ReportManagerClient();
 
-                // Obtener los datos paginados
                 switch (_tipoReporte) {
                     case "Producto":
                         _reportesDisponibles = await proxy.GetAvailableProductReportsAsync(
@@ -502,7 +513,7 @@ namespace MilyUnaNochesWPFApp.Views {
                         break;
                 }
 
-                // Asignar valores según el tipo de reporte
+               
                 dg_Reports.ItemsSource = _reportesDisponibles
                     .Select((r, index) => new {
                         No = (_currentPage * _pageSize) + index + 1,
@@ -550,7 +561,7 @@ namespace MilyUnaNochesWPFApp.Views {
         private string ObtenerCategoriaDisplay(string tipoReporte, ReportMetadata reporte) {
             switch (tipoReporte) {
                 case "Producto":
-                    return "Producto Específico"; // O podrías poner la categoría del producto si la tienes
+                    return "Producto Específico"; 
                 case "Categoria":
                     return string.IsNullOrEmpty(reporte.Category) ? "Todas las categorías" : reporte.Category;
                 case "Inventario":
@@ -578,7 +589,7 @@ namespace MilyUnaNochesWPFApp.Views {
             }
         }
 
-        // Lógica para la creación de reporte categoría
+    
         private void AssignEventsCategory() {
             txtb_CategoriaProducto.TextChanged += TxtCategoriaDeProducto_TextChanged;
             lbl_DiarioCategoria.MouseDown += (s, e) => SelectPeriodCategory(lbl_DiarioCategoria);
@@ -648,7 +659,7 @@ namespace MilyUnaNochesWPFApp.Views {
             ResetForm();
         }
 
-        // Lógica para la creación de reporte ganancias o inventario
+
         private void AssignEventsInventoryProfit() {
             lbl_DiarioInventarioGanancias.MouseDown += (s, e) => SelectPeriodInventoryProfit(lbl_DiarioInventarioGanancias);
             lbl_SemanalInventarioGanancias.MouseDown += (s, e) => SelectPeriodInventoryProfit(lbl_SemanalInventarioGanancias);
@@ -698,25 +709,25 @@ namespace MilyUnaNochesWPFApp.Views {
         }
 
         private void Dg_Reports_SelectionChanged(object sender, RoutedEventArgs e) {
-            // Lógica para cambio de selección en el DataGrid
+            
         }
 
         private void ResetForm() {
-            // Limpiar los campos de texto
+            
             txtb_CodigoProducto.Text = string.Empty;
             txtb_CategoriaProducto.Text = string.Empty;
 
-            // Restaurar opacidad y deshabilitar botones de periodo
+            
             RestoreOpacityButtons();
             RestoreOpacityButtonsCategory();
             RestoreOpacityButtonsInventoryGain();
 
-            // Deshabilitar botones de generación
+            
             lbl_GenerarProducto.IsEnabled = false;
             lbl_GenerarCategoria.IsEnabled = false;
             lbl_GenerarInventarioGanancias.IsEnabled = false;
 
-            // Ocultar grids
+        
             HideAllGrids();
         }
         private void BtnPrimeraPagina_Click(object sender, RoutedEventArgs e) {

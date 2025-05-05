@@ -16,6 +16,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using static MilyUnaNochesWPFApp.Views.CustomDialog;
 
 namespace MilyUnaNochesWPFApp.Views {
 
@@ -26,6 +27,12 @@ namespace MilyUnaNochesWPFApp.Views {
         public RegisterProvider() {
             InitializeComponent();
         }
+        private void ShowCustomMessage(string message, DialogType type)
+        {
+            var dialog = new CustomDialog(message, type);
+            dialog.Owner = Window.GetWindow(this);
+            dialog.ShowDialog();
+        }
 
         private void Cancel_Click(object sender, RoutedEventArgs e) {
             if (NavigationService != null && NavigationService.CanGoBack) {
@@ -33,29 +40,37 @@ namespace MilyUnaNochesWPFApp.Views {
             }
         }
 
-        private void Register_Click(object sender, RoutedEventArgs e) {
-            if (!ValidateForm()) {
+        private void Register_Click(object sender, RoutedEventArgs e)
+        {
+            if (!ValidateForm())
+            {
                 return;
             }
 
-            if (IsProviderRegistered(txtProviderName.Text) == Constants.DataMatches) {
-                DialogManager.ShowWarningMessageAlert("Ya existe un proveedor registrado con esta informacion", "Proveedor ya registrado");
+            if (IsProviderRegistered(txtProviderName.Text) == Constants.DataMatches)
+            {
+                ShowCustomMessage("Ya existe un proveedor registrado con esta información", DialogType.Warning);
                 return;
-            } else if (IsProviderRegistered(txtProviderName.Text) == Constants.ErrorOperation) {
-                DialogManager.ShowWarningMessageAlert("Ha ocurrido un error al intentar establecer conexión con la base de datos", "Error de conexion");
+            }
+            else if (IsProviderRegistered(txtProviderName.Text) == Constants.ErrorOperation)
+            {
+                ShowCustomMessage("Ha ocurrido un error al intentar establecer conexión con la base de datos", DialogType.Error);
                 return;
             }
 
             int addressId = CreateAddressFromForm();
             int providerResult = CreateProviderFromForm(addressId);
-            if (providerResult == Constants.SuccessOperation) {
-                DialogManager.ShowSuccessMessageAlert("Registro realizado con exito");
+            if (providerResult == Constants.SuccessOperation)
+            {
+                ShowCustomMessage("Registro realizado con éxito", DialogType.Success);
                 ClearFields();
-            } else {
-                DialogManager.ShowErrorMessageAlert("Ha ocurrido un error al intentar establecer conexión con la base de datos.");
             }
-
+            else
+            {
+                ShowCustomMessage("Ha ocurrido un error al intentar establecer conexión con la base de datos.", DialogType.Error);
+            }
         }
+
 
         private int CreateAddressFromForm() {
             var address = new Address {
@@ -88,42 +103,52 @@ namespace MilyUnaNochesWPFApp.Views {
             txtCity.Text = string.Empty;
         }
 
-        private bool ValidateForm() {
-            if (!VerifyNoEmptyFields()) {
-                DialogManager.ShowWarningMessageAlert("Los campos no deben estar vacíos.", "Validación");
+        private bool ValidateForm()
+        {
+            if (!VerifyNoEmptyFields())
+            {
+                ShowCustomMessage("Los campos no deben estar vacíos.", DialogType.Warning);
                 return false;
             }
 
-            if (!Validator.ValidateProviderName(txtProviderName.Text)) {
-                DialogManager.ShowWarningMessageAlert("El nombre del proveedor no es válido.", "Validación");
+            if (!Validator.ValidateProviderName(txtProviderName.Text))
+            {
+                ShowCustomMessage("El nombre del proveedor no es válido.", DialogType.Warning);
                 return false;
             }
-            if (!Validator.ValidateContact(txtContact.Text)) {
-                DialogManager.ShowWarningMessageAlert("El contacto no es válido.", "Validación");
+            if (!Validator.ValidateContact(txtContact.Text))
+            {
+                ShowCustomMessage("El contacto no es válido.", DialogType.Warning);
                 return false;
             }
-            if (!Validator.ValidatePhone(txtPhone.Text)) {
-                DialogManager.ShowWarningMessageAlert("El teléfono no es válido.", "Validación");
+            if (!Validator.ValidatePhone(txtPhone.Text))
+            {
+                ShowCustomMessage("El teléfono no es válido.", DialogType.Warning);
                 return false;
             }
-            if (!Validator.ValidateEmail(txtEmail.Text)) {
-                DialogManager.ShowWarningMessageAlert("El correo electrónico no es válido.", "Validación");
+            if (!Validator.ValidateEmail(txtEmail.Text))
+            {
+                ShowCustomMessage("El correo electrónico no es válido.", DialogType.Warning);
                 return false;
             }
-            if (!Validator.ValidateStreet(txtStreet.Text)) {
-                DialogManager.ShowWarningMessageAlert("La calle no es válida.", "Validación");
+            if (!Validator.ValidateStreet(txtStreet.Text))
+            {
+                ShowCustomMessage("La calle no es válida.", DialogType.Warning);
                 return false;
             }
-            if (!Validator.ValidateNumber(txtNumber.Text)) {
-                DialogManager.ShowWarningMessageAlert("El número no es válido.", "Validación");
+            if (!Validator.ValidateNumber(txtNumber.Text))
+            {
+                ShowCustomMessage("El número no es válido.", DialogType.Warning);
                 return false;
             }
-            if (!Validator.ValidatePostalCode(txtPostalCode.Text)) {
-                MessageBox.Show("El código postal no es válido.", "Validación", MessageBoxButton.OK, MessageBoxImage.Warning);
+            if (!Validator.ValidatePostalCode(txtPostalCode.Text))
+            {
+                ShowCustomMessage("El código postal no es válido.", DialogType.Warning);
                 return false;
             }
-            if (!Validator.ValidateCity(txtCity.Text)) {
-                DialogManager.ShowWarningMessageAlert("La ciudad no es válida.", "Validación");
+            if (!Validator.ValidateCity(txtCity.Text))
+            {
+                ShowCustomMessage("La ciudad no es válida.", DialogType.Warning);
                 return false;
             }
             return true;

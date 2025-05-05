@@ -16,6 +16,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using static MilyUnaNochesWPFApp.Views.CustomDialog;
 
 namespace MilyUnaNochesWPFApp.Views {
     /// <summary>
@@ -29,14 +30,19 @@ namespace MilyUnaNochesWPFApp.Views {
             InitializeComponent();
             LoadProviders();
         }
-
+        private void ShowCustomMessage(string message, DialogType type)
+        {
+            var dialog = new CustomDialog(message, type);
+            dialog.Owner = Window.GetWindow(this);
+            dialog.ShowDialog();
+        }
         public async void LoadProviders() {
             try {
                 var providersList = await _providerManager.GetProvidersAsync();
                 Providers = new ObservableCollection<Provider>(providersList);
                 ProviderDataGrid.ItemsSource = Providers;
             } catch (Exception ex) {
-                MessageBox.Show($"Error al cargar proveedores: {ex.Message}");
+                ShowCustomMessage($"Error al cargar proveedores: {ex.Message}", DialogType.Warning);
             }
         }
         private void txtb_SearchBar_TextChanged(object sender, TextChangedEventArgs e) {
@@ -52,35 +58,34 @@ namespace MilyUnaNochesWPFApp.Views {
         private void Delete_Click(object sender, RoutedEventArgs e) {
 
             if (ProviderDataGrid.SelectedItem is Provider selectedProvider) {
-
-                bool messageResult =
-                DialogManager.ShowConfirmationMessageAlert($"Estás seguro de que deseas eliminar este proveedor: {selectedProvider.providerName}", 
-                "Archivar proveedor");
-
-                if (messageResult) {
+                var dialog = new CustomDialog($"Estás seguro de que deseas eliminar este proveedor: {selectedProvider.providerName}", CustomDialog.DialogType.Confirmation);
+                dialog.ShowDialog();
+                if (dialog.UserConfirmed == true){
                     var deleteResult = _providerManager.DeleteProvider(selectedProvider.IdProvider);
                     if (deleteResult == Constants.SuccessOperation) {
-                        DialogManager.ShowConfirmationMessageAlert("Proveedor eliminado con exito", "Eliminacion exitosa");
+                        ShowCustomMessage("Proveedor eliminado con exito", DialogType.Success);
                         LoadProviders();
                     } else {
-                        DialogManager.ShowErrorMessageAlert("No se pudo eliminar el proveedor", "Eliminacion fallida");
+                        ShowCustomMessage("No se pudo eliminar el proveedor", DialogType.Error);
                     }
                 }
             } else {
-                DialogManager.ShowWarningMessageAlert("Debe seleccionar un proveedor primero", "Seleccione un proveedor");
+                ShowCustomMessage("Debe seleccionar un proveedor primero", DialogType.Warning);
             }
         }
 
         private void Archive_Click(object sender, RoutedEventArgs e) {
             if (ProviderDataGrid.SelectedItem is Provider selectedProvider) {
-                bool result = DialogManager.ShowConfirmationMessageAlert($"¿Desea archivar el proveedor: {selectedProvider.providerName}", "Archivar proveedor");
-                if (result) {
-                    var resultQuery = _providerManager.ArchiveProvider(selectedProvider.IdProvider);
+                    var dialog = new CustomDialog($"¿Desea archivar el proveedor: {selectedProvider.providerName}", CustomDialog.DialogType.Confirmation);
+                    dialog.ShowDialog();
+                    if (dialog.UserConfirmed == true)
+                    {
+                        var resultQuery = _providerManager.ArchiveProvider(selectedProvider.IdProvider);
                     if (resultQuery == Constants.SuccessOperation) {
-                        DialogManager.ShowSuccessMessageAlert("Se ha archivado el proveedor", "Proveedor archivado");
+                        ShowCustomMessage("Se ha archivado el proveedor", DialogType.Success);
                         LoadProviders();
                     } else {
-                        DialogManager.ShowErrorMessageAlert("No se pudo archivar el proveedor", "Error al archivar el proveedor");
+                        ShowCustomMessage("No se pudo archivar el proveedor", DialogType.Warning);
                     }
                 }
 

@@ -9,13 +9,14 @@
 
     <DockPanel>
         <Grid>
+            
             <Border>
                 <Border.Background>
                     <ImageBrush ImageSource="/Images/Background/EmployeesBackground.png" Stretch="UniformToFill" />
                 </Border.Background>
             </Border>
-            <Image Name="img_GoOut" Source="/Images/Icons/User.png" 
-               Cursor="Hand" Margin="1176,43,57,611" RenderTransformOrigin="0.5,0.506"/>
+            <Image Name="img_goBack" Source="/Images/Icons/goBack.png" MouseDown="Image_MouseDownGoBack" 
+                   Cursor="Hand" Margin="45,34,1164,609" RenderTransformOrigin="0.5,0.506"/>
 
             <Label x:Name="lbl_RegisterClien" Content="Registrar Empleado" FontFamily="Bodoni MT Condensed"
            Foreground="#ae7d5c"  FontSize="30"   MouseDown="Lbl_RegisterEmploye_Click"

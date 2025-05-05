@@ -14,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using static MilyUnaNochesWPFApp.Views.CustomDialog;
 
 namespace MilyUnaNochesWPFApp.Views {
 
@@ -31,6 +32,12 @@ namespace MilyUnaNochesWPFApp.Views {
             InitializeRegisterPurchase();
             LoadProvidersAsync();
         }
+        private void ShowCustomMessage(string message, DialogType type)
+        {
+            var dialog = new CustomDialog(message, type);
+            dialog.Owner = Window.GetWindow(this);
+            dialog.ShowDialog();
+        }
 
         public void InitializeRegisterPurchase() {
             _currentPurchase = new RegisterPurchase_sv() {
@@ -47,7 +54,7 @@ namespace MilyUnaNochesWPFApp.Views {
                 txtProviderName.DisplayMemberPath = "providerName";
                 txtProviderName.SelectedValuePath = "IdProvider";
             } catch (Exception ex) {
-                DialogManager.ShowErrorMessageAlert("Ha ocurrido un error intentando cargar los proveedores");
+                ShowCustomMessage("Ha ocurrido un error intentando cargar los proveedores", DialogType.Error);
             }
         }
 
@@ -79,27 +86,27 @@ namespace MilyUnaNochesWPFApp.Views {
                 int result = await purchaseClient.SavePurchaseAsync(_currentPurchase);
 
                 if (result > 0) {
-                    DialogManager.ShowSuccessMessageAlert("Compra registrada exitosamente", "Compra registrada");
+                    ShowCustomMessage("Compra registrada exitosamente", DialogType.Success);
                     ClearFields();
                     InitializeRegisterPurchase();
                     SelectedPayMethod = "";
                 } else {
-                    DialogManager.ShowErrorMessageAlert("No se pudo registrar la compra");
+                    ShowCustomMessage("No se pudo registrar la compra", DialogType.Error);
                 }
             } catch (Exception ex) {
-                DialogManager.ShowErrorMessageAlert("No se pudo registrar la compra. Intente mas tarde");
+                ShowCustomMessage("No se pudo registrar la compra. Intente mas tarde", DialogType.Warning);
             }
         }
 
         private bool validateFields() {
             if (txtProviderName.SelectedValue == null) {
-                DialogManager.ShowWarningMessageAlert("Seleccione un proveedor válido.");
+                ShowCustomMessage("Seleccione un proveedor válido.", DialogType.Warning);
                 return false;
             }
 
-            // Validar que se hayan agregado productos
+
             if (_currentPurchase.Products == null || _currentPurchase.Products.Count == 0) {
-                DialogManager.ShowWarningMessageAlert("Debe agregar al menos un producto");
+                ShowCustomMessage("Debe agregar al menos un producto", DialogType.Warning);
                 return false;
             }
             return true;
@@ -131,7 +138,8 @@ namespace MilyUnaNochesWPFApp.Views {
                         txtCity.Text = "Indefinido";
                     }
                 } catch (Exception ex) {
-                    DialogManager.ShowErrorMessageAlert("Ha ocurrido un error al obtener la dirección del proveedor.");
+                    ShowCustomMessage("Ha ocurrido un error al obtener la dirección del proveedor", DialogType.Warning);
+
                 }
             } else {
                 ClearFields();
@@ -153,7 +161,7 @@ namespace MilyUnaNochesWPFApp.Views {
                     txtCity.Text = address.Ciudad;
                 }
             } catch (Exception ex) {
-                DialogManager.ShowErrorMessageAlert($"Error cargando detalles: {ex.Message}");
+                ShowCustomMessage($"Error cargando detalles: {ex.Message}", DialogType.Warning);
             }
         }
 

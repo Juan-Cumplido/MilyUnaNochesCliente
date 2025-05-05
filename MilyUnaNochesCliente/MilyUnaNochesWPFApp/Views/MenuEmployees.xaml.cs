@@ -15,9 +15,7 @@ using System.Windows.Shapes;
 
 namespace MilyUnaNochesWPFApp.Views
 {
-    /// <summary>
-    /// Lógica de interacción para MenuEmployees.xaml
-    /// </summary>
+
     public partial class MenuEmployees : Page
     {
         public MenuEmployees()
@@ -34,6 +32,12 @@ namespace MilyUnaNochesWPFApp.Views
         private void Lbl_ConsultEmploye_Click(object sender, MouseButtonEventArgs e)
         {
             Frame.Source = new System.Uri("ConsultEmployee.xaml", System.UriKind.Relative);
+        }
+
+        private void Image_MouseDownGoBack(object sender, MouseButtonEventArgs e)
+        {
+            ManagerMenu managerMenu = new ManagerMenu();
+            this.NavigationService.Navigate(managerMenu);
         }
     }
 }

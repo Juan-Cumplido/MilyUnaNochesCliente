@@ -37,7 +37,6 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
- 
         <TextBox x:Name="txtb_SearchBar"
                  Grid.Row="0"
                  HorizontalAlignment="Left" 
