@@ -46,20 +46,22 @@
 
         <Image x:Name="img_Logo" HorizontalAlignment="Left" Height="123" VerticalAlignment="Top" Width="253" Source="/Images/Icons/Logo.png" MouseLeftButtonDown="ImgLogo1_MouseLeftButtonDown"/>
         <Image x:Name="img_Logo2" HorizontalAlignment="Left" Height="94" Margin="28,29,0,0" VerticalAlignment="Top" Width="184" Source="/Images/Icons/Mil_y_una_Noches.png" MouseLeftButtonDown="ImgLogo2_MouseLeftButtonDown"/>
-        
-    
+
+        <Image Name="img_GoOut" Source="/Images/Icons/User.png" MouseDown="Image_MouseDown" 
+                   Cursor="Hand" Margin="1201,23,32,631" RenderTransformOrigin="0.5,0.506"/>
 
         <StackPanel 
-            Margin="300,10,0,607" 
+            Margin="310,6,0,611" 
             Orientation="Horizontal"
             HorizontalAlignment="Left"
-            Width="1000">
-            <Button Content="Ventas" Click="Sales_Click" Style="{StaticResource ButtonStyle}"/>
-            <Button Content="Usuarios" Click="Users_Click" Style="{StaticResource ButtonStyle}"/>
-            <Button Content="Productos" Click="Products_Click" Style="{StaticResource ButtonStyle}"/>
-            <Button Content="Proveedores" Click="Suppliers_Click" Margin="30" Style="{StaticResource ButtonStyle}"/>
-            <Button Content="Reportes" Click="Reports_Click" Margin="30" Style="{StaticResource ButtonStyle}"/>
-            <Button Content="Compras" Click="Purchases_Click" Margin="30" Style="{StaticResource ButtonStyle}"/>
+            Width="914">
+            <Button Content="Ventas" Click="Sales_Click" Cursor="Hand" Margin="15" Style="{StaticResource ButtonStyle}"/>
+            <Button Content="Empleados" Click="Employee_Click" Cursor="Hand"  Margin="15" Style="{StaticResource ButtonStyle}"/>
+            <Button Content="Clientes" Click="Client_Click" Cursor="Hand"  Margin="15" Style="{StaticResource ButtonStyle}"/>
+            <Button Content="Productos" Click="Products_Click" Cursor="Hand"  Margin="15" Style="{StaticResource ButtonStyle}"/>
+            <Button Content="Proveedores" Click="Suppliers_Click" Cursor="Hand"  Margin="15" Style="{StaticResource ButtonStyle}"/>
+            <Button Content="Reportes" Click="Reports_Click" Cursor="Hand"  Margin="15" Style="{StaticResource ButtonStyle}"/>
+            <Button Content="Compras" Click="Purchases_Click" Cursor="Hand"  Margin="15" Style="{StaticResource ButtonStyle}"/>
         </StackPanel>
 
         <Frame x:Name="fra_mainFrame"

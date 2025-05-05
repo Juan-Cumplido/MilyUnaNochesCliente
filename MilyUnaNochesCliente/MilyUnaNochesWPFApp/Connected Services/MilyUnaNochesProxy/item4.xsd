@@ -196,10 +196,80 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="GetEmployee">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="idUser" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetEmployeeResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/MilyUnaNochesService.Contracts" minOccurs="0" name="GetEmployeeResult" nillable="true" type="q9:Empleado" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateEmployee">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/MilyUnaNochesService.Contracts" minOccurs="0" name="employee" nillable="true" type="q10:Empleado" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateEmployeeResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UpdateEmployeeResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetClient">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="idUser" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetClientResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/MilyUnaNochesService.Contracts" minOccurs="0" name="GetClientResult" nillable="true" type="q11:Usuario" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateClient">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/MilyUnaNochesService.Contracts" minOccurs="0" name="client" nillable="true" type="q12:Usuario" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateClientResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UpdateClientResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetClienteId">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="idUsuario" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetClienteIdResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetClienteIdResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="createAddress">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/MilyUnaNochesService.Logic" minOccurs="0" name="address" nillable="true" type="q9:Address" />
+        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/MilyUnaNochesService.Logic" minOccurs="0" name="address" nillable="true" type="q13:Address" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -220,14 +290,14 @@
   <xs:element name="GetAddressResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/MilyUnaNochesService.Logic" minOccurs="0" name="GetAddressResult" nillable="true" type="q10:Address" />
+        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/MilyUnaNochesService.Logic" minOccurs="0" name="GetAddressResult" nillable="true" type="q14:Address" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="CreateProvider">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/MilyUnaNochesService.Logic" minOccurs="0" name="newProvider" nillable="true" type="q11:Provider" />
+        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/MilyUnaNochesService.Logic" minOccurs="0" name="newProvider" nillable="true" type="q15:Provider" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -246,7 +316,7 @@
   <xs:element name="GetProvidersResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/MilyUnaNochesService.Logic" minOccurs="0" name="GetProvidersResult" nillable="true" type="q12:ArrayOfProvider" />
+        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/MilyUnaNochesService.Logic" minOccurs="0" name="GetProvidersResult" nillable="true" type="q16:ArrayOfProvider" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -258,7 +328,7 @@
   <xs:element name="GetArchivedProvidersResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/MilyUnaNochesService.Logic" minOccurs="0" name="GetArchivedProvidersResult" nillable="true" type="q13:ArrayOfProvider" />
+        <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/MilyUnaNochesService.Logic" minOccurs="0" name="GetArchivedProvidersResult" nillable="true" type="q17:ArrayOfProvider" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -328,15 +398,15 @@
   <xs:element name="GetSupplierResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/MilyUnaNochesService.Logic" minOccurs="0" name="GetSupplierResult" nillable="true" type="q14:Provider" />
+        <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/MilyUnaNochesService.Logic" minOccurs="0" name="GetSupplierResult" nillable="true" type="q18:Provider" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="EditSupplier">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/MilyUnaNochesService.Logic" minOccurs="0" name="newProviderInfo" nillable="true" type="q15:Provider" />
-        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/MilyUnaNochesService.Logic" minOccurs="0" name="newAddressInfo" nillable="true" type="q16:Address" />
+        <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/MilyUnaNochesService.Logic" minOccurs="0" name="newProviderInfo" nillable="true" type="q19:Provider" />
+        <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/MilyUnaNochesService.Logic" minOccurs="0" name="newAddressInfo" nillable="true" type="q20:Address" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -350,7 +420,7 @@
   <xs:element name="SaveProduct">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/MilyUnaNochesService.Logic" minOccurs="0" name="product" nillable="true" type="q17:Product" />
+        <xs:element xmlns:q21="http://schemas.datacontract.org/2004/07/MilyUnaNochesService.Logic" minOccurs="0" name="product" nillable="true" type="q21:Product" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -369,7 +439,7 @@
   <xs:element name="GetProductsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/MilyUnaNochesService.Logic" minOccurs="0" name="GetProductsResult" nillable="true" type="q18:ArrayOfProduct" />
+        <xs:element xmlns:q22="http://schemas.datacontract.org/2004/07/MilyUnaNochesService.Logic" minOccurs="0" name="GetProductsResult" nillable="true" type="q22:ArrayOfProduct" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -397,7 +467,7 @@
   <xs:element name="GetProductByCodeResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/MilyUnaNochesService.Logic" minOccurs="0" name="GetProductByCodeResult" nillable="true" type="q19:Product" />
+        <xs:element xmlns:q23="http://schemas.datacontract.org/2004/07/MilyUnaNochesService.Logic" minOccurs="0" name="GetProductByCodeResult" nillable="true" type="q23:Product" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -426,14 +496,14 @@
   <xs:element name="GetProductStockResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/MilyUnaNochesService.Contracts" minOccurs="0" name="GetProductStockResult" nillable="true" type="q20:StockResponse" />
+        <xs:element xmlns:q24="http://schemas.datacontract.org/2004/07/MilyUnaNochesService.Contracts" minOccurs="0" name="GetProductStockResult" nillable="true" type="q24:StockResponse" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="UpdateProduct">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q21="http://schemas.datacontract.org/2004/07/MilyUnaNochesService.Logic" minOccurs="0" name="product" nillable="true" type="q21:Product" />
+        <xs:element xmlns:q25="http://schemas.datacontract.org/2004/07/MilyUnaNochesService.Logic" minOccurs="0" name="product" nillable="true" type="q25:Product" />
         <xs:element minOccurs="0" name="oldProductName" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
@@ -474,7 +544,7 @@
   <xs:element name="SavePurchase">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q22="http://schemas.datacontract.org/2004/07/MilyUnaNochesService.Logic" minOccurs="0" name="purchase" nillable="true" type="q22:RegisterPurchase_sv" />
+        <xs:element xmlns:q26="http://schemas.datacontract.org/2004/07/MilyUnaNochesService.Logic" minOccurs="0" name="purchase" nillable="true" type="q26:RegisterPurchase_sv" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -493,22 +563,22 @@
   <xs:element name="GetPurchasesResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q23="http://schemas.datacontract.org/2004/07/MilyUnaNochesService.Logic" minOccurs="0" name="GetPurchasesResult" nillable="true" type="q23:ArrayOfConsultPurchase_SV" />
+        <xs:element xmlns:q27="http://schemas.datacontract.org/2004/07/MilyUnaNochesService.Logic" minOccurs="0" name="GetPurchasesResult" nillable="true" type="q27:ArrayOfConsultPurchase_SV" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="ProcessSale">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q24="http://schemas.datacontract.org/2004/07/MilyUnaNochesService.Contracts" minOccurs="0" name="sale" nillable="true" type="q24:Venta" />
-        <xs:element xmlns:q25="http://schemas.datacontract.org/2004/07/MilyUnaNochesService.Contracts" minOccurs="0" name="details" nillable="true" type="q25:ArrayOfVentaProducto" />
+        <xs:element xmlns:q28="http://schemas.datacontract.org/2004/07/MilyUnaNochesService.Contracts" minOccurs="0" name="sale" nillable="true" type="q28:Venta" />
+        <xs:element xmlns:q29="http://schemas.datacontract.org/2004/07/MilyUnaNochesService.Contracts" minOccurs="0" name="details" nillable="true" type="q29:ArrayOfVentaProducto" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="ProcessSaleResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q26="http://schemas.datacontract.org/2004/07/MilyUnaNochesService.Contracts" minOccurs="0" name="ProcessSaleResult" nillable="true" type="q26:SaleResult" />
+        <xs:element xmlns:q30="http://schemas.datacontract.org/2004/07/MilyUnaNochesService.Contracts" minOccurs="0" name="ProcessSaleResult" nillable="true" type="q30:SaleResult" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -523,21 +593,21 @@
   <xs:element name="SearchSalesResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q27="http://schemas.datacontract.org/2004/07/MilyUnaNochesService.Contracts" minOccurs="0" name="SearchSalesResult" nillable="true" type="q27:ArrayOfVenta" />
+        <xs:element xmlns:q31="http://schemas.datacontract.org/2004/07/MilyUnaNochesService.Contracts" minOccurs="0" name="SearchSalesResult" nillable="true" type="q31:ArrayOfVenta" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="ValidateSale">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q28="http://schemas.datacontract.org/2004/07/MilyUnaNochesService.Contracts" minOccurs="0" name="details" nillable="true" type="q28:ArrayOfVentaProducto" />
+        <xs:element xmlns:q32="http://schemas.datacontract.org/2004/07/MilyUnaNochesService.Contracts" minOccurs="0" name="details" nillable="true" type="q32:ArrayOfVentaProducto" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="ValidateSaleResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q29="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="ValidateSaleResult" nillable="true" type="q29:ArrayOfstring" />
+        <xs:element xmlns:q33="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="ValidateSaleResult" nillable="true" type="q33:ArrayOfstring" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -554,7 +624,7 @@
   <xs:element name="GetAvailableProductReportsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q30="http://schemas.datacontract.org/2004/07/DataBaseManager.Logic" minOccurs="0" name="GetAvailableProductReportsResult" nillable="true" type="q30:ArrayOfReportMetadata" />
+        <xs:element xmlns:q34="http://schemas.datacontract.org/2004/07/DataBaseManager.Logic" minOccurs="0" name="GetAvailableProductReportsResult" nillable="true" type="q34:ArrayOfReportMetadata" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -571,7 +641,7 @@
   <xs:element name="GetAvailableCategoryReportsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q31="http://schemas.datacontract.org/2004/07/DataBaseManager.Logic" minOccurs="0" name="GetAvailableCategoryReportsResult" nillable="true" type="q31:ArrayOfReportMetadata" />
+        <xs:element xmlns:q35="http://schemas.datacontract.org/2004/07/DataBaseManager.Logic" minOccurs="0" name="GetAvailableCategoryReportsResult" nillable="true" type="q35:ArrayOfReportMetadata" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -587,7 +657,7 @@
   <xs:element name="GetAvailableInventoryReportsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q32="http://schemas.datacontract.org/2004/07/DataBaseManager.Logic" minOccurs="0" name="GetAvailableInventoryReportsResult" nillable="true" type="q32:ArrayOfReportMetadata" />
+        <xs:element xmlns:q36="http://schemas.datacontract.org/2004/07/DataBaseManager.Logic" minOccurs="0" name="GetAvailableInventoryReportsResult" nillable="true" type="q36:ArrayOfReportMetadata" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -603,7 +673,7 @@
   <xs:element name="GetAvailableProfitReportsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q33="http://schemas.datacontract.org/2004/07/DataBaseManager.Logic" minOccurs="0" name="GetAvailableProfitReportsResult" nillable="true" type="q33:ArrayOfReportMetadata" />
+        <xs:element xmlns:q37="http://schemas.datacontract.org/2004/07/DataBaseManager.Logic" minOccurs="0" name="GetAvailableProfitReportsResult" nillable="true" type="q37:ArrayOfReportMetadata" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -617,7 +687,7 @@
   <xs:element name="GetProductReportDataResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q34="http://schemas.datacontract.org/2004/07/DataBaseManager.Logic" minOccurs="0" name="GetProductReportDataResult" nillable="true" type="q34:ProductReportData" />
+        <xs:element xmlns:q38="http://schemas.datacontract.org/2004/07/DataBaseManager.Logic" minOccurs="0" name="GetProductReportDataResult" nillable="true" type="q38:ProductReportData" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -631,7 +701,7 @@
   <xs:element name="GetCategoryReportDataResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q35="http://schemas.datacontract.org/2004/07/DataBaseManager.Logic" minOccurs="0" name="GetCategoryReportDataResult" nillable="true" type="q35:CategoryReportData" />
+        <xs:element xmlns:q39="http://schemas.datacontract.org/2004/07/DataBaseManager.Logic" minOccurs="0" name="GetCategoryReportDataResult" nillable="true" type="q39:CategoryReportData" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -645,7 +715,7 @@
   <xs:element name="GetInventoryReportDataResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q36="http://schemas.datacontract.org/2004/07/DataBaseManager.Logic" minOccurs="0" name="GetInventoryReportDataResult" nillable="true" type="q36:InventoryReportData" />
+        <xs:element xmlns:q40="http://schemas.datacontract.org/2004/07/DataBaseManager.Logic" minOccurs="0" name="GetInventoryReportDataResult" nillable="true" type="q40:InventoryReportData" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -659,7 +729,7 @@
   <xs:element name="GetProfitReportDataResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q37="http://schemas.datacontract.org/2004/07/DataBaseManager.Logic" minOccurs="0" name="GetProfitReportDataResult" nillable="true" type="q37:ProfitReportData" />
+        <xs:element xmlns:q41="http://schemas.datacontract.org/2004/07/DataBaseManager.Logic" minOccurs="0" name="GetProfitReportDataResult" nillable="true" type="q41:ProfitReportData" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -733,7 +803,7 @@
   <xs:element name="GetProductSalesDetailsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q38="http://schemas.datacontract.org/2004/07/DataBaseManager.Logic" minOccurs="0" name="GetProductSalesDetailsResult" nillable="true" type="q38:ArrayOfProductSalesDetail" />
+        <xs:element xmlns:q42="http://schemas.datacontract.org/2004/07/DataBaseManager.Logic" minOccurs="0" name="GetProductSalesDetailsResult" nillable="true" type="q42:ArrayOfProductSalesDetail" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -749,14 +819,14 @@
   <xs:element name="GetCategorySalesDetailsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q39="http://schemas.datacontract.org/2004/07/DataBaseManager.Logic" minOccurs="0" name="GetCategorySalesDetailsResult" nillable="true" type="q39:ArrayOfCategorySalesDetail" />
+        <xs:element xmlns:q43="http://schemas.datacontract.org/2004/07/DataBaseManager.Logic" minOccurs="0" name="GetCategorySalesDetailsResult" nillable="true" type="q43:ArrayOfCategorySalesDetail" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="Connect">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q40="http://schemas.datacontract.org/2004/07/MilyUnaNochesService.Contracts" minOccurs="0" name="user" nillable="true" type="q40:UserSession" />
+        <xs:element xmlns:q44="http://schemas.datacontract.org/2004/07/MilyUnaNochesService.Contracts" minOccurs="0" name="user" nillable="true" type="q44:UserSession" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -770,7 +840,7 @@
   <xs:element name="Disconnect">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q41="http://schemas.datacontract.org/2004/07/MilyUnaNochesService.Contracts" minOccurs="0" name="user" nillable="true" type="q41:UserSession" />
+        <xs:element xmlns:q45="http://schemas.datacontract.org/2004/07/MilyUnaNochesService.Contracts" minOccurs="0" name="user" nillable="true" type="q45:UserSession" />
         <xs:element minOccurs="0" name="isInMatch" type="xs:boolean" />
       </xs:sequence>
     </xs:complexType>
@@ -785,7 +855,7 @@
   <xs:element name="VerifyConnectivity">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q42="http://schemas.datacontract.org/2004/07/MilyUnaNochesService.Contracts" minOccurs="0" name="user" nillable="true" type="q42:UserSession" />
+        <xs:element xmlns:q46="http://schemas.datacontract.org/2004/07/MilyUnaNochesService.Contracts" minOccurs="0" name="user" nillable="true" type="q46:UserSession" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

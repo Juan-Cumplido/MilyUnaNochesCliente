@@ -15,6 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using static MilyUnaNochesWPFApp.Views.CustomDialog;
 
 namespace MilyUnaNochesWPFApp.Views
 {
@@ -28,21 +29,25 @@ namespace MilyUnaNochesWPFApp.Views
             InitializeComponent();
         }
 
+        private void ShowCustomMessage(string message, DialogType type)
+        {
+            var dialog = new CustomDialog(message, type);
+            dialog.Owner = Window.GetWindow(this);
+            dialog.ShowDialog();
+        }
+
         private bool ValidarCampos()
         {
-            //Validar que no hayan campos vacíos
+
             if (string.IsNullOrWhiteSpace(txtb_ProductNum.Text))
             {
-                System.Windows.MessageBox.Show($"Completar datos faltantes",
-                                "Validación", MessageBoxButton.OK, MessageBoxImage.Warning);
+                ShowCustomMessage("Completar datos faltantes.", DialogType.Warning);
                 return false;
             }
 
-            //Validar que el campo numericos se cumpla
             if (!EsNumero(txtb_ProductNum.Text))
             {
-                System.Windows.MessageBox.Show($"Existen datos invalidos",
-                                "Validación", MessageBoxButton.OK, MessageBoxImage.Warning);
+                ShowCustomMessage("Existen datos invalidos", DialogType.Warning);
                 return false;
             }
 

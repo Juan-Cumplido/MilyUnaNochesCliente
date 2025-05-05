@@ -10,7 +10,6 @@
       Title="ConsultProductsView">
 
     <Page.Resources>
-        <!-- Estilo para celdas del DataGrid -->
         <Style x:Key="CenteredCellStyle" TargetType="DataGridCell">
             <Setter Property="Template">
                 <Setter.Value>
@@ -28,7 +27,6 @@
             <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
         </Style>
 
-        <!-- Estilo para texto dentro de las celdas -->
         <Style x:Key="HighlightTextBlockStyle" TargetType="TextBlock">
             <Setter Property="TextWrapping" Value="NoWrap"/>
             <Setter Property="TextTrimming" Value="CharacterEllipsis"/>
@@ -39,7 +37,6 @@
             <Setter Property="FontSize" Value="14"/>
         </Style>
 
-        <!-- Estilo para encabezados -->
         <Style x:Key="HeaderStyle" TargetType="DataGridColumnHeader">
             <Setter Property="Background" Value="#FFAE7D5C"/>
             <Setter Property="Foreground" Value="White"/>
@@ -51,7 +48,6 @@
             <Setter Property="BorderBrush" Value="#5C2E0F"/>
         </Style>
 
-        <!-- Estilo para filas -->
         <Style x:Key="DataGridRowStyle" TargetType="DataGridRow">
             <Setter Property="Background" Value="Transparent"/>
             <Style.Triggers>
@@ -67,7 +63,11 @@
     </Page.Resources>
 
     <Grid>
-        <!-- Imagen superior -->
+        <Image Name="img_goBack" Source="/Images/Icons/goBack.png" MouseDown="Image_MouseDownGoBack" Visibility="Collapsed"
+ Cursor="Hand" Margin="40,4,1168,638" RenderTransformOrigin="0.5,0.506"/>
+        
+        <Image Name="img_GoOut" Source="/Images/Icons/User.png" MouseDown="Image_MouseDown" Visibility="Visible"
+        Cursor="Hand" Margin="1210,0,10,642" RenderTransformOrigin="0.5,0.506"/>
         <Image HorizontalAlignment="Center"
                Height="144" 
                Margin="0,73,0,0" 
@@ -75,7 +75,6 @@
                Width="1280" 
                Source="/Images/Background/FrameProducts.png"/>
 
-        <!-- Barra de búsqueda -->
         <TextBox x:Name="SearchTextBox" 
                  HorizontalAlignment="Left" 
                  Height="44" 
@@ -112,9 +111,8 @@
             </TextBox.Style>
         </TextBox>
 
-        <!-- Botones de CU -->
-        <Button Content="REGISTRAR" HorizontalAlignment="Left" Margin="451,232,0,0" VerticalAlignment="Top" 
-                FontFamily="Bodoni MT" Height="55" Width="130" FontSize="19" 
+        <Button x:Name="btn_Registrar" Content="REGISTRAR" HorizontalAlignment="Left" Margin="451,232,0,0" VerticalAlignment="Top" 
+                FontFamily="Bodoni MT" Height="55" Width="130" FontSize="19" Visibility="Visible"
                 Background="{x:Null}" Foreground="#FFAE7D5C" BorderBrush="{x:Null}" 
                 RenderTransformOrigin="0.52,0.144" Click="Register">
             <Button.Style>
@@ -128,8 +126,8 @@
             </Button.Style>
         </Button>
 
-        <Button Content="CONSULTAR" HorizontalAlignment="Left" Margin="714,232,0,0" VerticalAlignment="Top" 
-                FontFamily="Bodoni MT" Height="55" Width="130" FontSize="19" 
+        <Button x:Name="btn_Consultat" Content="CONSULTAR" HorizontalAlignment="Left" Margin="714,232,0,0" VerticalAlignment="Top" 
+                FontFamily="Bodoni MT" Height="55" Width="130" FontSize="19"  Visibility="Visible"
                 Background="{x:Null}" Foreground="#FFAE7D5C" BorderBrush="{x:Null}" 
                 RenderTransformOrigin="0.52,0.144" Click="ConsultPage">
             <Button.Style>
@@ -143,8 +141,8 @@
             </Button.Style>
         </Button>
 
-        <Button Content="VALIDAR" HorizontalAlignment="Left" Margin="979,232,0,0" VerticalAlignment="Top" 
-                FontFamily="Bodoni MT" Height="55" Width="130" FontSize="19" 
+        <Button x:Name="btn_Validar" Content="VALIDAR" HorizontalAlignment="Left" Margin="979,232,0,0" VerticalAlignment="Top" 
+                FontFamily="Bodoni MT" Height="55" Width="130" FontSize="19"  Visibility="Visible"
                 Background="{x:Null}" Foreground="#FFAE7D5C" BorderBrush="{x:Null}" 
                 RenderTransformOrigin="0.52,0.144" Click="Validate">
             <Button.Style>
@@ -158,7 +156,6 @@
             </Button.Style>
         </Button>
 
-        <!-- Tabla de productos con imágenes ajustadas -->
         <DataGrid x:Name="ProductsDataGrid"
                   SelectionMode="Single"
                   AutoGenerateColumns="False" 
@@ -182,7 +179,6 @@
                   FontFamily="Bodoni MT">
 
             <DataGrid.Columns>
-                <!-- Columna Foto con ajustes para mostrar imagen completa -->
                 <DataGridTemplateColumn Header="Foto" HeaderStyle="{StaticResource HeaderStyle}" Width="100">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
@@ -223,8 +219,8 @@
         </DataGrid>
 
         <!-- Botones de operación -->
-        <Border CornerRadius="15" Background="#bb6d04" Height="50" Margin="1015,324,77,346">
-            <Button Content="EDITAR" Height="50" Background="Transparent"
+        <Border x:Name="brd_editar" CornerRadius="15" Background="#bb6d04" Height="50" Margin="1015,324,77,346" Visibility="Visible">
+            <Button x:Name="btn_Editar" Content="EDITAR" Height="50" Background="Transparent" Visibility="Visible"
                     BorderThickness="0" FontSize="16" Foreground="White" 
                     FontFamily="Bahnschrift SemiLight" Click="Edit">
                 <Button.Style>
@@ -239,8 +235,8 @@
             </Button>
         </Border>
 
-        <Border CornerRadius="15" Background="#bb6d04" Height="50" Margin="1015,390,77,280">
-            <Button Content="ELIMINAR" Height="50" Background="Transparent"
+        <Border x:Name="brd_eliminar" CornerRadius="15" Background="#bb6d04" Height="50" Margin="1015,390,77,280" Visibility="Visible">
+            <Button x:Name="btn_Eliminar" Content="ELIMINAR" Height="50" Background="Transparent" Visibility="Visible"
                     BorderThickness="0" FontSize="16" Foreground="White" 
                     FontFamily="Bahnschrift SemiLight" Click="Delete">
                 <Button.Style>
@@ -255,8 +251,8 @@
             </Button>
         </Border>
 
-        <Border CornerRadius="15" Background="#bb6d04" Height="50" Margin="1015,456,77,214">
-            <Button Content="CONSULTAR" Height="50" Background="Transparent"
+        <Border x:Name="brd_consultar" Visibility="Visible" CornerRadius="15" Background="#bb6d04" Height="50" Margin="1015,456,77,214">
+            <Button x:Name="btn_consultar" Content="CONSULTAR" Height="50" Background="Transparent" Visibility="Visible"
                     BorderThickness="0" FontSize="16" Foreground="White" 
                     FontFamily="Bahnschrift SemiLight" Click="Consult">
                 <Button.Style>

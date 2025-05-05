@@ -9,13 +9,13 @@
       Background="#fdf8ef"
       Title="Sale">
 
-    <Grid>
-        <Label Content="Número de cliente" 
+    <Grid x:Name="gridPrincipal">
+        <Label Content="Número de telefono de cliente" 
                HorizontalAlignment="Left" 
                Height="40" 
-               Margin="45,74,0,0" 
+               Margin="19,74,0,0" 
                VerticalAlignment="Top" 
-               Width="130" FontSize="20" 
+               Width="182" FontSize="20" 
                FontFamily="Bodoni MT Condensed" 
                Foreground="#FFAE7D5C"/>
         <Label Content="Número de vendedor" 
@@ -58,7 +58,7 @@
                  Height="40" 
                  Margin="220,74,0,0" 
                  TextWrapping="Wrap" 
-                 Text="Numero cliente" 
+                 Text="Numero de telefono de cliente" 
                  VerticalAlignment="Top" 
                  Width="231"
                  VerticalContentAlignment="Center"
@@ -67,7 +67,7 @@
                  BorderBrush="{x:Null}" 
                  FontSize="20" 
                  Name="txtNumeroCliente"
-                 PreviewTextInput="NumberValidationTextBox">
+                 PreviewTextInput="Telephone_PreviewTextInput" PreviewKeyDown="Telephone_PreviewKeyDown" MaxLength="10">
             <TextBox.Background>
                 <ImageBrush ImageSource="/Images/Background/BackgorundTextField.png"/>
             </TextBox.Background>
@@ -113,6 +113,7 @@
                HorizontalContentAlignment="Center"
                VerticalContentAlignment="Center"/>
         <Label Content="CANCELAR COMPRA" 
+               Name="lblCancelSale"
                 HorizontalAlignment="Left"
                 Height="37"
                 Margin="45,245,0,0"
@@ -128,6 +129,7 @@
             </Label.Background>
         </Label>
         <Label Content="PAGAR" 
+               Name="lblPay"
                 HorizontalAlignment="Left"
                 Height="37"
                 Margin="146,301,0,0"
@@ -143,7 +145,8 @@
             </Label.Background>
         </Label>
         <Label Content="AÑADIR PRODUCTOS" 
-                HorizontalAlignment="Left"
+               Name="lblAddProduct" 
+               HorizontalAlignment="Left"
                 Height="37"
                 Margin="248,245,0,0"
                 VerticalAlignment="Top"
@@ -167,10 +170,11 @@
                         Width="180" 
                         Height="234" Background="White">
                     <StackPanel>
-                        <Image Source="/Images/Products/Product1.png" 
+                        <Image Source="{Binding Imagen}"
                                Width="146" 
                                Height="145" 
                                Stretch="UniformToFill"/>
+                        
                         <TextBlock Text="Nombre del Producto" 
                                    FontWeight="Bold"
                                    FontSize="16" 
@@ -193,7 +197,7 @@
                 </Border>
             </WrapPanel>
         </ScrollViewer>
-        <Grid Margin="180,-16,159,152" 
+        <Grid Margin="0,-16,0,0" 
               Name="gridSearchProduct" Visibility="Collapsed">
             <Image HorizontalAlignment="Center" 
                    Height="271" 
@@ -209,24 +213,19 @@
 
             <TextBox Name="txtSearchProduct"
                      HorizontalAlignment="Left"
-                     Height="66" 
-                     Margin="190,0,0,0" 
+                     Height="63" 
+                     Margin="340,107,0,0" 
                      TextWrapping="Wrap" 
-                     VerticalAlignment="Center"
-                     Width="344" 
-                     BorderBrush="{x:Null}"
+                     VerticalAlignment="Top"
+                     Width="344"
                      SelectionBrush="{x:Null}" 
                      VerticalContentAlignment="Center" 
                      HorizontalContentAlignment="Center" 
-                     FontSize="20" SelectionTextBrush="#FF6C95F0">
-                <TextBox.Background>
-                    <ImageBrush ImageSource="/Images/Background/BackgroundTextBlock.png"/>
-                </TextBox.Background>
-            </TextBox>
+                     FontSize="20" SelectionTextBrush="{x:Null}" Background="White" BorderBrush="Black" BorderThickness="1,1,5,8"/>
             <Button Content="X" 
                     HorizontalAlignment="Right" 
-                    Width="41"
-                    Margin="0,-17,774,266"
+                    Width="50"
+                    Margin="0,-18,937,404"
                     Background="Black"
                     BorderBrush="Transparent"
                     Foreground="White"
@@ -245,7 +244,7 @@
             </Button>
             <Label Content="Agregar" 
         HorizontalAlignment="Left" 
-        Margin="570,122,0,121" 
+        Margin="767,107,0,273" 
         Width="136"
         Foreground="Black"
         FontWeight="Bold"

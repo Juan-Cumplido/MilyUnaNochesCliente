@@ -16,6 +16,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using static MilyUnaNochesWPFApp.Views.CustomDialog;
 
 namespace MilyUnaNochesWPFApp.Views
 {
@@ -25,6 +26,13 @@ namespace MilyUnaNochesWPFApp.Views
         public RegisterEmployee()
         {
             InitializeComponent();
+        }
+
+        private void ShowCustomMessage(string message, DialogType type)
+        {
+            var dialog = new CustomDialog(message, type);
+            dialog.Owner = Window.GetWindow(this);
+            dialog.ShowDialog();
         }
 
         private void Registrar_Click(object sender, RoutedEventArgs e)
@@ -67,13 +75,13 @@ namespace MilyUnaNochesWPFApp.Views
                 int insertionResult = AddEmployee(newUser, newAddress, newEmployee, newAccess);
                 if (insertionResult == 1)
                 {
-                    DialogManager.ShowSuccessMessageAlert("Cliente registrado exitosamente");
+                    ShowCustomMessage("Empleado registrado exitosamente.", DialogType.Success);
                     ClearFields();
                 }
             }
             else
             {
-                DialogManager.ShowErrorMessageAlert("La información que ha ingresado es incorrecta. Intentelo de nuevo.");
+                ShowCustomMessage("La información que ha ingresado es incorrecta. Intentelo de nuevo.", DialogType.Warning);
             }
         }
 
@@ -96,36 +104,38 @@ namespace MilyUnaNochesWPFApp.Views
                     }
                     else if (validationExisted >= 1)
                     {
-                        DialogManager.ShowErrorMessageAlert("El correo o telefono ya esta registrado, para verificar puede buscarlo por su el telefono");
+                        ShowCustomMessage("El correo o telefono ya esta registrado, para verificar puede buscarlo por su el telefono", DialogType.Warning);
                     }
                     else if (validationExisted == -1)
                     {
-                        DialogManager.ShowErrorMessageAlert("Ha ocurrido un error al intentar establecer conexión con la base de datos.");
+                        ShowCustomMessage("Ha ocurrido un error al intentar establecer conexión con la base de datos.", DialogType.Error);
                     }
                 }
                 else if (validationExisted >= 1)
                 {
-                    DialogManager.ShowErrorMessageAlert("Un empleado con ese nombre ya esta registrado, para verificar puede buscarlo por su nombre o correo");
+                    ShowCustomMessage("Un empleado con ese nombre ya esta registrado, para verificar puede buscarlo por su nombre o correo.", DialogType.Warning);
                 }
                 else if (validationExisted == -1)
                 {
-                    DialogManager.ShowErrorMessageAlert("Ha ocurrido un error al intentar establecer conexión con la base de datos.");
+                    ShowCustomMessage("Ha ocurrido un error al intentar establecer conexión con la base de datos.", DialogType.Warning);
                 }
             }
             catch (EndpointNotFoundException endPointException)
             {
                 logger.LogFatal(endPointException);
-                DialogManager.ShowErrorMessageAlert("No se pudo establecer conexión con el servidor. Por favor, verifique la configuración de red e intente nuevamente.");
+                ShowCustomMessage("No se pudo establecer conexión con el servidor. Por favor, verifique la configuración de red e intente nuevamente.", DialogType.Error);
+
             }
             catch (TimeoutException timeOutException)
             {
                 logger.LogWarn(timeOutException);
-                DialogManager.ShowErrorMessageAlert("Inténtalo de nuevo. El tiempo de espera ha expirado. Por favor, verifica tu conexión al servidor.");
+                ShowCustomMessage("Inténtalo de nuevo. El tiempo de espera ha expirado. Por favor, verifica tu conexión al servidor.", DialogType.Error);
             }
             catch (CommunicationException communicationException)
             {
                 logger.LogFatal(communicationException);
-                DialogManager.ShowErrorMessageAlert("Se ha producido un fallo para establecer la conexión al servidor. Chequee su conexión a internet e inténtelo de nuevo.");
+                ShowCustomMessage("Se ha producido un fallo para establecer la conexión al servidor. Cheque su conexión a internet e inténtelo de nuevo.", DialogType.Error);
+
             }
 
             return insertionResult;
@@ -198,18 +208,22 @@ namespace MilyUnaNochesWPFApp.Views
         public bool VerifyField()
         {
             bool username = Validator.ValidateName(txtb_Name.Text);
+            bool user = Validator.ValidateUsername(txtb_User.Text);
+            bool password = Validator.ValidatePassword(txtb_password.Text);
             bool first = Validator.ValidateName(txtb_firstSurname.Text);
             bool second = Validator.ValidateName(txtb_secondSurname.Text);
             bool email = Validator.ValidateEmail(txtb_email.Text);
             bool employeeTypeSelected = cmb_EmployeeType.SelectedItem != null; 
 
             if (!username) SetErrorBorder(txtb_Name);
+            if (!user) SetErrorBorder(txtb_User);
+            if (!password) SetErrorBorder(txtb_password);
             if (!first) SetErrorBorder(txtb_firstSurname);
             if (!second) SetErrorBorder(txtb_secondSurname);
             if (!email) SetErrorBorder(txtb_email);
             if (!employeeTypeSelected) cmb_EmployeeType.BorderBrush = Brushes.Red; 
 
-            return username && first && second && email&& employeeTypeSelected;
+            return username && user && password && first && second && email&& employeeTypeSelected ;
         }
 
     }

@@ -17,18 +17,18 @@
     </Page.Resources>
 
     <Grid>
-        <Image Name="img_GoOut" Source="/Images/Background/Search.png" 
+        <Image Name="img_Search" Source="/Images/Background/Search.png" 
          RenderTransformOrigin="0.5,0.506" Margin="95,4,876,367"/>
 
     
 
-        <TextBox x:Name="txtb_searchForEmployee" FontSize="25" Background="Transparent" 
+        <TextBox x:Name="txtb_searchForEmployee" FontSize="25" Background="Transparent" MaxLength="50"
             BorderThickness="0" Text="Nombre o teléfono (ej. Juan)" FontFamily="Bodoni MT Condensed" 
             Foreground="#FF6A6565" GotFocus="SearchForClient_GotFocus" LostFocus="SearchForClient_LostFocus"
             TextChanged="SearchForClient_TextChanged" Margin="149,22,901,385"/>
 
 
-        <DataGrid x:Name="grd_ProviderDataGrid" 
+        <DataGrid x:Name="grd_EmployeeDataGrid" 
         CanUserResizeColumns="False"
         CanUserSortColumns="False"
         CanUserReorderColumns="False"

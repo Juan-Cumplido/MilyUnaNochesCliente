@@ -193,8 +193,14 @@
     <Compile Include="Views\CustomDialog.xaml.cs">
       <DependentUpon>CustomDialog.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\EditClient.xaml.cs">
+      <DependentUpon>EditClient.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\EditProductView.xaml.cs">
       <DependentUpon>EditProductView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EditEmployee.xaml.cs">
+      <DependentUpon>EditEmployee.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\EditSupplierWindow.xaml.cs">
       <DependentUpon>EditSupplierWindow.xaml</DependentUpon>
@@ -211,14 +217,14 @@
     <Compile Include="Views\LoginView.xaml.cs">
       <DependentUpon>LoginView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\ManagerMenuContent.xaml.cs">
+      <DependentUpon>ManagerMenuContent.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\MenuEmployees.xaml.cs">
       <DependentUpon>MenuEmployees.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ManagerMenu.xaml.cs">
       <DependentUpon>ManagerMenu.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\ManagerMenuContent.xaml.cs">
-      <DependentUpon>ManagerMenuContent.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MenuSupplier.xaml.cs">
       <DependentUpon>MenuSupplier.xaml</DependentUpon>
@@ -297,7 +303,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Views\EditClient.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Views\EditProductView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\EditEmployee.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -321,15 +335,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\ManagerMenuContent.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\MenuEmployees.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\ManagerMenu.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\ManagerMenuContent.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -597,6 +611,12 @@
     <Resource Include="Images\Icons\error.png" />
     <Resource Include="Images\Icons\success.png" />
     <Resource Include="Images\Icons\warning.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Icons\question.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Icons\goBack.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

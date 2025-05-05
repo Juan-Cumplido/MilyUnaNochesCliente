@@ -24,7 +24,6 @@
             <Button Content="Consultar Proveedores" Click="ConsultarProveedores_Click" Margin="0,0,30,0" Background="Transparent" Foreground="#AE7D5C" FontSize="22" FontFamily="Bodoni MT Condensed" BorderThickness="0" Height="38" Width="128"/>
             <Button Content="Registrar Proveedor" Click="RegistrarProveedor_Click" Margin="0,0,30,0" Background="Transparent" Foreground="#AE7D5C" FontSize="22" FontFamily="Bodoni MT Condensed" BorderThickness="0" Height="38" Width="147"/>
         </StackPanel>
-        
         <Frame x:Name="mainFrame"
                Content="Frame" 
                Margin="0,182,0,0"

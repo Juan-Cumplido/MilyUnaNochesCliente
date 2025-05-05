@@ -74,7 +74,6 @@
             <Run Text="Nombre o contacto"/>
         </TextBlock>
 
-        <!-- DataGrid con ScrollViewer -->
         <ScrollViewer Grid.Row="1"
                       VerticalScrollBarVisibility="Auto"
                       HorizontalScrollBarVisibility="Auto"

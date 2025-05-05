@@ -10,7 +10,6 @@
       Title="ConsultSale">
 
     <Page.Resources>
-        <!-- Estilo para las celdas del DataGrid -->
         <Style x:Key="CenteredCellStyle" TargetType="DataGridCell">
             <Setter Property="TextBlock.TextAlignment" Value="Center"/>
             <Setter Property="TextBlock.VerticalAlignment" Value="Center"/>
@@ -22,7 +21,6 @@
             <Setter Property="FontFamily" Value="Bodoni MT Condensed"/>
         </Style>
 
-        <!-- Estilo para los encabezados de columna -->
         <Style x:Key="ColumnHeaderStyle" TargetType="DataGridColumnHeader">
             <Setter Property="Background" Value="#AE7D5C"/>
             <Setter Property="Foreground" Value="White"/>
@@ -35,13 +33,12 @@
             <Setter Property="BorderThickness" Value="0"/>
         </Style>
 
-        <!-- Estilo para las filas del DataGrid con altura automática -->
         <Style x:Key="AlternatingRowStyle" TargetType="DataGridRow">
             <Setter Property="Background" Value="#FFF9F2E7"/>
             <Setter Property="MinHeight" Value="40"/>
-            <!-- Altura mínima -->
+        
             <Setter Property="Height" Value="NaN"/>
-            <!-- Permite auto-ajuste -->
+           
             <Style.Triggers>
                 <Trigger Property="AlternationIndex" Value="1">
                     <Setter Property="Background" Value="#FFEDDFCC"/>
@@ -49,7 +46,7 @@
             </Style.Triggers>
         </Style>
 
-        <!-- Estilo para el DataGrid -->
+ 
         <Style TargetType="DataGrid">
             <Setter Property="Background" Value="#fdf8ef"/>
             <Setter Property="BorderBrush" Value="#AE7D5C"/>
@@ -66,7 +63,7 @@
             <Setter Property="VerticalGridLinesBrush" Value="Transparent"/>
         </Style>
 
-        <!-- Estilo para la celda de artículos con ajuste de texto -->
+
         <Style x:Key="ProductCellStyle" TargetType="DataGridCell" BasedOn="{StaticResource CenteredCellStyle}">
             <Setter Property="TextBlock.TextAlignment" Value="Left"/>
             <Setter Property="TextBlock.VerticalAlignment" Value="Top"/>
@@ -95,7 +92,6 @@
             </TextBox.Background>
         </TextBox>
 
-        <!-- DataGrid para mostrar las ventas con altura automática -->
         <DataGrid x:Name="SalesDataGrid" 
           AutoGenerateColumns="False"
           HorizontalAlignment="Center"
@@ -105,31 +101,27 @@
           Margin="0,68,0,0"
           AlternationCount="2"
           RowStyle="{StaticResource AlternatingRowStyle}"
-          SelectionChanged="SalesDataGrid_SelectionChanged">
+          >
 
             <DataGrid.Columns>
-                <!-- Columna de Fecha -->
                 <DataGridTextColumn Header="Fecha" 
                     Binding="{Binding Fecha}" 
                     Width="*" 
                     CellStyle="{StaticResource CenteredCellStyle}"
                     HeaderStyle="{StaticResource ColumnHeaderStyle}"/>
 
-                <!-- Columna de Vendedor -->
                 <DataGridTextColumn Header="Vendedor" 
                     Binding="{Binding Empleado}" 
                     Width="*" 
                     CellStyle="{StaticResource CenteredCellStyle}"
                     HeaderStyle="{StaticResource ColumnHeaderStyle}"/>
 
-                <!-- Columna de Cliente -->
                 <DataGridTextColumn Header="Cliente" 
                     Binding="{Binding Cliente}" 
                     Width="*" 
                     CellStyle="{StaticResource CenteredCellStyle}"
                     HeaderStyle="{StaticResource ColumnHeaderStyle}"/>
 
-                <!-- Columna de Artículos con estilo personalizado -->
                 <DataGridTextColumn Header="Artículos" 
                     Binding="{Binding Articulos}" 
                     Width="2*" 
@@ -145,14 +137,13 @@
                     </DataGridTextColumn.ElementStyle>
                 </DataGridTextColumn>
 
-                <!-- Columna de Monto -->
+         
                 <DataGridTextColumn Header="Monto" 
                     Binding="{Binding Monto}" 
                     Width="*" 
                     CellStyle="{StaticResource CenteredCellStyle}"
                     HeaderStyle="{StaticResource ColumnHeaderStyle}"/>
 
-                <!-- Columna de Método de Pago -->
                 <DataGridTextColumn Header="Método Pago" 
                     Binding="{Binding PaymentMethod}" 
                     Width="*" 

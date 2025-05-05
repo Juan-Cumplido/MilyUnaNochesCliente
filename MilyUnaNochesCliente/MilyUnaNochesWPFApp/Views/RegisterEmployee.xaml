@@ -13,31 +13,31 @@
 
         <Label Content="Nombre" HorizontalAlignment="Left" Height="40"  Margin="43,22,0,0" VerticalAlignment="Top" Width="64" FontFamily="Bodoni MT Condensed" FontSize="25"  Background="{x:Null}" Foreground="#FFAE7D5C"/>
 
-        <Border BorderThickness="1" Background="#ae7d5c" CornerRadius="15" Margin="112,22,902,376">
+        <Border BorderThickness="1" Background="#FFCFB68B" CornerRadius="15" Margin="112,22,902,376">
             <DockPanel>
-                <TextBox x:Name="txtb_Name" Width="247" Height="26" FontSize="25" Background="Transparent" BorderThickness="0" Foreground="Black" FontFamily="Bodoni MT Condensed" />
+                <TextBox x:Name="txtb_Name" Width="247" Height="26" FontSize="25" Background="Transparent" BorderThickness="0" Foreground="Black" FontFamily="Bodoni MT Condensed"   MaxLength="50" />
             </DockPanel>
         </Border>
 
-        <Label Content="Primer apellido" HorizontalAlignment="Left" Height="40"  Margin="408,22,0,0" VerticalAlignment="Top" Width="118" FontFamily="Bodoni MT Condensed" FontSize="25"  Background="{x:Null}" Foreground="#FFAE7D5C"/>
+        <Label Content="Primer apellido" HorizontalAlignment="Left" Height="40"  Margin="408,22,0,0" VerticalAlignment="Top" Width="118" FontFamily="Bodoni MT Condensed" FontSize="25"  Background="{x:Null}" Foreground="#FFAE7D5C "/>
 
-        <Border BorderThickness="1" Background="#ae7d5c" CornerRadius="15" Margin="535,22,479,376">
+        <Border BorderThickness="1" Background="#FFCFB68B" CornerRadius="15" Margin="535,22,479,376">
             <DockPanel>
-                <TextBox x:Name="txtb_firstSurname" Width="247" Height="26" FontSize="25" Background="Transparent" BorderThickness="0" Foreground="Black" FontFamily="Bodoni MT Condensed" />
+                <TextBox x:Name="txtb_firstSurname" Width="247" Height="26" FontSize="25" Background="Transparent" BorderThickness="0" Foreground="Black" FontFamily="Bodoni MT Condensed"   MaxLength="50" />
             </DockPanel>
         </Border>
 
         <Label Content="Segundo apellido" HorizontalAlignment="Left" Height="40"  Margin="830,22,0,0" VerticalAlignment="Top" Width="134" FontFamily="Bodoni MT Condensed" FontSize="25"  Background="{x:Null}" Foreground="#FFAE7D5C"/>
 
-        <Border BorderThickness="1" Background="#ae7d5c" CornerRadius="15" Margin="966,22,48,376">
+        <Border BorderThickness="1" Background="#FFCFB68B" CornerRadius="15" Margin="966,22,48,376">
             <DockPanel>
-                <TextBox x:Name="txtb_secondSurname" Width="247" Height="26" FontSize="25" Background="Transparent" BorderThickness="0" Foreground="Black" FontFamily="Bodoni MT Condensed" />
+                <TextBox x:Name="txtb_secondSurname" Width="247" Height="26" FontSize="25" Background="Transparent" BorderThickness="0" Foreground="Black" FontFamily="Bodoni MT Condensed"   MaxLength="50" />
             </DockPanel>
         </Border>
 
         <Label Content="Telefono" HorizontalAlignment="Left" Height="40"  Margin="40,97,0,0" VerticalAlignment="Top" Width="70" FontFamily="Bodoni MT Condensed" FontSize="25"  Background="{x:Null}" Foreground="#FFAE7D5C"/>
 
-        <Border BorderThickness="1" Background="#ae7d5c" CornerRadius="15" Margin="115,97,899,301">
+        <Border BorderThickness="1" Background="#FFCFB68B" CornerRadius="15" Margin="115,97,899,301">
             <DockPanel>
                 <TextBox x:Name="txtb_telephone" Width="247" Height="26" FontSize="25" Background="Transparent" BorderThickness="0" Foreground="Black" FontFamily="Bodoni MT Condensed" PreviewTextInput="Telephone_PreviewTextInput" PreviewKeyDown="Telephone_PreviewKeyDown" MaxLength="10"/>
             </DockPanel>
@@ -46,41 +46,49 @@
 
         <Label Content="Correo" HorizontalAlignment="Left" Height="40"  Margin="467,97,0,0" VerticalAlignment="Top" Width="54" FontFamily="Bodoni MT Condensed" FontSize="25"  Background="{x:Null}" Foreground="#FFAE7D5C"/>
 
-        <Border BorderThickness="1" Background="#ae7d5c" CornerRadius="15" Margin="535,97,479,301">
+        <Border BorderThickness="1" Background="#FFCFB68B" CornerRadius="15" Margin="535,97,479,301">
             <DockPanel>
-                <TextBox x:Name="txtb_email" Width="247" Height="26" FontSize="25" Background="Transparent" BorderThickness="0" Foreground="Black" FontFamily="Bodoni MT Condensed" />
+                <TextBox x:Name="txtb_email" Width="247" Height="26" FontSize="25" Background="Transparent" BorderThickness="0" Foreground="Black" FontFamily="Bodoni MT Condensed"   MaxLength="256" />
             </DockPanel>
         </Border>
 
         <Label Content="Calle" HorizontalAlignment="Left" Height="40"  Margin="910,97,0,0" VerticalAlignment="Top" Width="47" FontFamily="Bodoni MT Condensed" FontSize="25"  Background="{x:Null}" Foreground="#FFAE7D5C"/>
 
-        <Border BorderThickness="1" Background="#ae7d5c" CornerRadius="15" Margin="966,97,48,301">
+        <Border BorderThickness="1" Background="#FFCFB68B" CornerRadius="15" Margin="966,97,48,301">
             <DockPanel>
-                <TextBox x:Name="txtb_street" Width="247" Height="26" FontSize="25" Background="Transparent" BorderThickness="0" Foreground="Black" FontFamily="Bodoni MT Condensed" />
+                <TextBox x:Name="txtb_street" Width="247" Height="26" FontSize="25" Background="Transparent" BorderThickness="0" Foreground="Black" FontFamily="Bodoni MT Condensed"   MaxLength="100"/>
             </DockPanel>
         </Border>
 
         <Label Content="Número" HorizontalAlignment="Left" Height="40"  Margin="40,179,0,0" VerticalAlignment="Top" Width="64" FontFamily="Bodoni MT Condensed" FontSize="25"  Background="{x:Null}" Foreground="#FFAE7D5C"/>
 
-        <Border BorderThickness="1" Background="#ae7d5c" CornerRadius="15" Margin="112,179,902,219">
+        <Border BorderThickness="1" Background="#FFCFB68B" CornerRadius="15" Margin="112,179,902,219">
             <DockPanel>
-                <TextBox x:Name="txtb_number" Width="247" Height="26" FontSize="25" Background="Transparent" BorderThickness="0" Foreground="Black" FontFamily="Bodoni MT Condensed" PreviewTextInput="Telephone_PreviewTextInput" PreviewKeyDown="Telephone_PreviewKeyDown" MaxLength="15"/>
+                <TextBox x:Name="txtb_number" Width="247" Height="26" FontSize="25" Background="Transparent" BorderThickness="0" Foreground="Black" FontFamily="Bodoni MT Condensed" PreviewTextInput="Telephone_PreviewTextInput" PreviewKeyDown="Telephone_PreviewKeyDown" MaxLength="10"/>
             </DockPanel>
         </Border>
 
         <Label Content="Código postal" HorizontalAlignment="Left" Height="40"  Margin="419,179,0,0" VerticalAlignment="Top" Width="107" FontFamily="Bodoni MT Condensed" FontSize="25"  Background="{x:Null}" Foreground="#FFAE7D5C"/>
 
-        <Border BorderThickness="1" Background="#ae7d5c" CornerRadius="15" Margin="535,179,479,219">
+        <Border BorderThickness="1" Background="#FFCFB68B" CornerRadius="15" Margin="535,179,479,219">
             <DockPanel>
-                <TextBox x:Name="txtb_postalCode" Width="247" Height="26" FontSize="25" Background="Transparent" BorderThickness="0" Foreground="Black" FontFamily="Bodoni MT Condensed" PreviewTextInput="Telephone_PreviewTextInput" PreviewKeyDown="Telephone_PreviewKeyDown" MaxLength="15"/>
+                <TextBox x:Name="txtb_postalCode" Width="247" Height="26" FontSize="25" Background="Transparent" BorderThickness="0" Foreground="Black" FontFamily="Bodoni MT Condensed" PreviewTextInput="Telephone_PreviewTextInput" PreviewKeyDown="Telephone_PreviewKeyDown" MaxLength="10"/>
             </DockPanel>
         </Border>
 
         <Label Content="Ciudad" HorizontalAlignment="Left" Height="40"  Margin="893,179,0,0" VerticalAlignment="Top" Width="64" FontFamily="Bodoni MT Condensed" FontSize="25"  Background="{x:Null}" Foreground="#FFAE7D5C"/>
 
-        <Border BorderThickness="1" Background="#ae7d5c" CornerRadius="15" Margin="966,179,48,219">
+        <Border BorderThickness="1" Background="#FFCFB68B" CornerRadius="15" Margin="966,179,48,219">
             <DockPanel>
-                <TextBox x:Name="txtb_city" Width="247" Height="26" FontSize="25" Background="Transparent" BorderThickness="0" Foreground="Black" FontFamily="Bodoni MT Condensed" />
+                <TextBox x:Name="txtb_city" Width="247" Height="26" FontSize="25" Background="Transparent" BorderThickness="0" Foreground="Black" FontFamily="Bodoni MT Condensed"   MaxLength="50" />
+            </DockPanel>
+        </Border>
+
+        <Label Content="Usuario" HorizontalAlignment="Left" Height="40"  Margin="43,265,0,0" VerticalAlignment="Top" Width="67" FontFamily="Bodoni MT Condensed" FontSize="25"  Background="{x:Null}" Foreground="#FFAE7D5C"/>
+
+        <Border BorderThickness="1" Background="#FFCFB68B" CornerRadius="15" Margin="112,265,902,133">
+            <DockPanel>
+                <TextBox x:Name="txtb_User" Width="247" Height="26" FontSize="25" Background="Transparent" BorderThickness="0" Foreground="Black" FontFamily="Bodoni MT Condensed"   MaxLength="50" />
             </DockPanel>
         </Border>
 
@@ -99,19 +107,13 @@
             </TextBlock>
         </Label>
 
-        <Border BorderThickness="1" Background="#ae7d5c" CornerRadius="15" Margin="966,265,48,133">
+        <Border BorderThickness="1" Background="#FFCFB68B" CornerRadius="15" Margin="966,265,48,133">
             <DockPanel>
-                <TextBox x:Name="txtb_password" Width="247" Height="26" FontSize="25" Background="Transparent" BorderThickness="0" Foreground="Black" FontFamily="Bodoni MT Condensed" />
+                <TextBox x:Name="txtb_password" Width="247" Height="26" FontSize="25" Background="Transparent" BorderThickness="0" Foreground="Black" FontFamily="Bodoni MT Condensed"   MaxLength="200" />
             </DockPanel>
         </Border>
 
-        <Label Content="Usuario" HorizontalAlignment="Left" Height="40"  Margin="43,265,0,0" VerticalAlignment="Top" Width="67" FontFamily="Bodoni MT Condensed" FontSize="25"  Background="{x:Null}" Foreground="#FFAE7D5C"/>
-
-        <Border BorderThickness="1" Background="#ae7d5c" CornerRadius="15" Margin="112,265,902,133">
-            <DockPanel>
-                <TextBox x:Name="txtb_User" Width="247" Height="26" FontSize="25" Background="Transparent" BorderThickness="0" Foreground="Black" FontFamily="Bodoni MT Condensed" />
-            </DockPanel>
-        </Border>
+        
 
         <Label Content="Tipo de Empleado" HorizontalAlignment="Left" Height="40"  
        Margin="392,265,0,0" VerticalAlignment="Top" Width="134" 

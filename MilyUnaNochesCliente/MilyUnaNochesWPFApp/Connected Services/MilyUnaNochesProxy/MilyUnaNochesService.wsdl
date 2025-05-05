@@ -352,6 +352,36 @@
   <wsdl:message name="IUserManager_GetUserProfile_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetUserProfileResponse" />
   </wsdl:message>
+  <wsdl:message name="IUserManager_GetEmployee_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetEmployee" />
+  </wsdl:message>
+  <wsdl:message name="IUserManager_GetEmployee_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetEmployeeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUserManager_UpdateEmployee_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateEmployee" />
+  </wsdl:message>
+  <wsdl:message name="IUserManager_UpdateEmployee_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateEmployeeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUserManager_GetClient_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetClient" />
+  </wsdl:message>
+  <wsdl:message name="IUserManager_GetClient_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetClientResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUserManager_UpdateClient_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateClient" />
+  </wsdl:message>
+  <wsdl:message name="IUserManager_UpdateClient_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateClientResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUserManager_GetClienteId_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetClienteId" />
+  </wsdl:message>
+  <wsdl:message name="IUserManager_GetClienteId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetClienteIdResponse" />
+  </wsdl:message>
   <wsdl:message name="IAdressManager_createAddress_InputMessage">
     <wsdl:part name="parameters" element="tns:createAddress" />
   </wsdl:message>
@@ -657,6 +687,26 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IUserManager/GetUserProfile" message="tns:IUserManager_GetUserProfile_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IUserManager/GetUserProfileResponse" message="tns:IUserManager_GetUserProfile_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="GetEmployee">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserManager/GetEmployee" message="tns:IUserManager_GetEmployee_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserManager/GetEmployeeResponse" message="tns:IUserManager_GetEmployee_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateEmployee">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserManager/UpdateEmployee" message="tns:IUserManager_UpdateEmployee_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserManager/UpdateEmployeeResponse" message="tns:IUserManager_UpdateEmployee_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetClient">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserManager/GetClient" message="tns:IUserManager_GetClient_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserManager/GetClientResponse" message="tns:IUserManager_GetClient_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateClient">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserManager/UpdateClient" message="tns:IUserManager_UpdateClient_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserManager/UpdateClientResponse" message="tns:IUserManager_UpdateClient_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetClienteId">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserManager/GetClienteId" message="tns:IUserManager_GetClienteId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserManager/GetClienteIdResponse" message="tns:IUserManager_GetClienteId_OutputMessage" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="IAdressManager">
     <wsdl:operation name="createAddress">
@@ -953,6 +1003,51 @@
     </wsdl:operation>
     <wsdl:operation name="GetUserProfile">
       <soap12:operation soapAction="http://tempuri.org/IUserManager/GetUserProfile" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEmployee">
+      <soap12:operation soapAction="http://tempuri.org/IUserManager/GetEmployee" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateEmployee">
+      <soap12:operation soapAction="http://tempuri.org/IUserManager/UpdateEmployee" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetClient">
+      <soap12:operation soapAction="http://tempuri.org/IUserManager/GetClient" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateClient">
+      <soap12:operation soapAction="http://tempuri.org/IUserManager/UpdateClient" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetClienteId">
+      <soap12:operation soapAction="http://tempuri.org/IUserManager/GetClienteId" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

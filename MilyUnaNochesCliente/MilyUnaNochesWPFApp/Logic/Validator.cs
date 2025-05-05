@@ -51,6 +51,8 @@ namespace MilyUnaNochesWPFApp.Logic
             return isValid;
         }
 
+        
+
         public static bool ValidatePassword(string password)
         {
             bool isValid = false;
@@ -61,7 +63,6 @@ namespace MilyUnaNochesWPFApp.Logic
             }
             return isValid;
         }
-
         public static bool ValidateName(string name)
         {
             bool isValid = false;
@@ -126,6 +127,17 @@ namespace MilyUnaNochesWPFApp.Logic
             bool isValid = false;
             string stateCleaned = Regex.Replace(state.Trim(), @"\s+", "", RegexOptions.None, TimeSpan.FromMilliseconds(500));
             if (!string.IsNullOrWhiteSpace(stateCleaned) && ValidateRegexPattern(stateCleaned, _stateRegex))
+            {
+                isValid = true;
+            }
+            return isValid;
+        }
+
+        public static bool ValidateUsername(string username)
+        {
+            bool isValid = false;
+            string cleanedUsername = Regex.Replace(username.Trim(), @"\s+", " ", RegexOptions.None, TimeSpan.FromMilliseconds(500));
+            if (!string.IsNullOrWhiteSpace(cleanedUsername) && ValidateRegexPattern(cleanedUsername, _usernameRegex))
             {
                 isValid = true;
             }
