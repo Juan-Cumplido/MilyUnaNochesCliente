@@ -23,16 +23,14 @@ namespace MilyUnaNochesWPFApp.Views
         {
             InitializeComponent();
 
-            // Cargar los detalles del producto en los controles
             txtNombre.Text = producto.NombreProducto;
             txtCodigo.Text = producto.CodigoProducto;
             txtDescripcion.Text = producto.Descripcion;
             txtCategoria.Text = producto.Categoria;
             txtCantidad.Text = producto.Cantidad.ToString();
-            txtPrecioVenta.Text = producto.PrecioVenta.ToString("C"); // Formato de moneda
-            txtPrecioCompra.Text = producto.PrecioCompra.ToString("C"); // Formato de moneda
+            txtPrecioVenta.Text = producto.PrecioVenta.ToString("C");
+            txtPrecioCompra.Text = producto.PrecioCompra.ToString("C"); 
 
-            // Convertir la imagen de byte[] a BitmapImage
             if (producto.Imagen != null && producto.Imagen.Length > 0)
             {
                 imgProducto.Source = ConvertImage(producto.Imagen);

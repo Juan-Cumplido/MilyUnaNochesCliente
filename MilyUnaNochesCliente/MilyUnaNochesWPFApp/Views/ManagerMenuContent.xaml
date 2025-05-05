@@ -138,9 +138,9 @@
                Foreground="#FFAE7D5C"/>
 
         <StackPanel Margin="20,100,20,20" VerticalAlignment="Top">
-            <Button Content="Ventas" Style="{StaticResource CardButtonStyle}" Tag="/Images/Icons/SalesIcon.png" Click="FrameSale_Click"/>
+           
             <Button Content="Proveedores" Style="{StaticResource CardButtonStyleBigIcon}" Tag="/Images/Icons/ProvidersIcon.png" Click="FrameSuppliers_Click"/>
-            <Button Content="Productos" Style="{StaticResource CardButtonStyle}" Tag="/Images/Icons/ProductsIcon.png" Click="FrameProducts_Click"/>
+           
         </StackPanel>
     </Grid>
 </Page>

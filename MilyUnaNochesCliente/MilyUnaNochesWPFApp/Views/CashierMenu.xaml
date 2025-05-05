@@ -14,7 +14,10 @@
                     <ImageBrush ImageSource="/Images/Background/ClientBackground.png" Stretch="UniformToFill" />
                 </Border.Background>
             </Border>
-            <Image Name="img_GoOut" Source="/Images/Icons/User.png" MouseDown="Image_MouseDown" 
+            <Image Name="img_goBack" Source="/Images/Icons/goBack.png" MouseDown="Image_MouseDownGoBack" Visibility="Collapsed"
+            Cursor="Hand" Margin="370,36,838,606" RenderTransformOrigin="0.5,0.506"/>
+            
+            <Image Name="img_GoOut" Source="/Images/Icons/User.png" MouseDown="Image_MouseDown" Visibility="Visible"
                    Cursor="Hand" Margin="1176,43,57,611" RenderTransformOrigin="0.5,0.506"/>
 
             <Label x:Name="lbl_Client" Content="C L I E N T E S"
@@ -23,7 +26,7 @@
                 Cursor="Hand" 
                VerticalAlignment="Top" Height="44" Width="156"/>
 
-            <Label x:Name="lbl_Sale" Content="V E N T A S"
+            <Label x:Name="lbl_Sale" Content="V E N T A S" Visibility="Visible"
                    Foreground="#ae7d5c"  FontSize="20" MouseDown="Lbl_Sale_Click"
                    HorizontalAlignment="Left" Margin="849,53,0,0" 
                    Cursor="Hand" 

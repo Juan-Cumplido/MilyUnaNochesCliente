@@ -26,13 +26,27 @@ namespace MilyUnaNochesWPFApp.Views
     /// </summary>
     public partial class CashierMenu : Page
     {
-
-        public CashierMenu()
+        private string origen;
+        public CashierMenu(string origen = "")
         {
             InitializeComponent();
+            this.origen = origen;
+
+            if (origen == "ManagerMenu")
+            {
+                img_GoOut.Visibility = Visibility.Collapsed;
+                img_goBack.Visibility = Visibility.Visible;
+                lbl_Sale.Visibility = Visibility.Collapsed;
+            }
+
             MainFrame.Source = new Uri("ConsultClient.xaml", UriKind.Relative);
         }
 
+        private void Image_MouseDownGoBack(object sender, MouseButtonEventArgs e)
+        {
+            ManagerMenu managerMenu = new ManagerMenu();
+            this.NavigationService.Navigate(managerMenu);
+        }
         private void ShowCustomMessage(string message, DialogType type)
         {
             var dialog = new CustomDialog(message, type);
@@ -68,9 +82,11 @@ namespace MilyUnaNochesWPFApp.Views
                     MilyUnaNochesProxy.UserSessionManagerClient userSessionManagerClient = new MilyUnaNochesProxy.UserSessionManagerClient();
                     UserSession userSession = new UserSession()
                     {
-                        usuario = UserProfileSingleton.email,
+                        
                         idAcceso = UserProfileSingleton.idAcceso
                     };
+                    
+
                     int disconnectionResult = userSessionManagerClient.Disconnect(userSession, false);
                     if (disconnectionResult == Constants.SuccessOperation)
                     {

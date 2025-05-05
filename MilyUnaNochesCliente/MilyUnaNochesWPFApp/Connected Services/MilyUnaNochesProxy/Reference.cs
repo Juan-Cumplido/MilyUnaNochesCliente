@@ -3939,6 +3939,36 @@ namespace MilyUnaNochesWPFApp.MilyUnaNochesProxy {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManager/GetUserProfile", ReplyAction="http://tempuri.org/IUserManager/GetUserProfileResponse")]
         System.Threading.Tasks.Task<MilyUnaNochesWPFApp.MilyUnaNochesProxy.Empleado> GetUserProfileAsync(string username, string password);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManager/GetEmployee", ReplyAction="http://tempuri.org/IUserManager/GetEmployeeResponse")]
+        MilyUnaNochesWPFApp.MilyUnaNochesProxy.Empleado GetEmployee(int idUser);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManager/GetEmployee", ReplyAction="http://tempuri.org/IUserManager/GetEmployeeResponse")]
+        System.Threading.Tasks.Task<MilyUnaNochesWPFApp.MilyUnaNochesProxy.Empleado> GetEmployeeAsync(int idUser);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManager/UpdateEmployee", ReplyAction="http://tempuri.org/IUserManager/UpdateEmployeeResponse")]
+        int UpdateEmployee(MilyUnaNochesWPFApp.MilyUnaNochesProxy.Empleado employee);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManager/UpdateEmployee", ReplyAction="http://tempuri.org/IUserManager/UpdateEmployeeResponse")]
+        System.Threading.Tasks.Task<int> UpdateEmployeeAsync(MilyUnaNochesWPFApp.MilyUnaNochesProxy.Empleado employee);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManager/GetClient", ReplyAction="http://tempuri.org/IUserManager/GetClientResponse")]
+        MilyUnaNochesWPFApp.MilyUnaNochesProxy.Usuario GetClient(int idUser);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManager/GetClient", ReplyAction="http://tempuri.org/IUserManager/GetClientResponse")]
+        System.Threading.Tasks.Task<MilyUnaNochesWPFApp.MilyUnaNochesProxy.Usuario> GetClientAsync(int idUser);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManager/UpdateClient", ReplyAction="http://tempuri.org/IUserManager/UpdateClientResponse")]
+        int UpdateClient(MilyUnaNochesWPFApp.MilyUnaNochesProxy.Usuario client);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManager/UpdateClient", ReplyAction="http://tempuri.org/IUserManager/UpdateClientResponse")]
+        System.Threading.Tasks.Task<int> UpdateClientAsync(MilyUnaNochesWPFApp.MilyUnaNochesProxy.Usuario client);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManager/GetClienteId", ReplyAction="http://tempuri.org/IUserManager/GetClienteIdResponse")]
+        int GetClienteId(int idUsuario);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManager/GetClienteId", ReplyAction="http://tempuri.org/IUserManager/GetClienteIdResponse")]
+        System.Threading.Tasks.Task<int> GetClienteIdAsync(int idUsuario);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -4070,6 +4100,46 @@ namespace MilyUnaNochesWPFApp.MilyUnaNochesProxy {
         
         public System.Threading.Tasks.Task<MilyUnaNochesWPFApp.MilyUnaNochesProxy.Empleado> GetUserProfileAsync(string username, string password) {
             return base.Channel.GetUserProfileAsync(username, password);
+        }
+        
+        public MilyUnaNochesWPFApp.MilyUnaNochesProxy.Empleado GetEmployee(int idUser) {
+            return base.Channel.GetEmployee(idUser);
+        }
+        
+        public System.Threading.Tasks.Task<MilyUnaNochesWPFApp.MilyUnaNochesProxy.Empleado> GetEmployeeAsync(int idUser) {
+            return base.Channel.GetEmployeeAsync(idUser);
+        }
+        
+        public int UpdateEmployee(MilyUnaNochesWPFApp.MilyUnaNochesProxy.Empleado employee) {
+            return base.Channel.UpdateEmployee(employee);
+        }
+        
+        public System.Threading.Tasks.Task<int> UpdateEmployeeAsync(MilyUnaNochesWPFApp.MilyUnaNochesProxy.Empleado employee) {
+            return base.Channel.UpdateEmployeeAsync(employee);
+        }
+        
+        public MilyUnaNochesWPFApp.MilyUnaNochesProxy.Usuario GetClient(int idUser) {
+            return base.Channel.GetClient(idUser);
+        }
+        
+        public System.Threading.Tasks.Task<MilyUnaNochesWPFApp.MilyUnaNochesProxy.Usuario> GetClientAsync(int idUser) {
+            return base.Channel.GetClientAsync(idUser);
+        }
+        
+        public int UpdateClient(MilyUnaNochesWPFApp.MilyUnaNochesProxy.Usuario client) {
+            return base.Channel.UpdateClient(client);
+        }
+        
+        public System.Threading.Tasks.Task<int> UpdateClientAsync(MilyUnaNochesWPFApp.MilyUnaNochesProxy.Usuario client) {
+            return base.Channel.UpdateClientAsync(client);
+        }
+        
+        public int GetClienteId(int idUsuario) {
+            return base.Channel.GetClienteId(idUsuario);
+        }
+        
+        public System.Threading.Tasks.Task<int> GetClienteIdAsync(int idUsuario) {
+            return base.Channel.GetClienteIdAsync(idUsuario);
         }
     }
     

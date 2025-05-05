@@ -8,6 +8,7 @@
     using System.Threading.Tasks;
     using System.Windows;
     using System.Windows.Controls;
+using static MilyUnaNochesWPFApp.Views.CustomDialog;
 
     namespace MilyUnaNochesWPFApp.Views {
         /// <summary>
@@ -35,7 +36,13 @@
                     }
                 }
             }
-            private async void LoadProductsAsync() {
+        private void ShowCustomMessage(string message, DialogType type)
+        {
+            var dialog = new CustomDialog(message, type);
+            dialog.Owner = Window.GetWindow(this);
+            dialog.ShowDialog();
+        }
+        private async void LoadProductsAsync() {
                 try {
                     var products = await Task.Run(() => _productsManager.GetProducts());
                     _products = new ObservableCollection<Product>(products);
@@ -43,7 +50,7 @@
                     cmbProducts.DisplayMemberPath = "NombreProducto";
                     cmbProducts.SelectedValuePath = "IdProducto";
                 } catch (Exception ex) {
-                    MessageBox.Show("Error cargando productos: " + ex.Message);
+                ShowCustomMessage($"Error cargando productos: {ex.Message}", DialogType.Error);
                 }
             }
 
@@ -54,7 +61,7 @@
             private void Accept_Click(object sender, RoutedEventArgs e) {
                 if (parentPage != null) {
                     if (cb_SelectedPayMethod.SelectedItem == null) {
-                        MessageBox.Show("Selecciona un método de pago válido.");
+                    ShowCustomMessage("Selecciona un método de pago válido.", DialogType.Warning);
                         return; 
                     }
                     var selectedItem = cb_SelectedPayMethod.SelectedItem as ComboBoxItem;
@@ -84,7 +91,7 @@
                     }
                     UpdateTotal();
                 } else {
-                    MessageBox.Show("Seleccione un producto e ingrese cantidad válida");
+                ShowCustomMessage("Seleccione un producto e ingrese cantidad válida", DialogType.Warning);
                 }
             }
             private void UpdateTotal() {
@@ -100,20 +107,16 @@
                 UpdateTotal();
             }
 
-            // Método para aumentar la cantidad en 1
             private void Increase_Click(object sender, RoutedEventArgs e) {
                 if (sender is Button btn && btn.Tag is ProductPurchase product) {
                     product.Cantidad += 1;
-                    // Actualiza el monto según el precio de compra. 
-                    // Se asume que puedes obtener el precio base (PrecioCompra) del producto. 
-                    // Si no lo tienes en la clase ProductPurchase, podrías necesitar consultarlo.
-                    // Aquí se asume que MontoProducto se actualiza de la siguiente manera:
+
                     var prodBase = _products.FirstOrDefault(p => p.IdProducto == product.IdProducto);
                     if (prodBase != null) {
                         product.MontoProducto = prodBase.PrecioCompra * product.Cantidad;
                     }
                     UpdateTotal();
-                    // Actualizamos la vista
+
                     lstSelectedProducts.Items.Refresh();
                 }
             }

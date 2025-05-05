@@ -67,7 +67,7 @@
                  BorderBrush="{x:Null}" 
                  FontSize="20" 
                  Name="txtNumeroCliente"
-                 PreviewTextInput="NumberValidationTextBox">
+                 PreviewTextInput="Telephone_PreviewTextInput" PreviewKeyDown="Telephone_PreviewKeyDown" MaxLength="10">
             <TextBox.Background>
                 <ImageBrush ImageSource="/Images/Background/BackgorundTextField.png"/>
             </TextBox.Background>
@@ -170,10 +170,11 @@
                         Width="180" 
                         Height="234" Background="White">
                     <StackPanel>
-                        <Image Source="/Images/Products/Product1.png" 
+                        <Image Source="{Binding Imagen}"
                                Width="146" 
                                Height="145" 
                                Stretch="UniformToFill"/>
+                        
                         <TextBlock Text="Nombre del Producto" 
                                    FontWeight="Bold"
                                    FontSize="16" 

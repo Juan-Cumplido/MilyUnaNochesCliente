@@ -14,9 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace MilyUnaNochesWPFApp.Views {
-    /// <summary>
-    /// Lógica de interacción para MenuProvider2.xaml
-    /// </summary>
+
     public partial class MenuProvider : Page {
         public MenuProvider() {
             InitializeComponent();

@@ -14,9 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace MilyUnaNochesWPFApp.Views {
-    /// <summary>
-    /// Lógica de interacción para PurchasesMenu.xaml
-    /// </summary>
+
     public partial class PurchasesMenu : Page {
         public PurchasesMenu() {
             InitializeComponent();

@@ -130,17 +130,19 @@ namespace MilyUnaNochesWPFApp.Views
             catch (EndpointNotFoundException endPointException)
             {
                 logger.LogFatal(endPointException);
-                DialogManager.ShowErrorMessageAlert("No se pudo establecer conexión con el servidor. Por favor, verifique la configuración de red e intente nuevamente.");
+                ShowCustomMessage("No se pudo establecer conexión con el servidor. Por favor, verifique la configuración de red e intente nuevamente.", DialogType.Error);
+
             }
             catch (TimeoutException timeOutException)
             {
                 logger.LogWarn(timeOutException);
-                DialogManager.ShowErrorMessageAlert("Inténtalo de nuevo. El tiempo de espera ha expirado. Por favor, verifica tu conexión al servidor.");
+                ShowCustomMessage("Inténtalo de nuevo. El tiempo de espera ha expirado. Por favor, verifica tu conexión al servidor.", DialogType.Error);
             }
             catch (CommunicationException communicationException)
             {
                 logger.LogFatal(communicationException);
-                DialogManager.ShowErrorMessageAlert("Se ha producido un fallo para establecer la conexión al servidor. Chequee su conexión a internet e inténtelo de nuevo.");
+                ShowCustomMessage("Se ha producido un fallo para establecer la conexión al servidor. Cheque su conexión a internet e inténtelo de nuevo.", DialogType.Error);
+
             }
         }
 
@@ -151,7 +153,7 @@ namespace MilyUnaNochesWPFApp.Views
 
             try
             {
-                string hashedPassword = Hasher.hashToSHA2(access.usuario);
+                string hashedPassword = Hasher.hashToSHA2(access.contraseña);
                 string username = access.usuario;
                 IUserManager userManager = new MilyUnaNochesProxy.UserManagerClient();
                 validationResult = userManager.VerifyCredentials(username, hashedPassword);
@@ -159,17 +161,19 @@ namespace MilyUnaNochesWPFApp.Views
             catch (EndpointNotFoundException endPointException)
             {
                 logger.LogFatal(endPointException);
-                DialogManager.ShowErrorMessageAlert("No se pudo establecer conexión con el servidor. Por favor, verifique la configuración de red e intente nuevamente.");
+                ShowCustomMessage("No se pudo establecer conexión con el servidor. Por favor, verifique la configuración de red e intente nuevamente.", DialogType.Error);
+
             }
             catch (TimeoutException timeOutException)
             {
                 logger.LogWarn(timeOutException);
-                DialogManager.ShowErrorMessageAlert("Inténtalo de nuevo. El tiempo de espera ha expirado. Por favor, verifica tu conexión al servidor.");
+                ShowCustomMessage("Inténtalo de nuevo. El tiempo de espera ha expirado. Por favor, verifica tu conexión al servidor.", DialogType.Error);
             }
             catch (CommunicationException communicationException)
             {
                 logger.LogFatal(communicationException);
-                DialogManager.ShowErrorMessageAlert("Se ha producido un fallo para establecer la conexión al servidor. Chequee su conexión a internet e inténtelo de nuevo.");
+                ShowCustomMessage("Se ha producido un fallo para establecer la conexión al servidor. Cheque su conexión a internet e inténtelo de nuevo.", DialogType.Error);
+
             }
 
             switch (validationResult)
@@ -202,17 +206,19 @@ namespace MilyUnaNochesWPFApp.Views
             catch (EndpointNotFoundException endPointException)
             {
                 logger.LogFatal(endPointException);
-                DialogManager.ShowErrorMessageAlert("No se pudo establecer conexión con el servidor. Por favor, verifique la configuración de red e intente nuevamente.");
+                ShowCustomMessage("No se pudo establecer conexión con el servidor. Por favor, verifique la configuración de red e intente nuevamente.", DialogType.Error);
+
             }
             catch (TimeoutException timeOutException)
             {
                 logger.LogWarn(timeOutException);
-                DialogManager.ShowErrorMessageAlert("Inténtalo de nuevo. El tiempo de espera ha expirado. Por favor, verifica tu conexión al servidor.");
+                ShowCustomMessage("Inténtalo de nuevo. El tiempo de espera ha expirado. Por favor, verifica tu conexión al servidor.", DialogType.Error);
             }
             catch (CommunicationException communicationException)
             {
                 logger.LogFatal(communicationException);
-                DialogManager.ShowErrorMessageAlert("Se ha producido un fallo para establecer la conexión al servidor. Chequee su conexión a internet e inténtelo de nuevo.");
+                ShowCustomMessage("Se ha producido un fallo para establecer la conexión al servidor. Cheque su conexión a internet e inténtelo de nuevo.", DialogType.Error);
+
             }
         }
 
@@ -233,8 +239,8 @@ namespace MilyUnaNochesWPFApp.Views
                     break;
 
                 case "Bodeguista":
-                    RegisterProductView registerProductView = new RegisterProductView();
-                    this.NavigationService.Navigate(registerProductView);
+                    ConsultProductsView ProductView = new ConsultProductsView();
+                    this.NavigationService.Navigate(ProductView);
                     break;
 
                 default:

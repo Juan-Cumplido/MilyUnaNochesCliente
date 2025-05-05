@@ -17,6 +17,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using static MilyUnaNochesWPFApp.Views.CustomDialog;
 
 namespace MilyUnaNochesWPFApp.Views
 {
@@ -25,6 +26,12 @@ namespace MilyUnaNochesWPFApp.Views
         public RegisterClient()
         {
             InitializeComponent();
+        }
+        private void ShowCustomMessage(string message, DialogType type)
+        {
+            var dialog = new CustomDialog(message, type);
+            dialog.Owner = Window.GetWindow(this);
+            dialog.ShowDialog();
         }
 
         private void Registrar_Click(object sender, RoutedEventArgs e)
@@ -45,13 +52,13 @@ namespace MilyUnaNochesWPFApp.Views
                 int insertionResult = AddUser(newUser);
                 if (insertionResult == 1)
                 {
-                    DialogManager.ShowSuccessMessageAlert("Cliente registrado exitosamente");
+                    ShowCustomMessage("Cliente registrado exitosamente.", DialogType.Success);
                     ClearFields();
                 }
             }
             else
             {
-                DialogManager.ShowErrorMessageAlert("La información que ha ingresado es incorrecta. Intentelo de nuevo.");
+                ShowCustomMessage("La información que ha ingresado es incorrecta. Intentelo de nuevo.", DialogType.Warning);
             }
         }
 
@@ -64,34 +71,37 @@ namespace MilyUnaNochesWPFApp.Views
             {
                 MilyUnaNochesProxy.UserManagerClient userManagerClient = new MilyUnaNochesProxy.UserManagerClient();
                 int validationExisted = userManagerClient.VerifyExistinClient(user.nombre, user.primerApellido, user.segundoApellido);
+                int emailOrPhoneExists = userManagerClient.VerifyExistinEmployee(user.correo, user.telefono);
 
-                if (validationExisted == 0)
+                if (validationExisted == 0 && emailOrPhoneExists == 0)
                 {
                     insertionResult = userManagerClient.AddClient(user);
                 }
                 else if (validationExisted >= 1)
                 {
-                    DialogManager.ShowErrorMessageAlert("El cliente ya esta registrado, para verificar puede buscarlo por su nombre o correo");
+                    ShowCustomMessage("El cliente ya esta registrado, para verificar puede buscarlo por su nombre o correo", DialogType.Warning);
                 }
                 else if (validationExisted == -1)
                 {
-                    DialogManager.ShowErrorMessageAlert("Ha ocurrido un error al intentar establecer conexión con la base de datos.");
+                    ShowCustomMessage("Ha ocurrido un error al intentar establecer conexión con la base de datos.", DialogType.Error);
                 }
             }
             catch (EndpointNotFoundException endPointException)
             {
                 logger.LogFatal(endPointException);
-                DialogManager.ShowErrorMessageAlert("No se pudo establecer conexión con el servidor. Por favor, verifique la configuración de red e intente nuevamente.");
+                ShowCustomMessage("No se pudo establecer conexión con el servidor. Por favor, verifique la configuración de red e intente nuevamente.", DialogType.Error);
+
             }
             catch (TimeoutException timeOutException)
             {
                 logger.LogWarn(timeOutException);
-                DialogManager.ShowErrorMessageAlert("Inténtalo de nuevo. El tiempo de espera ha expirado. Por favor, verifica tu conexión al servidor.");
+                ShowCustomMessage("Inténtalo de nuevo. El tiempo de espera ha expirado. Por favor, verifica tu conexión al servidor.", DialogType.Error);
             }
             catch (CommunicationException communicationException)
             {
                 logger.LogFatal(communicationException);
-                DialogManager.ShowErrorMessageAlert("Se ha producido un fallo para establecer la conexión al servidor. Chequee su conexión a internet e inténtelo de nuevo.");
+                ShowCustomMessage("Se ha producido un fallo para establecer la conexión al servidor. Cheque su conexión a internet e inténtelo de nuevo.", DialogType.Error);
+
             }
 
             return insertionResult;

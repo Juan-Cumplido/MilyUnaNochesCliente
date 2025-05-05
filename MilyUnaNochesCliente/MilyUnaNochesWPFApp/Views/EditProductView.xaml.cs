@@ -18,6 +18,9 @@ using System.Windows.Shapes;
 using System.Windows.Forms;
 using MilyUnaNochesWPFApp.Logic;
 using Product = MilyUnaNochesWPFApp.Logic.Product;
+using MilyUnaNochesWPFApp.Utilities;
+using static MilyUnaNochesWPFApp.Views.CustomDialog;
+using System.ServiceModel;
 
 namespace MilyUnaNochesWPFApp.Views
 {
@@ -31,7 +34,6 @@ namespace MilyUnaNochesWPFApp.Views
         {
             InitializeComponent();
 
-            // Cargar los detalles del producto en los controles
             txtb_NombreProducto.Text = producto.NombreProducto;
             txtb_CodigoProducto.Text = producto.CodigoProducto;
             txtb_Descripcion.Text = producto.Descripcion;
@@ -40,7 +42,6 @@ namespace MilyUnaNochesWPFApp.Views
             txtb_PrecioVenta.Text = producto.PrecioVenta.ToString(); 
             txtb_PrecioCompra.Text = producto.PrecioCompra.ToString(); 
 
-            // Convertir la imagen de byte[] a BitmapImage
             if (producto.Imagen != null && producto.Imagen.Length > 0)
             {
                 img_Photo.Source = ConvertImage(producto.Imagen);
@@ -48,7 +49,64 @@ namespace MilyUnaNochesWPFApp.Views
 
             SetOldProductName(producto.NombreProducto);
         }
+        private void ShowCustomMessage(string message, DialogType type)
+        {
+            var dialog = new CustomDialog(message, type);
+            dialog.Owner = Window.GetWindow(this);
+            dialog.ShowDialog();
+        }
+        private void Image_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            var dialog = new CustomDialog("Regresará a la ventana de inicio de sesión. ¿Está seguro de salir?", CustomDialog.DialogType.Confirmation);
+            dialog.ShowDialog();
+            LoggerManager logger = new LoggerManager(this.GetType());
+            if (dialog.UserConfirmed == true)
+            {
+                try
+                {
+                    MilyUnaNochesProxy.UserSessionManagerClient userSessionManagerClient = new MilyUnaNochesProxy.UserSessionManagerClient();
+                    UserSession userSession = new UserSession()
+                    {
 
+                        idAcceso = UserProfileSingleton.idAcceso
+                    };
+
+
+                    int disconnectionResult = userSessionManagerClient.Disconnect(userSession, false);
+                    if (disconnectionResult == Constants.SuccessOperation)
+                    {
+                        UserProfileSingleton.Instance.ResetSingleton();
+                        LoginView login = new LoginView();
+                        this.NavigationService.Navigate(login);
+                    }
+                    else if (disconnectionResult == Constants.NoDataMatches)
+                    {
+                        ShowCustomMessage("No se ha podido encontrar la sesión de usuario", DialogType.Warning);
+                    }
+                    else
+                    {
+                        ShowCustomMessage("Ocurrio un error al cerrar la sesión, intentelo de nuevo", DialogType.Warning);
+                    }
+                }
+                catch (EndpointNotFoundException endPointException)
+                {
+                    logger.LogFatal(endPointException);
+                    ShowCustomMessage("No se pudo establecer conexión con el servidor. Por favor, verifique la configuración de red e intente nuevamente.\r\n", DialogType.Error);
+
+                }
+                catch (TimeoutException timeOutException)
+                {
+                    logger.LogWarn(timeOutException);
+                    ShowCustomMessage("Inténtalo de nuevo. El tiempo de espera ha expirado. Por favor, verifica tu conexión al servidor.", DialogType.Error);
+                }
+                catch (CommunicationException communicationException)
+                {
+                    logger.LogFatal(communicationException);
+                    ShowCustomMessage("Se ha producido un fallo para establecer la conexión al servidor. Cheque su conexión a internet e inténtelo de nuevo", DialogType.Error);
+
+                }
+            }
+        }
         private void SetOldProductName(string productName)
         {
             this.oldProductName = productName;
@@ -81,31 +139,29 @@ namespace MilyUnaNochesWPFApp.Views
                 txtb_PrecioVenta, txtb_Categoria, txtb_Cantidad };
             System.Windows.Controls.TextBox[] numericFields = { txtb_PrecioCompra, txtb_PrecioVenta, txtb_Cantidad };
 
-            //Validar que no hayan campos vacíos
+           
             foreach (System.Windows.Controls.TextBox field in fields)
             {
                 if (string.IsNullOrWhiteSpace(field.Text))
                 {
-                    System.Windows.MessageBox.Show($"Completar datos faltantes",
-                                    "Validación", MessageBoxButton.OK, MessageBoxImage.Warning);
+                  
+                    ShowCustomMessage("Completar datos faltantes", DialogType.Warning);
                     return false;
                 }
             }
-            //Validar que los campos numericos y la foto se cumplan
             foreach (System.Windows.Controls.TextBox field in numericFields)
             {
                 if (!EsNumero(field.Text) || img_Photo.Source == null)
                 {
-                    System.Windows.MessageBox.Show($"Existen datos invalidos",
-                                    "Validación", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    
+                    ShowCustomMessage("Existen datos invalidos", DialogType.Warning);
                     return false;
                 }
             }
-            //Validar que el nombre del producto no exista en un registro previo
             if (!ValidateProductName())
             {
-                System.Windows.MessageBox.Show($"Existen datos invalidos",
-                "Validación", MessageBoxButton.OK, MessageBoxImage.Warning);
+                ShowCustomMessage("Existen datos invalidos", DialogType.Warning);
+
                 return false;
             }
             return true;
@@ -131,33 +187,32 @@ namespace MilyUnaNochesWPFApp.Views
         }
         private bool ValidateProductName()
         {
+           
+            if (txtb_NombreProducto.Text == GetOldProductName())
+                return true;
+
             IProductsManager proxy = new ProductsManagerClient();
 
             try
             {
                 bool exist = proxy.ValidateProductName(txtb_NombreProducto.Text);
-                return exist;
-
+                return !exist; 
             }
             catch (Exception ex)
             {
                 Console.WriteLine($"Ocurrió un error: {ex.Message}");
-                System.Windows.MessageBox.Show($"Error en el registro",
-                                "ERROR", MessageBoxButton.OK, MessageBoxImage.Warning);
+                ShowCustomMessage("Error en el registro", DialogType.Error);
                 return false;
             }
         }
 
+
         private void Register(object sender, RoutedEventArgs e)
         {
-            DialogResult result = System.Windows.Forms.MessageBox.Show(
-                "¿Estás seguro que deseas cancelar la edición?",
-                "Confirmar",
-                 MessageBoxButtons.YesNo, // Botones Sí/No (o OK/Cancel)
-                 MessageBoxIcon.Question // Icono de pregunta
-            );
 
-            if (result == DialogResult.Yes)
+            var dialog = new CustomDialog("¿Estás seguro que deseas cancelar la edición?", CustomDialog.DialogType.Confirmation);
+            dialog.ShowDialog();
+            if (dialog.UserConfirmed == true)
             {
                 NavigationService?.Navigate(new RegisterProductView());
             }
@@ -165,17 +220,14 @@ namespace MilyUnaNochesWPFApp.Views
 
         private void Consult(object sender, RoutedEventArgs e)
         {
-            DialogResult result = System.Windows.Forms.MessageBox.Show(
-                "¿Estás seguro que deseas cancelar la edición?",
-                "Confirmar",
-                 MessageBoxButtons.YesNo, // Botones Sí/No (o OK/Cancel)
-                 MessageBoxIcon.Question // Icono de pregunta
-            );
-
-            if (result == DialogResult.Yes)
+            var dialog = new CustomDialog("¿Estás seguro que deseas cancelar la edición?", CustomDialog.DialogType.Confirmation);
+            dialog.ShowDialog();
+            if (dialog.UserConfirmed == true)
             {
                 NavigationService?.Navigate(new ConsultProductsView());
             }
+           
+            
         }
 
         private void Validate(object sender, RoutedEventArgs e)
@@ -212,7 +264,7 @@ namespace MilyUnaNochesWPFApp.Views
             }
             catch (Exception ex)
             {
-                System.Windows.MessageBox.Show("Error al cargar la imagen: " + ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                ShowCustomMessage("Error al cargar la imagen:", DialogType.Error);
             }
         }
 
@@ -238,22 +290,20 @@ namespace MilyUnaNochesWPFApp.Views
 
                     if (proxy.UpdateProduct(producto, GetOldProductName()))
                     {
-                        System.Windows.MessageBox.Show($"Cambio realizado con éxito",
-                            "Éxito", MessageBoxButton.OK, MessageBoxImage.Information);
+                        
+                        ShowCustomMessage("Cambio realizado con éxito", DialogType.Success);
                         NavigationService?.Navigate(new ConsultProductsView());
                     }
                     else
                     {
-                        System.Windows.MessageBox.Show($"Hubo un error al actualizar la información del producto",
-                            "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-
+                        
+                        ShowCustomMessage("Hubo un error al actualizar la información del producto", DialogType.Error);
                     }
                 }
                 catch (Exception ex)
                 {
                     Console.WriteLine($"Ocurrió un error: {ex.Message}");
-                    System.Windows.MessageBox.Show($"Error en el registro",
-                                    "ERROR", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    ShowCustomMessage("Error en el registro", DialogType.Error);
                 }
             }
 

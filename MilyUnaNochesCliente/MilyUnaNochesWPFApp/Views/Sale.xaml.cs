@@ -4,6 +4,8 @@ using System.Diagnostics;
 using System.Linq;
 using System.ServiceModel;
 using System.Text;
+using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -12,13 +14,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using MilyUnaNochesWPFApp.Logic;
 using MilyUnaNochesWPFApp.MilyUnaNochesProxy;
+using static MilyUnaNochesWPFApp.Views.CustomDialog;
 
 namespace MilyUnaNochesWPFApp.Views {
     public partial class Sale : Page {
         private List<VentaProducto> _currentSaleDetails = new List<VentaProducto>();
         private decimal _totalAmount = 0;
         private int _currentEmployeeId;
-        private int _currentClientId = 0;
+        private int _currentClientId;
         private List<MilyUnaNochesWPFApp.MilyUnaNochesProxy.Product> _availableProducts = new List<MilyUnaNochesWPFApp.MilyUnaNochesProxy.Product>();
 
         public Sale(int employeeId) {
@@ -26,6 +29,13 @@ namespace MilyUnaNochesWPFApp.Views {
             _currentEmployeeId = employeeId;
             txtNumeroVendedor.Text = employeeId.ToString();
             InitializeUI();
+        }
+
+        private void ShowCustomMessage(string message, DialogType type)
+        {
+            var dialog = new CustomDialog(message, type);
+            dialog.Owner = Window.GetWindow(this);
+            dialog.ShowDialog();
         }
 
         private void InitializeUI() {
@@ -61,8 +71,7 @@ namespace MilyUnaNochesWPFApp.Views {
 
         private async void AddSelectedProduct_Click(object sender, RoutedEventArgs e) {
             if (string.IsNullOrWhiteSpace(txtSearchProduct.Text)) {
-                MessageBox.Show("Ingrese el código del producto", "Advertencia",
-                    MessageBoxButton.OK, MessageBoxImage.Warning);
+                ShowCustomMessage("Ingrese el código del producto.", DialogType.Warning);
                 return;
             }
 
@@ -73,18 +82,16 @@ namespace MilyUnaNochesWPFApp.Views {
                 var product = await proxy.GetProductByCodeAsync(productCode);
 
                 if (product == null) {
-                    MessageBox.Show($"No se encontró producto con código: {productCode}",
-                        "Producto no encontrado",
-                        MessageBoxButton.OK, MessageBoxImage.Error);
+                    
+                    ShowCustomMessage($"No se encontró producto con código: {productCode}", DialogType.Warning);
                     return;
                 }
 
                 var stockResponse = await proxy.GetProductStockAsync(product.IdProducto);
 
                 if (!stockResponse.Success) {
-                    MessageBox.Show($"Error al consultar stock: {stockResponse.Message}",
-                        "Error",
-                        MessageBoxButton.OK, MessageBoxImage.Error);
+                    
+                    ShowCustomMessage($"Error al consultar stock: {stockResponse.Message}", DialogType.Warning);
                     return;
                 }
 
@@ -92,9 +99,8 @@ namespace MilyUnaNochesWPFApp.Views {
                 int inCart = _productCounts.ContainsKey(product.IdProducto) ? _productCounts[product.IdProducto] : 0;
 
                 if (currentStock <= 0) {
-                    MessageBox.Show($"Producto agotado: {product.NombreProducto}\nCódigo: {product.CodigoProducto}",
-                        "Stock agotado",
-                        MessageBoxButton.OK, MessageBoxImage.Warning);
+                    
+                    ShowCustomMessage($"Producto agotado: {product.NombreProducto}\nCódigo: {product.CodigoProducto}", DialogType.Warning);
                     return;
                 }
 
@@ -103,6 +109,7 @@ namespace MilyUnaNochesWPFApp.Views {
                                    $"En carrito: {inCart}, Disponible: {currentStock}",
                         "Stock insuficiente",
                         MessageBoxButton.OK, MessageBoxImage.Warning);
+
                     return;
                 }
 
@@ -127,6 +134,7 @@ namespace MilyUnaNochesWPFApp.Views {
                         PrecioUnitario = product.PrecioVenta,
                         PrecioCompra = product.PrecioCompra, 
                         Subtotal = product.PrecioVenta
+                        
                     };
 
                     _currentSaleDetails.Add(ventaProducto);
@@ -141,9 +149,7 @@ namespace MilyUnaNochesWPFApp.Views {
                 gridSearchProduct.Visibility = Visibility.Collapsed;
                 EnableButtons();
             } catch (Exception ex) {
-                MessageBox.Show($"Error al buscar producto: {ex.Message}",
-                    "Error",
-                    MessageBoxButton.OK, MessageBoxImage.Error);
+                ShowCustomMessage($"Error al buscar producto: {ex.Message}", DialogType.Warning);
             }
         }
 
@@ -247,53 +253,102 @@ namespace MilyUnaNochesWPFApp.Views {
             }
         }
 
-        private async void ValidateNumberPhoneClient() {
-            if (txtNumeroCliente.Text.Length == 10) {
-                try {
+        private async Task<bool> ValidateNumberPhoneClientAsync()
+        {
+            if (string.IsNullOrWhiteSpace(txtNumeroCliente.Text))
+            {
+                var dialog = new CustomDialog("No se ingresó número telefónico. ¿Desea continuar la venta sin asignar un cliente?", CustomDialog.DialogType.Confirmation);
+                dialog.ShowDialog();
+
+                if (dialog.UserConfirmed == true)
+                {
+                    _currentClientId = 0; 
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+
+            if (txtNumeroCliente.Text.Length == 10)
+            {
+                try
+                {
                     IUserManager userManager = new MilyUnaNochesProxy.UserManagerClient();
                     var clients = await userManager.GetUserProfileByNamePhoneAsync(txtNumeroCliente.Text);
+                    
 
                     var exactMatch = clients?.FirstOrDefault(c => c.telefono == txtNumeroCliente.Text);
 
-                    if (exactMatch != null) {
-                        MessageBox.Show($"Cliente encontrado: {exactMatch.nombre} {exactMatch.primerApellido}");
-                        _currentClientId = exactMatch.idUsuario; 
-                    } else {
-                        var result = MessageBox.Show("Cliente no registrado. ¿Desea registrarlo?",
-                                                   "Aviso",
-                                                   MessageBoxButton.YesNo);
-                        if (result == MessageBoxResult.Yes) {
+                    if (exactMatch != null)
+                    {
+
+                        int idCliente = userManager.GetClienteId(exactMatch.idUsuario);
+                        _currentClientId = idCliente;
+                       
+                        return true;
+                    }
+                    else
+                    {
+                        var dialog = new CustomDialog("Cliente no registrado. ¿Desea registrarlo?", CustomDialog.DialogType.Confirmation);
+                        dialog.ShowDialog();
+                        if (dialog.UserConfirmed == true)
+                        {
                             NavigationService.Navigate(new RegisterClient());
                         }
+                        else
+                        {
+                            txtNumeroCliente.Text = string.Empty;
+                        }
+                        return false;
                     }
-                } catch (Exception ex) {
-                    MessageBox.Show($"Error al buscar cliente: {ex.Message}");
+                }
+                catch (Exception ex)
+                {
+                    ShowCustomMessage($"Error al buscar cliente: {ex.Message}", DialogType.Warning);
+                    return false;
                 }
             }
+            else
+            {
+                ShowCustomMessage("Número de teléfono inválido.", DialogType.Warning);
+                return false;
+            }
         }
+
+
 
         private void CancelSaleButton_Click(object sender, RoutedEventArgs e) {
             _currentSaleDetails.Clear();
             InitializeUI();
         }
 
-        private void PayButton_Click(object sender, RoutedEventArgs e) {
-            if (_currentSaleDetails.Count == 0) {
-                MessageBox.Show("No hay productos en la venta", "Advertencia",
-                    MessageBoxButton.OK, MessageBoxImage.Warning);
+        private async void PayButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (_currentSaleDetails.Count == 0)
+            {
+                ShowCustomMessage("No hay productos en la venta", DialogType.Warning);
                 return;
             }
+
+            bool clientExists = await ValidateNumberPhoneClientAsync();
+            if (!clientExists)
+            {
+                return;
+            }
+
             gridFormPay.Visibility = Visibility.Visible;
         }
 
+
         private async void ProcessPaymentButton_Click(object sender, RoutedEventArgs e) {
             string paymentMethod = (sender as Button)?.Content.ToString();
-
             try {
                 ISaleManager proxy = new SaleManagerClient();
                 var newSale = new Venta {
                     IdEmpleado = _currentEmployeeId,
-                    IdCliente = int.TryParse(txtNumeroCliente.Text, out int temp) ? temp : (int?)null,
+                    IdCliente = _currentClientId,
                     MetodoPago = paymentMethod,
                     MontoTotal = _totalAmount
                 };
@@ -316,18 +371,19 @@ namespace MilyUnaNochesWPFApp.Views {
                 if (saleResult.Success) {
                     ShowReceipt(newSale, _currentEmployeeId);
 
-                    MessageBox.Show("Venta registrada exitosamente", "Éxito",
-                        MessageBoxButton.OK, MessageBoxImage.Information);
+                   
+                    ShowCustomMessage("Venta registrada exitosamente", DialogType.Success);
                     _currentSaleDetails.Clear();
                     InitializeUI();
                 } else {
                     var errorMessage = string.Join("\n", saleResult.Errors);
                     MessageBox.Show(errorMessage, "Error en la venta",
                         MessageBoxButton.OK, MessageBoxImage.Error);
+
                 }
             } catch (Exception ex) {
-                MessageBox.Show($"Error inesperado: {ex.Message}", "Error",
-                    MessageBoxButton.OK, MessageBoxImage.Error);
+                
+                ShowCustomMessage($"Error inesperado: {ex.Message}", DialogType.Error);
             } finally {
                 gridFormPay.Visibility = Visibility.Collapsed;
             }
@@ -407,12 +463,21 @@ namespace MilyUnaNochesWPFApp.Views {
             gridFormPay.Visibility = Visibility.Collapsed;
         }
 
-        private void NumberValidationTextBox(object sender, TextCompositionEventArgs e) {
-            foreach (char c in e.Text) {
-                if (!char.IsDigit(c)) {
-                    e.Handled = true;
-                    break;
-                }
+        private void Telephone_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            e.Handled = !Regex.IsMatch(e.Text, "^[0-9]+$");
+        }
+
+        private void Telephone_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            TextBox textBox = sender as TextBox;
+
+            if (e.Key == Key.Space ||
+                (e.Key == Key.V && Keyboard.Modifiers == ModifierKeys.Control) ||
+                (e.Key == Key.C && Keyboard.Modifiers == ModifierKeys.Control) ||
+                (e.Key == Key.X && Keyboard.Modifiers == ModifierKeys.Control))
+            {
+                e.Handled = true;
             }
         }
     }

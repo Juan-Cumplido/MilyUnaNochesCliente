@@ -14,6 +14,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using static MilyUnaNochesWPFApp.Views.CustomDialog;
 
 namespace MilyUnaNochesWPFApp.Views {
     /// <summary>
@@ -37,11 +38,20 @@ namespace MilyUnaNochesWPFApp.Views {
             loadProviderInfo();
         }
 
+        private void ShowCustomMessage(string message, DialogType type)
+        {
+            var dialog = new CustomDialog(message, type);
+            dialog.Owner = Window.GetWindow(this);
+            dialog.ShowDialog();
+        }
+
         private void loadProviderInfo() {
             var supplierInfo = _providerManager.GetSupplier(idSupplier);
             var supplierAddres = _addresManager.GetAddress(idAddress);
             if (!(checkObjectValidId(idAddress) || checkObjectValidId(idAddress))){
-                DialogManager.ShowErrorMessageAlert("Ha ocurrido un error al recuperar la informacion", "Error");
+                
+                ShowCustomMessage("Ha ocurrido un error al recuperar la informacion", DialogType.Error);
+
                 this.Close();
             }
 
@@ -53,7 +63,9 @@ namespace MilyUnaNochesWPFApp.Views {
         private void Save_Click(object sender, RoutedEventArgs e) {
 
             if (!HasSupplierDataChanged()) {
-                DialogManager.ShowWarningMessageAlert("Los datos del proveedor son iguales. No se realizaron cambios.");
+
+                ShowCustomMessage("Los datos del proveedor son iguales. No se realizaron cambios.", DialogType.Warning);
+                
                 return;
             }
 
@@ -61,11 +73,13 @@ namespace MilyUnaNochesWPFApp.Views {
             Address addressInfo = GetAddressInfo();
 
             if ((_providerManager.EditSupplier(providerInfo, addressInfo) == Constants.SuccessOperation)){
-                DialogManager.ShowSuccessMessageAlert("El proveedor ha sido editado satisfactoriamente", "Proveedor editado con exito");
+
+                ShowCustomMessage("El proveedor ha sido editado satisfactoriamente", DialogType.Success);
                 parentPage.LoadProviders();
                 this.Close();
             } else {
-                DialogManager.ShowErrorMessageAlert("Ha ocurrido un error intentando editar el proveedor");
+
+                ShowCustomMessage("Ha ocurrido un error intentando editar el proveedor", DialogType.Error);
             }
         }
 

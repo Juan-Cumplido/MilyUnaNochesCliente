@@ -59,14 +59,14 @@
                     BorderBrush="Black"
                     Cursor="Hand"
                     Margin="0,10,0,0"
-                    Click="Close_Click">
+                    Click="Yes_Click">
                     <Button.Effect>
                         <DropShadowEffect BlurRadius="5" Direction="270" ShadowDepth="5" Color="Black" Opacity="0.6"/>
                     </Button.Effect>
                 </Button>
             </StackPanel>
             <Button  x:Name="btn_no"
-                Content="Sí"
+                Content="No"
                 Visibility="Collapsed"
                 Width="31"
                 Height="21"
@@ -76,7 +76,7 @@
                 BorderBrush="Black"
                 Cursor="Hand"
                 Margin="191,49,74,7"
-                Click="Close_Click" Grid.Column="1">
+                Click="No_Click" Grid.Column="1">
                 <Button.Effect>
                     <DropShadowEffect BlurRadius="5" Direction="270" ShadowDepth="5" Color="Black" Opacity="0.6"/>
                 </Button.Effect>

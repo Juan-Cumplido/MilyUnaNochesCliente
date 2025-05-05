@@ -151,7 +151,6 @@
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
-
             <Button Content="Volver" 
                 Grid.Column="4"
                 Style="{StaticResource ButtonStyle}" 

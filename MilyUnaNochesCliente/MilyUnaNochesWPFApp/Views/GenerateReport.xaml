@@ -32,7 +32,9 @@
     </Page.Resources>
 
     <Grid>
-        <!-- Imagen superior -->
+        <Image Name="img_goBack" Source="/Images/Icons/goBack.png" MouseDown="Image_MouseDownGoBack" 
+                   Cursor="Hand" Margin="40,-1,1170,644" RenderTransformOrigin="0.5,0.506"/>
+        
         <Image x:Name="img_TopImage"
                HorizontalAlignment="Center"
                Height="144" 
@@ -41,7 +43,6 @@
                Width="1280" 
                Source="/Images/Background/FrameReports.png"/>
 
-        <!-- Botones de CU -->
         <Label x:Name="lbl_Producto" Content="PRODUCTO"
                FontFamily="Bodoni MT" Foreground="#AE7D5C" FontSize="19"
                HorizontalAlignment="Left" Margin="127,232,0,0"
@@ -82,7 +83,6 @@
             </Label.Background>
         </Label>
 
-        <!-- Tabla de reportes -->
         <DataGrid x:Name="dg_Reports"
           SelectionMode="Single"
           AutoGenerateColumns="False" 
@@ -97,35 +97,30 @@
           RowHeight="40"
           HorizontalContentAlignment="Stretch">
             <DataGrid.Columns>
-                <!-- Columna 1: Número de fila -->
                 <DataGridTextColumn Header="No." 
                         Binding="{Binding No}"
                         HeaderStyle="{StaticResource HeaderStyle}" 
                         CellStyle="{StaticResource CenteredCellStyle}" 
                         Width="0.5*"/>
 
-                <!-- Columna 2: Tipo de reporte -->
                 <DataGridTextColumn Header="Tipo de Reporte" 
                         Binding="{Binding Tipo}" 
                     HeaderStyle="{StaticResource HeaderStyle}" 
                         CellStyle="{StaticResource CenteredCellStyle}" 
                         Width="1.2*"/>
 
-                <!-- Columna 3: Período (ya formateado en C#) -->
                 <DataGridTextColumn Header="Período" 
                         Binding="{Binding Periodo}"
                         HeaderStyle="{StaticResource HeaderStyle}" 
                         CellStyle="{StaticResource CenteredCellStyle}" 
                         Width="1.5*"/>
 
-                <!-- Columna 4: Ámbito -->
                 <DataGridTextColumn Header="Categoría" 
                         Binding="{Binding Categoria}"  
                             HeaderStyle="{StaticResource HeaderStyle}" 
                         CellStyle="{StaticResource CenteredCellStyle}" 
                         Width="1.2*"/>
 
-                <!-- Columna 5: Descripción -->
                 <DataGridTextColumn Header="Descripción" 
                         Binding="{Binding Descripcion}" 
                                 HeaderStyle="{StaticResource HeaderStyle}" 

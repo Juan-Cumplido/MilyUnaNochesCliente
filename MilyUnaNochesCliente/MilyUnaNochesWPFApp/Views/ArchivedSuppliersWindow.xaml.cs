@@ -15,6 +15,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using static MilyUnaNochesWPFApp.Views.CustomDialog;
 
 namespace MilyUnaNochesWPFApp.Views {
     /// <summary>
@@ -29,6 +30,12 @@ namespace MilyUnaNochesWPFApp.Views {
             this.parentPage = parentPage;
             LoadArchivedProviders();
         }
+        private void ShowCustomMessage(string message, DialogType type)
+        {
+            var dialog = new CustomDialog(message, type);
+            dialog.Owner = Window.GetWindow(this);
+            dialog.ShowDialog();
+        }
 
         private async void LoadArchivedProviders() {
             try {
@@ -36,7 +43,7 @@ namespace MilyUnaNochesWPFApp.Views {
                 Providers = new ObservableCollection<Provider>(providersList);
                 ProviderDataGrid.ItemsSource = Providers;
             } catch (System.Exception ex) {
-                MessageBox.Show($"Error al cargar proveedores: {ex.Message}");
+                ShowCustomMessage($"Error al cargar proveedores: { ex.Message}", DialogType.Error);
             }
         }
 
@@ -56,11 +63,12 @@ namespace MilyUnaNochesWPFApp.Views {
             if (ProviderDataGrid.SelectedItem is Provider selectedProvider) {
                 var result = _providerManager.UnArchiveProvider(selectedProvider.IdProvider);
                 if (result == Constants.SuccessOperation) {
-                    DialogManager.ShowSuccessMessageAlert("Proveedor desarchivado con éxito.");
+                    ShowCustomMessage("Proveedor desarchivado con éxito.", DialogType.Success);
+
                     Providers.Remove(selectedProvider);
                     parentPage.LoadProviders();
                 } else {
-                    DialogManager.ShowErrorMessageAlert("No se pudo archivar el proveedor.");
+                    ShowCustomMessage("No se pudo archivar el proveedor.", DialogType.Error);
                 }
             }
         }
